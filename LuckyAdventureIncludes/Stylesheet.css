@@ -1,0 +1,287 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+    margin: 5% 5% 5% 5%;
+}
+
+#background {
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    margin: 0px;
+    padding: 0px;
+}
+
+#clicker {
+    margin: 0px 5% 0px 5%;
+    padding: 0px;
+    height: 75%;
+    overflow-y: auto
+}
+
+#console {
+    margin: 0px 5% 0px 5%;
+    padding: 0px;
+    height: 75%;
+    overflow-y: auto
+}
+
+#consoletext {
+    color: rgb(255, 255, 255);
+    font-family: Monospace;
+    margin: 10px 0px 0px 0px;
+}
+
+#textinput {
+    resize: none;
+    margin: 0px 0px -3px -7px;
+    border: none;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-family: Monospace;
+    width: 90%;
+    overflow: hidden;
+}
+
+#prompt {
+    margin: 0px 0px 0px 0px;
+}
+
+#hiddenmsg {
+    color: rgb(0, 0, 0);
+    font-family: Monospace;
+    font-size: 20px;
+    margin: 0px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+#title {
+    color: rgb(255, 255, 255);
+    font-family: Monospace;
+    font-size: 0px;
+    margin: 6% 5% 0px 5%;
+}
+
+.colourable {
+    font-size: 26px;
+}
+
+#clicker-start {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: rgb(0, 0, 0);
+    background-color: black;
+    border: none;
+}
+
+.colourable {
+    cursor: pointer;
+}
+
+#clickerdisplay {
+    color: rgb(255, 255, 255);
+    max-width: 75%;
+    font-family: monospace;
+    margin: 10px 0px 0px 10px;
+    text-align: center;
+}
+
+#clickerdisplay td {
+    padding-left: 20px;
+}
+
+.clickertable {
+    color: rgb(255, 255, 255);
+    width: 75%;
+    font-family: Monospace;
+    margin: 10px 0px 0px 10px;
+    text-align: center;
+    table-layout: fixed;
+}
+
+.clickertable button {
+    padding: 10px;
+    width: 100%;
+    min-width: 160px;
+    height: 80px;
+}
+
+p {
+    color: rgb(255, 255, 255);
+    font-family: Monospace;
+}
+
+.ad {
+    position: absolute;
+    z-index: 1000;
+}
+
+.ad:hover {
+    cursor: pointer;
+}
+
+#ad1 {
+    bottom: 10px;
+    left: 12px;
+    width: 50%;
+}
+
+#ad2 {
+    top: 10px;
+    right: 12px;
+    height: 50%
+}
+
+#ad3 {
+    top: 0px;
+    left: 0px;
+    height: 50%;
+}
+
+#ad4 {
+    bottom: 18px;
+    right: 29px;
+    width: 30%;
+}
+
+#ad5 {
+    top: 30%;
+    right: 50%;
+    width: 25%;
+}
+
+::selection {
+    color: black;
+    background: white;
+}
+
+::-moz-selection {
+    color: black;
+    background: white;
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: rgb(0, 0, 0);
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: rgb(50, 50, 50);
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(70, 70, 70);
+}
+
+/*Cookie Consent Begin*/
+
+.cookieConsentContainer {
+    position: absolute;
+    z-index: 999;
+    width: 350px;
+    height: 160px;
+    box-sizing: border-box;
+    padding: 30px;
+    background: #232323;
+    overflow: visible;
+    bottom: 30px;
+    right: 30px;
+    display: none
+}
+
+.cookieConsentContainer .cookieTitle a {
+    font-family: OpenSans, arial, "sans-serif";
+    color: #fff;
+    font-size: 22px;
+    line-height: 20px;
+    display: block
+}
+
+.cookieConsentContainer .cookieDesc p {
+    margin: 0;
+    padding: 0;
+    font-family: OpenSans, arial, "sans-serif";
+    color: #fff;
+    font-size: 13px;
+    line-height: 20px;
+    display: block;
+    margin-top: 10px
+}
+
+.cookieConsentContainer .cookieDesc a {
+    font-family: OpenSans, arial, "sans-serif";
+    color: #fff;
+    text-decoration: underline
+}
+
+.cookieConsentContainer .cookieButton a {
+    display: inline-block;
+    font-family: OpenSans, arial, "sans-serif";
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 15px 24px;
+    text-align: center;
+}
+
+#cookieAcceptButton a {
+    background: #3e9b67;
+}
+
+#cookieAcceptButton a:hover {
+    cursor: pointer;
+    background: #3fa76c
+}
+
+#cookieAcceptButton {
+    z-index: 1000;
+    position: absolute;
+}
+
+#cookieRejectButton a {
+    font-size: 10px;
+    padding: 10px 20px;
+    margin-top: 14px;
+    margin-left: 12px;
+    background: #9b3e3e;
+    position: absolute;
+}
+
+#cookieRejectButton a:hover {
+    cursor: pointer;
+    background: #a73f3f
+}
+
+@media(max-width:980px) {
+    .cookieConsentContainer {
+        bottom: 0!important;
+        left: 0!important;
+        width: 100%!important
+    }
+}
