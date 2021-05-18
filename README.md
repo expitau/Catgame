@@ -1,2 +1,2 @@
 # LuckyTextAdventure
-An amazing text adventure!
+An amazing text adventure! :)
