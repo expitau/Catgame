@@ -316,7 +316,7 @@ WorldData = {
         kitchen: {
             cmd: {
                 l: {
-                    img: "images/kitchen.jpeg",
+                    img: "Images/kitchen.jpeg",
                     msg: "You're in the kitchen, it gets pretty loud here sometimes, but the sun is shining through the window and is very warm.<br>\
                 N: The dining room<br>\
                 S: There's a door leading outside<br>\
@@ -642,7 +642,7 @@ WorldData = {
                         }
                     },
                     else: {
-                        img: "images/Office.jpeg",
+                        img: "Images/Office.jpeg",
                         msg: "You're in the office, baba is here working on his laptop. You like baba, baba gives nice pets.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
@@ -804,7 +804,7 @@ WorldData = {
                 l: {
                     if: {
                         cond: "chose death Mumu",
-                        img: "images/LivingRoomMumuDead.jpeg",
+                        img: "Images/LivingRoomMumuDead.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is lying dead in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -825,7 +825,7 @@ WorldData = {
                         },
                     },
                     else: {
-                        img: "images/LivingRoom.jpeg",
+                        img: "Images/LivingRoom.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is sleeping in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -974,7 +974,7 @@ WorldData = {
                 l: {
                     if: {
                         cond: "lulu",
-                        img: "images/Entryway.jpeg",
+                        img: "Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -983,7 +983,7 @@ WorldData = {
                         clear: 1
                     },
                     else: {
-                        img: "images/Entryway.jpeg",
+                        img: "Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside. You see the dreaded Lulu at the end of the hall, she trots into emily's room<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -1050,7 +1050,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "images/Hallway1.jpeg",
+                    img: "Images/Hallway1.jpeg",
                     msg: "You are in the middle of the hallway, James' door is closed.<br>\
                     E: Hallway<br>\
                     S: Bathroom<br>\
@@ -1089,7 +1089,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "images/Hallway2.jpeg",
+                    img: "Images/Hallway2.jpeg",
                     msg: "You are at the end of the hallway, Emily's door is next to you, and you see Lulu's ugly face peering at you from on top of the bed<br>\
                     N: Emily's room<br>\
                     S: Meow's room<br>\
@@ -1242,7 +1242,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "images/Basement.jpeg",
+                    img: "Images/Basement.jpeg",
                     msg: "You are in the basement! There's a blanket that you like to sit on, there's the laundry, and there's Nathan's room.",
                     clear: 1,
 
@@ -1286,7 +1286,7 @@ WorldData = {
                     }
                 },
                 "upstairs": {
-                    img: "images/DiningRoom.jpeg",
+                    img: "Images/DiningRoom.jpeg",
                     msg: "You go upstairs.",
                     dest: Locations.dining_room
                 }
@@ -1705,7 +1705,7 @@ WorldData = {
                      Whatever name you go by doesn't matter.<br>\
                      I will call you mine.<br><br>\
                      Werdna, won't you call me yours\"<br><br><br>\
-                     Hvaing reached the end of the song, the ghost disappears..<br><br>\
+                     Having reached the end of the song, the ghost disappears..<br><br>\
                      Nathan's ghost pops back in to inform you that there are a few extended verses, if you want to hear them.",
                                                 get: {
                                                     item: "heard the main part of the song already bc I don't want spoilers >:(",
@@ -1859,7 +1859,7 @@ WorldData = {
                 },
                 "Cloak": {
                     img: "Images/CloakClaire.JPG",
-                    msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow bhind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
+                    msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                     get: {
                         item: "Name Claire",
                         data: -1
@@ -1867,7 +1867,7 @@ WorldData = {
                     cmd: {
                         "Claire": {
                             img: "Images/CloakClaire.JPG",
-                            msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow bhind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
+                            msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                             get: {
                                 item: "Name Claire",
                                 data: -1,
@@ -1905,13 +1905,13 @@ WorldData = {
                     if: {
                         cond: "Name Andrew",
                         img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet beind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
                         You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
                         inc: "rest",
                     },
                     else: {
                         img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet beind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
                         In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
                         inc: "rest",
                     },
@@ -1954,7 +1954,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "Name Andrew",
-                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enourmous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2007,7 +2007,7 @@ WorldData = {
                                     },
                                 },
                                 else: {
-                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enourmous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2122,7 +2122,7 @@ WorldData = {
                         Reu: {
                             if: {
                                 cond: "chose kill Reu",
-                                msg: "Uh...you con't kill someone who's still dead. Try \"revive Reu\" first if you want to kill him again."
+                                msg: "Uh...you can't kill someone who's still dead. Try \"revive Reu\" first if you want to kill him again."
                             },
                             else: {
                                 if: {
@@ -2230,7 +2230,7 @@ WorldData = {
                                 msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
-                                You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, Andrew sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievious, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
+                                You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, Andrew sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
                                 inc: "water",
                             },
                             else: {
@@ -2238,7 +2238,7 @@ WorldData = {
                                 msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
-                                You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, the human sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischeivious, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
+                                You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, the human sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
                                 inc: "water",
                             }
                         },
@@ -2626,7 +2626,7 @@ WorldData = {
                                                                     cond: "kill point R",
                                                                     if: {
                                                                         cond: "kill point B",
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succombs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
+                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
                                                                         get: {
                                                                             item: "Eevee life/death question",
                                                                             data: -1
@@ -2879,7 +2879,7 @@ WorldData = {
                                                                     cond: "kill point R",
                                                                     if: {
                                                                         cond: "kill point B",
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succombs to you. You feel powerful. Now here comes the question: rewind time to save her or not? (\"yes\" or \"no\")",
+                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now here comes the question: rewind time to save her or not? (\"yes\" or \"no\")",
                                                                         inc: "kill point Ev",
                                                                         get: {
                                                                             item: "Eevee life/death question",
@@ -3402,7 +3402,7 @@ WorldData = {
                                         },
                                         else: {
                                             msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
-                                As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is one of the humans that you killed (and unkilled, of course), from the place where Nathan is staying! As you get closer, the human turns around and smiles at you. <br><br>\
+                                As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is one of the humans that you killed (and later unkilled, of course), from the place where Nathan is staying! As you get closer, the human turns around and smiles at you. <br><br>\
                                 \"Hello, Lucky!\" The human says to you. \"Fancy seeing you here! I should introduce myself, my name is Aliyah. I realize that I know your name and you never knew mine...also my pronouns are she/her.\" You stare at the human. How could she be here?<br><br>\
                                 \"Want to come with me?\" Aliyah offers, gesturing at a blue shimmery portal that had started to open in front of her. <br><br>\
                                 (respond \"follow\" to go with her, respond \"south\" to head on your way to the mission. Note: If you go through the portal, you will be able to come back here and finish the mission if you want.)",
@@ -4324,7 +4324,7 @@ WorldData = {
                     }
                 },
                 h: {
-                    msg: "Commands: north/south/east/west are now obselete, you can type a name that you see on the floor plan to go to their room. When you \"look\" while in a room, the text there should tell you which objects you can interact with, and/or the object will be on the floor plan. <br><br>\
+                    msg: "Commands: north/south/east/west are now obsolete, you can type a name that you see on the floor plan to go to their room. When you \"look\" while in a room, the text there should tell you which objects you can interact with, and/or the object will be on the floor plan. <br><br>\
                     look<br>\
                     inv<br>\
                     help<br>\
