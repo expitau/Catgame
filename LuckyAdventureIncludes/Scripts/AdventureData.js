@@ -1906,34 +1906,57 @@ WorldData = {
                         cond: "chose kill Andrew",
                         if: {
                             cond: "Name Andrew",
-                            msg: "You head to Andrew's room. You see him lying on the ground and you admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Andrew\" if you want)",
+                            msg: "You head to Andrew's room. You see him lying on the ground and you admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Dandrewlion\" if you want)",
                             inc: "rest"
                         },
                         else: {
-                            msg: "You head to the room of one of your victims and admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Andrew\" if you want)",
+                            msg: "You head to the room of one of your victims and admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Werdna\" if you want)",
                             inc: "rest"
                         },
                     },
                     else: {
                         if: {
                             cond: "Name Andrew",
-                            img: "Images/AndrewIgnore.JPG",
-                            msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
-                        You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
-                            inc: "rest",
+                            if: {
+                                cond: "banana",
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
+                            You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                            \
+                            In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                            else: {
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
                         },
                         else: {
-                            img: "Images/AndrewIgnore.JPG",
-                            msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
-                        In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
-                            inc: "rest",
+                            if: {
+                                cond: "banana",
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
+                                You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                                You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                                In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                            else: {
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                            In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
                         },
                     },
                 },
                 "cage": {
                     if: {
                         cond: "chose kill Andrew",
-                        msg: "Andrew is dead, \"revive Andrew\" to see what the \"cage\" command does.",
+                        msg: "Andrew is dead, \"revive Andy\" to see what the \"cage\" command does.",
                     },
                     else: {
                         if: {
@@ -1975,7 +1998,7 @@ WorldData = {
                                 if: {
                                     cond: "chose kill Andrew",
                                     msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
-                                        \"revive Emily\" and \"revive Andrew\" to fix it."
+                                        \"revive Emily\" and \"revive Andy\" to fix it."
                                 },
                                 else: {
                                     msg: "Sadly, trumpet duet time can't happen. You've killed a trumpeter :(<br><br>\
@@ -1986,7 +2009,7 @@ WorldData = {
                                 if: {
                                     cond: "chose kill Andrew",
                                     msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
-                                    \"revive Andrew\" to fix it..."
+                                    \"revive Werdna\" to fix it..."
                                 },
                                 else: {
                                     if: {
@@ -2288,10 +2311,10 @@ WorldData = {
                                 cond: "chose kill Andrew",
                                 if: {
                                     cond: "Name Andrew",
-                                    msg: "You trot up to Andrew's room to see the human, and then you remember that you'd killed it. \"revive Andrew\" to get chocolate milk together."
+                                    msg: "You trot up to Andrew's room to see the human, and then you remember that you'd killed it. \"revive Andy\" to get chocolate milk together."
                                 },
                                 else: {
-                                    msg: "You go to see the tall, intimidating human, and then you remember that you'd killed it already. Hm. Maybe you should try to \"revive Andrew\" to see how this interaction would be different..."
+                                    msg: "You go to see the tall, intimidating human, and then you remember that you'd killed it already. Hm. Maybe you should try to \"revive Werdna\" to see how this interaction would be different..."
                                 },
                             },
                             else: {
@@ -2319,32 +2342,53 @@ WorldData = {
                 "hard": {
                     cmd: {
                         "hat": {
-                            msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as he follows you. As you run through the fourth floor, two females come out of rooms across from each other. One laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than he is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
-                            get: {
-                                item: "Name Andrew",
-                                data: -1,
+                            if: {
+                                cond: "chose kill Andrew",
+                                msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
+                            },
+                            else: {
+                                msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as he follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than he is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
+                                get: {
+                                    item: "Name Andrew",
+                                    data: -1,
+                                },
                             },
                         },
                     },
                 },
                 "mirror": {
                     if: {
-                        cond: "Name Andrew",
-                        msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                        cond: "chose kill Andrew",
+                        msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
+                        You eventually go back to the hallway."
                     },
                     else: {
-                        msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                        if: {
+                            cond: "Name Andrew",
+                            msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                        },
+                        else: {
+                            msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                        },
                     },
                 },
                 "banana": {
                     if: {
-                        cond: "Name Andrew",
-                        img: "Images/AndrewBanana.PNG",
-                        msg: "Andrew eats a banana"
+                        cond: "chose kill Andrew",
+                        msg: "You go to one of your victims' rooms and get a banana from a shelf.",
+                        inc: "banana",
+                        inc2: "food"
                     },
                     else: {
-                        img: "Images/AndrewBanana.PNG",
-                        msg: "The human eats a banana.",
+                        if: {
+                            cond: "Name Andrew",
+                            img: "Images/AndrewBanana.PNG",
+                            msg: "Andrew eats a banana"
+                        },
+                        else: {
+                            img: "Images/AndrewBanana.PNG",
+                            msg: "The human eats a banana.",
+                        },
                     },
                 },
                 "weed": {
@@ -2494,7 +2538,7 @@ WorldData = {
                                 msg: "You can't revive someone who's still alive..."
                             }
                         },
-                        "Andrew": {
+                        "(Andy|Dandrewlion|Werdna)": {
                             if: {
                                 cond: "chose kill Andrew",
                                 msg: "Fine, fine.",
@@ -2507,6 +2551,9 @@ WorldData = {
                                 msg: "You can't kill someone who's still alive."
                             }
                         },
+                        "Andrew": {
+                            msg: "Hmm. I don't know who Andrew is. Maybe try reviving Andy, Werdna, or Dandrewlion?"
+                        }
                     }
                 }
             },
@@ -5016,7 +5063,7 @@ WorldData = {
                                                 if: {
                                                     cond: "Andrew life/death question",
                                                     msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a bit, you return to the hallway. <br><br>\
-                                                \"Revive Andrew\" brings the human back to life, if you want that.",
+                                                \"Revive Andy\" brings the human back to life, if you want that.",
                                                     inc: "rest",
                                                     get: {
                                                         item: "Andrew life/death question",
