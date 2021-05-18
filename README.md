@@ -1,2 +1,2 @@
 # Lucky's Text Adventure!
-A cat adventure game!
+A featured cat adventure game!
