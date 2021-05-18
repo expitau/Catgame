@@ -1,1 +1,1 @@
-# USE THE ALIYAH-EDIT BRANCH INSTEAD
+# Lucky's Text Adventure!
