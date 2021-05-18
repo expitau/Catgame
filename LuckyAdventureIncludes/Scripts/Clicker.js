@@ -317,7 +317,7 @@ var clickerActions = {
             price: 2000,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -333,7 +333,7 @@ var clickerActions = {
             price: 1000,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -349,7 +349,7 @@ var clickerActions = {
             price: 200,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -365,7 +365,7 @@ var clickerActions = {
             price: 200,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -381,7 +381,7 @@ var clickerActions = {
             price: 100,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -398,7 +398,7 @@ var clickerActions = {
             price: 100,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -414,7 +414,7 @@ var clickerActions = {
             price: 50,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -430,7 +430,7 @@ var clickerActions = {
             price: 50,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -446,7 +446,7 @@ var clickerActions = {
             price: 50,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },
@@ -462,7 +462,7 @@ var clickerActions = {
             price: 50,
             scale: 1
         },
-        action: function action(){
+        action: function action() {
             this.tick = -1;
         }
     },

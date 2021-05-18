@@ -26,15 +26,25 @@ function output(line) {
     }
     document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
 }
+function imgout(img) {
+    console.log("OUTPUT: IMAGE");
+    imageElement = document.createElement("img")
+    imageElement.setAttribute("src", img)
+    imageElement.setAttribute("width", "42%")
+    document.getElementById("consoletext").appendChild(imageElement);
+    document.getElementById("consoletext").appendChild(document.createElement("br"));
+    document.getElementById("consoletext").appendChild(document.createElement("br"));
+    document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
+}
 
-var loc = "kitchen";
+var loc = "hallway3";
 var inv = {};
 var endflag = 0;
 var waitingcount = 0;
 
-function has(item) {
+function has(item, count = 1) {
     for (const [invitem, invdata] of Object.entries(inv)) {
-        if (item == invitem && invdata != 0) {
+        if (item == invitem && Math.abs(invdata) >= count) {
             return true;
         }
     }
@@ -47,12 +57,15 @@ function follow_cmd(ctxt, cmd) {
 
     while (cmd[i]) {
         while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-            if (has(out.if.cond)) {
+            if (out.if.hasOwnProperty("count") && has(out.if.cond, out.if.count)) {
+                out = out.if;
+            } else if (!out.if.hasOwnProperty("count") && has(out.if.cond)) {
                 out = out.if;
             } else {
                 out = out.else;
             }
         }
+
         if (out.hasOwnProperty("cmd")) {
             found = false;
             for (const [cur_cmd, result] of Object.entries(out.cmd)) {
@@ -72,11 +85,14 @@ function follow_cmd(ctxt, cmd) {
     }
 
     while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-        if (has(out.if.cond)) {
+        if (out.if.hasOwnProperty("count") && has(out.if.cond, out.if.count)) {
+            out = out.if;
+        } else if (!out.if.hasOwnProperty("count") && has(out.if.cond)) {
             out = out.if;
         } else {
             out = out.else;
         }
+
     }
     found = false;
     for (const key of Object.keys(out)) {
@@ -95,8 +111,12 @@ function handle(line) {
     if (endflag == -2) {
         output("Press enter to continue watching the blinking lights");
         endflag = 2;
+    } else if (endflag == 6) {
+        output("You have the Goose Cult ending");
+    } else if (endflag == 8) {
+        window.location.href = "https://www.youtube.com/embed/g_y15ozNchY?autoplay=1";
     } else if (endflag == 2) {
-        window.location.href = "https://www.youtube.com/embed/Lrj2Hq7xqQ8?autoplay=1";
+        window.location.href = "https://www.youtube.com/embed/dQw4w9WgXcQ";
     } else if (endflag == 666) {
         window.location.href = "https://www.youtube.com/embed/lDnva_3fcTc?autoplay=1";
     } else if (endflag > 0) {
@@ -138,55 +158,73 @@ function handle(line) {
         waitingcount = 0;
         context = follow_cmd(WorldData.locations[loc], cmd);
         console.log(context);
-
-if (context.hasOwnProperty("clear")) {
-            document.getElementById("consoletext").innerHTML = "";
-        }
-
-        if (context.hasOwnProperty("msg")) {
-            output(context.msg);
-            output("<br>");
-        }
-
-        if (context.hasOwnProperty("dest")) {
-            loc = context.dest;
-        }
-
-        if (context.hasOwnProperty("inv")) {
-            if (context.inv == 1) {
-                output("You have:");
-                found = false;
-                for (const [invitem, invdata] of Object.entries(inv)) {
-                    if (invdata == 1) {
-                        output("  - " + invitem);
-                        found = true;
-                    } else if (invdata != -1) {
-                        output("  - " + invitem + " (" + invdata + ")");
-                        found = true;
-                    }
+        var executionOrder = ["clear\d*", "img\d*", "msg\d*", "dest\d*", "inv\d*", "get\d*", "inc\d*", "end\d*"]
+        function regexIndexOf(arr, str) {
+            for (var i = 0; i < arr.length; i++) {
+                if (str.match(new RegExp(arr[i], "gi"))) {
+                    return i;
                 }
-                if (!found) {
-                    output("  - Nothing");
-                }
+            }
+            return -1
+        }
+        for (const [trigger, action] of Object.entries(context).sort(function (a, b) {
+            return regexIndexOf(executionOrder, a[0]) - regexIndexOf(executionOrder, b[0]);
+        })) {
+            if (trigger.match(new RegExp("img\d*", "gi"))) {
+                imgout(action);
+            }
+            if (trigger.match(new RegExp("clear\d*", "gi"))) {
+                document.getElementById("consoletext").innerHTML = "";
+            }
+
+            if (trigger.match(new RegExp("msg\d*", "gi"))) {
+                output(action);
                 output("<br>");
             }
-        }
 
-        if (context.hasOwnProperty("get")) {
-            inv[context.get.item] = context.get.data;
-        }
-
-        if (context.hasOwnProperty("inc")) {
-            if (!has(context.inc)) {
-                inv[context.inc] = 1;
-            } else {
-                inv[context.inc]++;
+            if (trigger.match(new RegExp("dest\d*", "gi"))) {
+                loc = action;
             }
-        }
 
-        if (context.hasOwnProperty("end")) {
-            endflag = context.end;
-            output("THE END (ending " + context.end + "/4)<br><br>Credits to Nathan, Aliyah, and Maia (equally)<br><br>Press enter to continue<br>")
+            if (trigger.match(new RegExp("inv\d*", "gi"))) {
+                if (action == 1) {
+                    output("You have:");
+                    found = false;
+                    for (const [invitem, invdata] of Object.entries(inv)) {
+                        if (invitem && invdata == 1) {
+                            output("  - " + invitem);
+                            found = true;
+                        } else if (invitem && invdata > 1) {
+                            output("  - " + invitem + " (" + invdata + ")");
+                            found = true;
+                        }
+                    }
+                    if (!found) {
+                        output("  - Nothing");
+                    }
+                    output("<br>");
+                }
+            }
+
+            if (trigger.match(new RegExp("get\d*", "gi"))) {
+                inv[action.item] = action.data;
+            }
+            if (trigger.match(new RegExp("inc\d*", "gi"))) {
+                if (!has(action)) {
+                    inv[action] = 1;
+                } else {
+                    if (inv[context.inc] < 0) {
+                        inv[context.inc]--;
+                    } else {
+                        inv[context.inc]++;
+                    }
+                }
+            }
+
+            if (trigger.match(new RegExp("end\d*", "gi"))) {
+                endflag = action;
+                output("THE END (ending " + action + "/4)<br><br>Credits to Nathan, Aliyah, Zara and Maia (equally), (illustrations by Zara, content by the four of us)<br><br>Press enter to continue<br>")
+            }
         }
     } else {
         waitingcount = 0;
