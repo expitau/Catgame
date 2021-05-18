@@ -1614,6 +1614,9 @@ WorldData = {
                 "(hallway|leave)": {
                     msg: "You are in the hallway (look around)."
                 },
+                "foyer": {
+                    msg: "You're downstairs in the foyer. You see a garden outside. Want to check it out? (\"garden\")"
+                },
                 "andrew": {
                     msg: "The name seems vaguely familiar...try Andy, Dandrewlion, or Werdna",
                 },
@@ -1646,9 +1649,63 @@ WorldData = {
                     \"garden\""
                 },
                 l: {
-                    img: "Images/Hallway3.jpeg",
+                    if: {
+                        cond: "chose kill Aliyah",
+                        if: {
+                            cond: "chose kill Maia",
+                            if: {
+                                cond: "chose kill Reu",
+                                if: {
+                                    cond: "chose kill Nathan",
+                                    if: {
+                                        cond: "chose kill Andrew",
+                                        if: {
+                                            cond: "has been to Emily's house before",
+                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name).",
+                                            clear: 1
+                                        },
+                                        else: {
+                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
+                                            Maybe check out the garden! (\"garden\")",
+                                            clear: 1
+                                        },
+                                        else: {
+                                            img: "Images/Hallway3.jpeg",
+                                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                        clear: 1,
+                                        },
+                                    },
+                                    else: {
+                                        img: "Images/Hallway3.jpeg",
+                                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                    clear: 1,
+                                    },
+                                },
+                                else: {
+                                    img: "Images/Hallway3.jpeg",
+                                msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                clear: 1,
+                                },
+                            },
+                            else: {
+                                img: "Images/Hallway3.jpeg",
+                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                            clear: 1,
+                            },
+                        },
+                        else: {
+                            img: "Images/Hallway3.jpeg",
+                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                        clear: 1,
+                        },
+                    },
+                    else: {
+                        img: "Images/Hallway3.jpeg",
                     msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                     clear: 1,
+                    },
                 },
                 "song": {
                     cmd: {
@@ -2471,6 +2528,10 @@ WorldData = {
                 },
                 "(Emily|garden)": {
                     msg: "You go to a door that leads outside, and you skip time until someone has opened it. You slip out behind them, unnoticed. You find the garden, and you explore a little. As you're sniffing a bean plant, you blink and realize that the scene has changed. You look under your feet to see the now-familiar blue shimmery circle shrinking. It stops at about a paw wide. You paw at it, hoping for a way to escape, and it readily opens. You go back to the garden, and then return to the strange room. If you want to return, you can always go back to the garden (type \"garden\" to return) You take a look around.",
+                    get: {
+                        item: "has been to Emily's house before",
+                        data: -1
+                    },
                     dest: Locations.Emily
                 },
                 "Follow": {
