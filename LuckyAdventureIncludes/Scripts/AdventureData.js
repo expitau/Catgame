@@ -5062,7 +5062,7 @@ WorldData = {
                                             else: {
                                                 if: {
                                                     cond: "Andrew life/death question",
-                                                    msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a bit, you return to the hallway. <br><br>\
+                                                    msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a while, you return to the hallway. <br><br>\
                                                 \"Revive Andy\" brings the human back to life, if you want that.",
                                                     inc: "rest",
                                                     get: {
