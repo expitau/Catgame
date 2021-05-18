@@ -3578,7 +3578,7 @@ WorldData = {
                     },
                 },
                 "drawing": {
-                    img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.jpg",
+                    img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
                     msg: "You look at the drawing. Now you know who to look for."
                 },
                 "Yes": {
