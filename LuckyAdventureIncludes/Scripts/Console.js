@@ -37,7 +37,7 @@ function imgout(img) {
     document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
 }
 
-var loc = "hallway3";
+var loc = "kitchen";
 var inv = {};
 var endflag = 0;
 var waitingcount = 0;
