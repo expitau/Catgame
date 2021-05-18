@@ -30,7 +30,7 @@ Locations = Object.freeze({
 });
 
 WorldData = {
-    msg: "Chichien's brain is too small to understand :(",
+    msg: "Chichien's brain is too smol to understand :(",
     cmd: {
         clr: {
             clear: 1
