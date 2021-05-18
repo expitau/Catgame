@@ -260,7 +260,7 @@ var clickerActions = {
         tick: 0,
         unlock: {
             item: "cats",
-            amt: 4
+            amt: 16
         },
         cost: {
             item: "cats",
@@ -276,7 +276,7 @@ var clickerActions = {
         tick: 0,
         unlock: {
             item: "nyans",
-            amt: 1
+            amt: 4
         },
         cost: {
             item: "nyans",
@@ -292,7 +292,7 @@ var clickerActions = {
         tick: 0,
         unlock: {
             item: "chomnks",
-            amt: 1
+            amt: 8
         },
         cost: {
             item: "chomnks",
@@ -439,11 +439,11 @@ var clickerActions = {
         tick: 0,
         unlock: {
             item: "tears",
-            amt: 25
+            amt: 16
         },
         cost: {
             item: "tears",
-            price: 50,
+            price: 24,
             scale: 1
         },
         action: function action(){
@@ -455,11 +455,11 @@ var clickerActions = {
         tick: 0,
         unlock: {
             item: "dreamcats",
-            amt: 25
+            amt: 16
         },
         cost: {
             item: "dreamcats",
-            price: 50,
+            price: 24,
             scale: 1
         },
         action: function action(){
@@ -481,13 +481,14 @@ var clickerActions = {
         action: function action() {
             alert("You have appeased the chichien, good work!");
             alert("THE END (ending 5/4)");
-            alert("With chichien appeased, there is no purpose in life... goodbye");
-            window.location.href = "https://www.youtube.com/embed/itP0zeePN34?autoplay=1";
+            alert("The universe has been consumed and has turned into cats");
+            window.location.href = "https://www.youtube.com/embed/QH2-TGUlwu4?autoplay=1";
             this.tick = -1;
         }
     }
 }
 
+// IGNORE EVERYTHING AFTER THIS POINT
 function triggerAction(action) {
     if (typeof action === 'string') {
         action = getIf(clickerActions, action);

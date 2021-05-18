@@ -1,327 +1,391 @@
 <HTML>
 
-    <head>
-        <link rel="stylesheet" type="text/css" href="LuckyAdventureIncludes/Stylesheet.css" />
-        <title>Lucky Adventure!</title>
-        <link rel="icon" type="image/png" href="LuckyAdventureIncludes/Icon.png">
-    </head>
-    
-    <body id="body">
-        <div id="background">
-            <button id="lightmode" onclick="ToggleMode()">Light mode</button>
-            <button id="clicker-start" onclick="startClicker()">Darker mode</button>
-            <h1 id="title"><span class="colourable" onClick="setRandomElementColor(this)">L</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">u</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">c</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">k</span>
-                <span class="colourable" onClick="setRandomElementColor(this)">y</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">'</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">s </span>
-                <span class="colourable" onClick="setRandomElementColor(this)">T</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">e</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">x</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">t </span>
-                <span class="colourable" onClick="setRandomElementColor(this)">A</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">d</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">v</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">e</span>
-                <span class="colourable" onClick="setRandomElementColor(this)">n</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">t</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">u</span>
-                <span class="colourable" onClick="setRandomElementColor(this)">r</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">e</span><span class="colourable"
-                    onClick="setRandomElementColor(this)">!</span>
-            </h1>
-            <div id="clicker" hidden=true>
-                <br><br>
-                <table id="clickerdisplay">
-                    <tr>
-                        <td><pre class="catnip_display catnip_shown"></pre></td>
-                        <td><pre class="meows_display meows_shown"></pre></td>
-                        <td><pre class="treats_display treats_shown"></pre></td>
-                        <td><pre class="cats_display cats_shown"></pre></td>
-                        <td><pre class="purrs_display purrs_shown"></pre></td>
-                        <td><pre class="nyans_display nyans_shown"></pre></td>
-                        <td><pre class="quakes_display quakes_shown"></pre></td>
-                        <td><pre class="rainbows_display rainbows_shown"></pre></td>
-                        <td><pre class="chomnks_display chomnks_shown"></pre></td>
-                        <td><pre class="tears_display tears_shown"></pre></td>
-                        <td><pre class="dreamcats_display dreamcats_shown"></pre></td>
-                    </tr>
-                </table>
+<head>
+    <link rel="stylesheet" type="text/css" href="LuckyAdventureIncludes/Stylesheet.css" />
+    <title>Lucky Adventures!</title>
+    <link rel="icon" type="image/png" href="LuckyAdventureIncludes/Icon.png">
+</head>
+
+<body id="body">
+    <div id="background">
+        <button id="lightmode" onclick="ToggleMode()">Light mode</button>
+        <button id="clicker-start" onclick="startClicker()">Darker mode</button>
+        <h1 id="title"><span class="colourable" onClick="setRandomElementColor(this)">L</span><span class="colourable"
+                onClick="setRandomElementColor(this)">u</span><span class="colourable"
+                onClick="setRandomElementColor(this)">c</span><span class="colourable"
+                onClick="setRandomElementColor(this)">k</span>
+            <span class="colourable" onClick="setRandomElementColor(this)">y</span><span class="colourable"
+                onClick="setRandomElementColor(this)">'</span><span class="colourable"
+                onClick="setRandomElementColor(this)">s </span>
+            <span class="colourable" onClick="setRandomElementColor(this)">T</span><span class="colourable"
+                onClick="setRandomElementColor(this)">e</span><span class="colourable"
+                onClick="setRandomElementColor(this)">x</span><span class="colourable"
+                onClick="setRandomElementColor(this)">t </span>
+            <span class="colourable" onClick="setRandomElementColor(this)">A</span><span class="colourable"
+                onClick="setRandomElementColor(this)">d</span><span class="colourable"
+                onClick="setRandomElementColor(this)">v</span><span class="colourable"
+                onClick="setRandomElementColor(this)">e</span>
+            <span class="colourable" onClick="setRandomElementColor(this)">n</span><span class="colourable"
+                onClick="setRandomElementColor(this)">t</span><span class="colourable"
+                onClick="setRandomElementColor(this)">u</span>
+            <span class="colourable" onClick="setRandomElementColor(this)">r</span><span class="colourable"
+                onClick="setRandomElementColor(this)">e</span><span class="colourable"
+                onClick="setRandomElementColor(this)">!</span>
+        </h1>
+        <div id="clicker" hidden=true>
+            <br><br>
+            <table id="clickerdisplay">
+                <tr>
+                    <td>
+                        <pre class="catnip_display catnip_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="meows_display meows_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="treats_display treats_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="cats_display cats_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="purrs_display purrs_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="nyans_display nyans_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="quakes_display quakes_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="rainbows_display rainbows_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="chomnks_display chomnks_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="tears_display tears_shown"></pre>
+                    </td>
+                    <td>
+                        <pre class="dreamcats_display dreamcats_shown"></pre>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <!--The "action" section, for things you click on a lot of times-->
+            <table class="clickertable">
+                <!--tr means a row in the table-->
+                <tr>
+                    <!--td means a cell in the table, this table has 5 cells in this row-->
+                    <!--You can cut and paste these buttons, replace all of the getMeows with whatever function you've defined in Clicker.js-->
+                    <td><button title="'Mrrrrup!'" class="getMeow_disabled getMeow_shown"
+                            onClick="triggerAction('getMeow')">Meow</button></td>
+                    <td><button title="'What can I say? I'm easily bribed'" class="getCat_disabled getCat_shown"
+                            onClick="triggerAction('getCat')">Bribe a
+                            cat<br>-> Produces meows<br><br>Cost: <span class="getCat_cost">0</span></button></td>
+                    <td><button title="'nyan nyan nyan nyan! nyan nyan nyan nyan nyan nyan!'"
+                            class="getNyan_disabled getNyan_shown" onClick="triggerAction('getNyan')">Spawn a nyan
+                            cat<br>-> Produces cats<br><br>Cost:
+                            <span class="getNyan_cost">0</span></button></td>
+                    <td><button title="'Taste the rainbow'" class="getRainbow_disabled getRainbow_shown"
+                            onClick="triggerAction('getRainbow')">Make a rainbow<br>-> Produces nyan cats<br><br>Cost:
+                            <span class="getRainbow_cost">0</span></button></td>
+                    <td><button title="'Breach the temporal tear'" class="getTear_disabled getTear_shown"
+                            onClick="triggerAction('getTear')">Breach spacetime<br>-> Produces rainbows<br><br>Cost:
+                            <span class="getTear_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <!--this table has another 5 cells in this row-->
+                    <td><button title="'Who wants a TREAT?'" class="getTreat_disabled getTreat_shown"
+                            onClick="triggerAction('getTreat')">Beg for
+                            treats<br><br>Cost: <span class="getTreat_cost">0</span></button></td>
+                    <td><button title="'You feel vibrations from deep below'" class="getPurr_disabled getPurr_shown"
+                            onClick="triggerAction('getPurr')">Purr<br>->
+                            Produces treats<br><br>Cost:
+                            <span class="getPurr_cost">0</span></button></td>
+                    <td><button title="'That's no earthquake...'" class="getQuake_disabled getQuake_shown"
+                            onClick="triggerAction('getQuake')">Start a floofquake<br>-> Produces purrs<br><br>Cost:
+                            <span class="getQuake_cost">0</span></button></td>
+                    <td><button title="'Oh lawd he comin!'" class="getChomnk_disabled getChomnk_shown"
+                            onClick="triggerAction('getChomnk')">Chomnkify<br>-> Produces floofquakes<br><br>Cost: <span
+                                class="getChomnk_cost">0</span></button></td>
+                    <td><button title="'Chichien of many colours'" class="getDreamcat_disabled getDreamcat_shown"
+                            onClick="triggerAction('getDreamcat')">Worship the dreamcat<br>-> Produces chomnk
+                            cats<br><br>Cost: <span class="getDreamcat_cost">0</span></button></td>
+                </tr>
+            </table>
+            <!--The "store" section, for upgrades and appeasing chichien and stuff-->
+            <table class="clickertable">
+                <tr>
+                    <!--You can cut and paste these buttons, replace all getCatnip1 with whatever function you've defined in Clicker.js-->
+                    <td><button title="'Where did you think it came from?'" class="getCatnip1_disabled getCatnip1_shown"
+                            onClick="triggerAction('getCatnip1')">Grind cats into catnip<br>-> Gives catnip x8
+                            (temporary meow
+                            production multiplier)<br><br>Cost: <span class="getCatnip1_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Nyan nyan nyan ny-AAAAAAAAUGHHH'" class="getCatnip2_disabled getCatnip2_shown"
+                            onClick="triggerAction('getCatnip2')">Grind nyan cats into catnip<br>-> Gives catnip x16
+                            (temporary meow production multiplier)<br><br>Cost: <span
+                                class="getCatnip2_cost">0</span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button title="'100% organic farm-fresh chomnknip'" class="getCatnip3_disabled getCatnip3_shown"
+                            onClick="triggerAction('getCatnip3')">Grind chomnk cats into catnip<br>-> Gives catnip x32
+                            (temporary meow production multiplier)<br><br>Cost: <span
+                                class="getCatnip3_cost">0</span></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button title="'Glug' said the cat" class="unlockMeowx2_disabled unlockMeowx2_shown"
+                            onClick="triggerAction('unlockMeowx2')">Discover the glottal meow<br>->Doubles meow
+                            production<br><br>Cost: <span class="unlockMeowx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Why do they wear clothes again?'"
+                            class="unlockTreatx2_disabled unlockTreatx2_shown"
+                            onClick="triggerAction('unlockTreatx2')">Study human psychology<br>->Doubles treat
+                            production<br><br>Cost: <span class="unlockTreatx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'BREED FASTER!!'" class="unlockCatx2_disabled unlockCatx2_shown"
+                            onClick="triggerAction('unlockCatx2')">Increase litter sizes<br>->Doubles cat
+                            production<br><br>Cost: <span class="unlockCatx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Vroooom'" class="unlockPurrx2_disabled unlockPurrx2_shown"
+                            onClick="triggerAction('unlockPurrx2')">Develop the purr motor v2<br>->Doubles purr
+                            production<br><br>Cost: <span class="unlockPurrx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Farting rainbows is perfectly natural and good for you'"
+                            class="unlockNyanx2_disabled unlockNyanx2_shown" onClick="triggerAction('unlockNyanx2')">Add
+                            some sparkles<br>->Doubles nyan cat
+                            production<br><br>Cost: <span class="unlockNyanx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Millions of years ago there was only one continent, called The Litterbox'"
+                            class="unlockQuakex2_disabled unlockQuakex2_shown"
+                            onClick="triggerAction('unlockQuakex2')">Tectonic fluff<br>->Doubles floofquake
+                            production<br><br>Cost: <span class="unlockQuakex2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'Somewhereeeeeeeeee...'" class="unlockRainbowx2_disabled unlockRainbowx2_shown"
+                            onClick="triggerAction('unlockRainbowx2')">Reyleigh scattering makes double
+                            rainbows<br>->Doubles rainbow
+                            production<br><br>Cost: <span class="unlockRainbowx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button
+                            title="'What is the flight speed of an unladen swallow? Could it outpace the ultrachomnken?'"
+                            class="unlockChomnkx2_disabled unlockChomnkx2_shown"
+                            onClick="triggerAction('unlockChomnkx2')">Summon the ultrachomnken<br>->Doubles megachomnker
+                            production<br><br>Cost: <span class="unlockChomnkx2_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'I'm hole-y'" class="unlockTear_disabled unlockTear_shown"
+                            onClick="triggerAction('unlockTear')">Unstable breach<br>->Spacetime tears expand
+                            themselves<br><br>Cost: <span class="unlockTear_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button
+                            title="'What is the flight speed of an unladen swallow? Could it outpace the ultrachomnken?'"
+                            class="unlockDreamcat_disabled unlockDreamcat_shown"
+                            onClick="triggerAction('unlockDreamcat')">Fractal dreamcats<br>->Dreamcats multiply
+                            exponentially
+                            production<br><br>Cost: <span class="unlockDreamcat_cost">0</span></button></td>
+                </tr>
+                <tr>
+                    <td><button title="'You cannot even comprehend my intentions'"
+                            class="unlockAppease_disabled unlockAppease_shown"
+                            onClick="triggerAction('unlockAppease')">Appease the
+                            Chichien<br>Cost: <span class="unlockAppease_cost">0</span></button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="console" onClick="document.getElementById('textinput').focus()">
+            <p id="consoletext">
+                Welcome to Lucky's Text Adventure!! Meow meow's outside right now, so the house has fallen into chaos! What to do now...
+                <br><br> Type "help" for a list of commands
                 <br>
-                <table class="clickertable">
-                    <tr>
-                        <td><button title="'Mrrrrup!'" class="getMeow_disabled getMeow_shown"
-                                onClick="triggerAction('getMeow')">Meow</button></td>
-                        <td><button title="'Who wants a TREAT?'" class="getTreat_disabled getTreat_shown"
-                                onClick="triggerAction('getTreat')">Beg for
-                                treats<br><br>Cost: <span class="getTreat_cost">0</span></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><button title="'What can I say? I'm easily bribed'" class="getCat_disabled getCat_shown"
-                                onClick="triggerAction('getCat')">Bribe a
-                                cat<br>-> Produces meows<br><br>Cost: <span class="getCat_cost">0</span></button></td>
-                        <td><button title="'You feel vibrations from deep below'" class="getPurr_disabled getPurr_shown"
-                                onClick="triggerAction('getPurr')">Purr<br>->
-                                Produces treats<br><br>Cost:
-                                <span class="getPurr_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'nyan nyan nyan nyan! nyan nyan nyan nyan nyan nyan!'"
-                                class="getNyan_disabled getNyan_shown" onClick="triggerAction('getNyan')">Spawn a nyan
-                                cat<br>-> Produces cats<br><br>Cost:
-                                <span class="getNyan_cost">0</span></button></td>
-                        <td><button title="'That's no earthquake...'" class="getQuake_disabled getQuake_shown"
-                                onClick="triggerAction('getQuake')">Start a floofquake<br>-> Produces purrs<br><br>Cost: <span
-                                    class="getQuake_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Taste the rainbow'" class="getRainbow_disabled getRainbow_shown"
-                                onClick="triggerAction('getRainbow')">Make a rainbow<br>-> Produces nyan cats<br><br>Cost: <span
-                                    class="getRainbow_cost">0</span></button></td>
-                        <td><button title="'Oh lawd he comin!'" class="getChomnk_disabled getChomnk_shown"
-                                onClick="triggerAction('getChomnk')">Chomnkify<br>-> Produces floofquakes<br><br>Cost: <span
-                                    class="getChomnk_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Breach the temporal tear'" class="getTear_disabled getTear_shown"
-                                onClick="triggerAction('getTear')">Breach spacetime<br>-> Produces rainbows<br><br>Cost:
-                                <span class="getTear_cost">0</span></button></td>
-                        <td><button title="'Chichien of many colours'" class="getDreamcat_disabled getDreamcat_shown"
-                                onClick="triggerAction('getDreamcat')">Worship the dreamcat<br>-> Produces chomnk cats<br><br>Cost: <span
-                                    class="getDreamcat_cost">0</span></button></td>
-                    </tr>
-                </table>
-                <table class="clickertable">
-                    <tr>
-                        <td><button title="''"
-                                class="getCatnip1_disabled getCatnip1_shown"
-                                onClick="triggerAction('getCatnip1')">Grind cats into catnip<br>-> Gives catnip x8 (meow production multiplier)<br><br>Cost: <span class="getCatnip1_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="''"
-                                class="getCatnip2_disabled getCatnip2_shown"
-                                onClick="triggerAction('getCatnip2')">Grind nyan cats into catnip<br>-> Gives catnip x16 (meow production multiplier)<br><br>Cost: <span class="getCatnip2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="''"
-                                class="getCatnip3_disabled getCatnip3_shown"
-                                onClick="triggerAction('getCatnip3')">Grind chomnk cats into catnip<br>-> Gives catnip x32 (meow production multiplier)<br><br>Cost: <span class="getCatnip3_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Glug' said the cat"
-                                class="unlockMeowx2_disabled unlockMeowx2_shown"
-                                onClick="triggerAction('unlockMeowx2')">Discover the glottal meow<br>->Doubles meow
-                                production<br><br>Cost: <span class="unlockMeowx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Why do they wear clothes again?'"
-                                class="unlockTreatx2_disabled unlockTreatx2_shown"
-                                onClick="triggerAction('unlockTreatx2')">Study human psychology<br>->Doubles treat
-                                production<br><br>Cost: <span class="unlockTreatx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'BREED FASTER!!'"
-                                class="unlockCatx2_disabled unlockCatx2_shown"
-                                onClick="triggerAction('unlockCatx2')">Increase litter sizes<br>->Doubles cat
-                                production<br><br>Cost: <span class="unlockCatx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Vroooom'"
-                                class="unlockPurrx2_disabled unlockPurrx2_shown"
-                                onClick="triggerAction('unlockPurrx2')">Develop the purr motor v2<br>->Doubles purr
-                                production<br><br>Cost: <span class="unlockPurrx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Farting rainbows is perfectly natural and good for you'"
-                                class="unlockNyanx2_disabled unlockNyanx2_shown"
-                                onClick="triggerAction('unlockNyanx2')">Add some sparkles<br>->Doubles nyan cat
-                                production<br><br>Cost: <span class="unlockNyanx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Millions of years ago there was only one continent, called The Litterbox'"
-                                class="unlockQuakex2_disabled unlockQuakex2_shown"
-                                onClick="triggerAction('unlockQuakex2')">Tectonic fluff<br>->Doubles floofquake
-                                production<br><br>Cost: <span class="unlockQuakex2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'Somewhereeeeeeeeee...'"
-                                class="unlockRainbowx2_disabled unlockRainbowx2_shown"
-                                onClick="triggerAction('unlockRainbowx2')">Reyleigh scattering makes double rainbows<br>->Doubles rainbow
-                                production<br><br>Cost: <span class="unlockRainbowx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'What is the flight speed of an unladen swallow? Could it outpace the ultrachomnken?'"
-                                class="unlockChomnkx2_disabled unlockChomnkx2_shown"
-                                onClick="triggerAction('unlockChomnkx2')">Summon the ultrachomnken<br>->Doubles megachomnker
-                                production<br><br>Cost: <span class="unlockChomnkx2_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'I'm hole-y'"
-                                class="unlockTear_disabled unlockTear_shown"
-                                onClick="triggerAction('unlockTear')">Unstable breach<br>->Spacetime tears expand themselves<br><br>Cost: <span class="unlockTear_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'What is the flight speed of an unladen swallow? Could it outpace the ultrachomnken?'"
-                                class="unlockDreamcat_disabled unlockDreamcat_shown"
-                                onClick="triggerAction('unlockDreamcat')">Fractal dreamcats<br>->Dreamcats multiply exponentially
-                                production<br><br>Cost: <span class="unlockDreamcat_cost">0</span></button></td>
-                    </tr>
-                    <tr>
-                        <td><button title="'You cannot even comprehend my intentions'"
-                                class="unlockAppease_disabled unlockAppease_shown"
-                                onClick="triggerAction('unlockAppease')">Appease the
-                                Chichien<br>Cost: <span class="unlockAppease_cost">0</span></button></td>
-                    </tr>
-                </table>
-            </div>
-            <div id="console" onClick="document.getElementById('textinput').focus()">
-                <p id="consoletext">
-                    Welcome to Lucky's Text Adventure!! Everybody's gone out, so you're left alone at home with Baba. He
-                    just works at his computer though, so you're basically alone. What to do now...
-                    <br><br> Type "help" for a list of commands
-                    <br>
-                </p>
-                <p id="prompt">>>>&nbsp
-                    <textarea autofocus rows="1" id="textinput" onkeydown="checkInput();"></textarea>
-                </p>
-            </div>
-            <p id="hiddenmsg">Secret message! --------> Add "?code=" and then the value of 6!2π/𝜏 + sin(0)·∫arctan(t)dt to
-                the url</p>
-            <div id="cookiePopup" hidden>
-                <div class="cookieConsentContainer" id="cookieConsentContainer" style="opacity: 1; display: block;">
-                    <div class="cookieTitle"><a>Cookies.</a></div>
-                    <div class="cookieDesc">
-                        <p>This website uses cookies. <a href="https://xkcd.com/2366/">Learn more</a></p>
-                    </div>
-                    <div id="cookieAcceptButton" class="cookieButton"><a>Accept Cookies</a></div>
-                    <div id="cookieRejectButton" class="cookieButton"><a id="dismissButton"
-                            onClick="dismissCookies()">Dismiss</a></div>
+            </p>
+            <p id="prompt">>>>&nbsp
+                <textarea autofocus rows="1" id="textinput" onkeydown="checkInput();"></textarea>
+            </p>
+        </div>
+        <div id="ad-container">
+            <img class="ad" src="LuckyAdventureIncludes/Ad_NVT.png" id="ad1" onclick="clickAd()" hidden>
+            <img class="ad" src="LuckyAdventureIncludes/Ad_Goose.png" id="ad2" onclick="clickAd()" hidden>
+            <img class="ad" src="LuckyAdventureIncludes/Ad_IE.png" id="ad3" onclick="clickAd()" hidden>
+            <img class="ad" src="LuckyAdventureIncludes/AD_OldSpice.png" id="ad4" onclick="clickAd()" hidden>
+            <img class="ad flash" src="LuckyAdventureIncludes/Ad_Virus.png" id="ad5" onclick="clickAd()" hidden>
+        </div>
+        <p id="hiddenmsg">Secret message! --------> Add "?code=" and then the value of 6!2π/𝜏 + sin(0)·∫arctan(t)dt to
+            the url&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <div id="cookiePopup" hidden>
+            <div class="cookieConsentContainer" id="cookieConsentContainer" style="opacity: 1; display: block;">
+                <div class="cookieTitle"><a>Cookies.</a></div>
+                <div class="cookieDesc">
+                    <p>This website uses cookies. <a href="https://xkcd.com/2366/">Learn more</a></p>
                 </div>
+                <div id="cookieAcceptButton" class="cookieButton"><a>Accept Cookies</a></div>
+                <div id="cookieRejectButton" class="cookieButton"><a id="dismissButton"
+                        onClick="dismissCookies()">Dismiss</a></div>
             </div>
         </div>
-    </body>
-    
-    <script type="text/javascript" src="LuckyAdventureIncludes/Scripts/AdventureData.js"></script>
-    <script type="text/javascript" src="LuckyAdventureIncludes/Scripts/Console.js"></script>
-    <script type="text/javascript" src="LuckyAdventureIncludes/Scripts/Clicker.js"></script>
-    <script>
-        var epilepsy = 0;
-    
-        function ToggleMode() {
-            epilepsy = !epilepsy;
-            document.getElementById("lightmode").textContent = (epilepsy ? "Dark mode" : "Light mode");
+    </div>
+</body>
+
+<script type="text/javascript" src="LuckyAdventureIncludes/Scripts/AdventureData.js"></script>
+<script type="text/javascript" src="LuckyAdventureIncludes/Scripts/Console.js"></script>
+<script type="text/javascript" src="LuckyAdventureIncludes/Scripts/Clicker.js"></script>
+<script>
+    var epilepsy = 0;
+    var cookiecounter = 5;
+
+    function ToggleMode() {
+        epilepsy = !epilepsy;
+        document.getElementById("lightmode").textContent = (epilepsy ? "Dark mode" : "Light mode");
+    }
+
+    function setRandomElementColor(element) {
+        color = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        element.style.color = color;
+    }
+
+    function updateColor() {
+        if (epilepsy == 1) {
+            bg = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            fg = "#" + Math.floor(Math.random() * 16777215).toString(16);
+            fg2 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        } else {
+            bg = "";
+            fg = "";
+            fg2 = "";
         }
-    
-        function setRandomElementColor(element) {
-            color = "#" + Math.floor(Math.random() * 16777215).toString(16);
-            element.style.color = color;
+        document.getElementById("consoletext").style.color = fg;
+        document.getElementById("prompt").style.color = fg;
+        document.getElementById("textinput").style.color = fg;
+        document.getElementById("clicker-start").style.color = bg;
+        document.getElementById("clicker-start").style.backgroundColor = fg;
+        document.getElementById("hiddenmsg").style.color = bg;
+        document.getElementById("consoletext").style.backgroundColor = bg;
+        document.getElementById("textinput").style.backgroundColor = bg;
+        document.getElementById("background").style.backgroundColor = bg;
+        document.getElementById("title").style.color = fg2;
+    }
+    setInterval(updateColor, 20);
+
+    function flash(id) {
+        document.getElementById(id).hidden = true;
+        setTimeout("document.getElementById(\"" + id + "\").hidden = false",500);
+    }
+
+    var secretunlock = (new URLSearchParams(window.location.search)).get("code") == 720;
+    if (secretunlock) {
+        document.getElementById("cookiePopup").hidden = false;
+        document.getElementById("hiddenmsg").hidden = true;
+        document.getElementById("clicker-start").hidden = true;
+    }
+    dragElement(document.getElementById("cookieAcceptButton"));
+
+    function dragElement(elmnt) {
+        var pos1 = 0,
+            pos2 = 0,
+            pos3 = 0,
+            pos4 = 0;
+        if (document.getElementById(elmnt.id + "header")) {
+            // if present, the header is where you move the DIV from:
+            document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+        } else {
+            // otherwise, move the DIV from anywhere inside the DIV:
+            elmnt.onmousedown = dragMouseDown;
         }
-    
-        function updateColor() {
-            if (epilepsy == 1) {
-                bg = "#" + Math.floor(Math.random() * 16777215).toString(16);
-                fg = "#" + Math.floor(Math.random() * 16777215).toString(16);
-                fg2 = "#" + Math.floor(Math.random() * 16777215).toString(16);
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // get the mouse cursor position at startup:
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            // call a function whenever the cursor moves:
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            // calculate the new cursor position:
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            // set the element's new position:
+            elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+            elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            // stop moving when mouse button is released:
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    document.querySelector("#cookieRejectButton").addEventListener('mouseover', randomisePos);
+
+    function randomisePos(e) {
+        if (cookiecounter > 0) {
+            e.target.style.bottom = Math.random() * (window.innerHeight - 50);
+            e.target.style.right = Math.random() * (window.innerWidth - 50);
+            cookiecounter--;
+        }
+    }
+
+    function dismissCookies() {
+        epilepsy = 0;
+        updateColor();
+        setTimeout(function () {
+            alert("We see you're trying to dismiss our cookies.")
+            var cont = confirm("Do you really want to reject cookies?")
+            if (!cont) {
+                cookiecounter = Math.floor(Math.random() * 3 + 2);
+                return
             } else {
-                bg = "";
-                fg = "";
-                fg2 = "";
+                alert("WHY would you do thisss though?? :(")
+                alert("We're just trying to track you, is that *seriously* too much to ask??")
+                prompt("Fine, at least let us know why you don't want our cookies")
+                alert("Your feedback is very important to us. We'll read that definitely")
+                alert("Because you have rejected our cookies, we will now enable advertising on this website to cover our costs, thank you for your cooperation")
+                document.querySelectorAll(".ad").forEach(function enableAds(element) {
+                    setTimeout(function () {
+                        element.hidden = false;
+                        if (element.classList.contains("flash")) {
+                            setInterval("flash(\"" + element.id + "\")", 1500);
+                        }
+                    }, Math.random() * 2000);
+                });
+                document.getElementById("cookiePopup").hidden = true;
             }
-            document.getElementById("consoletext").style.color = fg;
-            document.getElementById("prompt").style.color = fg;
-            document.getElementById("textinput").style.color = fg;
-            document.getElementById("clicker-start").style.color = bg;
-            document.getElementById("clicker-start").style.backgroundColor = fg;
-            document.getElementById("hiddenmsg").style.color = bg;
-            document.getElementById("consoletext").style.backgroundColor = bg;
-            document.getElementById("textinput").style.backgroundColor = bg;
-            document.getElementById("background").style.backgroundColor = bg;
-            document.getElementById("title").style.color = fg2;
-        }
-        setInterval(updateColor, 20);
-    
-        var secretunlock = (new URLSearchParams(window.location.search)).get("code") == 720;
-        if (secretunlock) {
-            document.getElementById("cookiePopup").hidden = false;
-            document.getElementById("hiddenmsg").hidden = true;
-            document.getElementById("clicker-start").hidden = true;
-        }
-        dragElement(document.getElementById("cookieAcceptButton"));
-    
-        function dragElement(elmnt) {
-            var pos1 = 0,
-                pos2 = 0,
-                pos3 = 0,
-                pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                // if present, the header is where you move the DIV from:
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+            /*alert("You dismissed the cookies!");
+            alert("THE END (ending 6/4)");
+            var cont = confirm("We at Rockwell Automations are sorry to see you go! Would you like to learn more about our company?")
+            if (cont) {
+                window.location.href = "https://www.youtube.com/embed/RXJKdh1KZ0w?autoplay=1";
             } else {
-                // otherwise, move the DIV from anywhere inside the DIV:
-                elmnt.onmousedown = dragMouseDown;
-            }
-    
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-    
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                if ((elmnt.offsetTop - pos2) < -60 || (elmnt.offsetLeft - pos1) < -160) {
-                    elmnt.hidden = true;
-                }
-            }
-    
-            function closeDragElement() {
-                // stop moving when mouse button is released:
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-    
-        document.querySelector("#cookieRejectButton").addEventListener('mouseover', randomisePos);
-    
-        function randomisePos(e) {
-            if (!epilepsy) {
-                e.target.style.bottom = Math.random() * (window.innerHeight - 50);
-                e.target.style.right = Math.random() * (window.innerWidth - 50);
-            }
-        }
-    
-        function dismissCookies() {
-            epilepsy = 0;
-            updateColor();
-            setTimeout(function () {
-                alert("You dismissed the cookies!");
-                alert("THE END (ending 6/4)");
-                var cont = confirm("We at Rockwell Automations are sorry to see you go! Would you like to learn more about our company?")
-                if (cont) {
-                    window.location.href = "https://www.youtube.com/embed/RXJKdh1KZ0w?autoplay=1";
-                } else {
-                    window.location = window.location.href.split("?")[0];
-                }
-            }, 100);
-    
-        }
-    </script>
-    
-    </HTML>
+                window.location = window.location.href.split("?")[0];
+            }*/
+        }, 100);
+
+    }
+
+    function clickAd() {
+        alert("Death by advertisements");
+        alert("THE END (ending 6/4)");
+        window.location.href = "https://www.youtube.com/embed/Tbxq0IDqD04?autoplay=1";
+    }
+</script>
+
+</HTML>
