@@ -2112,24 +2112,39 @@ WorldData = {
                     cmd: {
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
                             if: {
+                                cond: "chose kill Andrew",
+                                msg: "Uh...you've already killed this one..."
+                            },
+                            else: {
+                                if: {
                                 cond: "licence to kill revoked",
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
                                     cond: "Name Andrew",
-                                    msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. <br><br>As you always do, you rewind time, allowing him to live again. Andrew seated back at its desk. You curl up on its couch for a few hours to get some sleep, then you leave and hall-wander some more.",
+                                    msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. Hm. Revive? (\"yes\" or \"no\")",
                                     inc: "rest",
-                                    inc2: "rest",
-                                    inc: "kill point A",
+                                    inc2: "kill point A",
+                                    get: {
+                                        item: "Andrew life/death question",
+                                        data: -1
+                                    },
+                                    dest: Locations.DecisionRoom
                                 },
                                 else: {
-                                    msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. As you always do, you rewind time, allowing it to live again. The human seated back at its desk. You curl up on its couch for a few hours to get some sleep, then you leave and hall-wander some more.",
+                                    msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. Hm. <br><br>\
+                                    Now you have to decide. Revive? (\"yes\" or \"no\")",
                                     inc: "rest",
-                                    inc2: "rest",
-                                    inc: "kill point A",
+                                    inc2: "kill point A",
+                                    get: {
+                                        item: "Andrew life/death question",
+                                        data: -1
+                                    },
+                                    dest: Locations.DecisionRoom
                                 },
                             },
+                        },
                         },
                         Maia: {
                             if: {
@@ -2453,7 +2468,33 @@ WorldData = {
                             else: {
                                 msg: "You can't revive someone who's still alive..."
                             }
-                        }
+                        },
+                        "Emily": {
+                            if: {
+                                cond: "chose kill Emily",
+                                msg: "*sigh* fine.",
+                                get: {
+                                    item: "chose kill Emily",
+                                    data: 0
+                                }
+                            },
+                            else: {
+                                msg: "You can't revive someone who's still alive..."
+                            }
+                        },
+                        "Andrew": {
+                            if: {
+                                cond: "chose kill Andrew",
+                                msg: "Fine, fine.",
+                                get: {
+                                    item: "chose kill Andrew",
+                                    data: 0
+                                }
+                            },
+                            else: {
+                                msg: "You can't kill someone who's still alive."
+                            }
+                        },
                     }
                 }
             },
@@ -4841,7 +4882,20 @@ WorldData = {
                                                 },
                                                 dest: Locations.hallway3
                                             },
-                                            msg: "Revive who?",
+                                            else: {
+                                                if: {
+                                                    cond: "Andrew life/death decision",
+                                                    msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
+                                                    get: {
+                                                        item: "Andrew life/death question",
+                                                        data: 0
+                                                    },
+                                                    dest: Locations.hallway3
+                                                },
+                                                else: {
+                                                    msg: "Revive who?",
+                                                },
+                                            },
                                         },
                                     },
                                 },
@@ -4947,7 +5001,24 @@ WorldData = {
                                                 dest: Locations.hallway3
                                             },
                                             else: {
+                                                if: {
+                                                cond: "Andrew life/death question",
+                                                msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a bit, you return to the hallway. <br><br>\
+                                                \"Revive Andrew\" brings the human back to life, if you want that.",
+                                                inc: "rest",
+                                                get: {
+                                                    item: "Andrew life/death question",
+                                                    data: 0
+                                                },
+                                                get2: {
+                                                    item: "chose kill Andrew",
+                                                    data: -1
+                                                },
+                                                dest: Locations.hallway3
+                                            },
+                                            else: {
                                                 msg: "Huh?"
+                                            },
                                             },
                                         },
                                     }
