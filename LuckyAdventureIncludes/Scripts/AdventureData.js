@@ -381,7 +381,7 @@ WorldData = {
         outside: {
             cmd: {
                 "hint": {
-                    msg: "Important: available options change based on what youve done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
+                    msg: "Important: available options change based on what you've done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
                     look<br>\
                     move (north|south|west|up|down)<br>\
                     catnip<br>\
@@ -446,7 +446,7 @@ WorldData = {
                     },
                 },
                 "fight": {
-                    msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an emourmous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
+                    msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an enormous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
                     dest: Locations.MrGoose
                 },
             },
@@ -516,11 +516,11 @@ WorldData = {
                     end: 6,
                 },
                 "violence": {
-                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to youself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
+                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to yourself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
                     dest: Locations.heaven,
                 },
                 "peace": {
-                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enourmous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
+                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enormous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
                     dest: Locations.kitchen,
                 },
             },
@@ -849,12 +849,12 @@ WorldData = {
                 "chess": {
                     if: {
                         cond: "won chess game!",
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Images/ChessProLucky.jpeg",
                         msg: "You play chess against yourself and win again!",
                         inc: "won chess game!"
                     },
                     else: {
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Images/ChessProLucky.jpeg",
                         msg: "You use your telekinetic powers to play chess against yourself. Shockingly, you won!",
                         inc: "won chess game!"
                     },
@@ -2522,7 +2522,7 @@ WorldData = {
                                 clear: 1,
                                 cmd: {
                                     "bean": {
-                                        img: "Images/BabyHeartBeans.jpeg",
+                                        img1: "Images/BabyHeartBeans.jpeg",
                                         img2: "Images/HeartBean.jpeg",
                                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                     }
@@ -2531,7 +2531,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "chose kill Eevee",
-                                    img1: "Images/Emily.jpeg",
+                                    img: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. A cat lies dead on the floor. Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
@@ -2772,12 +2772,12 @@ WorldData = {
                         else: {
                             if: {
                                 cond: "chose kill Eevee",
-                                img1: "Images/Emily.jpeg",
+                                img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                             else: {
-                                img1: "Images/Emily.jpeg",
+                                img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
@@ -3578,7 +3578,7 @@ WorldData = {
                     },
                 },
                 "drawing": {
-                    img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.jpg",
+                    img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
                     msg: "You look at the drawing. Now you know who to look for."
                 },
                 "Yes": {
@@ -4088,7 +4088,7 @@ WorldData = {
                         u: {
                             if: {
                                 cond: "thou art banished!",
-                                msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgiveable! You should be ashamed of yourself..."
+                                msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
                             },
                             else: {
                                 msg: "You ascend to Leprechaun Heaven! Leprechauns are frolicking.",
@@ -4701,7 +4701,7 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: "idk why but they're trying to go even further up than Home Hardware 1",
-                                            msg: "I see you're still trying. Huh. There's something to be said for perseverence, I suppose.",
+                                            msg: "I see you're still trying. Huh. There's something to be said for perseverance, I suppose.",
                                             get: {
                                                 item: "idk why but they're trying to go even further up than Home Hardware 2",
                                                 data: -1
@@ -4849,7 +4849,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "Eevee life/death question",
-                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you chage your mind.",
+                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you change your mind.",
                                     get: {
                                         item: "Eevee life/death question",
                                         data: 0
@@ -4876,7 +4876,7 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: "Maia life/death question",
-                                            msg: "Yes! You decide to keep the human dead, livig life on the edge! \"Revive Maia\" brings the human back to life, if you want that.",
+                                            msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that.",
                                             get: {
                                                 item: "Maia life/death question",
                                                 data: 0
@@ -4890,7 +4890,7 @@ WorldData = {
                                         else: {
                                             if: {
                                                 cond: "Nathan life/death question",
-                                                msg: "Yes! You decide to keep the human dead, livig life on the edge! \"Revive Nathan\" brings the human back to life, if you want that.",
+                                                msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that.",
                                                 get: {
                                                     item: "Nathan life/death question",
                                                     data: 0
