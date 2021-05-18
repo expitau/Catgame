@@ -1903,22 +1903,40 @@ WorldData = {
                 },
                 "(Andy|Dandrewlion|Werdna)": {
                     if: {
-                        cond: "Name Andrew",
-                        img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
-                        You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
-                        inc: "rest",
+                        cond: "chose kill Andrew",
+                        if: {
+                            cond: "Name Andrew",
+                            msg: "You head to Andrew's room. You see him lying on the ground and you admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Andrew\" if you want)",
+                            inc: "rest"
+                        },
+                        else: {
+                            msg: "You head to the room of one of your victims and admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Andrew\" if you want)",
+                            inc: "rest"
+                        },
                     },
                     else: {
-                        img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                        if: {
+                            cond: "Name Andrew",
+                            img: "Images/AndrewIgnore.JPG",
+                            msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                        You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                            inc: "rest",
+                        },
+                        else: {
+                            img: "Images/AndrewIgnore.JPG",
+                            msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
                         In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
-                        inc: "rest",
+                            inc: "rest",
+                        },
                     },
-
                 },
                 "cage": {
                     if: {
+                        cond: "chose kill Andrew",
+                        msg: "Andrew is dead, \"revive Andrew\" to see what the \"cage\" command does.",
+                    },
+                    else: {
+                        if: {
                         cond: "Name Andrew",
                         img: "Images/CagedAndrew.JPG",
                         msg: "You see Andrew trapped in a cage!"
@@ -1927,12 +1945,17 @@ WorldData = {
                         img: "Images/CagedAndrew.JPG",
                         msg: "You see a human trapped in a cage!"
                     }
-
+                },
                 },
                 "Bother": {
                     cmd: {
                         "(Dandrewlion|Andy|Werdna)": {
                             if: {
+                                cond: "chose kill Andrew",
+                                msg: "You can't really bother a dead body..."
+                            },
+                            else: {
+                                if: {
                                 cond: "Name Andrew",
                                 msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
                             },
@@ -1942,11 +1965,31 @@ WorldData = {
                             },
                         },
                     },
+                    },
                 },
                 "(Trumpet|Emily|Andrew)": {
                     cmd: {
                         "(duet|time|Andrew|Emily)": {
                             if: {
+                                cond: "chose kill Emily",
+                                if: {
+                                    cond: "chose kill Andrew",
+                                    msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
+                                        \"revive Emily\" and \"revive Andrew\" to fix it."
+                                },
+                                else: {
+                                    msg: "Sadly, trumpet duet time can't happen. You've killed a trumpeter :(<br><br>\
+                                    \"revive Emily\" to fix it."
+                                },
+                            },
+                            else: {
+                            if: {
+                                cond: "chose kill Andrew",
+                                msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
+                                    \"revive Andrew\" to fix it..."
+                            },
+                            else: {
+                                if: {
                                 cond: "chose kill Nathan",
                                 msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
                                 \"revive Nathan\" before trying to do the trumpet duet again."
@@ -2061,6 +2104,8 @@ WorldData = {
                                 },
                             },
                         },
+                    }
+                }
                     }
                 },
                 "kill": {
