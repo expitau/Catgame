@@ -849,12 +849,12 @@ WorldData = {
                 "chess": {
                     if: {
                         cond: "won chess game!",
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Images/ChessProLucky.jpeg",
                         msg: "You play chess against yourself and win again!",
                         inc: "won chess game!"
                     },
                     else: {
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Images/ChessProLucky.jpeg",
                         msg: "You use your telekinetic powers to play chess against yourself. Shockingly, you won!",
                         inc: "won chess game!"
                     },
@@ -2522,7 +2522,7 @@ WorldData = {
                                 clear: 1,
                                 cmd: {
                                     "bean": {
-                                        img: "Images/BabyHeartBeans.jpeg",
+                                        img1: "Images/BabyHeartBeans.jpeg",
                                         img2: "Images/HeartBean.jpeg",
                                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                     }
@@ -2531,7 +2531,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "chose kill Eevee",
-                                    img1: "Images/Emily.jpeg",
+                                    img: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. A cat lies dead on the floor. Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
@@ -2772,12 +2772,12 @@ WorldData = {
                         else: {
                             if: {
                                 cond: "chose kill Eevee",
-                                img1: "Images/Emily.jpeg",
+                                img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                             else: {
-                                img1: "Images/Emily.jpeg",
+                                img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
