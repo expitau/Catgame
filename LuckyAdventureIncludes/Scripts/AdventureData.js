@@ -1937,15 +1937,15 @@ WorldData = {
                     },
                     else: {
                         if: {
-                        cond: "Name Andrew",
-                        img: "Images/CagedAndrew.JPG",
-                        msg: "You see Andrew trapped in a cage!"
+                            cond: "Name Andrew",
+                            img: "Images/CagedAndrew.JPG",
+                            msg: "You see Andrew trapped in a cage!"
+                        },
+                        else: {
+                            img: "Images/CagedAndrew.JPG",
+                            msg: "You see a human trapped in a cage!"
+                        }
                     },
-                    else: {
-                        img: "Images/CagedAndrew.JPG",
-                        msg: "You see a human trapped in a cage!"
-                    }
-                },
                 },
                 "Bother": {
                     cmd: {
@@ -1956,15 +1956,15 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                cond: "Name Andrew",
-                                msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
-                            },
-                            else: {
-                                msg: "You decide that you want the tall and intimidating human to pay attention to you. Trotting up to its room, you come up to him and paw at its leg. The human looks down and is very surprised to see you. <br><br>\"Looks like Nathan's cat..\" It remarks. <br><br>You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it. The metal pole defense contraption will protect you both now. You fall asleep.",
-                                inc: "rest",
+                                    cond: "Name Andrew",
+                                    msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
+                                },
+                                else: {
+                                    msg: "You decide that you want the tall and intimidating human to pay attention to you. Trotting up to its room, you come up to him and paw at its leg. The human looks down and is very surprised to see you. <br><br>\"Looks like Nathan's cat..\" It remarks. <br><br>You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it. The metal pole defense contraption will protect you both now. You fall asleep.",
+                                    inc: "rest",
+                                },
                             },
                         },
-                    },
                     },
                 },
                 "(Trumpet|Emily|Andrew)": {
@@ -1983,21 +1983,21 @@ WorldData = {
                                 },
                             },
                             else: {
-                            if: {
-                                cond: "chose kill Andrew",
-                                msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
+                                if: {
+                                    cond: "chose kill Andrew",
+                                    msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
                                     \"revive Andrew\" to fix it..."
-                            },
-                            else: {
-                                if: {
-                                cond: "chose kill Nathan",
-                                msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
+                                },
+                                else: {
+                                    if: {
+                                        cond: "chose kill Nathan",
+                                        msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
                                 \"revive Nathan\" before trying to do the trumpet duet again."
-                            },
-                            else: {
-                                if: {
-                                    cond: "Name Andrew",
-                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: "Name Andrew",
+                                            msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2044,13 +2044,13 @@ WorldData = {
                                 I will call you mine.<br><br>\
                                 Werdna, won't you call me yours\"\
                                 <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                    get: {
-                                        item: "Name Emily",
-                                        data: -1
-                                    },
-                                },
-                                else: {
-                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                            get: {
+                                                item: "Name Emily",
+                                                data: -1
+                                            },
+                                        },
+                                        else: {
+                                            msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2097,15 +2097,15 @@ WorldData = {
                                 I will call you mine.<br><br>\
                                 Werdna, won't you call me yours.\"\
                                 <br><br>As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                    get: {
-                                        item: "Name Emily",
-                                        data: -1
+                                            get: {
+                                                item: "Name Emily",
+                                                data: -1
+                                            },
+                                        },
                                     },
                                 },
-                            },
-                        },
-                    }
-                }
+                            }
+                        }
                     }
                 },
                 "kill": {
@@ -2117,34 +2117,34 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                cond: "licence to kill revoked",
-                                msg: "Killing things doesn't feel so fun anymore..."
-                            },
-                            else: {
-                                if: {
-                                    cond: "Name Andrew",
-                                    msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. Hm. Revive? (\"yes\" or \"no\")",
-                                    inc: "rest",
-                                    inc2: "kill point A",
-                                    get: {
-                                        item: "Andrew life/death question",
-                                        data: -1
-                                    },
-                                    dest: Locations.DecisionRoom
+                                    cond: "licence to kill revoked",
+                                    msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
-                                    msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. Hm. <br><br>\
-                                    Now you have to decide. Revive? (\"yes\" or \"no\")",
-                                    inc: "rest",
-                                    inc2: "kill point A",
-                                    get: {
-                                        item: "Andrew life/death question",
-                                        data: -1
+                                    if: {
+                                        cond: "Name Andrew",
+                                        msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. Hm. Revive? (\"yes\" or \"no\")",
+                                        inc: "rest",
+                                        inc2: "kill point A",
+                                        get: {
+                                            item: "Andrew life/death question",
+                                            data: -1
+                                        },
+                                        dest: Locations.DecisionRoom
                                     },
-                                    dest: Locations.DecisionRoom
+                                    else: {
+                                        msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. Hm. <br><br>\
+                                    Now you have to decide. Revive? (\"yes\" or \"no\")",
+                                        inc: "rest",
+                                        inc2: "kill point A",
+                                        get: {
+                                            item: "Andrew life/death question",
+                                            data: -1
+                                        },
+                                        dest: Locations.DecisionRoom
+                                    },
                                 },
                             },
-                        },
                         },
                         Maia: {
                             if: {
@@ -2285,22 +2285,34 @@ WorldData = {
                     cmd: {
                         "(milk|hall)": {
                             if: {
-                                cond: "Name Andrew",
-                                img: "Images/AndrewDiningHall.JPG",
-                                msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
+                                cond: "chose kill Andrew",
+                                if: {
+                                    cond: "Name Andrew",
+                                    msg: "You trot up to Andrew's room to see the human, and then you remember that you'd killed it. \"revive Andrew\" to get chocolate milk together."
+                                },
+                                else: {
+                                    msg: "You go to see the tall, intimidating human, and then you remember that you'd killed it already. Hm. Maybe you should try to \"revive Andrew\" to see how this interaction would be different..."
+                                },
+                            },
+                            else: {
+                                if: {
+                                    cond: "Name Andrew",
+                                    img: "Images/AndrewDiningHall.JPG",
+                                    msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
                                 You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, Andrew sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
-                                inc: "water",
-                            },
-                            else: {
-                                img: "Images/AndrewDiningHall.JPG",
-                                msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
+                                    inc: "water",
+                                },
+                                else: {
+                                    img: "Images/AndrewDiningHall.JPG",
+                                    msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
                                 You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, the human sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
-                                inc: "water",
-                            }
+                                    inc: "water",
+                                }
+                            },
                         },
                     },
                 },
@@ -5002,23 +5014,23 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                cond: "Andrew life/death question",
-                                                msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a bit, you return to the hallway. <br><br>\
+                                                    cond: "Andrew life/death question",
+                                                    msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. After a bit, you return to the hallway. <br><br>\
                                                 \"Revive Andrew\" brings the human back to life, if you want that.",
-                                                inc: "rest",
-                                                get: {
-                                                    item: "Andrew life/death question",
-                                                    data: 0
+                                                    inc: "rest",
+                                                    get: {
+                                                        item: "Andrew life/death question",
+                                                        data: 0
+                                                    },
+                                                    get2: {
+                                                        item: "chose kill Andrew",
+                                                        data: -1
+                                                    },
+                                                    dest: Locations.hallway3
                                                 },
-                                                get2: {
-                                                    item: "chose kill Andrew",
-                                                    data: -1
+                                                else: {
+                                                    msg: "Huh?"
                                                 },
-                                                dest: Locations.hallway3
-                                            },
-                                            else: {
-                                                msg: "Huh?"
-                                            },
                                             },
                                         },
                                     }
