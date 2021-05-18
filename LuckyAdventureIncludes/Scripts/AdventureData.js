@@ -1565,7 +1565,7 @@ WorldData = {
                         else: {
                             if: {
                                 cond: "kill point N",
-                                msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan will love it! He is there, but hasn't noticed you yet. You recall killing him before rewinding time...Ah, you do enjoy fantasizing about murder.",
+                                msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan will love it! He is there, but hasn't noticed you yet. You recall killing him before reviving him...Ah, you do enjoy fantasizing about murder.",
                                 get: {
                                     item: "squirrel",
                                     data: 0
@@ -2609,15 +2609,14 @@ WorldData = {
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
+                                            img1: "Images/BabyHeartBeans.jpeg",
                                             img2: "Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img1: "Images/HeartBean2.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
@@ -2639,7 +2638,7 @@ WorldData = {
                                     cmd: {
                                         "bean": {
                                             img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img2: "Images/HeartBean2.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
