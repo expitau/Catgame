@@ -60,7 +60,7 @@ body {
 #hiddenmsg {
     color: rgb(0, 0, 0);
     font-family: Monospace;
-    font-size: 20px;
+    font-size: 15px;
     margin: 0px;
     position: absolute;
     bottom: 0px;
@@ -105,7 +105,7 @@ body {
 
 .clickertable {
     color: rgb(255, 255, 255);
-    width: 75%;
+    width: 25%;
     font-family: Monospace;
     margin: 10px 0px 0px 10px;
     text-align: center;
@@ -122,45 +122,6 @@ body {
 p {
     color: rgb(255, 255, 255);
     font-family: Monospace;
-}
-
-.ad {
-    position: absolute;
-    z-index: 1000;
-}
-
-.ad:hover {
-    cursor: pointer;
-}
-
-#ad1 {
-    bottom: 10px;
-    left: 12px;
-    width: 50%;
-}
-
-#ad2 {
-    top: 10px;
-    right: 12px;
-    height: 50%
-}
-
-#ad3 {
-    top: 0px;
-    left: 0px;
-    height: 50%;
-}
-
-#ad4 {
-    bottom: 18px;
-    right: 29px;
-    width: 30%;
-}
-
-#ad5 {
-    top: 30%;
-    right: 50%;
-    width: 25%;
 }
 
 ::selection {
