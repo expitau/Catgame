@@ -123,6 +123,8 @@ function handle(line) {
         window.location.href = "https://www.youtube.com/embed/KPP4Cfupzhs?autoplay=1";
     } else if (endflag == 541) {
         window.location.href = "https://www.youtube.com/embed/UyANUnGoGcE?autoplay=1";
+    } else if (endflag == 799) {
+        window.location.href = "https://www.youtube.com/embed/qCMZYEIlztY?autoplay=1";
     } else if (endflag > 0) {
         location.reload()
     }
