@@ -3572,6 +3572,7 @@ WorldData = {
                         },
                         else: {
                             msg: "Agent Lucky, here are all possible commands at this point (changes as you progress):<br><br>\
+                            Revive Aliyah<br><br>\
                             look<br>\
                             follow<br>\
                             move (south|up|down)<br>\
@@ -3613,6 +3614,7 @@ WorldData = {
                         },
                         else: {
                             msg: "Agent Lucky, here are all possible commands at this point (changes as you progress):<br><br>\
+                            Revive Aliyah<br><br>\
                             look<br>\
                             move (north|south|up|down)<br>\
                             drawing<br>\
@@ -3646,53 +3648,59 @@ WorldData = {
                     cmd: {
                         n: {
                             if: {
-                                cond: "who to kill first?",
-                                msg: "Um...why would you be going north?? You have an assassination to do! Get on task!",
+                                cond: "chose kill Aliyah",
+                                msg: "Nothing is happening to the north. Just go south and get the mission done already."
                             },
                             else: {
                                 if: {
-                                    cond: "accepted already",
-                                    msg: "You've already been north, you've seen all the interesting things there are to see! Just go south and complete the mission already! You really do love to procrastinate!"
+                                    cond: "who to kill first?",
+                                    msg: "Um...why would you be going north?? You have an assassination to do! Get on task!",
                                 },
                                 else: {
                                     if: {
-                                        cond: "rejected",
-                                        msg: "Nothing's really happening to the north...you wish that you'd taken up Aliyah on her offer...",
+                                        cond: "accepted already",
+                                        msg: "You've already been north, you've seen all the interesting things there are to see! Just go south and complete the mission already! You really do love to procrastinate!"
                                     },
                                     else: {
                                         if: {
-                                            cond: "Name Aliyah",
+                                            cond: "rejected",
+                                            msg: "Nothing's really happening to the north...you wish that you'd taken up Aliyah on her offer...",
+                                        },
+                                        else: {
                                             if: {
-                                                cond: "north Aliyah",
-                                                msg: "Aliyah is waiting for your answer as she stands in front of the portal..."
-                                            },
-                                            else: {
-                                                msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
+                                                cond: "Name Aliyah",
+                                                if: {
+                                                    cond: "north Aliyah",
+                                                    msg: "Aliyah is waiting for your answer as she stands in front of the portal..."
+                                                },
+                                                else: {
+                                                    msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
                                                 As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is Aliyah! You've killed this one before (and rewound time to undo it, of course)<br><br>\
                                                 As you get closer, Aliyah turns and smiles at you. Re-introducing itself, the human informs you that its pronouns are she/her. You register this fact, but you are also in shock at the fact that she's here. <br><br>\
                                                 \"Want to come with me?\" Aliyah offers, gesturing at a blue shimmery portal that had started to open in front of her. <br><br>\
                                                 (respond \"follow\" to go with her, respond \"south\" to head on your way to the mission. Note: You will be able to come back here and finish the mission if you want.)",
-                                                get: {
-                                                    item: "north Aliyah",
-                                                    data: -1
+                                                    get: {
+                                                        item: "north Aliyah",
+                                                        data: -1
+                                                    },
                                                 },
                                             },
-                                        },
-                                        else: {
-                                            msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
+                                            else: {
+                                                msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
                                 As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is one of the humans that you killed (and later unkilled, of course), from the place where Nathan is staying! As you get closer, the human turns around and smiles at you. <br><br>\
                                 \"Hello, Lucky!\" The human says to you. \"Fancy seeing you here! I should introduce myself, my name is Aliyah. I realize that I know your name and you never knew mine...also my pronouns are she/her.\" You stare at the human. How could she be here?<br><br>\
                                 \"Want to come with me?\" Aliyah offers, gesturing at a blue shimmery portal that had started to open in front of her. <br><br>\
                                 (respond \"follow\" to go with her, respond \"south\" to head on your way to the mission. Note: If you go through the portal, you will be able to come back here and finish the mission if you want.)",
-                                            get: {
-                                                item: "north Aliyah",
-                                                data: -1
-                                            },
-                                            get2: {
-                                                item: "Name Aliyah",
-                                                data: -1
+                                                get: {
+                                                    item: "north Aliyah",
+                                                    data: -1
+                                                },
+                                                get2: {
+                                                    item: "Name Aliyah",
+                                                    data: -1
+                                                }
                                             }
-                                        }
+                                        },
                                     },
                                 },
                             },
@@ -3947,6 +3955,14 @@ WorldData = {
                         },
                     },
                 },
+                "revive": {
+                    cmd: {
+                        "Aliyah": {
+                            msg: "You decide to revive a human that you'd killed. What was the point of that?<br><br>\
+                            Maybe you should see if anything is happening to the north or south? (remember that south is where your mission is)"
+                        }
+                    }
+                }
             },
         },
         SaveCats: {
@@ -5087,7 +5103,20 @@ WorldData = {
                                                     dest: Locations.hallway3
                                                 },
                                                 else: {
-                                                    msg: "Revive who?",
+                                                    if: {
+                                                        cond: "Aliyah life/death decision",
+                                                        msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
+                                                        Later, you return to the hall.",
+                                                        inc: "rest",
+                                                        get: {
+                                                            item: "Aliyah life/death question",
+                                                            data: 0
+                                                        },
+                                                        dest: Locations.hallway3
+                                                    },
+                                                    else: {
+                                                        msg: "Revive who?",
+                                                    },
                                                 },
                                             },
                                         },
@@ -5211,7 +5240,24 @@ WorldData = {
                                                     dest: Locations.hallway3
                                                 },
                                                 else: {
-                                                    msg: "Huh?"
+                                                    if: {
+                                                        cond: "Aliyah life/death question",
+                                                        msg: "You decide to leave the human dead, which I can normally get behind, but really? The human wanted nothing more than to pet you! Don't you feel even the slightest bit of remorse? Ah, forget it...you're too far gone...<br><br>\
+                                                        You return to the hall, leaving the dead body in the room. You notice that a closet door is open in the room, but decide not to explore it. (\"go\" to go see what's happening, \"revive Aliyah\" to revive)<br><br>\
+                                                        You are now in the hallway.",
+                                                        get: {
+                                                            item: "Aliyah life/death question",
+                                                            data: 0
+                                                        },
+                                                        get2: {
+                                                            item: "chose kill Aliyah",
+                                                            data: -1
+                                                        },
+                                                        dest: Locations.hallway3
+                                                    },
+                                                    else: {
+                                                        msg: "Huh?"
+                                                    },
                                                 },
                                             },
                                         },
