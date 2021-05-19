@@ -1441,7 +1441,8 @@ WorldData = {
                 "portal": {
                     if: {
                         cond: "Grebel",
-                        msg: "You crawl under Nathan's bed and make your way to the portal. You go through and end up in Nathan's new room."
+                        msg: "You crawl under Nathan's bed and make your way to the portal. You go through and end up in Nathan's new room.",
+                        dest: Locations.nathan2
                     },
                     else: {
                         msg: "You crawl under Nathan's bed. You like to be here, it's safe and comfortable, maybe not as comfortable as the actual bed, but -<br><br>You suddenly notice a blue shimmery circle-like shape appear on the ground, no larger than one of your paws. Curious, you creep closer to it. The circle grows rapidly and swallows you!",
