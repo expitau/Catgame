@@ -124,6 +124,27 @@ WorldData = {
                 }
             }
         },
+        "secret": {
+            if: {
+                cond: "secrety secrets", count: 3,
+                msg: "*whispers* My secret is that I've always dreamed of being a seahorse.",
+                end: 799
+            },
+            else: {
+                if: {
+                    cond: "secrety secrets",
+                    msg: "Really?",
+                    inc: "secrety secrets"
+                },
+                else: {
+                    msg: "Really?",
+                    get: {
+                        item: "secrety secrets",
+                        data: -1
+                    },
+                },
+            },
+        },
         "Chichien's": {
             cmd: {
                 "brain": {
@@ -1673,38 +1694,38 @@ WorldData = {
                                         },
                                         else: {
                                             img: "Images/Hallway3.jpeg",
-                                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                        clear: 1,
+                                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                            clear: 1,
                                         },
                                     },
                                     else: {
                                         img: "Images/Hallway3.jpeg",
-                                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                    clear: 1,
+                                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                        clear: 1,
                                     },
                                 },
                                 else: {
                                     img: "Images/Hallway3.jpeg",
-                                msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                clear: 1,
+                                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                    clear: 1,
                                 },
                             },
                             else: {
                                 img: "Images/Hallway3.jpeg",
-                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                            clear: 1,
+                                msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                clear: 1,
                             },
                         },
                         else: {
                             img: "Images/Hallway3.jpeg",
-                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                        clear: 1,
+                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                            clear: 1,
                         },
                     },
                     else: {
                         img: "Images/Hallway3.jpeg",
-                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                    clear: 1,
+                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                        clear: 1,
                     },
                 },
                 "song": {
