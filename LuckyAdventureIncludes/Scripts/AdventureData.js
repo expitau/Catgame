@@ -2323,7 +2323,8 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "Treacy killer",
-                                    msg: "Lucky reluctantly goes to kill the Treacys. After slaughtering both of them, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?",
+                                    msg: "Lucky reluctantly goes to kill the Treacys. After slaughtering both of them, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
+                                    You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Claire",
                                     inc2: "kill point Jackie",
                                     end: 540
@@ -2345,7 +2346,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "Jake killer",
-                                    msg: "Lucky reluctantly goes to kill Jake., solely doing it because you asked her to. After slaughtering the human, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?",
+                                    msg: "Lucky reluctantly goes to kill Jake., solely doing it because you asked her to. After slaughtering the human, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you? You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth. Take a nap, even.",
                                     inc: "kill point Jake",
                                     end: 541
                                 },
