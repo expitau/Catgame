@@ -50,10 +50,45 @@ WorldData = {
                 msg: "What would you like to kill?",
                 cmd: {
                     ".*": {
-                        msg: "You try to kill it, but you can't. It seems that an impenetrable force field has formed around it. Darn it!",
+                        if: {
+                            cond: "keeps trying to kill the unkillable...", count: 7,
+                            msg: "I give up, you're too murderous for this game.",
+                            end: 273
+                        },
+                        else: {
+                            if: {
+                                cond: "keeps trying to kill the unkillable...", count: 5,
+                                msg: "gosh darn it! Stop trying to kill things that aren't killable!",
+                                inc: "keeps trying to kill the unkillable..."
+                            },
+                            else: {
+                                if: {
+                                    cond: "keeps trying to kill the unkillable...",
+                                    msg: "You try to kill it, but you can't. It seems that an impenetrable force field has formed around it. Darn it!",
+                                    inc: "keeps trying to kill the unkillable..."
+                                },
+                                else: {
+                                    msg: "You try to kill it, but you can't. It seems that an impenetrable force field has formed around it. Darn it!",
+                                    get: {
+                                        item: "keeps trying to kill the unkillable...",
+                                        data: -1
+                                    }
+                                },
+                            },
+                        },
                     },
                 },
             },
+        },
+        "Headquarters": {
+            if: {
+                cond: "licence to kill",
+                msg: "You go to headquarters.",
+                dest: Locations.Headquarters
+            },
+            else: {
+                msg: "?"
+            }
         },
         "(counting|c)": {
             if: {
@@ -3322,7 +3357,25 @@ WorldData = {
                         end: 100
                     },
                     else: {
-                        msg: "Huh? What are you declining? You don't even have a mission..."
+                        if: {
+                            cond: "declined a mission that doesn't even *exist*!", count: 5,
+                            msg: "I've had enough of this! Why can't you just play the game normally?? Who just spams certain commands??",
+                            end: 101
+                        },
+                        else: {
+                            if: {
+                                cond: "declined a mission that doesn't even *exist*!",
+                                msg: "And you've declined the nonexistent mission for a second time...I see...",
+                                inc: "declined a mission that doesn't even *exist*!"
+                            },
+                            else: {
+                                msg: "Huh? What are you declining? You don't even have a mission...",
+                                get: {
+                                    item: "declined a mission that doesn't even *exist*!",
+                                    data: -1
+                                },
+                            },
+                        },
                     }
 
                 },
@@ -3353,7 +3406,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "weed mission",
-                                    msg: "You are transported via private plane to Spain. Unfortunately, you do not have the plane to yourself. Some other secret agent that they call \"007\" also had a different mission in the same city. You think he's obnoxious, but you do both have a \"license to kill,\" as they say. When you land, you are instructed to behave like a normal cat and make your way to a particular location, where a huge deal is going down involving a hybrid drug, a cross between meth and cocaine. When you arrive, you look around (respond \"look\")",
+                                    msg: "You are transported via private plane to Spain. Unfortunately, you do not have the plane to yourself. Some other secret agent that they call \"007\" also had a different mission in the same city. You think he's obnoxious, but you do both have a \"licence to kill,\" as they say. When you land, you are instructed to behave like a normal cat and make your way to a particular location, where a huge deal is going down involving a hybrid drug, a cross between meth and cocaine. When you arrive, you look around (respond \"look\")",
                                     dest: Locations.Spain,
                                 },
                                 else: {
@@ -3676,49 +3729,49 @@ WorldData = {
                                             },
                                         },
                                         else: {
-                                        if: {
-                                            cond: "Name Aliyah",
                                             if: {
-                                                cond: "north Aliyah",
-                                                msg: "Aliyah is waiting for your answer as she stands in front of the portal..."
-                                            },
-                                            else: {
-                                                msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
+                                                cond: "Name Aliyah",
+                                                if: {
+                                                    cond: "north Aliyah",
+                                                    msg: "Aliyah is waiting for your answer as she stands in front of the portal..."
+                                                },
+                                                else: {
+                                                    msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
                                                 As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is Aliyah! You've killed this one before (and rewound time to undo it, of course)<br><br>\
                                                 As you get closer, Aliyah turns and smiles at you. Re-introducing itself, the human informs you that its pronouns are she/her. You register this fact, but you are also in shock at the fact that she's here. <br><br>\
                                                 \"Want to come with me?\" Aliyah offers, gesturing at a blue shimmery portal that had started to open in front of her. <br><br>\
                                                 (respond \"follow\" to go with her, respond \"south\" to head on your way to the mission. Note: You will be able to come back here and finish the mission if you want.)",
-                                                get: {
-                                                    item: "north Aliyah",
-                                                    data: -1
+                                                    get: {
+                                                        item: "north Aliyah",
+                                                        data: -1
+                                                    },
                                                 },
                                             },
-                                        },
-                                        else: {
-                                            msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
+                                            else: {
+                                                msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
                                 As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is one of the humans that you killed (and later unkilled, of course), from the place where Nathan is staying! As you get closer, the human turns around and smiles at you. <br><br>\
                                 \"Hello, Lucky!\" The human says to you. \"Fancy seeing you here! I should introduce myself, my name is Aliyah. I realize that I know your name and you never knew mine...also my pronouns are she/her.\" You stare at the human. How could she be here?<br><br>\
                                 \"Want to come with me?\" Aliyah offers, gesturing at a blue shimmery portal that had started to open in front of her. <br><br>\
                                 (respond \"follow\" to go with her, respond \"south\" to head on your way to the mission. Note: If you go through the portal, you will be able to come back here and finish the mission if you want.)",
-                                            get: {
-                                                item: "north Aliyah",
-                                                data: -1
-                                            },
-                                            get2: {
-                                                item: "Name Aliyah",
-                                                data: -1
+                                                get: {
+                                                    item: "north Aliyah",
+                                                    data: -1
+                                                },
+                                                get2: {
+                                                    item: "Name Aliyah",
+                                                    data: -1
+                                                }
                                             }
-                                        }
+                                        },
                                     },
-                                },
                                 },
                             },
                         },
-                    
-                    s: {
-                        if: {
-                            cond: "north Aliyah",
-                            msg: "You shake your head and turn away from Aliyah. You look over your shoulder to find that she seems disappointed, but shrugs and enters the portal by herself. As it closes behind her, you note that you've lost the chance to find out where the portal leads...<br><br>\
+
+                        s: {
+                            if: {
+                                cond: "north Aliyah",
+                                msg: "You shake your head and turn away from Aliyah. You look over your shoulder to find that she seems disappointed, but shrugs and enters the portal by herself. As it closes behind her, you note that you've lost the chance to find out where the portal leads...<br><br>\
                                 Shaking it off, you head south. <br><br>\
                                 \
                                 You head south, toward a town built on the floor of the ocean. You had been informed that the individual you are searching for is extremely dangerous and that he must be killed as quickly and as quietly as possible. You take out the drawing that had been given to you, and you notice a name written at the bottom: \”Spongebob Squarepants.\” Odd name. <br><br>\
@@ -3738,18 +3791,18 @@ WorldData = {
                                 A squirrel? Underwater? Your mouth starts to salivate as you think about killing Sandy. Should you wait the half hour, wandering around town for a bit and making sure to not be too suspicious, or should you go kill Sandy and then come back to kill him afterward? it doesn't really matter when in the evening you kill him, so it's fine to waste a bit more than half an hour as long as you get the job done. <br><br>\
                                 \
                                 (respond \"kill Spongebob\" or \"kill Sandy\")",
-                            get: {
-                                item: "who to kill first?",
-                                data: -1
-                            },
-                            get2: {
-                                item: "rejection",
-                                data: -1
-                            }
+                                get: {
+                                    item: "who to kill first?",
+                                    data: -1
+                                },
+                                get2: {
+                                    item: "rejection",
+                                    data: -1
+                                }
 
-                        },
-                        else: {
-                            msg: "You head south, toward a town built on the floor of the ocean. You had been informed that the individual you are searching for is extremely dangerous and that he must be killed as quickly and as quietly as possible. You take out the drawing that had been given to you, remembering the name that they'd told you: \”Spongebob Squarepants.\” Odd name, but perhaps it's fitting for a sponge. You wonder if every sponge's name has the word \"sponge\" in it...<br><br>\
+                            },
+                            else: {
+                                msg: "You head south, toward a town built on the floor of the ocean. You had been informed that the individual you are searching for is extremely dangerous and that he must be killed as quickly and as quietly as possible. You take out the drawing that had been given to you, remembering the name that they'd told you: \”Spongebob Squarepants.\” Odd name, but perhaps it's fitting for a sponge. You wonder if every sponge's name has the word \"sponge\" in it...<br><br>\
                                 \
                                 As you walk through the town's streets, you wonder who lives here. You see fish wearing clothes and walking around town upright. This really is a strange place. You have been told to look out for a large pineapple, and that your target should be inside it when he is at home from work. <br><br>\
                                 \
@@ -3766,89 +3819,89 @@ WorldData = {
                                 A squirrel? Underwater? Your mouth starts to salivate as you think about killing Sandy. Should you wait the half hour, wandering around town for a bit and making sure to not be too suspicious, or should you go kill Sandy and then come back to kill him afterward? it doesn't really matter when in the evening you kill him, so it's fine to waste a bit more than half an hour as long as you get the job done. <br><br>\
                                 \
                                 (respond \"kill Spongebob\" or \"kill Sandy\")",
-                            get: {
-                                item: "who to kill first?",
-                                data: -1
-                            },
-                        }
-                    }
-                }
-            },
-            "kill": {
-                cmd: {
-                    "Aliyah": {
-                        if: {
-                            cond: "chose kill Aliyah",
-                            msg: "You...can't kill a ghost...<br><br>\
-                            If you *really* want to kill the human, you can \"revive Aliyah\" and then \"kill Aliyah\""
-                        },
-                        else: {
-                            if: {
-                            cond: "north Aliyah",
-                            msg: "You decide to kill Aliyah (again). As she bleeds out, you step over her body toward the portal. You leave her dead there. When you come back, you'll be where you started when you were beamed in. <br><br>\
-                                You come out of the portal into a room. Where are you? Try looking around<br><br>\
-                                (You can come back to where you were beamed in by typing \"Assassination\" or you can go back to headquarters with \"Headquarters.\" ",
                                 get: {
-                                    item: "chose kill Aliyah",
+                                    item: "who to kill first?",
                                     data: -1
                                 },
-                            inc: "kill point Aliyah",
-                            dest: Locations.AliyahRoom2
-                        },
-                        else: {
-                            msg: "Aliyah's not even here right now! Where did you get that idea from??"
+                            }
                         }
-                    },
-                    },
-                    "(him|Spongebob)": {
-                        if: {
-                            cond: "who to kill first?",
+                    }
+                },
+                "kill": {
+                    cmd: {
+                        "Aliyah": {
                             if: {
-                                cond: "kill point Sandy",
-                                msg: "You make your way to Spongebob's pineapple. You see through his window that he is sitting on a chair in his living room. You paw at his door.<br><br>\
+                                cond: "chose kill Aliyah",
+                                msg: "You...can't kill a ghost...<br><br>\
+                            If you *really* want to kill the human, you can \"revive Aliyah\" and then \"kill Aliyah\""
+                            },
+                            else: {
+                                if: {
+                                    cond: "north Aliyah",
+                                    msg: "You decide to kill Aliyah (again). As she bleeds out, you step over her body toward the portal. You leave her dead there. When you come back, you'll be where you started when you were beamed in. <br><br>\
+                                You come out of the portal into a room. Where are you? Try looking around<br><br>\
+                                (You can come back to where you were beamed in by typing \"Assassination\" or you can go back to headquarters with \"Headquarters.\" ",
+                                    get: {
+                                        item: "chose kill Aliyah",
+                                        data: -1
+                                    },
+                                    inc: "kill point Aliyah",
+                                    dest: Locations.AliyahRoom2
+                                },
+                                else: {
+                                    msg: "Aliyah's not even here right now! Where did you get that idea from??"
+                                }
+                            },
+                        },
+                        "(him|Spongebob)": {
+                            if: {
+                                cond: "who to kill first?",
+                                if: {
+                                    cond: "kill point Sandy",
+                                    msg: "You make your way to Spongebob's pineapple. You see through his window that he is sitting on a chair in his living room. You paw at his door.<br><br>\
                                     Answering the door, he smiles asks you your name. <br><br>\
                                     \"My name is Lucky.\" You answer. He welcomes you inside, offering to cook you a Krabby Patty. You have no idea what that is, but you nod anyway. The two of you start to chat as he starts to cook on the stove, and you start thinking of ways to kill him. You are about to pounce on him when you suddenly remember that sponges regenerate when they are cut apart. If you cut him in half, there will just be two living sponges!<br><br>\
                                     New plan. If you beam him to Headquarters, he will suffocate when out of water. It should take no more than a few minutes to die. Now you just have to get him to come with you to a specific meeting point so you can be beamed out...<br><br>\
                                     \"Do you want to be best friends??\" Spongebob says excitedly to you. You are taken aback. You'd only been here for maybe five minutes. Do you want to be friends?(\"yes\" or \"no\")",
-                                get: {
-                                    item: "got asked question",
-                                    data: -1
-                                },
-                                get2: {
-                                    item: "question interrupted by cops",
-                                    data: -1
-                                },
+                                    get: {
+                                        item: "got asked question",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "question interrupted by cops",
+                                        data: -1
+                                    },
 
-                            },
-                            else: {
-                                msg: "You wait for a bit, wandering around the town. At almost six, you head to a nearby restaurant called the \"Krusty Krab,\" which you know to be Spongebob's place of work. As he walks out of the restaurant and down the road toward his house, you just so happen to be strolling along right next to him. <br><br>\
+                                },
+                                else: {
+                                    msg: "You wait for a bit, wandering around the town. At almost six, you head to a nearby restaurant called the \"Krusty Krab,\" which you know to be Spongebob's place of work. As he walks out of the restaurant and down the road toward his house, you just so happen to be strolling along right next to him. <br><br>\
                                     \"Hello!\" He says to you. You are taken aback by his friendliness. \"Hello.\" You respond, deciding to try to win his trust. You suddenly recall that sponges regenerate when they are cut apart, so if you try to cut him apart, both halves will live! Alright, new plan. You will get him to come to the meeting point, and you will both be transported back to Headquarters, where he will suffocate due to lack of water. <br><br>\
                                     \"Do you want to be best friends??\" Spongebob says excitedly to you, interrupting your rather murderous train of thought. You are taken aback. You'd only been walking together for maybe five minutes. You think about it for a bit, genuinely. What if Headquarters was wrong? He seems like such a friendly person - or rather, sponge. What if you just stayed here permanently? I mean, in the future if you found him to be dangerous, you could probably kill him at that point, right?<br><br>\
                                     Do you want to be friends?(\"yes\" or \"no\")",
-                                get: {
-                                    item: "got asked question",
-                                    data: -1
+                                    get: {
+                                        item: "got asked question",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "question uninterrupted",
+                                        date: -1
+                                    },
+                                    inc: "kill point Spongebob",
                                 },
-                                get2: {
-                                    item: "question uninterrupted",
-                                    date: -1
-                                },
-                                inc: "kill point Spongebob",
-                            },
-                        },
-                        else: {
-                            msg: "Maybe you should look around and move places before you jump to killing things..."
-                        },
-                    },
-                    "(Sandy|her)": {
-                        if: {
-                            cond: "who to kill first?",
-                            if: {
-                                cond: "kill point Sandy",
-                                msg: "You've already killed Sandy! Go get Spongebob already!"
                             },
                             else: {
-                                msg: "The thought of that tasty squirrel is just too much. <br><br>\
+                                msg: "Maybe you should look around and move places before you jump to killing things..."
+                            },
+                        },
+                        "(Sandy|her)": {
+                            if: {
+                                cond: "who to kill first?",
+                                if: {
+                                    cond: "kill point Sandy",
+                                    msg: "You've already killed Sandy! Go get Spongebob already!"
+                                },
+                                else: {
+                                    msg: "The thought of that tasty squirrel is just too much. <br><br>\
                                     \"Where could I find this \"Sandy Cheeks\"?\" You ask Patrick. \"I think we'd be good friends.\" You add. <br><br>\
                                     \"She lives in a glass dome with a tree and grass in it, it's not too far from here.\" Patrick points. <br><br>\
                                     You thank Patrick and follow his instructions to get to her house. You knock on the door of the glass dome. Sandy lets you into the air lock, and the water then drains out. You take off your suit, freeing your paws. <br><br>\
@@ -3857,49 +3910,49 @@ WorldData = {
                                     \
                                     Now it's Spongebob's turn! <br><br>\
                                     (type \"kill Spongebob\")",
-                                inc: "Kill point Sandy",
-                                inc: "squirrel"
+                                    inc: "Kill point Sandy",
+                                    inc: "squirrel"
+                                }
+                            },
+                            else: {
+                                msg: "Kill Sandy? Who's Sandy?",
                             }
-                        },
-                        else: {
-                            msg: "Kill Sandy? Who's Sandy?",
                         }
                     }
-                }
-            },
-            "follow": {
-                if: {
-                    cond: "north Aliyah",
-                    msg: "You follow Aliyah into the shimmery portal. When you get to the other side, she laughs to herself. <br><br>\
+                },
+                "follow": {
+                    if: {
+                        cond: "north Aliyah",
+                        msg: "You follow Aliyah into the shimmery portal. When you get to the other side, she laughs to herself. <br><br>\
                         \"Silly me! I've forgotten something at Grebel!\" She goes into a different portal. You are left alone.<br><br>\
                         \
                         Where are you?",
-                    get: {
-                        item: "accepted already",
-                        data: -1
+                        get: {
+                            item: "accepted already",
+                            data: -1
+                        },
+                        dest: Locations.AliyahRoom2
                     },
-                    dest: Locations.AliyahRoom2
+                    else: {
+                        msg: "Follow who? Maybe you should look around some more before randomly trying to follow people around."
+                    },
                 },
-                else: {
-                    msg: "Follow who? Maybe you should look around some more before randomly trying to follow people around."
+                "drawing": {
+                    img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
+                    msg: "You look at the drawing. Now you know who to look for."
                 },
-            },
-            "drawing": {
-                img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
-                msg: "You look at the drawing. Now you know who to look for."
-            },
-            "Yes": {
-                if: {
-                    cond: "question uninterrupted",
-                    msg: "Spongebob looks at you eagerly, waiting for your answer. You smile. <br><br>\
+                "Yes": {
+                    if: {
+                        cond: "question uninterrupted",
+                        msg: "Spongebob looks at you eagerly, waiting for your answer. You smile. <br><br>\
                         \"Alright.\" You agree. You decide not to kill him.<br><br>\
                         You, Spongebob, and Patrick become very close friends, and you live together happily forever. And by \"forever\" I mean about a month. A month in, Headquarters sends another assassin in who kills you, Spongebob, and Patrick. As you're bleeding out after being fatally injured, you admit to Spongebob that you had initially been sent there to kill him, and that this assassin was just here to finish the job.",
-                    end: 8
-                },
-                else: {
-                    if: {
-                        cond: "question interrupted by cops",
-                        msg: "You say yes, but as you're answering, a few cops burst into the pineapple house (that sea star must have tipped them off as to your location!) and arrest you for the murder of Sandy Cheeks. Spongebob looks at you in horror as you are marched away. <br><br>\
+                        end: 8
+                    },
+                    else: {
+                        if: {
+                            cond: "question interrupted by cops",
+                            msg: "You say yes, but as you're answering, a few cops burst into the pineapple house (that sea star must have tipped them off as to your location!) and arrest you for the murder of Sandy Cheeks. Spongebob looks at you in horror as you are marched away. <br><br>\
                             \
                             You spend the night in jail, and in the morning you escape using your telekinesis to pick the lock. You go to the meeting place and get beamed out of wherever you are. You materialize back in Headquarters, and you look at the TV next to the chamber to see some fish cops running up to the spot that you had just dematerialized from. It's hard for you to wrap your head around the concept that you had been inside a TV show.<br><br>\
                             \
@@ -3907,34 +3960,34 @@ WorldData = {
                             You are sad, and because of your failure, you no longer want to kill. It just doesn't feel as thrilling anymore.<br><br>\
                             \
                             You are now back at your house, in the kitchen.",
-                        get1: {
-                            item: "Assassination mission",
-                            data: 0
-                        },
-                        get2: {
-                            item: "Assassination mission - FAILED",
-                            data: 1
-                        },
-                        get3: {
-                            item: "licence to kill",
-                            data: 0
-                        },
-                        get4: {
-                            item: "licence to kill revoked",
-                            data: -1
-                        },
-                        dest: Locations.kitchen
+                            get1: {
+                                item: "Assassination mission",
+                                data: 0
+                            },
+                            get2: {
+                                item: "Assassination mission - FAILED",
+                                data: 1
+                            },
+                            get3: {
+                                item: "licence to kill",
+                                data: 0
+                            },
+                            get4: {
+                                item: "licence to kill revoked",
+                                data: -1
+                            },
+                            dest: Locations.kitchen
 
-                    },
-                    else: {
-                        msg: "What? What are you saying \"yes\" to?",
+                        },
+                        else: {
+                            msg: "What? What are you saying \"yes\" to?",
+                        },
                     },
                 },
-            },
-            "No": {
-                if: {
-                    cond: "question uninterrupted",
-                    msg: "\"Yes, I think we'll be great friends.\" You say. <br><br>\
+                "No": {
+                    if: {
+                        cond: "question uninterrupted",
+                        msg: "\"Yes, I think we'll be great friends.\" You say. <br><br>\
                         \"Want to walk with me to that side of town?\" You ask him, pointing in the general direction of the meeting point.<br><br>\
                         \"Sure!\" He replies, beaming. He follows you straight there, and you stop at the spot (which looks like any other part of the ocean floor) and press a button on your space suit. <br><br>\
                         \"Why have we stopped randomly?\" He inquires, looking at the button you just pressed. <br><br>\
@@ -3943,24 +3996,6 @@ WorldData = {
                         You feel a little bad, he didn't seem like he was a dangerous individual at all...<br><br>\
                         You glance at the TV next to the chamber to see a cartoon show. In it, a few fish are standing upright around an empty space. You recognize them as the townspeople of the town where Spongebob had lived. \"Where did they go?\" The fish are saying to one another.<br><br>\
                         You have completed your mission! You are now in Headquarters. Look around!",
-                    get: {
-                        item: "Assassination mission",
-                        data: 0
-                    },
-                    get2: {
-                        item: "Assassination mission - completed",
-                        data: 1
-                    },
-                    dest: Locations.Headquarters
-                },
-                else: {
-                    if: {
-                        cond: "question interrupted by cops",
-                        msg: "You ignore his question, and you start looking around for ways to get him out of the house and toward the meeting point by force. You spot a back door out of the pineapple. <br><br>\
-                            \"Want to go for a walk with me? I wanted to explore that side of town\" You ask him, pointing toward the back door. He nods, and the two of you go out the door. As you are walking off, nearing the meeting point, you see some officers approaching Spongebob's house, and they see you as you walk away! You quickly drag Spongebob along more quickly, and upon arriving at the meeting point, you hurriedly press a button on your suit that causes you to start dematerializing. <br><br>\
-                            \"Hey, you! Stop! You are a key suspect in the murder of Sandy Cheeks!\" An officer says as she approaches. Spongebob looks to you in sheer horror. <br><br>\
-                            The blue light overtakes both of you, and you appear back at Headquarters. Spongebob starts to suffocate upon arriving, and you watch as he dies. Your scuba suit vanishes as quickly as it had appeared. Mission accomplished!<br><br>\
-                            You are now in Headquarters!",
                         get: {
                             item: "Assassination mission",
                             data: 0
@@ -3972,26 +4007,44 @@ WorldData = {
                         dest: Locations.Headquarters
                     },
                     else: {
-                        msg: "What? What are you saying \"no\" to?",
+                        if: {
+                            cond: "question interrupted by cops",
+                            msg: "You ignore his question, and you start looking around for ways to get him out of the house and toward the meeting point by force. You spot a back door out of the pineapple. <br><br>\
+                            \"Want to go for a walk with me? I wanted to explore that side of town\" You ask him, pointing toward the back door. He nods, and the two of you go out the door. As you are walking off, nearing the meeting point, you see some officers approaching Spongebob's house, and they see you as you walk away! You quickly drag Spongebob along more quickly, and upon arriving at the meeting point, you hurriedly press a button on your suit that causes you to start dematerializing. <br><br>\
+                            \"Hey, you! Stop! You are a key suspect in the murder of Sandy Cheeks!\" An officer says as she approaches. Spongebob looks to you in sheer horror. <br><br>\
+                            The blue light overtakes both of you, and you appear back at Headquarters. Spongebob starts to suffocate upon arriving, and you watch as he dies. Your scuba suit vanishes as quickly as it had appeared. Mission accomplished!<br><br>\
+                            You are now in Headquarters!",
+                            get: {
+                                item: "Assassination mission",
+                                data: 0
+                            },
+                            get2: {
+                                item: "Assassination mission - completed",
+                                data: 1
+                            },
+                            dest: Locations.Headquarters
+                        },
+                        else: {
+                            msg: "What? What are you saying \"no\" to?",
+                        },
                     },
                 },
-            },
-            "revive": {
-                cmd: {
-                    "Aliyah": {
-                        msg: "You decide to revive a human that you'd killed. What was the point of that?<br><br>\
+                "revive": {
+                    cmd: {
+                        "Aliyah": {
+                            msg: "You decide to revive a human that you'd killed. What was the point of that?<br><br>\
                             Maybe you should see if anything is happening to the north or south? (remember that south is where your mission is)"
+                        }
                     }
                 }
-            }
+            },
         },
-    },
-    SaveCats: {
-        cmd: {
-            "hint": {
-                if: {
-                    cond: "south kill",
-                    msg: "Agent Lucky, here are all your possible commands at the moment (NOTE: this list updates as you progress):<br><br>\
+        SaveCats: {
+            cmd: {
+                "hint": {
+                    if: {
+                        cond: "south kill",
+                        msg: "Agent Lucky, here are all your possible commands at the moment (NOTE: this list updates as you progress):<br><br>\
                     look<br>\
                     move (up|down)<br>\
                     kill<br>\
@@ -4000,52 +4053,52 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
-                },
-                else: {
-                    msg: "Agent Lucky, here are all your possible commands at the moment (NOTE: this list updates as you progress):<br><br>\
+                    },
+                    else: {
+                        msg: "Agent Lucky, here are all your possible commands at the moment (NOTE: this list updates as you progress):<br><br>\
                         look<br>\
                         move (north|south|up|down)<br>\
                         inv<br>\
                         clear<br>\
                         help<br>\
                         hint<br>"
-                }
-            },
-            l: {
-                msg: "You are in an unknown location, but you know which way to go<br><br>\
+                    }
+                },
+                l: {
+                    msg: "You are in an unknown location, but you know which way to go<br><br>\
                     S: To get to the place you need to be, you should head south.\
                     N: You see a leaf blowing in the wind! That looks like it would be fun to chase!",
-                clear: 1
-            },
-            m: {
-                cmd: {
-                    s: {
-                        msg: "You trot along the street toward your destination, going over the plan in your head. You arrive at a warehouse-like building, and you peek inside. <br><br>Cages fill the building, only leaving narrow paths between stacks of cages to allow a person to squeeze by, presumably to allow a person to feed the cats. You recognize that you need to proceed with caution. You are not a human, so they won't think you're onto their plans, but you are a cat, so you're in danger of being captured! <br><br>What do you do now?<br>\
+                    clear: 1
+                },
+                m: {
+                    cmd: {
+                        s: {
+                            msg: "You trot along the street toward your destination, going over the plan in your head. You arrive at a warehouse-like building, and you peek inside. <br><br>Cages fill the building, only leaving narrow paths between stacks of cages to allow a person to squeeze by, presumably to allow a person to feed the cats. You recognize that you need to proceed with caution. You are not a human, so they won't think you're onto their plans, but you are a cat, so you're in danger of being captured! <br><br>What do you do now?<br>\
                             You can sneak around and gather intel (you have a contact lens that records audio & video), or you can just try to kill all the humans you see in the warehouse.",
-                        get: {
-                            item: "south kill",
-                            data: -1
-                        }
-                    },
-                    n: {
-                        if: {
-                            cond: "south kill",
-                            msg: "You chase after the leaf! It tumbles in the wind as you sprint after it. Unfortunately, the leaf flies up out of your reach, swept away by the wind.",
                             get: {
-                                item: "north leaf",
+                                item: "south kill",
                                 data: -1
-                            },
-                            else: {
-                                msg: "Ummm hello, you've got a mission to do! The time for chasing leaves is over!!"
                             }
-                        }
+                        },
+                        n: {
+                            if: {
+                                cond: "south kill",
+                                msg: "You chase after the leaf! It tumbles in the wind as you sprint after it. Unfortunately, the leaf flies up out of your reach, swept away by the wind.",
+                                get: {
+                                    item: "north leaf",
+                                    data: -1
+                                },
+                                else: {
+                                    msg: "Ummm hello, you've got a mission to do! The time for chasing leaves is over!!"
+                                }
+                            }
+                        },
                     },
                 },
-            },
-            "kill": {
-                if: {
-                    cond: "south kill",
-                    msg: "You decide to kill them all. This is going to be fun. Good thing you have a licence to kill, there's no rewinding necessary! You creep into the warehouse, avoiding the people standing guard. First, you want to see what's going on in more detail. <br><br>\
+                "kill": {
+                    if: {
+                        cond: "south kill",
+                        msg: "You decide to kill them all. This is going to be fun. Good thing you have a licence to kill, there's no rewinding necessary! You creep into the warehouse, avoiding the people standing guard. First, you want to see what's going on in more detail. <br><br>\
                         \
                         A few different cat species are here, one row has leopards, the row next to it has caracals, and the next one has lynxes. You shake your head to yourself. The cats aren't supposed to exist in the same habitat. <br><br>\
                         \
@@ -4056,54 +4109,13 @@ WorldData = {
                         \"We can talk later\" She whispers, narrowing her eyes at the guards threateningly. You have many questions for her, but you agree and turn your gaze to the humans as well. The two of you nod at one another and stalk off in opposite directions to take the humans from both sides. <br><br>\
                         The two of you work quickly to kill all of the guards and then you go together to the meet location and you lead the other agents to the warehouse so they can transport the cats back to their habitats.<br><br>\
                         Now that you're done with the mission, you turn to your sister and ask her if she wants to come with you. You have so much to catch up on! She declines reluctantly. \"I'm an agent too, so I have to be getting back to my Headquarters in Italy.\" She explains. <br><br>You're disappointed, but you understand. You don't really want to follow her to Italy, and she doesn't want to follow you back to Canada. You say your goodbyes and step back onto the plane. <br><br>You are now back at Headquarters, you can look around to see if there's a mission.",
-                    get: {
-                        item: "littermate",
-                        data: -1
-                    },
-                    get2: {
-                        item: "kill point SaveCats",
-                        data: 1
-                    },
-                    get3: {
-                        item: "Save the cats mission",
-                        data: 0
-                    },
-                    get4: {
-                        item: "Save the cats mission - completed",
-                        data: 1
-                    },
-                    dest: Locations.Headquarters,
-                },
-                else: {
-                    if: {
-                        cond: "north leaf",
-                        msg: "You look around for something to kill. The leaf! You rewind time slightly so it's within your reach, and you snatch it right out of the air triumphantly. This is good practice for your mission. Is it time to go south now?",
-                    },
-                    else: {
-                        msg: "What is there to kill? Maybe try going north or south (look around to see where things are)",
-                    }
-                }
-            },
-            "(Gather|sneak)": {
-                cmd: {
-                    "(intel|around)": {
-                        msg: "You decide to sneak around and gather intel. A few different cat species are here, one row has leopards, the row next to it has caracals, and the next one has lynxes. You shake your head to yourself. The cats aren't supposed to exist in the same habitat. <br><br>\
-                            As you creep around, you notice that a few rows over, a housecat seems to be trying to get your attention silently. You carefully retreat and go around the rows to reach the row where the cat is without drawing the humans' attention. As you approach, you realize that the housecat is one of your littermates! You hadn't seen her since you were kittens! <br><br>\
-                            You use your telekinesis to free her quietly (she can't free herself because although she does have magical powers, they're more in the vein of invulnerability). Looking at one another in utter shock, you both have many questions. <br><br>\
-                            \"We'll catch up later, first we should take them all out.\" She says, narrowing her eyes at the guards. Normally you'd be up for that, but you'd opted to just gather intel rather than kill everyone, so you're committed to getting everyone arrested without hurting them. <br><br>\
-                            \"No!\" You respond, stopping her from pouncing. She looks at you in confusion. Even as a kitten, you'd never turned down a fight. She must think you're going soft. <br><br>\
-                            \"Let's just gather intel and report back; I want to see if I can take the whole organization down with enough intel.\" You whisper, darting your eyes toward the guards. She sighs and agrees.<br><br>\
-                            You sneak around to a back room and get a glimpse of a long-haired human talking to a short-haired human. You stare at them for a few seconds, hoping that it's a clear enough short to run facial recognition. <br><br>Unsure what to do, the two of your wander around the warehouse for a bit and then leave, meeting the people from Headquarters at the meet point. They thank you for what you did and they say that they have enough evidence now to take legal action against the organization. <br><br>Turning to your sibling, you ask her if she wants to come back to Canada with you. She declines, and asks if you want to come to where she is stationed in Italy. You turn her down. The two of you say your goodbyes and you get on the plane by yourself, headed for Canada. <br><br><br>\
-                            \
-                            \
-                            You are now in Headquarters. Look around to see if you have a mission.",
-                        get1: {
+                        get: {
                             item: "littermate",
                             data: -1
                         },
                         get2: {
-                            item: "gathered intel",
-                            data: -1
+                            item: "kill point SaveCats",
+                            data: 1
                         },
                         get3: {
                             item: "Save the cats mission",
@@ -4113,16 +4125,57 @@ WorldData = {
                             item: "Save the cats mission - completed",
                             data: 1
                         },
-                        dest: Locations.Headquarters
+                        dest: Locations.Headquarters,
+                    },
+                    else: {
+                        if: {
+                            cond: "north leaf",
+                            msg: "You look around for something to kill. The leaf! You rewind time slightly so it's within your reach, and you snatch it right out of the air triumphantly. This is good practice for your mission. Is it time to go south now?",
+                        },
+                        else: {
+                            msg: "What is there to kill? Maybe try going north or south (look around to see where things are)",
+                        }
+                    }
+                },
+                "(Gather|sneak)": {
+                    cmd: {
+                        "(intel|around)": {
+                            msg: "You decide to sneak around and gather intel. A few different cat species are here, one row has leopards, the row next to it has caracals, and the next one has lynxes. You shake your head to yourself. The cats aren't supposed to exist in the same habitat. <br><br>\
+                            As you creep around, you notice that a few rows over, a housecat seems to be trying to get your attention silently. You carefully retreat and go around the rows to reach the row where the cat is without drawing the humans' attention. As you approach, you realize that the housecat is one of your littermates! You hadn't seen her since you were kittens! <br><br>\
+                            You use your telekinesis to free her quietly (she can't free herself because although she does have magical powers, they're more in the vein of invulnerability). Looking at one another in utter shock, you both have many questions. <br><br>\
+                            \"We'll catch up later, first we should take them all out.\" She says, narrowing her eyes at the guards. Normally you'd be up for that, but you'd opted to just gather intel rather than kill everyone, so you're committed to getting everyone arrested without hurting them. <br><br>\
+                            \"No!\" You respond, stopping her from pouncing. She looks at you in confusion. Even as a kitten, you'd never turned down a fight. She must think you're going soft. <br><br>\
+                            \"Let's just gather intel and report back; I want to see if I can take the whole organization down with enough intel.\" You whisper, darting your eyes toward the guards. She sighs and agrees.<br><br>\
+                            You sneak around to a back room and get a glimpse of a long-haired human talking to a short-haired human. You stare at them for a few seconds, hoping that it's a clear enough short to run facial recognition. <br><br>Unsure what to do, the two of your wander around the warehouse for a bit and then leave, meeting the people from Headquarters at the meet point. They thank you for what you did and they say that they have enough evidence now to take legal action against the organization. <br><br>Turning to your sibling, you ask her if she wants to come back to Canada with you. She declines, and asks if you want to come to where she is stationed in Italy. You turn her down. The two of you say your goodbyes and you get on the plane by yourself, headed for Canada. <br><br><br>\
+                            \
+                            \
+                            You are now in Headquarters. Look around to see if you have a mission.",
+                            get1: {
+                                item: "littermate",
+                                data: -1
+                            },
+                            get2: {
+                                item: "gathered intel",
+                                data: -1
+                            },
+                            get3: {
+                                item: "Save the cats mission",
+                                data: 0
+                            },
+                            get4: {
+                                item: "Save the cats mission - completed",
+                                data: 1
+                            },
+                            dest: Locations.Headquarters
+                        },
                     },
                 },
             },
         },
-    },
-    heaven: {
-        cmd: {
-            "hint": {
-                msg: "Going for the hint was probably a good choice. Here are your options:<br><br>\
+        heaven: {
+            cmd: {
+                "hint": {
+                    msg: "Going for the hint was probably a good choice. Here are your options:<br><br>\
                     kill leprechaun<br>\
                     Where am I?<br>\
                     move (down|up)<br>\
@@ -4131,53 +4184,60 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
-            },
-            kill: {
-                msg: "Try killing a leprechaun rather than just shouting \"kill\" into the void.",
-                cmd: {
-                    "Leprechaun": {
-                        msg: "You have killed a leprechaun!",
-                        if: {
-                            cond: "licence to kill revoked",
-                            msg: "Killing things doesn't feel so fun anymore..."
-                        },
-                        else: {
+                },
+                kill: {
+                    msg: "Try killing a leprechaun rather than just shouting \"kill\" into the void.",
+                    cmd: {
+                        "Leprechaun": {
+                            msg: "You have killed a leprechaun!",
                             if: {
-                                cond: "kill point N",
-                                inc: "kill point L",
+                                cond: "licence to kill revoked",
+                                msg: "Killing things doesn't feel so fun anymore..."
+                            },
+                            else: {
                                 if: {
-                                    cond: "kill point A",
+                                    cond: "kill point N",
                                     inc: "kill point L",
                                     if: {
-                                        cond: "kill point Maia",
+                                        cond: "kill point A",
                                         inc: "kill point L",
                                         if: {
-                                            cond: "kill point M",
+                                            cond: "kill point Maia",
                                             inc: "kill point L",
                                             if: {
-                                                cond: "kill point Em",
+                                                cond: "kill point M",
                                                 inc: "kill point L",
                                                 if: {
-                                                    cond: "kill point Aliyah",
+                                                    cond: "kill point Em",
                                                     inc: "kill point L",
                                                     if: {
-                                                        cond: "kill point Ev",
+                                                        cond: "kill point Aliyah",
                                                         inc: "kill point L",
                                                         if: {
-                                                            cond: "kill point R",
+                                                            cond: "kill point Ev",
                                                             inc: "kill point L",
                                                             if: {
-                                                                cond: "kill point B",
-                                                                msg: "You are ready. You are transported to the Assassin's Headquarters",
-                                                                inc: "licence to kill",
-                                                                inc2: "kill point L",
-                                                                dest: Locations.Headquarters
-                                                            },
-                                                            else: {
-                                                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                                                cond: "kill point R",
                                                                 inc: "kill point L",
-                                                                inc: "thou art banished!",
-                                                                dest: Locations.hell,
+                                                                if: {
+                                                                    cond: "kill point B",
+                                                                    msg: "You are ready. You are transported to the Assassin's Headquarters",
+                                                                    inc: "licence to kill",
+                                                                    inc2: "kill point L",
+                                                                    dest: Locations.Headquarters
+                                                                },
+                                                                else: {
+                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                                                    inc: "kill point L",
+                                                                    inc: "thou art banished!",
+                                                                    dest: Locations.hell,
+                                                                },
+                                                                else: {
+                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                                                    inc: "kill point L",
+                                                                    inc: "thou art banished!",
+                                                                    dest: Locations.hell
+                                                                },
                                                             },
                                                             else: {
                                                                 msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
@@ -4235,145 +4295,138 @@ WorldData = {
                                     dest: Locations.hell
                                 },
                             },
-                            else: {
-                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                inc: "kill point L",
-                                inc: "thou art banished!",
-                                dest: Locations.hell
-                            },
                         },
                     },
                 },
-            },
-            l: {
-                msg: "Leprechaun Heaven seems amazing! Gold is abundant, and that includes goldfish - they come here when they die. Leprechauns are unicycling all over the place, doing fancy tricks. They hand you a matching outfit and ask you to join them in their leprechauning. You are reluctant, but they're insistent. <br><br>\"We all resisted at first, but now we embrace it!\"<br><br> They say to you. You back away, but they creep ever closer. You're not so sure that this is heaven anymore...",
-                img: "https://images4-f.ravelrycache.com/uploads/rdavis8483/543913653/IMG_8100_small2.JPG",
-                clear: 1,
-                end: 777,
-            },
-            m: {
-                cmd: {
-                    u: {
-                        if: {
-                            cond: "attempt #7-fail",
-                            msg: "Alright, alright, you passed the test *rolls eyes*",
-                            get: {
-                                item: "attempt #7-fail",
-                                data: 0
-                            },
-                            get2: {
-                                item: "attempt #6-fail",
-                                data: 0
-                            },
-                            get3: {
-                                item: "attempt #5-fail",
-                                data: 0
-                            },
-                            get4: {
-                                item: "attempt #4- fail",
-                                data: 0
-                            },
-                            get5: {
-                                item: "attempt #3- fail",
-                                data: 0
-                            },
-                            get6: {
-                                item: "attempt #2- fail",
-                                data: 0
-                            },
-                            get7: {
-                                item: "attempt #1- fail",
-                                data: 0
-                            },
-                            dest: Locations.HomeHardware
-                        },
-                        else: {
+                l: {
+                    msg: "Leprechaun Heaven seems amazing! Gold is abundant, and that includes goldfish - they come here when they die. Leprechauns are unicycling all over the place, doing fancy tricks. They hand you a matching outfit and ask you to join them in their leprechauning. You are reluctant, but they're insistent. <br><br>\"We all resisted at first, but now we embrace it!\"<br><br> They say to you. You back away, but they creep ever closer. You're not so sure that this is heaven anymore...",
+                    img: "https://images4-f.ravelrycache.com/uploads/rdavis8483/543913653/IMG_8100_small2.JPG",
+                    clear: 1,
+                    end: 777,
+                },
+                m: {
+                    cmd: {
+                        u: {
                             if: {
-                                cond: "attempt #6-fail",
-                                msg: "I'm done writing messages.",
+                                cond: "attempt #7-fail",
+                                msg: "Alright, alright, you passed the test *rolls eyes*",
                                 get: {
                                     item: "attempt #7-fail",
-                                    data: -1
-                                }
+                                    data: 0
+                                },
+                                get2: {
+                                    item: "attempt #6-fail",
+                                    data: 0
+                                },
+                                get3: {
+                                    item: "attempt #5-fail",
+                                    data: 0
+                                },
+                                get4: {
+                                    item: "attempt #4- fail",
+                                    data: 0
+                                },
+                                get5: {
+                                    item: "attempt #3- fail",
+                                    data: 0
+                                },
+                                get6: {
+                                    item: "attempt #2- fail",
+                                    data: 0
+                                },
+                                get7: {
+                                    item: "attempt #1- fail",
+                                    data: 0
+                                },
+                                dest: Locations.HomeHardware
                             },
                             else: {
                                 if: {
-                                    cond: "attempt #5-fail",
+                                    cond: "attempt #6-fail",
                                     msg: "I'm done writing messages.",
                                     get: {
-                                        item: "attempt #6-fail",
+                                        item: "attempt #7-fail",
                                         data: -1
                                     }
                                 },
                                 else: {
                                     if: {
-                                        cond: "attempt #4- fail",
-                                        msg: "Yeah, nothing's happening.",
+                                        cond: "attempt #5-fail",
+                                        msg: "I'm done writing messages.",
                                         get: {
-                                            item: "attempt #5-fail",
+                                            item: "attempt #6-fail",
                                             data: -1
                                         }
                                     },
                                     else: {
                                         if: {
-                                            cond: "attempt #3- fail",
-                                            msg: "And we're on attempt 4 now...you can probably stop now...nothing's going to happen",
+                                            cond: "attempt #4- fail",
+                                            msg: "Yeah, nothing's happening.",
                                             get: {
-                                                item: "attempt #4- fail",
+                                                item: "attempt #5-fail",
                                                 data: -1
                                             }
                                         },
                                         else: {
                                             if: {
-                                                cond: "attempt #2- fail",
-                                                msg: "Uh...and you're still trying...alright...",
+                                                cond: "attempt #3- fail",
+                                                msg: "And we're on attempt 4 now...you can probably stop now...nothing's going to happen",
                                                 get: {
-                                                    item: "attempt #3- fail",
+                                                    item: "attempt #4- fail",
                                                     data: -1
                                                 }
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "attempt #1- fail",
-                                                    msg: "I see that you're trying again. Well, I believe in you, I suppose.",
+                                                    cond: "attempt #2- fail",
+                                                    msg: "Uh...and you're still trying...alright...",
                                                     get: {
-                                                        item: "attempt #2- fail",
+                                                        item: "attempt #3- fail",
                                                         data: -1
                                                     }
                                                 },
                                                 else: {
-                                                    msg: "Uh...you're already here, you can't go to Leprechaun Heaven again (although I know, it's pretty fantastic. Keep trying, I believe in you!)",
-                                                    get: {
-                                                        item: "attempt #1- fail",
-                                                        data: -1
+                                                    if: {
+                                                        cond: "attempt #1- fail",
+                                                        msg: "I see that you're trying again. Well, I believe in you, I suppose.",
+                                                        get: {
+                                                            item: "attempt #2- fail",
+                                                            data: -1
+                                                        }
+                                                    },
+                                                    else: {
+                                                        msg: "Uh...you're already here, you can't go to Leprechaun Heaven again (although I know, it's pretty fantastic. Keep trying, I believe in you!)",
+                                                        get: {
+                                                            item: "attempt #1- fail",
+                                                            data: -1
+                                                        }
                                                     }
-                                                }
+                                                },
                                             },
                                         },
                                     },
                                 },
                             },
                         },
-                    },
-                }
-            },
-            "Where": {
-                cmd: {
-                    "am": {
-                        cmd: {
-                            "I": {
-                                msg: "You are in Leprechaun Heaven! Look around!",
+                    }
+                },
+                "Where": {
+                    cmd: {
+                        "am": {
+                            cmd: {
+                                "I": {
+                                    msg: "You are in Leprechaun Heaven! Look around!",
+                                },
                             },
                         },
                     },
                 },
             },
         },
-    },
-    hell: {
-        cmd: {
-            "hint": {
-                msg: "There's not a whole lot to do here, but here's the list of commands:<br><br>\
+        hell: {
+            cmd: {
+                "hint": {
+                    msg: "There's not a whole lot to do here, but here's the list of commands:<br><br>\
                     move (up|down)<br>\
                     kill beavers<br>\
                     look<br>\
@@ -4381,105 +4434,105 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
-            },
-            kill: {
-                cmd: {
-                    "(beaver|beavers|them|everyone)": {
-                        msg: "You kill the beavers. <br><br>Now what?<br><br>\
+                },
+                kill: {
+                    cmd: {
+                        "(beaver|beavers|them|everyone)": {
+                            msg: "You kill the beavers. <br><br>Now what?<br><br>\
                             Perhaps now you are the master of hell or something. You don't see anyone around. You feel a bit lonely. You suppose that this must be your personal hell, since if this were a group situation, it'd be pretty well-populated. Or maybe everyone became beavers. You laugh at the concept. <br><br>\
                             \
                             You look at your paws and find, to your horror, that you are morphing into a beaver! When someone pops into hell, you attack them as easy street plays.",
-                        inc: "kill point Beaver",
-                        clear: 1,
-                        end: 666
-                    }
-                }
-            },
-            l: {
-                msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
-                clear: 1,
-                end: 666
-            },
-            m: {
-                cmd: {
-                    u: {
-                        if: {
-                            cond: "thou art banished!",
-                            msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
-                        },
-                        else: {
-                            msg: "You ascend to Leprechaun Heaven! Leprechauns are frolicking.",
-                            dest: Locations.heaven
+                            inc: "kill point Beaver",
+                            clear: 1,
+                            end: 666
                         }
-
-                    },
-                    d: {
-                        if: {
-                            cond: "highway to hell 5",
-                            msg: "Whoops, you dig through and find that there's a lava pit there. You are now burning to...death? You're already in hell...<br>\
-                                    You climb out of the pit and find that although you are in excruciating pain, you haven't died. Hell is weird.",
-                            end: 321
-                        },
-                        else: {
+                    }
+                },
+                l: {
+                    msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
+                    clear: 1,
+                    end: 666
+                },
+                m: {
+                    cmd: {
+                        u: {
                             if: {
-                                cond: "highway to hell 4",
-                                msg: "Your digging seems to pay off! You can feel that the ground in the hole is close to breaking!",
-                                get: {
-                                    item: "highway to hell 5",
-                                    data: -1
-                                }
+                                cond: "thou art banished!",
+                                msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
+                            },
+                            else: {
+                                msg: "You ascend to Leprechaun Heaven! Leprechauns are frolicking.",
+                                dest: Locations.heaven
+                            }
+
+                        },
+                        d: {
+                            if: {
+                                cond: "highway to hell 5",
+                                msg: "Whoops, you dig through and find that there's a lava pit there. You are now burning to...death? You're already in hell...<br>\
+                                    You climb out of the pit and find that although you are in excruciating pain, you haven't died. Hell is weird.",
+                                end: 321
                             },
                             else: {
                                 if: {
-                                    cond: "highway to hell 3",
-                                    msg: "You continue to dig",
+                                    cond: "highway to hell 4",
+                                    msg: "Your digging seems to pay off! You can feel that the ground in the hole is close to breaking!",
                                     get: {
-                                        item: "highway to hell 4",
+                                        item: "highway to hell 5",
                                         data: -1
                                     }
                                 },
                                 else: {
                                     if: {
-                                        cond: "highway to hell 2",
-                                        msg: "You dig as quickly as you can. It's unclear if anything will happen.",
+                                        cond: "highway to hell 3",
+                                        msg: "You continue to dig",
                                         get: {
-                                            item: "highway to hell 3",
+                                            item: "highway to hell 4",
                                             data: -1
                                         }
                                     },
                                     else: {
                                         if: {
-                                            cond: "highway to hell 1",
-                                            msg: "You begin to dig in the ground",
+                                            cond: "highway to hell 2",
+                                            msg: "You dig as quickly as you can. It's unclear if anything will happen.",
                                             get: {
-                                                item: "highway to hell 2",
+                                                item: "highway to hell 3",
                                                 data: -1
                                             }
                                         },
                                         else: {
-                                            msg: "Uh, you're already in hell. I'm not entirely sure where you think you're going...",
-                                            get: {
-                                                item: "highway to hell 1",
-                                                data: -1
-                                            }
+                                            if: {
+                                                cond: "highway to hell 1",
+                                                msg: "You begin to dig in the ground",
+                                                get: {
+                                                    item: "highway to hell 2",
+                                                    data: -1
+                                                }
+                                            },
+                                            else: {
+                                                msg: "Uh, you're already in hell. I'm not entirely sure where you think you're going...",
+                                                get: {
+                                                    item: "highway to hell 1",
+                                                    data: -1
+                                                }
+                                            },
                                         },
                                     },
-                                },
-                            }
+                                }
+                            },
                         },
-                    },
-                }
+                    }
+                },
             },
         },
-    },
-    AliyahRoom2: {
-        cmd: {
-            "hint": {
-                if: {
-                    cond: "licence to kill",
+        AliyahRoom2: {
+            cmd: {
+                "hint": {
                     if: {
-                        cond: "Assassination mission",
-                        msg: "Alright, here are your available commands:<br><br>\
+                        cond: "licence to kill",
+                        if: {
+                            cond: "Assassination mission",
+                            msg: "Alright, here are your available commands:<br><br>\
                             look<br>\
                             leave<br>\
                             portal<br>\
@@ -4491,9 +4544,9 @@ WorldData = {
                             clear<br>\
                             help<br>\
                             hint"
-                    },
-                    else: {
-                        msg: "Alright, here are your available commands:<br><br>\
+                        },
+                        else: {
+                            msg: "Alright, here are your available commands:<br><br>\
                             look<br>\
                             leave<br>\
                             portal<br>\
@@ -4504,10 +4557,10 @@ WorldData = {
                             clear<br>\
                             help<br>\
                             hint"
+                        },
                     },
-                },
-                else: {
-                    msg: "Alright, here are your available commands:<br><br>\
+                    else: {
+                        msg: "Alright, here are your available commands:<br><br>\
                             look<br>\
                             leave<br>\
                             portal<br>\
@@ -4517,86 +4570,86 @@ WorldData = {
                             clear<br>\
                             help<br>\
                             hint"
+                    },
                 },
-            },
-            l: {
-                if: {
-                    cond: "licence to kill",
+                l: {
                     if: {
-                        cond: "Assassination mission",
-                        img: "Images/AliyahRoom2.jpeg",
-                        msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
-                        clear: 1,
+                        cond: "licence to kill",
+                        if: {
+                            cond: "Assassination mission",
+                            img: "Images/AliyahRoom2.jpeg",
+                            msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
+                            clear: 1,
+                        },
+                        else: {
+                            img: "Images/AliyahRoom2.jpeg",
+                            msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, or \"Headquarters\" to return to headquarters).",
+                            clear: 1,
+                        },
                     },
                     else: {
                         img: "Images/AliyahRoom2.jpeg",
-                        msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, or \"Headquarters\" to return to headquarters).",
-                        clear: 1,
+                        msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now.)",
+                        clear: 1
                     },
                 },
-                else: {
-                    img: "Images/AliyahRoom2.jpeg",
-                    msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now.)",
-                    clear: 1
+                "bed": {
+                    msg: "Walking across the soft carpet, you curl up on the bed happily and fall asleep.",
+                    inc: "rest",
                 },
-            },
-            "bed": {
-                msg: "Walking across the soft carpet, you curl up on the bed happily and fall asleep.",
-                inc: "rest",
-            },
-            "carpet": {
-                msg: "You curl up on the fluffy carpet and fall asleep.",
-                inc: "rest",
-            },
-            "(portal|Grebel)": {
-                msg: "You return to Aliyah's other room and then go to the hallway.",
-                dest: Locations.hallway3
-            },
-            "(explore|leave|hallway)": {
-                msg: "You go to the hallway. There are four open doors, one leading to a bathroom, and the others leading to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
-                dest: Locations.AliyahHallway
-            },
-            "Headquarters": {
-                if: {
-                    cond: "licence to kill revoked",
-                    msg: "You have lost your licence to kill, so you can't go back to Headquarters."
+                "carpet": {
+                    msg: "You curl up on the fluffy carpet and fall asleep.",
+                    inc: "rest",
                 },
-                else: {
+                "(portal|Grebel)": {
+                    msg: "You return to Aliyah's other room and then go to the hallway.",
+                    dest: Locations.hallway3
+                },
+                "(explore|leave|hallway)": {
+                    msg: "You go to the hallway. There are four open doors, one leading to a bathroom, and the others leading to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
+                    dest: Locations.AliyahHallway
+                },
+                "Headquarters": {
                     if: {
-                        cond: "Assassination mission",
-                        msg: "You are transported back to Headquarters. Look around- you can re-accept the mission to go back to the mission.",
-                        dest: Locations.Headquarters
+                        cond: "licence to kill revoked",
+                        msg: "You have lost your licence to kill, so you can't go back to Headquarters."
                     },
                     else: {
                         if: {
-                            cond: "Assassination mission - completed",
-                            msg: "You are transported back to Headquarters. Look around to see if you have a mission.",
+                            cond: "Assassination mission",
+                            msg: "You are transported back to Headquarters. Look around- you can re-accept the mission to go back to the mission.",
                             dest: Locations.Headquarters
                         },
                         else: {
-                            msg: "What do you want to do?"
+                            if: {
+                                cond: "Assassination mission - completed",
+                                msg: "You are transported back to Headquarters. Look around to see if you have a mission.",
+                                dest: Locations.Headquarters
+                            },
+                            else: {
+                                msg: "What do you want to do?"
+                            }
                         }
                     }
-                }
-            },
-            "(Assassination|mission)": {
-                if: {
-                    cond: "Assassination mission",
-                    msg: "You return to the place that Headquarters had beamed you to. Perhaps now it's time you go south?",
-                    dest: Locations.Assassin
                 },
-                else: {
-                    msg: "Assassination?",
+                "(Assassination|mission)": {
+                    if: {
+                        cond: "Assassination mission",
+                        msg: "You return to the place that Headquarters had beamed you to. Perhaps now it's time you go south?",
+                        dest: Locations.Assassin
+                    },
+                    else: {
+                        msg: "Assassination?",
+                    },
                 },
             },
         },
-    },
-    AliyahHallway: {
-        cmd: {
-            "hint": {
-                if: {
-                    cond: "stairs question",
-                    msg: "Alright, here are your commands for now (they change as you progress through the game):<br><br>\
+        AliyahHallway: {
+            cmd: {
+                "hint": {
+                    if: {
+                        cond: "stairs question",
+                        msg: "Alright, here are your commands for now (they change as you progress through the game):<br><br>\
                             be careful<br>\
                             just go<br>\
                             look<br>\
@@ -4616,9 +4669,9 @@ WorldData = {
                             help<br>\
                             clear<br>\
                             hint"
-                },
-                else: {
-                    msg: "Alright, here are your commands for now (they change as you progress through the game):<br><br>\
+                    },
+                    else: {
+                        msg: "Alright, here are your commands for now (they change as you progress through the game):<br><br>\
                             be careful<br>\
                             just go<br>\
                             look<br>\
@@ -4638,139 +4691,139 @@ WorldData = {
                             help<br>\
                             clear<br>\
                             hint",
-                }
-            },
-            h: {
-                msg: "Commands: north/south/east/west are now obsolete, you can type a name that you see on the floor plan to go to their room. When you \"look\" while in a room, the text there should tell you which objects you can interact with, and/or the object will be on the floor plan. <br><br>\
+                    }
+                },
+                h: {
+                    msg: "Commands: north/south/east/west are now obsolete, you can type a name that you see on the floor plan to go to their room. When you \"look\" while in a room, the text there should tell you which objects you can interact with, and/or the object will be on the floor plan. <br><br>\
                     look<br>\
                     inv<br>\
                     help<br>\
                     clear<br>\
                     hint",
-                clear: 1
-            },
-            l: {
-                img: "Images/AliyahHallway.jpeg",
-                msg: "You are in a hallway with four open doors. One leads to a bathroom, and the others lead to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
-                clear: 1
-            },
-            "(Zara|right|r)": {
-                if: {
-                    cond: "Name Zara",
-                    msg: "Entering Zara's room, you climb over mountains of clothes to see them laying on its side on its bed. <br><br>",
-                    dest: Locations.ZaraRoom
+                    clear: 1
                 },
-                else: {
-                    msg: "Entering a bedroom to your right, you climb over mountains of clothes to see a lazy looking human laying on its side on its bed. <br><br>\
+                l: {
+                    img: "Images/AliyahHallway.jpeg",
+                    msg: "You are in a hallway with four open doors. One leads to a bathroom, and the others lead to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
+                    clear: 1
+                },
+                "(Zara|right|r)": {
+                    if: {
+                        cond: "Name Zara",
+                        msg: "Entering Zara's room, you climb over mountains of clothes to see them laying on its side on its bed. <br><br>",
+                        dest: Locations.ZaraRoom
+                    },
+                    else: {
+                        msg: "Entering a bedroom to your right, you climb over mountains of clothes to see a lazy looking human laying on its side on its bed. <br><br>\
                         You try to determine its gender and start to wonder how you had guessed others'. Had you been making too many assumptions?. You shake your head and decide not to care about gender. <br><br>\
                         \"Oh hi, Lucky!\" It says. You wonder how it knows your name. <br>\
                         \"You can call me Zara. I use they/them pronouns.\" You meow in understanding, but the silly human seems to take your understanding for confusion. They continue to talk about pronouns for a bit, so you skip forward in time a minute or two to get out of the conversation. <br><br>\
                         \
                         You are now in their room.",
-                    get: {
-                        item: "Name Zara",
-                        data: -1
-                    },
-                    dest: Locations.ZaraRoom
-                }
-            },
-            "kill": {
-                cmd: {
-                    "Zara": {
-                        if: {
-                            cond: "licence to kill revoked",
-                            msg: "Killing things doesn't feel so fun anymore..."
+                        get: {
+                            item: "Name Zara",
+                            data: -1
                         },
-                        else: {
-                            msg: "You go into the messy room to the right in the hallway and jump at the human's head, aiming to kill. You'd aimed for the eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
+                        dest: Locations.ZaraRoom
+                    }
+                },
+                "kill": {
+                    cmd: {
+                        "Zara": {
+                            if: {
+                                cond: "licence to kill revoked",
+                                msg: "Killing things doesn't feel so fun anymore..."
+                            },
+                            else: {
+                                msg: "You go into the messy room to the right in the hallway and jump at the human's head, aiming to kill. You'd aimed for the eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
                             \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
-                            inc: "rest",
+                                inc: "rest",
+                            },
                         },
-                    },
-                }
-            },
-            "(left|Leila|Rob|Parents)": {
-                msg: "You go into a room with brownish-coloured walls. No one is here, but there is a large bed that looks comfy and there is a door leading somewhere.",
-                get: {
-                    item: "bathroom and walk-in closet",
-                    data: -1
+                    }
                 },
-                get2: {
-                    item: "parents' bed",
-                    data: -1
-                },
-            },
-            "bed": {
-                if: {
-                    cond: "parents' bed",
-                    msg: "You curl up on the bed. Mm. Cozy wonderful sleep :) ",
-                    inc: "rest"
-                },
-                else: {
-                    msg: "Whose bed? Maybe explore around a bit.",
-                }
-            },
-            "door": {
-                if: {
-                    cond: "bathroom and walk-in closet",
-                    msg: "You head for the mysterious door and it leads to a small room with clothing on hangers and in laundry baskets, and then a small bathroom with a blue floor, a sink, and a toilet. The toilet water is calling to you but so does the pile of laundry in the small room. You return to the hallway, but you can come straight to the toilet or laundry now that you know where they are..",
+                "(left|Leila|Rob|Parents)": {
+                    msg: "You go into a room with brownish-coloured walls. No one is here, but there is a large bed that looks comfy and there is a door leading somewhere.",
                     get: {
-                        item: "laundry",
+                        item: "bathroom and walk-in closet",
                         data: -1
                     },
                     get2: {
-                        item: "bathroom and walk-in closet",
-                        data: 0
+                        item: "parents' bed",
+                        data: -1
+                    },
+                },
+                "bed": {
+                    if: {
+                        cond: "parents' bed",
+                        msg: "You curl up on the bed. Mm. Cozy wonderful sleep :) ",
+                        inc: "rest"
+                    },
+                    else: {
+                        msg: "Whose bed? Maybe explore around a bit.",
                     }
                 },
-                else: {
-                    msg: "Which door?",
-                }
-            },
-            "hallway": {
-                msg: "You're in the hallway.",
-            },
-            "(water|toilet)": {
-                msg: "You drink that glorious water. Ah...refreshing...",
-                inc: "water"
-            },
-            "laundry": {
-                if: {
-                    cond: "laundry",
-                    msg: "You curl up in the laundry in the small room between the bedroom and the connected bathroom. Cozy.",
-                    inc: "rest",
+                "door": {
+                    if: {
+                        cond: "bathroom and walk-in closet",
+                        msg: "You head for the mysterious door and it leads to a small room with clothing on hangers and in laundry baskets, and then a small bathroom with a blue floor, a sink, and a toilet. The toilet water is calling to you but so does the pile of laundry in the small room. You return to the hallway, but you can come straight to the toilet or laundry now that you know where they are..",
+                        get: {
+                            item: "laundry",
+                            data: -1
+                        },
+                        get2: {
+                            item: "bathroom and walk-in closet",
+                            data: 0
+                        }
+                    },
+                    else: {
+                        msg: "Which door?",
+                    }
                 },
-                else: {
-                    msg: "Where's the laundry? Go find it first so you know where to go.",
-                }
+                "hallway": {
+                    msg: "You're in the hallway.",
+                },
+                "(water|toilet)": {
+                    msg: "You drink that glorious water. Ah...refreshing...",
+                    inc: "water"
+                },
+                "laundry": {
+                    if: {
+                        cond: "laundry",
+                        msg: "You curl up in the laundry in the small room between the bedroom and the connected bathroom. Cozy.",
+                        inc: "rest",
+                    },
+                    else: {
+                        msg: "Where's the laundry? Go find it first so you know where to go.",
+                    }
 
-            },
-            "stairs": {
-                msg: "You look down the stairs and wonder how careful you should be. \"Be careful\" or \"just go\"?",
-                get: {
-                    item: "stairs question",
-                    data: -1,
                 },
-            },
-            "careful": {
-                if: {
-                    cond: "stairs question",
-                    msg: "You step carefully down the stairs, coming to the bottom. You see a living room and a door that leads outside.",
+                "stairs": {
+                    msg: "You look down the stairs and wonder how careful you should be. \"Be careful\" or \"just go\"?",
                     get: {
                         item: "stairs question",
-                        data: 0
-                    }
+                        data: -1,
+                    },
                 },
-                else: {
-                    msg: "What are you trying to do?",
+                "careful": {
+                    if: {
+                        cond: "stairs question",
+                        msg: "You step carefully down the stairs, coming to the bottom. You see a living room and a door that leads outside.",
+                        get: {
+                            item: "stairs question",
+                            data: 0
+                        }
+                    },
+                    else: {
+                        msg: "What are you trying to do?",
+                    },
                 },
-            },
-            "just": {
-                cmd: {
-                    "go": {
-                        if: {
-                            cond: "stairs question",
-                            msg: "You go down the stairs at your usual speed. You’ve seen worse than some pesky stairs. <br><br>\
+                "just": {
+                    cmd: {
+                        "go": {
+                            if: {
+                                cond: "stairs question",
+                                msg: "You go down the stairs at your usual speed. You’ve seen worse than some pesky stairs. <br><br>\
                                 The stairs are no match for the great and powerful Lucky-<br><br>AH!You're falling down the stairs!!<br><br>\
                                 A lovely funeral was held.<br><br>\
                                 Summer has come and passed<br>\
@@ -4807,35 +4860,35 @@ WorldData = {
                                 Wake me up when September ends<br>\
                                 Wake me up when September ends<br>\
                                 Wake me up when September ends",
-                            get: {
-                                item: "stairs question",
-                                data: 0
+                                get: {
+                                    item: "stairs question",
+                                    data: 0
+                                },
+                                end: 7
                             },
-                            end: 7
-                        },
-                        else: {
-                            msg: "What are you trying to do?"
-                        }
+                            else: {
+                                msg: "What are you trying to do?"
+                            }
 
+                        }
                     }
+                },
+                "Aliyah": {
+                    msg: "You trot into Aliyah's room.",
+                    dest: Locations.AliyahRoom2
+                },
+                "bathroom": {
+                    msg: "You head over to the bathroom. Nothing much is happening here, but you do see a toilet, so you take the opportunity to drink some *sophisticated* water.",
+                    inc: "water",
                 }
             },
-            "Aliyah": {
-                msg: "You trot into Aliyah's room.",
-                dest: Locations.AliyahRoom2
-            },
-            "bathroom": {
-                msg: "You head over to the bathroom. Nothing much is happening here, but you do see a toilet, so you take the opportunity to drink some *sophisticated* water.",
-                inc: "water",
-            }
         },
-    },
-    ZaraRoom: {
-        cmd: {
-            "hint": {
-                if: {
-                    cond: "follow Z",
-                    msg: "Here are all the possible commands right now: <br><br>\
+        ZaraRoom: {
+            cmd: {
+                "hint": {
+                    if: {
+                        cond: "follow Z",
+                        msg: "Here are all the possible commands right now: <br><br>\
                         look<br>\
                         follow<br>\
                         return / leave<br>\
@@ -4846,9 +4899,9 @@ WorldData = {
                         help<br>\
                         clear<br>\
                         hint"
-                },
-                else: {
-                    msg: "Here are all the possible commands right now: <br><br>\
+                    },
+                    else: {
+                        msg: "Here are all the possible commands right now: <br><br>\
                         look<br>\
                         follow<br>\
                         return / leave<br>\
@@ -4858,96 +4911,96 @@ WorldData = {
                         help<br>\
                         clear<br>\
                         hint"
+                    },
                 },
-            },
-            l: {
-                if: {
-                    cond: "follow Z",
-                    msg: "You are in a bedroom. The bed is covered in fluffy stuffed animals, so it looks more cuddly than most human beds. <br><br>\
+                l: {
+                    if: {
+                        cond: "follow Z",
+                        msg: "You are in a bedroom. The bed is covered in fluffy stuffed animals, so it looks more cuddly than most human beds. <br><br>\
                         There is a human in the room that you think is probably male, but after meeting Zara, you aren't sure about gender anymore.<br><br>\
                         \"Lucky, this is Elliot, he/him. Elliot, this is Lucky, she/her\" Zara says, introducing you two. You can either return to Zara's room by typing \"return\" or sleep on Elliot's bed.",
-                    clear: 1
-                },
-                else: {
-                    msg: "You look around. Zara notices you looking around and asks:<br><br>\
-                        \"Do you wanna visit my friend with me?\"<br><br>\
-                        You think that the room you're in looks messy and uninteresting anyway, so you suppose that you should follow them. (type \"follow\" to follow, type \"leave\" to go back to the hallway)",
-                    clear: 1
-                },
-            },
-            "follow": {
-                if: {
-                    cond: "follow Z",
-                    msg: "You follow Zara back into their room.",
-                    get: {
-                        item: "follow Z",
-                        data: 0
-                    }
-                },
-                else: {
-                    msg: "You follow Zara into a portal in their room, your tail waving high. The portal is tall enough for the human to walk through. Look around!",
-                    get: {
-                        item: "follow Z",
-                        data: -1
-                    }
-                },
-            },
-            "(return|leave)": {
-                if: {
-                    cond: "follow Z",
-                    msg: "You are now back in Zara's room.",
-                    get: {
-                        item: "follow Z",
-                        data: 0
-                    },
-                },
-                else: {
-                    if: {
-                        cond: "Name Zara",
-                        msg: "You leave Zara's room. You are now in the hallway.",
-                        dest: Locations.AliyahHallway
+                        clear: 1
                     },
                     else: {
-                        msg: "You leave the room. You are now in the hallway.",
-                        dest: Locations.AliyahHallway
-                    }
-                }
-            },
-            "kill": {
-                cmd: {
-                    "Zara": {
-                        msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
-                            \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
-                        inc: "rest",
+                        msg: "You look around. Zara notices you looking around and asks:<br><br>\
+                        \"Do you wanna visit my friend with me?\"<br><br>\
+                        You think that the room you're in looks messy and uninteresting anyway, so you suppose that you should follow them. (type \"follow\" to follow, type \"leave\" to go back to the hallway)",
+                        clear: 1
                     },
-                    "Elliot": {
+                },
+                "follow": {
+                    if: {
+                        cond: "follow Z",
+                        msg: "You follow Zara back into their room.",
+                        get: {
+                            item: "follow Z",
+                            data: 0
+                        }
+                    },
+                    else: {
+                        msg: "You follow Zara into a portal in their room, your tail waving high. The portal is tall enough for the human to walk through. Look around!",
+                        get: {
+                            item: "follow Z",
+                            data: -1
+                        }
+                    },
+                },
+                "(return|leave)": {
+                    if: {
+                        cond: "follow Z",
+                        msg: "You are now back in Zara's room.",
+                        get: {
+                            item: "follow Z",
+                            data: 0
+                        },
+                    },
+                    else: {
                         if: {
-                            cond: "follow Z",
-                            msg: "Zara shoots you a look as if they can tell what you're thinking and you decide against it."
+                            cond: "Name Zara",
+                            msg: "You leave Zara's room. You are now in the hallway.",
+                            dest: Locations.AliyahHallway
                         },
                         else: {
-                            msg: "Elliot? He isn't here..."
+                            msg: "You leave the room. You are now in the hallway.",
+                            dest: Locations.AliyahHallway
                         }
+                    }
+                },
+                "kill": {
+                    cmd: {
+                        "Zara": {
+                            msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
+                            \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
+                            inc: "rest",
+                        },
+                        "Elliot": {
+                            if: {
+                                cond: "follow Z",
+                                msg: "Zara shoots you a look as if they can tell what you're thinking and you decide against it."
+                            },
+                            else: {
+                                msg: "Elliot? He isn't here..."
+                            }
+                        }
+                    }
+                },
+                "(sleep|bed)": {
+                    if: {
+                        cond: "follow Z",
+                        msg: "You curl up on Elliot's bed with the stuffed animals. Mm, cozy!",
+                        inc: "rest"
+                    },
+                    else: {
+                        msg: "You curl up on Zara's bed and fall asleep.",
+                        inc: "rest",
                     }
                 }
             },
-            "(sleep|bed)": {
-                if: {
-                    cond: "follow Z",
-                    msg: "You curl up on Elliot's bed with the stuffed animals. Mm, cozy!",
-                    inc: "rest"
-                },
-                else: {
-                    msg: "You curl up on Zara's bed and fall asleep.",
-                    inc: "rest",
-                }
-            }
         },
-    },
-    HomeHardware: {
-        cmd: {
-            "hint": {
-                msg: "Alright, here are your available commands:<br><br>\
+        HomeHardware: {
+            cmd: {
+                "hint": {
+                    msg: "Alright, here are your available commands:<br><br>\
                     look<br>\
                     move (up|down)<br>\
                     inv<br>\
@@ -4955,395 +5008,395 @@ WorldData = {
                     help<br>\
                     hint<br>\
                     "
-            },
-            l: {
-                msg: "Welcome to Home Hardware!",
-                clear: 1
-            },
-            "g": {
-                cmd: {
-                    "(plants|plant)": {
-                        msg: "You browse the store and find a catnip plant! You use your telekinetic powers to lift it, and you walk over to the cashier and set it down in front of her. Maia walks up and pays for it, and you leave with the plant.",
-                        end: 789
+                },
+                l: {
+                    msg: "Welcome to Home Hardware!",
+                    clear: 1
+                },
+                "g": {
+                    cmd: {
+                        "(plants|plant)": {
+                            msg: "You browse the store and find a catnip plant! You use your telekinetic powers to lift it, and you walk over to the cashier and set it down in front of her. Maia walks up and pays for it, and you leave with the plant.",
+                            end: 789
+                        }
                     }
-                }
-            },
-            m: {
-                cmd: {
-                    u: {
-                        if: {
-                            cond: "idk why but they're trying to go even further up than Home Hardware 4",
-                            msg: "Aha, I have fooled you. You've gone so far up that you've gone down! Welcome to hell!",
-                            get: {
-                                item: "idk why but they're trying to go even further up than Home Hardware 5",
-                                data: 0
-                            },
-                            get2: {
-                                item: "idk why but they're trying to go even further up than Home Hardware 4",
-                                data: 0
-                            },
-                            get3: {
-                                item: "idk why but they're trying to go even further up than Home Hardware 3",
-                                data: 0
-                            },
-                            get4: {
-                                item: "idk why but they're trying to go even further up than Home Hardware 2",
-                                data: 0
-                            },
-                            get5: {
-                                item: "idk why but they're trying to go even further up than Home Hardware 1",
-                                data: 0
-                            },
-
-                            dest: Locations.hell
-                        },
-                        else: {
+                },
+                m: {
+                    cmd: {
+                        u: {
                             if: {
-                                cond: "idk why but they're trying to go even further up than Home Hardware 3",
-                                msg: "You're not going to get anywhere this time..",
+                                cond: "idk why but they're trying to go even further up than Home Hardware 4",
+                                msg: "Aha, I have fooled you. You've gone so far up that you've gone down! Welcome to hell!",
                                 get: {
+                                    item: "idk why but they're trying to go even further up than Home Hardware 5",
+                                    data: 0
+                                },
+                                get2: {
                                     item: "idk why but they're trying to go even further up than Home Hardware 4",
-                                    data: -1
-                                }
+                                    data: 0
+                                },
+                                get3: {
+                                    item: "idk why but they're trying to go even further up than Home Hardware 3",
+                                    data: 0
+                                },
+                                get4: {
+                                    item: "idk why but they're trying to go even further up than Home Hardware 2",
+                                    data: 0
+                                },
+                                get5: {
+                                    item: "idk why but they're trying to go even further up than Home Hardware 1",
+                                    data: 0
+                                },
+
+                                dest: Locations.hell
                             },
                             else: {
                                 if: {
-                                    cond: "idk why but they're trying to go even further up than Home Hardware 2",
+                                    cond: "idk why but they're trying to go even further up than Home Hardware 3",
                                     msg: "You're not going to get anywhere this time..",
                                     get: {
-                                        item: "idk why but they're trying to go even further up than Home Hardware 3",
+                                        item: "idk why but they're trying to go even further up than Home Hardware 4",
                                         data: -1
                                     }
                                 },
                                 else: {
                                     if: {
-                                        cond: "idk why but they're trying to go even further up than Home Hardware 1",
-                                        msg: "I see you're still trying. Huh. There's something to be said for perseverance, I suppose.",
+                                        cond: "idk why but they're trying to go even further up than Home Hardware 2",
+                                        msg: "You're not going to get anywhere this time..",
                                         get: {
-                                            item: "idk why but they're trying to go even further up than Home Hardware 2",
+                                            item: "idk why but they're trying to go even further up than Home Hardware 3",
                                             data: -1
                                         }
                                     },
                                     else: {
-                                        msg: "How can you go up from here?",
-                                        get: {
-                                            item: "idk why but they're trying to go even further up than Home Hardware 1",
-                                            data: -1
+                                        if: {
+                                            cond: "idk why but they're trying to go even further up than Home Hardware 1",
+                                            msg: "I see you're still trying. Huh. There's something to be said for perseverance, I suppose.",
+                                            get: {
+                                                item: "idk why but they're trying to go even further up than Home Hardware 2",
+                                                data: -1
+                                            }
+                                        },
+                                        else: {
+                                            msg: "How can you go up from here?",
+                                            get: {
+                                                item: "idk why but they're trying to go even further up than Home Hardware 1",
+                                                data: -1
+                                            }
                                         }
-                                    }
-                                },
+                                    },
+                                }
                             }
-                        }
+                        },
                     },
-                },
-            }
-        },
-    },
-    DecisionRoom: {
-        cmd: {
-            l: {
-                msg: "Revive? (\"yes\" or \"no\")",
+                }
             },
-            "yes": {
-                if: {
-                    cond: "Mumu life/death question",
-                    msg: "You decide to revive Mumu. You start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now... <br><br>",
-                    get: {
-                        item: "Mumu life/death question",
-                        data: 0
-                    },
-                    dest: Locations.living_room
+        },
+        DecisionRoom: {
+            cmd: {
+                l: {
+                    msg: "Revive? (\"yes\" or \"no\")",
                 },
-                else: {
+                "yes": {
                     if: {
-                        cond: "Baba life/death question",
-                        msg: "You decide to revive Baba.",
+                        cond: "Mumu life/death question",
+                        msg: "You decide to revive Mumu. You start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now... <br><br>",
                         get: {
-                            item: "Baba life/death question",
+                            item: "Mumu life/death question",
                             data: 0
                         },
-                        dest: Locations.office
+                        dest: Locations.living_room
                     },
                     else: {
                         if: {
-                            cond: "Emily life/death question",
-                            msg: "You rewind time, watching the human's struggle happen in reverse. It is now alive, having no memory of what just happened.",
+                            cond: "Baba life/death question",
+                            msg: "You decide to revive Baba.",
                             get: {
-                                item: "Emily life/death question",
+                                item: "Baba life/death question",
                                 data: 0
                             },
+                            dest: Locations.office
                         },
                         else: {
                             if: {
-                                cond: "Eevee life/death question",
-                                msg: "You decide to rewind time to avoid facing consequences. The fluffy cat remembers nothing.",
+                                cond: "Emily life/death question",
+                                msg: "You rewind time, watching the human's struggle happen in reverse. It is now alive, having no memory of what just happened.",
                                 get: {
-                                    item: "Eevee life/death question",
+                                    item: "Emily life/death question",
                                     data: 0
                                 },
-                                dest: Locations.Emily
                             },
                             else: {
                                 if: {
-                                    cond: "Reu life/death question",
-                                    msg: "You decide to revive Reu by rewinding time. You return to the hallway.",
+                                    cond: "Eevee life/death question",
+                                    msg: "You decide to rewind time to avoid facing consequences. The fluffy cat remembers nothing.",
                                     get: {
-                                        item: "Reu life/death question",
+                                        item: "Eevee life/death question",
                                         data: 0
                                     },
-                                    dest: Locations.hallway3
+                                    dest: Locations.Emily
                                 },
                                 else: {
                                     if: {
-                                        cond: "Maia life/death decision",
-                                        msg: "Because you hate consequences, you decide to revive the human. You return to the hallway.",
+                                        cond: "Reu life/death question",
+                                        msg: "You decide to revive Reu by rewinding time. You return to the hallway.",
                                         get: {
-                                            item: "Maia life/death question",
+                                            item: "Reu life/death question",
                                             data: 0
                                         },
                                         dest: Locations.hallway3
                                     },
                                     else: {
                                         if: {
-                                            cond: "Nathan life/death decision",
-                                            msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a coward), you decide to revive the human. Afterwards, you return to the hallway.",
+                                            cond: "Maia life/death decision",
+                                            msg: "Because you hate consequences, you decide to revive the human. You return to the hallway.",
                                             get: {
-                                                item: "Nathan life/death question",
+                                                item: "Maia life/death question",
                                                 data: 0
                                             },
                                             dest: Locations.hallway3
                                         },
                                         else: {
                                             if: {
-                                                cond: "Andrew life/death decision",
-                                                msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
+                                                cond: "Nathan life/death decision",
+                                                msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a coward), you decide to revive the human. Afterwards, you return to the hallway.",
                                                 get: {
-                                                    item: "Andrew life/death question",
+                                                    item: "Nathan life/death question",
                                                     data: 0
                                                 },
                                                 dest: Locations.hallway3
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "Aliyah life/death decision",
-                                                    msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
-                                                        Later, you return to the hall.",
-                                                    inc: "rest",
+                                                    cond: "Andrew life/death decision",
+                                                    msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
                                                     get: {
-                                                        item: "Aliyah life/death question",
+                                                        item: "Andrew life/death question",
                                                         data: 0
                                                     },
                                                     dest: Locations.hallway3
                                                 },
                                                 else: {
-                                                    msg: "Revive who?",
+                                                    if: {
+                                                        cond: "Aliyah life/death decision",
+                                                        msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
+                                                        Later, you return to the hall.",
+                                                        inc: "rest",
+                                                        get: {
+                                                            item: "Aliyah life/death question",
+                                                            data: 0
+                                                        },
+                                                        dest: Locations.hallway3
+                                                    },
+                                                    else: {
+                                                        msg: "Revive who?",
+                                                    },
                                                 },
                                             },
                                         },
                                     },
                                 },
-                            },
+                            }
                         }
                     }
-                }
-            },
-            "no": {
-                if: {
-                    cond: "Mumu life/death question",
-                    msg: "You leave her dead :) You can still change your mind and revive her (command is \"revive\"). You are still in the living room.",
-                    get: {
-                        item: "chose death Mumu",
-                        data: -1
-                    },
-                    get2: {
-                        item: "Mumu life/death question",
-                        data: 0
-                    },
-                    dest: Locations.living_room
                 },
-                else: {
+                "no": {
                     if: {
-                        cond: "Baba life/death question",
-                        msg: "Alright, Baba can stay dead. If you want to be boring, type \"revive.\"",
+                        cond: "Mumu life/death question",
+                        msg: "You leave her dead :) You can still change your mind and revive her (command is \"revive\"). You are still in the living room.",
                         get: {
-                            item: "Baba life/death question",
-                            data: 0
-                        },
-                        get2: {
-                            item: "chose kill Baba",
+                            item: "chose death Mumu",
                             data: -1
                         },
-                        dest: Locations.office
+                        get2: {
+                            item: "Mumu life/death question",
+                            data: 0
+                        },
+                        dest: Locations.living_room
                     },
                     else: {
                         if: {
-                            cond: "Emily life/death question",
-                            msg: "Coolio, Emily stays dead. If your conscience kicks in, type \"revive Emily.\"",
+                            cond: "Baba life/death question",
+                            msg: "Alright, Baba can stay dead. If you want to be boring, type \"revive.\"",
                             get: {
-                                item: "Emily life/death question",
+                                item: "Baba life/death question",
                                 data: 0
                             },
                             get2: {
-                                item: "chose kill Emily",
+                                item: "chose kill Baba",
                                 data: -1
                             },
-                            dest: Locations.Emily
+                            dest: Locations.office
                         },
                         else: {
                             if: {
-                                cond: "Eevee life/death question",
-                                msg: "Yay, living life on the edge. Type \"revive Eevee\" if you change your mind.",
+                                cond: "Emily life/death question",
+                                msg: "Coolio, Emily stays dead. If your conscience kicks in, type \"revive Emily.\"",
                                 get: {
-                                    item: "Eevee life/death question",
+                                    item: "Emily life/death question",
                                     data: 0
                                 },
                                 get2: {
-                                    item: "chose kill Eevee",
+                                    item: "chose kill Emily",
                                     data: -1
                                 },
+                                dest: Locations.Emily
                             },
                             else: {
                                 if: {
-                                    cond: "Reu life/death question",
-                                    msg: "Yes! You decide to keep Reu dead, live on the edge. \"Revive Reu\" brings the human back to life, if you change your mind for some reason.",
+                                    cond: "Eevee life/death question",
+                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you change your mind.",
                                     get: {
-                                        item: "Reu life/death question",
+                                        item: "Eevee life/death question",
                                         data: 0
                                     },
                                     get2: {
-                                        item: "chose kill Reu",
+                                        item: "chose kill Eevee",
                                         data: -1
                                     },
-                                    dest: Locations.hallway3
                                 },
                                 else: {
                                     if: {
-                                        cond: "Maia life/death question",
-                                        msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that.",
+                                        cond: "Reu life/death question",
+                                        msg: "Yes! You decide to keep Reu dead, live on the edge. \"Revive Reu\" brings the human back to life, if you change your mind for some reason.",
                                         get: {
-                                            item: "Maia life/death question",
+                                            item: "Reu life/death question",
                                             data: 0
                                         },
                                         get2: {
-                                            item: "chose kill Maia",
+                                            item: "chose kill Reu",
                                             data: -1
                                         },
                                         dest: Locations.hallway3
                                     },
                                     else: {
                                         if: {
-                                            cond: "Nathan life/death question",
-                                            msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that.",
+                                            cond: "Maia life/death question",
+                                            msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that.",
                                             get: {
-                                                item: "Nathan life/death question",
+                                                item: "Maia life/death question",
                                                 data: 0
                                             },
                                             get2: {
-                                                item: "chose kill Nathan",
+                                                item: "chose kill Maia",
                                                 data: -1
                                             },
                                             dest: Locations.hallway3
                                         },
                                         else: {
                                             if: {
-                                                cond: "Andrew life/death question",
-                                                msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. <br><br>After a while, you return to the hallway. <br><br>\
-                                                \"Revive Andy\" brings the human back to life, if you want that.",
-                                                inc: "rest",
+                                                cond: "Nathan life/death question",
+                                                msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that.",
                                                 get: {
-                                                    item: "Andrew life/death question",
+                                                    item: "Nathan life/death question",
                                                     data: 0
                                                 },
                                                 get2: {
-                                                    item: "chose kill Andrew",
+                                                    item: "chose kill Nathan",
                                                     data: -1
                                                 },
                                                 dest: Locations.hallway3
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "Aliyah life/death question",
-                                                    msg: "You decide to leave the human dead, which I can normally get behind, but really? The human wanted nothing more than to pet you! Don't you feel even the slightest bit of remorse? Ah, forget it...you're too far gone...<br><br>\
-                                                        You return to the hall, leaving the dead body in the room. You notice that a closet door is open in the room, but decide not to explore it. (\"go\" to go see what's happening, \"revive Aliyah\" to revive)<br><br>\
-                                                        You are now in the hallway.",
+                                                    cond: "Andrew life/death question",
+                                                    msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. <br><br>After a while, you return to the hallway. <br><br>\
+                                                \"Revive Andy\" brings the human back to life, if you want that.",
+                                                    inc: "rest",
                                                     get: {
-                                                        item: "Aliyah life/death question",
+                                                        item: "Andrew life/death question",
                                                         data: 0
                                                     },
                                                     get2: {
-                                                        item: "chose kill Aliyah",
+                                                        item: "chose kill Andrew",
                                                         data: -1
                                                     },
                                                     dest: Locations.hallway3
                                                 },
                                                 else: {
-                                                    msg: "Huh?"
+                                                    if: {
+                                                        cond: "Aliyah life/death question",
+                                                        msg: "You decide to leave the human dead, which I can normally get behind, but really? The human wanted nothing more than to pet you! Don't you feel even the slightest bit of remorse? Ah, forget it...you're too far gone...<br><br>\
+                                                        You return to the hall, leaving the dead body in the room. You notice that a closet door is open in the room, but decide not to explore it. (\"go\" to go see what's happening, \"revive Aliyah\" to revive)<br><br>\
+                                                        You are now in the hallway.",
+                                                        get: {
+                                                            item: "Aliyah life/death question",
+                                                            data: 0
+                                                        },
+                                                        get2: {
+                                                            item: "chose kill Aliyah",
+                                                            data: -1
+                                                        },
+                                                        dest: Locations.hallway3
+                                                    },
+                                                    else: {
+                                                        msg: "Huh?"
+                                                    },
                                                 },
                                             },
                                         },
-                                    },
-                                }
+                                    }
+                                },
                             },
                         },
-                    },
-                }
-            },
+                    }
+                },
+            }
         }
-    }
-},
+    },
 },
 
-Aliases = {
-    "move": "m",
-    "(north|run away|run|run inside|go inside)": "n",
-    "(south|adventure time)": "s",
-    "east": "e",
-    "west": "w",
-    "up": "u",
-    "down": "d",
-    "^n$": "m n",
-    "^s$": "m s",
-    "^e$": "m e",
-    "^w$": "m w",
-    "^u$": "m u",
-    "^d$": "m d",
-    "look": "l",
-    "(play chess|chess time)": "chess",
-    "(get plant|buy plant|plant)": "g plant",
-    "(be careful|go carefully)": "careful",
-    "(heart bean|bean plant|look bean plant|look heart bean)": "bean",
-    "play basketball": "basketball",
-    "(Werdna Dandrewlion Andy|song)": "song Werdna Dandrewlion Andy",
-    "(leave room|hall-wander|hall wander|see people)": "hallway3",
-    "(go to Nathan's room|Nathan's room)": "nathan",
-    "(sleep laundry|nap laundry|sleep laundry pile|nap laundry pile)": "laundry",
-    "(sleep blanket|nap blanket|get rest)": "blanket",
-    "(get chocolate milk)": "chocolate milk",
-    "(look outside|look out window|sit chair)": "chair",
-    "(nap bed|sleep bed|nap)": "bed",
-    "(steal hard hat|take hard hat)": "hard hat",
-    "food": "get food",
-    "water": "get water",
-    "(look outside|look out window|sit chair)": "chair",
-    "(sleep under bed|under bed|go under bed|go Grebel|Grebel)": "portal",
-    "(halp|help|helpp|helppp)": "h",
-    "(hunt squirrel|hunt squirrel|chase squirrel|chase squirrels|find squirrel|find a squirrel|hunting time)": "squirrel",
-    "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
-    "adventure time": "s",
-    "get weed": "weed",
-    "(inventory|inv)": "i",
-    "(talk to treacys)": "Treacys",
-    "^l i$": "i",
-    "(glass|toilet)": "water",
-    "(pick up|get|grab|obtain|eat|drink)": "g",
-    "(nest|sleeping bag|sleep bed)": "bed",
-    "^sleep$": "u bed",
-    "(a leprechaun|the leprechaun|all the leprechauns|every leprechaun|all leprechauns|the leprechauns)": "leprechaun",
-    "(glass of water|glass)": "water",
-    "(use|interact|sleep|sit|climb|bask in)": "u",
-    "(sunbathe|sunlight|sunshine)": "u sun",
-    "(talk|say|speak)": "meow",
-    "(murder|attack)": "kill",
-    "(clear|cls)": "clr",
-    "\\b(talk to|see|visit|on|in|with|to|for|at|from|the|about|into|near|after|as|like|since|after|off|above|below|and|but)\\b": "",
-};
+    Aliases = {
+        "move": "m",
+        "(north|run away|run|run inside|go inside)": "n",
+        "(south|adventure time)": "s",
+        "east": "e",
+        "west": "w",
+        "up": "u",
+        "down": "d",
+        "^n$": "m n",
+        "^s$": "m s",
+        "^e$": "m e",
+        "^w$": "m w",
+        "^u$": "m u",
+        "^d$": "m d",
+        "look": "l",
+        "(play chess|chess time)": "chess",
+        "(get plant|buy plant|plant)": "g plant",
+        "(be careful|go carefully)": "careful",
+        "(heart bean|bean plant|look bean plant|look heart bean)": "bean",
+        "play basketball": "basketball",
+        "(Werdna Dandrewlion Andy|song)": "song Werdna Dandrewlion Andy",
+        "(leave room|hall-wander|hall wander|see people)": "hallway3",
+        "(go to Nathan's room|Nathan's room)": "nathan",
+        "(sleep laundry|nap laundry|sleep laundry pile|nap laundry pile)": "laundry",
+        "(sleep blanket|nap blanket|get rest)": "blanket",
+        "(get chocolate milk)": "chocolate milk",
+        "(look outside|look out window|sit chair)": "chair",
+        "(nap bed|sleep bed|nap)": "bed",
+        "(steal hard hat|take hard hat)": "hard hat",
+        "food": "get food",
+        "water": "get water",
+        "(look outside|look out window|sit chair)": "chair",
+        "(sleep under bed|under bed|go under bed|go Grebel|Grebel)": "portal",
+        "(halp|help|helpp|helppp)": "h",
+        "(hunt squirrel|hunt squirrel|chase squirrel|chase squirrels|find squirrel|find a squirrel|hunting time)": "squirrel",
+        "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
+        "adventure time": "s",
+        "get weed": "weed",
+        "(inventory|inv)": "i",
+        "(talk to treacys)": "Treacys",
+        "^l i$": "i",
+        "(glass|toilet)": "water",
+        "(pick up|get|grab|obtain|eat|drink)": "g",
+        "(nest|sleeping bag|sleep bed)": "bed",
+        "^sleep$": "u bed",
+        "(a leprechaun|the leprechaun|all the leprechauns|every leprechaun|all leprechauns|the leprechauns)": "leprechaun",
+        "(glass of water|glass)": "water",
+        "(use|interact|sleep|sit|climb|bask in)": "u",
+        "(sunbathe|sunlight|sunshine)": "u sun",
+        "(talk|say|speak)": "meow",
+        "(murder|attack)": "kill",
+        "(clear|cls)": "clr",
+        "\\b(talk to|see|visit|on|in|with|to|for|at|from|the|about|into|near|after|as|like|since|after|off|above|below|and|but)\\b": "",
+    };
