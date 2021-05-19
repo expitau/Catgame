@@ -133,7 +133,7 @@ WorldData = {
             else: {
                 if: {
                     cond: "secrety secrets",
-                    msg: "Really?",
+                    msg: "Do you really think something's going to happen?",
                     inc: "secrety secrets"
                 },
                 else: {
