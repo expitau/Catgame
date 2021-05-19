@@ -1565,7 +1565,7 @@ WorldData = {
                         else: {
                             if: {
                                 cond: "kill point N",
-                                msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan will love it! He is there, but hasn't noticed you yet. You recall killing him before rewinding time...Ah, you do enjoy fantasizing about murder.",
+                                msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan will love it! He is there, but hasn't noticed you yet. You recall killing him before reviving him...Ah, you do enjoy fantasizing about murder.",
                                 get: {
                                     item: "squirrel",
                                     data: 0
@@ -1614,6 +1614,9 @@ WorldData = {
                 "(hallway|leave)": {
                     msg: "You are in the hallway (look around)."
                 },
+                "foyer": {
+                    msg: "You're downstairs in the foyer. You see a garden outside. Want to check it out? (\"garden\")"
+                },
                 "andrew": {
                     msg: "The name seems vaguely familiar...try Andy, Dandrewlion, or Werdna",
                 },
@@ -1646,9 +1649,63 @@ WorldData = {
                     \"garden\""
                 },
                 l: {
-                    img: "Images/Hallway3.jpeg",
+                    if: {
+                        cond: "chose kill Aliyah",
+                        if: {
+                            cond: "chose kill Maia",
+                            if: {
+                                cond: "chose kill Reu",
+                                if: {
+                                    cond: "chose kill Nathan",
+                                    if: {
+                                        cond: "chose kill Andrew",
+                                        if: {
+                                            cond: "has been to Emily's house before",
+                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name).",
+                                            clear: 1
+                                        },
+                                        else: {
+                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
+                                            Maybe check out the garden! (\"garden\")",
+                                            clear: 1
+                                        },
+                                        else: {
+                                            img: "Images/Hallway3.jpeg",
+                                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                        clear: 1,
+                                        },
+                                    },
+                                    else: {
+                                        img: "Images/Hallway3.jpeg",
+                                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                    clear: 1,
+                                    },
+                                },
+                                else: {
+                                    img: "Images/Hallway3.jpeg",
+                                msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                                clear: 1,
+                                },
+                            },
+                            else: {
+                                img: "Images/Hallway3.jpeg",
+                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                            clear: 1,
+                            },
+                        },
+                        else: {
+                            img: "Images/Hallway3.jpeg",
+                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                        clear: 1,
+                        },
+                    },
+                    else: {
+                        img: "Images/Hallway3.jpeg",
                     msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                     clear: 1,
+                    },
                 },
                 "song": {
                     cmd: {
@@ -1903,42 +1960,89 @@ WorldData = {
                 },
                 "(Andy|Dandrewlion|Werdna)": {
                     if: {
-                        cond: "Name Andrew",
-                        img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
-                        You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
-                        inc: "rest",
+                        cond: "chose kill Andrew",
+                        if: {
+                            cond: "Name Andrew",
+                            msg: "You head to Andrew's room. You see him lying on the ground and you admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Dandrewlion\" if you want)",
+                            inc: "rest"
+                        },
+                        else: {
+                            msg: "You head to the room of one of your victims and admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Werdna\" if you want)",
+                            inc: "rest"
+                        },
                     },
                     else: {
-                        img: "Images/AndrewIgnore.JPG",
-                        msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
-                        In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
-                        inc: "rest",
+                        if: {
+                            cond: "Name Andrew",
+                            if: {
+                                cond: "banana",
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
+                            You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                            \
+                            In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                            else: {
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                        },
+                        else: {
+                            if: {
+                                cond: "banana",
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
+                                You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                                You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                                In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                            else: {
+                                img: "Images/AndrewIgnore.JPG",
+                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                            In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                inc: "rest",
+                            },
+                        },
                     },
-
                 },
                 "cage": {
                     if: {
-                        cond: "Name Andrew",
-                        img: "Images/CagedAndrew.JPG",
-                        msg: "You see Andrew trapped in a cage!"
+                        cond: "chose kill Andrew",
+                        msg: "Andrew is dead, \"revive Andy\" to see what the \"cage\" command does.",
                     },
                     else: {
-                        img: "Images/CagedAndrew.JPG",
-                        msg: "You see a human trapped in a cage!"
-                    }
-
+                        if: {
+                            cond: "Name Andrew",
+                            img: "Images/CagedAndrew.JPG",
+                            msg: "You see Andrew trapped in a cage!"
+                        },
+                        else: {
+                            img: "Images/CagedAndrew.JPG",
+                            msg: "You see a human trapped in a cage!"
+                        }
+                    },
                 },
                 "Bother": {
                     cmd: {
                         "(Dandrewlion|Andy|Werdna)": {
                             if: {
-                                cond: "Name Andrew",
-                                msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
+                                cond: "chose kill Andrew",
+                                msg: "You can't really bother a dead body..."
                             },
                             else: {
-                                msg: "You decide that you want the tall and intimidating human to pay attention to you. Trotting up to its room, you come up to him and paw at its leg. The human looks down and is very surprised to see you. <br><br>\"Looks like Nathan's cat..\" It remarks. <br><br>You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it. The metal pole defense contraption will protect you both now. You fall asleep.",
-                                inc: "rest",
+                                if: {
+                                    cond: "Name Andrew",
+                                    msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
+                                },
+                                else: {
+                                    msg: "You decide that you want the tall and intimidating human to pay attention to you. Trotting up to its room, you come up to him and paw at its leg. The human looks down and is very surprised to see you. <br><br>\"Looks like Nathan's cat..\" It remarks. <br><br>You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it. The metal pole defense contraption will protect you both now. You fall asleep.",
+                                    inc: "rest",
+                                },
                             },
                         },
                     },
@@ -1947,14 +2051,33 @@ WorldData = {
                     cmd: {
                         "(duet|time|Andrew|Emily)": {
                             if: {
-                                cond: "chose kill Nathan",
-                                msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
-                                \"revive Nathan\" before trying to do the trumpet duet again."
+                                cond: "chose kill Emily",
+                                if: {
+                                    cond: "chose kill Andrew",
+                                    msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
+                                        \"revive Emily\" and \"revive Andy\" to fix it."
+                                },
+                                else: {
+                                    msg: "Sadly, trumpet duet time can't happen. You've killed a trumpeter :(<br><br>\
+                                    \"revive Emily\" to fix it."
+                                },
                             },
                             else: {
                                 if: {
-                                    cond: "Name Andrew",
-                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    cond: "chose kill Andrew",
+                                    msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
+                                    \"revive Werdna\" to fix it..."
+                                },
+                                else: {
+                                    if: {
+                                        cond: "chose kill Nathan",
+                                        msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
+                                \"revive Nathan\" before trying to do the trumpet duet again."
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: "Name Andrew",
+                                            msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2001,13 +2124,13 @@ WorldData = {
                                 I will call you mine.<br><br>\
                                 Werdna, won't you call me yours\"\
                                 <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                    get: {
-                                        item: "Name Emily",
-                                        data: -1
-                                    },
-                                },
-                                else: {
-                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                            get: {
+                                                item: "Name Emily",
+                                                data: -1
+                                            },
+                                        },
+                                        else: {
+                                            msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
                                 If you believe in the power of friendship<br>\
@@ -2054,35 +2177,52 @@ WorldData = {
                                 I will call you mine.<br><br>\
                                 Werdna, won't you call me yours.\"\
                                 <br><br>As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                    get: {
-                                        item: "Name Emily",
-                                        data: -1
+                                            get: {
+                                                item: "Name Emily",
+                                                data: -1
+                                            },
+                                        },
                                     },
                                 },
-                            },
-                        },
+                            }
+                        }
                     }
                 },
                 "kill": {
                     cmd: {
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
                             if: {
-                                cond: "licence to kill revoked",
-                                msg: "Killing things doesn't feel so fun anymore..."
+                                cond: "chose kill Andrew",
+                                msg: "Uh...you've already killed this one..."
                             },
                             else: {
                                 if: {
-                                    cond: "Name Andrew",
-                                    msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. <br><br>As you always do, you rewind time, allowing him to live again. Andrew seated back at its desk. You curl up on its couch for a few hours to get some sleep, then you leave and hall-wander some more.",
-                                    inc: "rest",
-                                    inc2: "rest",
-                                    inc: "kill point A",
+                                    cond: "licence to kill revoked",
+                                    msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
-                                    msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. As you always do, you rewind time, allowing it to live again. The human seated back at its desk. You curl up on its couch for a few hours to get some sleep, then you leave and hall-wander some more.",
-                                    inc: "rest",
-                                    inc2: "rest",
-                                    inc: "kill point A",
+                                    if: {
+                                        cond: "Name Andrew",
+                                        msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. Hm. Revive? (\"yes\" or \"no\")",
+                                        inc: "rest",
+                                        inc2: "kill point A",
+                                        get: {
+                                            item: "Andrew life/death question",
+                                            data: -1
+                                        },
+                                        dest: Locations.DecisionRoom
+                                    },
+                                    else: {
+                                        msg: "You lunge at the tall, intimidating human. It yelps, startled. You could have chosen friendship, but instead you knock the human over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock it down as well). Your claws are driven into the human's flesh as the two of you hit the ground. \"Not so intimidating anymore!\" You think to yourself. As it bleeds out, you look back up at its metal pole contraption. It didn't seem to have been helpful in keeping intruders away. Hm. <br><br>\
+                                    Now you have to decide. Revive? (\"yes\" or \"no\")",
+                                        inc: "rest",
+                                        inc2: "kill point A",
+                                        get: {
+                                            item: "Andrew life/death question",
+                                            data: -1
+                                        },
+                                        dest: Locations.DecisionRoom
+                                    },
                                 },
                             },
                         },
@@ -2225,54 +2365,87 @@ WorldData = {
                     cmd: {
                         "(milk|hall)": {
                             if: {
-                                cond: "Name Andrew",
-                                img: "Images/AndrewDiningHall.JPG",
-                                msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
+                                cond: "chose kill Andrew",
+                                if: {
+                                    cond: "Name Andrew",
+                                    msg: "You trot up to Andrew's room to see the human, and then you remember that you'd killed it. \"revive Andy\" to get chocolate milk together."
+                                },
+                                else: {
+                                    msg: "You go to see the tall, intimidating human, and then you remember that you'd killed it already. Hm. Maybe you should try to \"revive Werdna\" to see how this interaction would be different..."
+                                },
+                            },
+                            else: {
+                                if: {
+                                    cond: "Name Andrew",
+                                    img: "Images/AndrewDiningHall.JPG",
+                                    msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
                                 You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, Andrew sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
-                                inc: "water",
-                            },
-                            else: {
-                                img: "Images/AndrewDiningHall.JPG",
-                                msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
+                                    inc: "water",
+                                },
+                                else: {
+                                    img: "Images/AndrewDiningHall.JPG",
+                                    msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
                                 You arrive at the dining hall. It pours itself a glass of chocolate milk and grabs a banana. Realizing that cats can't have chocolate, the human sets down a glass of water for you. You do like drinking water out of glasses, but you usually do it when your family leaves cups unattended. It's less satisfying when you're not being mischievous, but you drink it anyway. After the two of your finish your drinks, you return to the hallway and the human returns to its room.",
-                                inc: "water",
-                            }
+                                    inc: "water",
+                                }
+                            },
                         },
                     },
                 },
                 "hard": {
                     cmd: {
                         "hat": {
-                            msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as he follows you. As you run through the fourth floor, two females come out of rooms across from each other. One laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than he is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
-                            get: {
-                                item: "Name Andrew",
-                                data: -1,
+                            if: {
+                                cond: "chose kill Andrew",
+                                msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
+                            },
+                            else: {
+                                msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as he follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than he is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
+                                get: {
+                                    item: "Name Andrew",
+                                    data: -1,
+                                },
                             },
                         },
                     },
                 },
                 "mirror": {
                     if: {
-                        cond: "Name Andrew",
-                        msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                        cond: "chose kill Andrew",
+                        msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
+                        You eventually go back to the hallway."
                     },
                     else: {
-                        msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                        if: {
+                            cond: "Name Andrew",
+                            msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                        },
+                        else: {
+                            msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                        },
                     },
                 },
                 "banana": {
                     if: {
-                        cond: "Name Andrew",
-                        img: "Images/AndrewBanana.PNG",
-                        msg: "Andrew eats a banana"
+                        cond: "chose kill Andrew",
+                        msg: "You go to one of your victims' rooms and get a banana from a shelf.",
+                        inc: "banana",
+                        inc2: "food"
                     },
                     else: {
-                        img: "Images/AndrewBanana.PNG",
-                        msg: "The human eats a banana.",
+                        if: {
+                            cond: "Name Andrew",
+                            img: "Images/AndrewBanana.PNG",
+                            msg: "Andrew eats a banana"
+                        },
+                        else: {
+                            img: "Images/AndrewBanana.PNG",
+                            msg: "The human eats a banana.",
+                        },
                     },
                 },
                 "weed": {
@@ -2355,6 +2528,10 @@ WorldData = {
                 },
                 "(Emily|garden)": {
                     msg: "You go to a door that leads outside, and you skip time until someone has opened it. You slip out behind them, unnoticed. You find the garden, and you explore a little. As you're sniffing a bean plant, you blink and realize that the scene has changed. You look under your feet to see the now-familiar blue shimmery circle shrinking. It stops at about a paw wide. You paw at it, hoping for a way to escape, and it readily opens. You go back to the garden, and then return to the strange room. If you want to return, you can always go back to the garden (type \"garden\" to return) You take a look around.",
+                    get: {
+                        item: "has been to Emily's house before",
+                        data: -1
+                    },
                     dest: Locations.Emily
                 },
                 "Follow": {
@@ -2408,6 +2585,35 @@ WorldData = {
                             else: {
                                 msg: "You can't revive someone who's still alive..."
                             }
+                        },
+                        "Emily": {
+                            if: {
+                                cond: "chose kill Emily",
+                                msg: "*sigh* fine.",
+                                get: {
+                                    item: "chose kill Emily",
+                                    data: 0
+                                }
+                            },
+                            else: {
+                                msg: "You can't revive someone who's still alive..."
+                            }
+                        },
+                        "(Andy|Dandrewlion|Werdna)": {
+                            if: {
+                                cond: "chose kill Andrew",
+                                msg: "Fine, fine.",
+                                get: {
+                                    item: "chose kill Andrew",
+                                    data: 0
+                                }
+                            },
+                            else: {
+                                msg: "You can't kill someone who's still alive."
+                            }
+                        },
+                        "Andrew": {
+                            msg: "Hmm. I don't know who Andrew is. Maybe try reviving Andy, Werdna, or Dandrewlion?"
                         }
                     }
                 }
@@ -2464,15 +2670,14 @@ WorldData = {
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
+                                            img1: "Images/BabyHeartBeans.jpeg",
                                             img2: "Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img1: "Images/HeartBean2.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
@@ -2494,7 +2699,7 @@ WorldData = {
                                     cmd: {
                                         "bean": {
                                             img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img2: "Images/HeartBean2.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
@@ -4796,7 +5001,20 @@ WorldData = {
                                                 },
                                                 dest: Locations.hallway3
                                             },
-                                            msg: "Revive who?",
+                                            else: {
+                                                if: {
+                                                    cond: "Andrew life/death decision",
+                                                    msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
+                                                    get: {
+                                                        item: "Andrew life/death question",
+                                                        data: 0
+                                                    },
+                                                    dest: Locations.hallway3
+                                                },
+                                                else: {
+                                                    msg: "Revive who?",
+                                                },
+                                            },
                                         },
                                     },
                                 },
@@ -4902,7 +5120,24 @@ WorldData = {
                                                 dest: Locations.hallway3
                                             },
                                             else: {
-                                                msg: "Huh?"
+                                                if: {
+                                                    cond: "Andrew life/death question",
+                                                    msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. <br><br>After a while, you return to the hallway. <br><br>\
+                                                \"Revive Andy\" brings the human back to life, if you want that.",
+                                                    inc: "rest",
+                                                    get: {
+                                                        item: "Andrew life/death question",
+                                                        data: 0
+                                                    },
+                                                    get2: {
+                                                        item: "chose kill Andrew",
+                                                        data: -1
+                                                    },
+                                                    dest: Locations.hallway3
+                                                },
+                                                else: {
+                                                    msg: "Huh?"
+                                                },
                                             },
                                         },
                                     }
