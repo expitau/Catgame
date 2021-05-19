@@ -39,7 +39,12 @@ WorldData = {
             msg: "What would you like to kill?",
             if: {
                 cond: "licence to kill revoked",
-                msg: "Killing things doesn't feel so fun anymore..."
+                msg: "Since your licence was revoked, you don't feel like you deserve to kill things :(",
+                cmd: {
+                    ".*": {
+                        msg: "Since your licence was revoked, you don't feel like you deserve to kill things :("
+                    }
+                }
             },
             else: {
                 msg: "What would you like to kill?",
@@ -49,6 +54,18 @@ WorldData = {
                     },
                 },
             },
+        },
+        "(counting|c)": {
+            if: {
+                cond: "thing", count: 15,
+                msg: "yay you can count to 15!",
+                inc: "thing",
+                end: 15
+            },
+            else: {
+                msg: "count to fifteen!",
+                inc: "thing",
+            }
         },
         h: {
             msg: "Commands:<br><br>\
@@ -1972,11 +1989,21 @@ WorldData = {
                     }
                 },
                 "Aliyah": {
-                    msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the left side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems excited, and starts to pet you. You fall asleep. A while later, you wake up and see that the human is going into a closet. She comes out a bit later. You go back to the hallway. (\"follow\" or just keep hall-wandering)",
-                    inc: "rest",
-                    get: {
-                        item: "the gift of knowledge",
-                        data: -1
+                    if: {
+                        cond: "chose kill Aliyah",
+                        msg: "You enter the room of a human that you'd killed before. You feel a little guilty, since the human had been so happy to see you. You take note of an open closet door with a portal shimmering from inside. You wonder if you should go in...(\"go\" or just \"leave\")",
+                        get: {
+                            item: "the gift of knowledge",
+                            data: -1
+                        }
+                    },
+                    else: {
+                        msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the left side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems excited, and starts to pet you. You fall asleep. A while later, you wake up and see that the human is going into a closet. She comes out a bit later. You go back to the hallway. (\"follow\" or just keep hall-wandering)",
+                        inc: "rest",
+                        get: {
+                            item: "the gift of knowledge",
+                            data: -1
+                        },
                     },
                 },
                 "(Andy|Dandrewlion|Werdna)": {
@@ -2270,14 +2297,23 @@ WorldData = {
                         },
                         Aliyah: {
                             if: {
-                                cond: "licence to kill revoked",
-                                msg: "Killing things doesn't feel so fun anymore..."
+                                cond: "chose kill Aliyah",
+                                msg: "You've killed this one already, keep up!"
                             },
                             else: {
-                                msg: "You enter the room of a female human. It reaches out to pet you, but you scratch its paw. It recoils in shock.<br><br>You kill the human. It's a weak human, so it doesn't put up much of a fight. You watch the life drain from its eyes as it looks at you in betrayal. You feel a slight pang of guilt. All the human wanted was to pet you. You turn back time to allow the human to live again. When you resume time, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap. You fall asleep.<br><br>\
-                                Later, you return to the hall.",
-                                inc: "kill point Aliyah",
-                                inc2: "rest",
+                                if: {
+                                    cond: "licence to kill revoked",
+                                    msg: "Killing things doesn't feel so fun anymore..."
+                                },
+                                else: {
+                                    msg: "You enter the room of a female human. It reaches out to pet you, but you scratch its paw. It recoils in shock.<br><br>You kill the human. It's a weak human, so it doesn't put up much of a fight. You watch the life drain from its eyes as it looks at you in betrayal. You feel a slight pang of guilt. All the human wanted was to pet you. Revive? (\"yes\" or \"no\")",
+                                    inc: "kill point Aliyah",
+                                    get: {
+                                        item: "Aliyah life/death question",
+                                        data: -1
+                                    },
+                                    dest: Locations.DecisionRoom
+                                },
                             },
                         },
                         Reu: {
@@ -2556,7 +2592,7 @@ WorldData = {
                     },
                     dest: Locations.Emily
                 },
-                "Follow": {
+                "(Follow|go)": {
                     if: {
                         cond: "the gift of knowledge",
                         msg: "You go into the closet where you'd seen the human disappear, as it sits working at its desk.. Where are you?",
@@ -2636,7 +2672,22 @@ WorldData = {
                         },
                         "Andrew": {
                             msg: "Hmm. I don't know who Andrew is. Maybe try reviving Andy, Werdna, or Dandrewlion?"
-                        }
+                        },
+                        "Aliyah": {
+                            if: {
+                                cond: "chose kill Aliyah",
+                                msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
+                                Later, you return to the hall.",
+                                inc: "rest",
+                                get: {
+                                    item: "chose kill Aliyah",
+                                    data: 0
+                                }
+                            },
+                            else: {
+                                msg: "You can't revive someone who's still alive..."
+                            }
+                        },
                     }
                 }
             },
@@ -3824,6 +3875,8 @@ WorldData = {
                             You spend the night in jail, and in the morning you escape using your telekinesis to pick the lock. You go to the meeting place and get beamed out of wherever you are. You materialize back in Headquarters, and you look at the TV next to the chamber to see some fish cops running up to the spot that you had just dematerialized from. It's hard for you to wrap your head around the concept that you had been inside a TV show.<br><br>\
                             \
                             You have failed your mission, and Headquarters doesn't take to failures well. You are fired from your job and your licence to kill is revoked. <br><br>\
+                            You are sad, and because of your failure, you no longer want to kill. It just doesn't feel as thrilling anymore.<br><br>\
+                            \
                             You are now back at your house, in the kitchen.",
                             get1: {
                                 item: "Assassination mission",
@@ -4886,21 +4939,21 @@ WorldData = {
                                 msg: "Aha, I have fooled you. You've gone so far up that you've gone down! Welcome to hell!",
                                 get: {
                                     item: "idk why but they're trying to go even further up than Home Hardware 5",
-                                    data: -1
-                                },
-                                get: {
-                                    item: "idk why but they're trying to go even further up than Home Hardware 4",
                                     data: 0
                                 },
                                 get2: {
-                                    item: "idk why but they're trying to go even further up than Home Hardware 3",
+                                    item: "idk why but they're trying to go even further up than Home Hardware 4",
                                     data: 0
                                 },
                                 get3: {
-                                    item: "idk why but they're trying to go even further up than Home Hardware 2",
+                                    item: "idk why but they're trying to go even further up than Home Hardware 3",
                                     data: 0
                                 },
                                 get4: {
+                                    item: "idk why but they're trying to go even further up than Home Hardware 2",
+                                    data: 0
+                                },
+                                get5: {
                                     item: "idk why but they're trying to go even further up than Home Hardware 1",
                                     data: 0
                                 },
@@ -5168,17 +5221,6 @@ WorldData = {
                         },
                     }
                 },
-                "(counting|c)": {
-                    if: {
-                        cond: "thing", count: 15,
-                        msg: "yay you can count to 10!",
-                        inc: "thing"
-                    },
-                    else: {
-                        msg: "count to fifteen!",
-                        inc: "thing",
-                    }
-                }
             }
         }
     },
