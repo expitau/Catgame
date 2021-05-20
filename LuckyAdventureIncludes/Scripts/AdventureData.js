@@ -660,6 +660,13 @@ WorldData = {
                             msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*"
                         }
                     }
+                },
+                "food": {
+                    msg: "You eat some of the food, you're not as hungry anymore",
+                    inc: "food",
+                },
+                "water": {
+                    msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*"
                 }
             }
         },
@@ -5376,8 +5383,6 @@ WorldData = {
         "(look outside|look out window|sit chair)": "chair",
         "(nap bed|sleep bed|nap)": "bed",
         "(steal hard hat|take hard hat)": "hard hat",
-        "food": "get food",
-        "water": "get water",
         "(look outside|look out window|sit chair)": "chair",
         "(sleep under bed|under bed|go under bed|go Grebel|Grebel)": "portal",
         "(halp|help|helpp|helppp)": "h",
