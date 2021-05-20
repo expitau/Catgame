@@ -601,8 +601,24 @@ WorldData = {
         dining_room: {
             cmd: {
                 "hint": {
-                    msg: "Alrighty, here are your possible commands: <br><br>\
+                    if: {
+                        cond: "lucky hath deleted water",
+                        msg: "Alrighty, here are your possible commands: <br><br>\
+                        look<br>\
+                        look at food<br>\
+                        move (north|south|west|up|down)<br>\
+                        get food<br>\
+                        get water<br>\
+                        inv<br>\
+                        help<br>\
+                        clear<br>\
+                        hint"
+                    },
+                    else: {
+                        msg: "Alrighty, here are your possible commands: <br><br>\
                     look<br>\
+                    look at water<br>\
+                    look at food<br>\
                     move (north|south|west|up|down)<br>\
                     get food<br>\
                     get water<br>\
@@ -611,8 +627,31 @@ WorldData = {
                     clear<br>\
                     hint"
                 },
+            },
                 l: {
-                    img: "Images/DiningRoom.jpeg",
+                    if: {
+                        cond: "lucky hath deleted water",
+                        img: "Images/DiningRoomNoWater.jpeg",
+                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                N: The entryway<br>\
+                S: The kitchen<br>\
+                W: The office<br>\
+                D: The basement<br>\
+                 - There's food here<br>\
+                 - There's water here",
+                    clear: 1,
+                    cmd: {
+                        "water": {
+                            msg: "There is no water"
+                        },
+                        "food": {
+                            msg: "The food looks tasty"
+                        }
+                    }
+
+                    },
+                    else: {
+                        img: "Images/DiningRoom.jpeg",
                     msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
@@ -629,6 +668,7 @@ WorldData = {
                             msg: "The food looks tasty"
                         }
                     }
+                },
                 },
                 m: {
                     cmd: {
@@ -657,9 +697,58 @@ WorldData = {
                             inc: "food",
                         },
                         "water": {
-                            msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*"
+                            if: {
+                                cond: "they tried to make me drink gross water", count: 5,
+                                msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
+                                get: {
+                                    item: "lucky hath deleted water",
+                                    data: -1
+                                }
+                            },
+                            else: {
+                                if: {
+                                    cond: "they tried to make me drink gross water",
+                                    msg: "Stop trying to make me drink it, it's gross!!!",
+                                    inc: "they tried to make me drink gross water"
+                                },
+                                else: {
+                                    msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                                    get: {
+                                        item: "they tried to make me drink gross water",
+                                        data: -1
+                                    }
+                                },
+                            },
                         }
                     }
+                },
+                "food": {
+                    msg: "You eat some of the food, you're not as hungry anymore",
+                    inc: "food",
+                },
+                "water": {
+                    if: {
+                        cond: "they tried to make me drink gross water", count: 5,
+                        msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
+                        get: {
+                            item: "lucky hath deleted water",
+                            data: -1
+                        }
+                    },
+                    else: {
+                        if: {
+                            cond: "they tried to make me drink gross water",
+                            msg: "Stop trying to make me drink it, it's gross!!!",
+                            inc: "they tried to make me drink gross water"
+                        },
+                        else: {
+                            msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                            get: {
+                                item: "they tried to make me drink gross water",
+                                data: -1
+                            }
+                        },
+                    },
                 }
             }
         },
@@ -5376,8 +5465,6 @@ WorldData = {
         "(look outside|look out window|sit chair)": "chair",
         "(nap bed|sleep bed|nap)": "bed",
         "(steal hard hat|take hard hat)": "hard hat",
-        "food": "get food",
-        "water": "get water",
         "(look outside|look out window|sit chair)": "chair",
         "(sleep under bed|under bed|go under bed|go Grebel|Grebel)": "portal",
         "(halp|help|helpp|helppp)": "h",
