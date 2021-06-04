@@ -1632,7 +1632,8 @@ WorldData = {
                             get: {
                                 item: "recently arrived",
                                 data: 0
-                            }
+                            },
+                            clear: 1
                         },
                         else: {
                             if: {
@@ -1643,7 +1644,8 @@ WorldData = {
                                 get: {
                                     item: "recently arrived",
                                     data: 0
-                                }
+                                },
+                                clear: 1
                             },
                             else: {
                                 img: "Images/Nathan2.jpeg",
@@ -4644,7 +4646,7 @@ WorldData = {
                         },
                     }
                 },
-                "(talk|beaver|beavers)": {
+                "(talk|meow|beaver|beavers)": {
                     if: {
                         cond: "talked to the beaver",
                         msg: "Want to follow the beavers? (\"follow\" if yes)"
