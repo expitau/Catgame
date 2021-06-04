@@ -626,49 +626,49 @@ WorldData = {
                     help<br>\
                     clear<br>\
                     hint"
+                    },
                 },
-            },
                 l: {
                     if: {
                         cond: "lucky hath deleted water",
                         img: "Images/DiningRoomNoWater.jpeg",
-                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                        msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
                  - There's water here",
-                    clear: 1,
-                    cmd: {
-                        "water": {
-                            msg: "There is no water"
-                        },
-                        "food": {
-                            msg: "The food looks tasty"
+                        clear: 1,
+                        cmd: {
+                            "water": {
+                                msg: "There is no water"
+                            },
+                            "food": {
+                                msg: "The food looks tasty"
+                            }
                         }
-                    }
 
                     },
                     else: {
                         img: "Images/DiningRoom.jpeg",
-                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                        msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
                  - There's water here",
-                    clear: 1,
-                    cmd: {
-                        "water": {
-                            msg: "This water is not good enough for chichien"
-                        },
-                        "food": {
-                            msg: "The food looks tasty"
+                        clear: 1,
+                        cmd: {
+                            "water": {
+                                msg: "This water is not good enough for chichien"
+                            },
+                            "food": {
+                                msg: "The food looks tasty"
+                            }
                         }
-                    }
-                },
+                    },
                 },
                 m: {
                     cmd: {
@@ -4516,7 +4516,10 @@ WorldData = {
         hell: {
             cmd: {
                 "hint": {
-                    msg: "There's not a whole lot to do here, but here's the list of commands:<br><br>\
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "Here's the list of commands:<br><br>\
+                    follow<br>\
                     move (up|down)<br>\
                     kill beavers<br>\
                     look<br>\
@@ -4524,6 +4527,18 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
+                    },
+                    else: {
+                        msg: "Here you go:<br><br>\
+                    move (up|down)<br>\
+                    talk to beavers<br>\
+                    kill beavers<br>\
+                    look<br>\
+                    inv<br>\
+                    clear<br>\
+                    help<br>\
+                    hint<br>"
+                    },
                 },
                 kill: {
                     cmd: {
@@ -4611,6 +4626,75 @@ WorldData = {
                                 }
                             },
                         },
+                    }
+                },
+                "(talk|beaver|beavers)": {
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "Want to follow the beavers? (\"follow\" if yes)"
+                    },
+                    else: {
+                        if: {
+                            cond: "already followed the beaver",
+                            msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                        },
+                        else: {
+                            msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                    Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                            get: {
+                                item: "talked to the beaver",
+                                data: -1
+                            }
+                        }
+                    },
+                    cmd: {
+                        "(beaver|beavers)": {
+                            if: {
+                                cond: "talked to the beaver",
+                                msg: "Want to follow the beavers? (\"follow\" if yes)"
+                            },
+                            else: {
+                                if: {
+                                    cond: "already followed the beaver",
+                                    msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                                },
+                                else: {
+                                    msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                            Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                                    get: {
+                                        item: "talked to the beaver",
+                                        data: -1
+                                    }
+                                }
+                            },
+                        }
+                    },
+                },
+                "(follow|yes)": {
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "You follow the beavers to a set of three shimmering portals. Which portal should you enter? (1, 2, or 3?)",
+                        get: {
+                            item: "talked to the beaver",
+                            data: 0
+                        },
+                        get2: {
+                            item: "already followed the beaver",
+                            data: -1
+                        },
+                        get3: {
+                            item: "the great beaver question",
+                            data: -1
+                        },
+                    },
+                    else: {
+                        if: {
+                            cond: "already followed the beaver",
+                            msg: "You...you've already done that. You know where the portals are, just pick: 1, 2, or 3?"
+                        },
+                        else: {
+                            msg: "Huh?"
+                        }
                     }
                 },
             },
