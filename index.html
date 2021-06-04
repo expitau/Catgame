@@ -31,7 +31,7 @@
             <span class="colourable" onClick="setRandomElementColor(this)">r</span><span class="colourable"
                 onClick="setRandomElementColor(this)">e</span><span class="colourable"
                 onClick="setRandomElementColor(this)">!</span>
-        </h1>
+        </h1>   
         <div id="clicker" hidden=true>
             <br><br>
             <table id="clickerdisplay">
@@ -244,7 +244,7 @@
         color = "#" + Math.floor(Math.random() * 16777215).toString(16);
         element.style.color = color;
     }
-
+    
     function updateColor() {
         if (epilepsy == 1) {
             bg = "#" + Math.floor(Math.random() * 16777215).toString(16);
@@ -266,7 +266,7 @@
         document.getElementById("background").style.backgroundColor = bg;
         document.getElementById("title").style.color = fg2;
     }
-    setInterval(updateColor, 20);
+    setInterval(updateColor, 10);
 
     var secretunlock = (new URLSearchParams(window.location.search)).get("code") == 720;
     if (secretunlock) {

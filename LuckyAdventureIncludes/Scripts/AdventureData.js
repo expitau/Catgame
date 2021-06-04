@@ -626,49 +626,49 @@ WorldData = {
                     help<br>\
                     clear<br>\
                     hint"
+                    },
                 },
-            },
                 l: {
                     if: {
                         cond: "lucky hath deleted water",
                         img: "Images/DiningRoomNoWater.jpeg",
-                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                        msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
                  - There's water here",
-                    clear: 1,
-                    cmd: {
-                        "water": {
-                            msg: "There is no water"
-                        },
-                        "food": {
-                            msg: "The food looks tasty"
+                        clear: 1,
+                        cmd: {
+                            "water": {
+                                msg: "There is no water"
+                            },
+                            "food": {
+                                msg: "The food looks tasty"
+                            }
                         }
-                    }
 
                     },
                     else: {
                         img: "Images/DiningRoom.jpeg",
-                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                        msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
                  - There's water here",
-                    clear: 1,
-                    cmd: {
-                        "water": {
-                            msg: "This water is not good enough for chichien"
-                        },
-                        "food": {
-                            msg: "The food looks tasty"
+                        clear: 1,
+                        cmd: {
+                            "water": {
+                                msg: "This water is not good enough for chichien"
+                            },
+                            "food": {
+                                msg: "The food looks tasty"
+                            }
                         }
-                    }
-                },
+                    },
                 },
                 m: {
                     cmd: {
@@ -1534,7 +1534,7 @@ WorldData = {
                         dest: Locations.nathan2
                     },
                     else: {
-                        msg: "You crawl under Nathan's bed. You like to be here, it's safe and comfortable, maybe not as comfortable as the actual bed, but -<br><br>You suddenly notice a blue shimmery circle-like shape appear on the ground, no larger than one of your paws. Curious, you creep closer to it. The circle grows rapidly and swallows you!",
+                        msg: "You crawl under Nathan's bed. You like to be here, it's safe and comfortable, maybe not as comfortable as the actual bed, but -<br><br>You suddenly notice a blue shimmery circle-like shape appear on the ground, no larger than one of your paws. Curious, you creep closer to it. The circle grows rapidly and swallows you! Where are you? (\"look\")",
                         get: {
                             item: "Grebel",
                             data: -1
@@ -1617,24 +1617,42 @@ WorldData = {
                     if: {
                         cond: "chose kill Nathan",
                         img: "Images/DeadNathan.jpeg",
-                        msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\"."
+                        msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\".",
+                        get: {
+                            item: "went into portal 2",
+                            data: 0
+                        },
+                        clear: 1
                     },
                     else: {
                         if: {
-                            cond: "recently arrived",
+                            cond: "went into portal 2",
+                            msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
                             img: "Images/Nathan2.jpeg",
-                            msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. Type \"portal\" to return home.",
-                            clear: 1,
                             get: {
                                 item: "recently arrived",
                                 data: 0
-                            }
+                            },
+                            clear: 1
                         },
                         else: {
-                            img: "Images/Nathan2.jpeg",
-                            msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
-                            clear: 1
-                        }
+                            if: {
+                                cond: "recently arrived",
+                                img: "Images/Nathan2.jpeg",
+                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. Type \"portal\" to return home.",
+                                clear: 1,
+                                get: {
+                                    item: "recently arrived",
+                                    data: 0
+                                },
+                                clear: 1
+                            },
+                            else: {
+                                img: "Images/Nathan2.jpeg",
+                                msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
+                                clear: 1
+                            }
+                        },
                     },
                 },
                 "(Bullet Journal|BJ)": {
@@ -4516,7 +4534,10 @@ WorldData = {
         hell: {
             cmd: {
                 "hint": {
-                    msg: "There's not a whole lot to do here, but here's the list of commands:<br><br>\
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "Here's the list of commands:<br><br>\
+                    follow<br>\
                     move (up|down)<br>\
                     kill beavers<br>\
                     look<br>\
@@ -4524,6 +4545,18 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
+                    },
+                    else: {
+                        msg: "Here you go:<br><br>\
+                    move (up|down)<br>\
+                    talk to beavers<br>\
+                    kill beavers<br>\
+                    look<br>\
+                    inv<br>\
+                    clear<br>\
+                    help<br>\
+                    hint<br>"
+                    },
                 },
                 kill: {
                     cmd: {
@@ -4611,6 +4644,116 @@ WorldData = {
                                 }
                             },
                         },
+                    }
+                },
+                "(talk|meow|beaver|beavers)": {
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "Want to follow the beavers? (\"follow\" if yes)"
+                    },
+                    else: {
+                        if: {
+                            cond: "already followed the beaver",
+                            msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                        },
+                        else: {
+                            msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                    Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                            get: {
+                                item: "talked to the beaver",
+                                data: -1
+                            }
+                        }
+                    },
+                    cmd: {
+                        "(beaver|beavers)": {
+                            if: {
+                                cond: "talked to the beaver",
+                                msg: "Want to follow the beavers? (\"follow\" if yes)"
+                            },
+                            else: {
+                                if: {
+                                    cond: "already followed the beaver",
+                                    msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                                },
+                                else: {
+                                    msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                            Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                                    get: {
+                                        item: "talked to the beaver",
+                                        data: -1
+                                    }
+                                }
+                            },
+                        }
+                    },
+                },
+                "(follow|yes)": {
+                    if: {
+                        cond: "talked to the beaver",
+                        msg: "You follow the beavers to a set of three shimmering portals. Which portal should you enter? (1, 2, or 3?)",
+                        get: {
+                            item: "talked to the beaver",
+                            data: 0
+                        },
+                        get2: {
+                            item: "already followed the beaver",
+                            data: -1
+                        },
+                        get3: {
+                            item: "the great beaver question",
+                            data: -1
+                        },
+                    },
+                    else: {
+                        if: {
+                            cond: "already followed the beaver",
+                            msg: "You...you've already done that. You know where the portals are, just pick: 1, 2, or 3?"
+                        },
+                        else: {
+                            msg: "Huh?"
+                        }
+                    }
+                },
+                "(1|one|first|left)": {
+                    if: {
+                        cond: "the great beaver question",
+                        msg: "You go into portal 1 (the one on the left) and appear back in your house, in the kitchen!",
+                        dest: Locations.kitchen
+                    },
+                    else: {
+                        msg: "What?"
+                    }
+                },
+                "(2|two|second|middle)": {
+                    if: {
+                        cond: "the great beaver question",
+                        if: {
+                            cond: "Grebel",
+                            msg: "You go into portal 2 (the one in the middle) and appear in the room where Nathan currently lives!",
+                            dest: Locations.nathan2
+                        },
+                        else: {
+                            msg: "You go into portal 2 (the one in the middle) and appear in a room you've never been in before! Look around!",
+                            dest: Locations.nathan2,
+                            get: {
+                                item: "went into portal 2",
+                                data: -1
+                            }
+                        },
+                    },
+                    else: {
+                        msg: "What?"
+                    }
+                },
+                "(3|three|third|right)": {
+                    if: {
+                        cond: "the great beaver question",
+                        msg: "You go into portal 3 (the one on the right) and appear in a room (look around)!",
+                        dest: Locations.AliyahRoom2
+                    },
+                    else: {
+                        msg: "What?"
                     }
                 },
             },
