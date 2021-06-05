@@ -27,7 +27,7 @@ Locations = Object.freeze({
     HomeHardware: "HomeHardware",
     DecisionRoom: "DecisionRoom",
     WonderPetSchoolhouse: "WonderPetSchoolhouse",
-    UnluckyMission: "UnluckyMission",
+    UnluckyEncounter: "UnluckyEncounter",
 
 });
 
@@ -2757,6 +2757,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Reu",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Reu",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -2770,6 +2774,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Maia",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Maia",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -2783,6 +2791,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Nathan",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Nathan",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -2796,6 +2808,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Emily",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Emily",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -2809,6 +2825,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Andrew",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Andrew",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -2827,6 +2847,10 @@ WorldData = {
                                 get: {
                                     item: "chose kill Aliyah",
                                     data: 0
+                                },
+                                get2: {
+                                    item: "revived Aliyah",
+                                    data: -1
                                 }
                             },
                             else: {
@@ -3115,6 +3139,10 @@ WorldData = {
                                         item: "chose kill Emily",
                                         data: 0
                                     },
+                                    get2: {
+                                        item: "revived Emily",
+                                        data: -1
+                                    }
                                 },
                                 else: {
                                     msg: "The human's ghost glares at you as you approach, knowing that you are about to revive it. It likes being a ghost! You ignore its disapproval and rewind time to let the human live again.",
@@ -3122,6 +3150,10 @@ WorldData = {
                                         item: "chose kill Emily",
                                         data: 0
                                     },
+                                    get2: {
+                                        item: "revived Emily",
+                                        data: -1
+                                    }
                                 },
                             },
                             "Eevee": {
@@ -3131,6 +3163,10 @@ WorldData = {
                                     get: {
                                         item: "chose kill Eevee",
                                         data: 0
+                                    },
+                                    get2: {
+                                        item: "revived Eevee",
+                                        data: -1
                                     }
                                 },
                                 else: {
@@ -3368,6 +3404,10 @@ WorldData = {
                                     get: {
                                         item: "chose kill Eevee",
                                         data: 0
+                                    },
+                                    get2: {
+                                        item: "revived Eevee",
+                                        data: -1
                                     }
                                 },
                                 else: {
@@ -3535,10 +3575,10 @@ WorldData = {
                                     if: {
                                         cond: "Wonder Pets mission",
                                         msg: "You have accepted the mission!<br><br>\
-                                        You are taken outside to a hangar where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br.\
+                                        You are taken outside to a hangar where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br>\
                                         A door opens from outside and an odd contraption that looks as though it's a child's toy flies through it and lands in front of you. You blink in confusion.<br><br>\
                                         The agents motion at you to enter, so you do. What kind of mission is this?<br><br>\
-                                        You arrive at a "
+                                        You arrive at a building. Look around."
                                     },
                                     else: {
                                         msg: "Hold on, what are you accepting? You don't have a mission...Look around first, or if no missions are being offered, return to Nathan's new house by typing \"Nathan\". It's possible that there's something you can do there to qualify you for a mission.",
@@ -5632,30 +5672,30 @@ WorldData = {
             }
         },
         WonderPetSchoolhouse: {
-                if: {
-                    cond: "looked outside the schoolhouse already",
-                    cmd: {
-                        h: {
-                            if: {
-                                cond: "WonderPetsMissionQuestion",
-                                msg: "Commands:<br><br>\
+            if: {
+                cond: "looked outside the schoolhouse already",
+                cmd: {
+                    h: {
+                        if: {
+                            cond: "WonderPetsMissionQuestion",
+                            msg: "Commands:<br><br>\
                                 look<br>\
                                 kill Wonder Pets<br>\
                                 inv<br>\
                                 help<br>\
                                 clear<br>\
                                 hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
-                            }
+                        }
+                    },
+                    l: {
+                        if: {
+                            cond: "WonderPetsMissionQuestion",
+                            msg: "The animals look at you uncomfortably. You think about how nice it would feel to kill them...(\"kill Wonder Pets\" or \"mission\" are the only two options here)",
+                            clear: 1
                         },
-                        l: {
-                            if: {
-                                cond: "WonderPetsMissionQuestion",
-                                msg: "The animals look at you uncomfortably. You think about how nice it would feel to kill them...(\"kill Wonder Pets\" or \"mission\" are the only two options here)",
-                                clear: 1
-                            },
-                            else: {
-                                img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
-                                msg: "The building seems to only contain one room, and it has a colourful rug with the alphabet written around the edge on the floor, and children's toys scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
+                        else: {
+                            img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
+                            msg: "The building seems to only contain one room, and it has a colourful rug with the alphabet written around the edge on the floor, and children's toys scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
                             \"We're so glad you're here!\" The hamster says to you. <br><br>\
                             \"We really need your help!\" The duckling adds. \"See, our friend Tuck is not feeling well today, and we need someone to help us on our missions!\" The duckling motions to a turtle lying in its tank. <br><br>\
                             You nod, still unsure why you, a trained assassin, were sent here...<br><br>\
@@ -5671,63 +5711,121 @@ WorldData = {
                             \"There's, um, there's a cat...t-trapped in a tree.\" The hamster says shakily. <br><br>\
                             The duckling and the hamster look at one another, probably regretting hiring an assassin to help them with their little 'save the animals' missions.<br><br>\
                             Do you go on the mission right now? (yes/no)",
-                                get: {
-                                    item: "WonderPetsMissionQuestion",
-                                    data: -1
-                                },
-                                clear: 1
+                            get: {
+                                item: "WonderPetsMissionQuestion",
+                                data: -1
                             },
+                            clear: 1
                         },
-                        "(Yes|mission)": {
-                            msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that you've stepped back. <br><br>\
+                    },
+                    "(Yes|mission|rescue)": {
+                        if: {
+                            cond: "started to rescue the cat",
+                            msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him. You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
+                                Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
+                                \"What's gonna work?\" Linny asks. <br><br>\
+                                \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
+                                \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
+                                They blink at you in surprise.<br><br>\
+                                Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
+                                Your surroundings solidify again. Look around!",
+                            clear: 1,
+                            dest: Locations.UnluckyEncounter,
+                        },
+                        else: {
+                            img: "Images/WonderPets.jpeg",
+                            msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
                             As you fly toward your destination, the animals start to sing: <br><br>\
                             \"Wonder Pets, Wonder Pets, we're on our way-\" You cut them off immediately.<br><br>\
                             \"What did I say about singing?\" You snarl at them. Quivering, they wisely decide not to reply.<br><br>\
-                            After some time, you arrive in a foresty area near a housing area. You vaguely see a cat in the tree. The cat's pretty high up, so you don't see any details.",
-                            dest: Locations.UnluckyMission,
+                            After some time, you arrive in a foresty area near a housing area. You vaguely see a cat in the tree. The cat's pretty high up, so you don't see any details.<br><br>\
+                            \"M-my name's Linny, pronouns he/him, I'm a Guinea Pig.\" The guinea pig says. Whoops. You'd been referring to him as a hamster this whole time. Oh well.<br><br>\
+                            \"I'm Ming-ming, pronouns she/her, I'm a duck who's just learned to fly!\" The duckling adds proudly, showing you that she can get a whole five inches off the ground. You nod. <br><br>\
+                            \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
+                            \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
+                            (respond with \"rescue\", this is the only possible command)",
+                            get: {
+                                item: "started to rescue the cat",
+                                data: -1
+                            },
                         },
-                        "No": {
-                            msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
-                        },
-                        "kill": {
-                            cmd: {
-                                "wonder": {
-                                    cmd: {
-                                        "pets": {
-                                            msg: "A true murderer at heart, huh? Alright, go kill the harmless little class pets and prevent them from saving kittens or helping pandas.<br><br>\
+                    },
+                    "No": {
+                        msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
+                    },
+                    "kill": {
+                        cmd: {
+                            "wonder": {
+                                cmd: {
+                                    "pets": {
+                                        msg: "A true murderer at heart, huh? Alright, go kill the harmless little class pets and prevent them from saving kittens or helping pandas.<br><br>\
                                             You lunge at the hamster first, and the duckling and the turtle scream in terror as you slit its throat. You turn to the duckling next, and lastly you kill the turtle. The boat-plane thing aggressively picks you up and transports you back to Assassin's Headquarters. You get a very stern talking-to, and then a threatening-looking human comes in with a gun. You try to resist, running all over the room. A few other agents get shot accidentally in the process. The human manages to shoot you. As you lie, gasping your last breaths, you wonder if it was worth it.",
-                                            inc: "food", count: 3,
-                                            inc2: "Wonder Pets kill point",
-                                            end: 307
-                                        }
+                                        inc: "food", count: 3,
+                                        inc2: "Wonder Pets kill point",
+                                        end: 307
                                     }
                                 }
                             }
                         }
                     }
+                }
 
-                },
-                else: {
-                    cmd: {
-                        l: {
-                            img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
-                            msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
-                            get: {
-                                item: "looked outside the schoolhouse already",
-                                data: -1
-                            },
-                            clear: 1
-                        }
+            },
+            else: {
+                cmd: {
+                    l: {
+                        img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
+                        msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
+                        get: {
+                            item: "looked outside the schoolhouse already",
+                            data: -1
+                        },
+                        clear: 1
                     }
+                }
             }
         },
-        UnluckyMission: {
+        UnluckyEncounter: {
             cmd: {
                 l: {
-                    msg: "You look around."
+                    if: {
+                        cond: "Unlucky wants to try again",
+                        msg: "You look around to find yourself in a plain, featureless black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
+                        \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
+                        \"My name is Unlucky. I'm you, but evil.\" Unlucky says, reintroducing herself. You suppose that she really was serious about the whole 'redoing it' thing.\
+                        \"You're me but evil? I'm not exactly an angel myself-\" You start to say, when you start to see dark wispy shapes coming out of Unlucky. Her eyes start to turn fully black and her pupils glow red. The darkness creeps over and threatens to envelop you. <br><br>\
+                        Shrinking back, you try to fend it off with your telekinesis, but it's too powerful. Unlucky smiles, knowing that she now has the upper hand."
+                    },
+                    else: {
+                        if: {
+                            cond: "already talked to Unlucky",
+                            img: "Images/FierceLucky.png",
+                            msg: "Unlucky snarls at you."
+                        },
+                        else: {
+                            msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat. <br><br>\
+                    You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
+                    \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
+                    \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
+                    \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
+                    \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
+                    \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
+                    \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
+                    \"But...yeah...I suppose that's why I named myself Unlucky...\" There's a short awkward silence as both of you don't know what to say.<br><br><br>\
+                    \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
+                    \"Let's do this again.\" She mutters to herself. Your surroundings blur into one another. Try looking around.",
+                            get: {
+                                item: "already talked to Unlucky",
+                                data: -1
+                            },
+                            get2: {
+                                item: "Unlucky wants to try again",
+                                data: -1
+                            }
+                        },
+                    },
                 },
-
             }
         },
     },
