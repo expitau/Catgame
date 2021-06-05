@@ -25,7 +25,9 @@ Locations = Object.freeze({
     AliyahHallway: "AliyahHallway",
     ZaraRoom: "ZaraRoom",
     HomeHardware: "HomeHardware",
-    DecisionRoom: "DecisionRoom"
+    DecisionRoom: "DecisionRoom",
+    WonderPetSchoolhouse: "WonderPetSchoolhouse",
+    UnluckyMission: "UnluckyMission",
 
 });
 
@@ -3450,10 +3452,22 @@ WorldData = {
                                 },
                                 clear: 1
                             },
-
                             else: {
-                                msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later!<br>Your completed/in progress missions appear in your inventory. You can return to the hallway outside Nathan's room by typing \"Nathan\" Perhaps there are still things you can do to unlock a mission!",
-                                clear: 1
+                                if: {
+                                    cond: "save the pets mission - completed",
+                                    msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later!<br>Your completed/in progress missions appear in your inventory. You can return to the hallway outside Nathan's room by typing \"Nathan\" Perhaps there are still things you can do to unlock a mission!",
+                                    clear: 1
+                                },
+                                else: {
+                                    msg: "You are in Assassin's Headquarters! <br><br>You currently have one available quest:<br><br>\
+                                    Your mission is to join a team of other secret agents on a mission to save someone. You will receive further details if you choose to accept it.<br><br>(respond \"Accept\" to accept, or just return to the hallway outside Nathan's room by typing \"Nathan\")<br><br>Your completed/assigned missions appear in your inventory along with their status.",
+                                    inc: "Wonder Pets mission",
+                                    get2: {
+                                        item: "has mission",
+                                        data: -1
+                                    },
+                                    clear: 1
+                                },
                             },
                         },
                     },
@@ -3518,8 +3532,18 @@ WorldData = {
                                     dest: Locations.Spain,
                                 },
                                 else: {
-                                    msg: "Hold on, what are you accepting? You don't have a mission...Look around first, or if no missions are being offered, return to Nathan's new house by typing \"Nathan\". It's possible that there's something you can do there to qualify you for a mission.",
-                                }
+                                    if: {
+                                        cond: "Wonder Pets mission",
+                                        msg: "You have accepted the mission!<br><br>\
+                                        You are taken outside to a hangar where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br.\
+                                        A door opens from outside and an odd contraption that looks as though it's a child's toy flies through it and lands in front of you. You blink in confusion.<br><br>\
+                                        The agents motion at you to enter, so you do. What kind of mission is this?<br><br>\
+                                        You arrive at a "
+                                    },
+                                    else: {
+                                        msg: "Hold on, what are you accepting? You don't have a mission...Look around first, or if no missions are being offered, return to Nathan's new house by typing \"Nathan\". It's possible that there's something you can do there to qualify you for a mission.",
+                                    }
+                                },
                             }
                         },
                     },
@@ -3793,7 +3817,13 @@ WorldData = {
                         msg: "You've got two paths: <br><br>\
                         S: You are supposed to head south to get to your target.<br>\
                         N: North is the opposite of south and so that's the direction you would go to waste time.",
-                        clear: 1
+                        clear: 1,
+                        cmd: {
+                            "drawing": {
+                                img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
+                                msg: "You look at the drawing."
+                            },
+                        }
                     },
                     else: {
                         msg: "You look at your surroundings to find that you have materialized in the middle of the ocean floor. Not only that, but everything looks a little weird. It looks like a simplified, cartoonish version of reality, almost as though someone had drawn it. It takes a minute or two for you to get used to how everything looks.\
@@ -3803,6 +3833,12 @@ WorldData = {
                         N: North is the opposite of south and so that's the direction you would go to waste time.",
                         clear: 1,
                         inc: "looked already",
+                        cmd: {
+                            "drawing": {
+                                img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
+                                msg: "You look at the drawing."
+                            },
+                        }
                     },
                 },
                 m: {
@@ -4047,7 +4083,7 @@ WorldData = {
                 },
                 "drawing": {
                     img: "https://pyxis.nymag.com/v1/imgs/7aa/21a/c1de2c521f1519c6933fcf0d08e0a26fef-27-spongebob-squarepants.rsquare.w700.JPG",
-                    msg: "You look at the drawing. Now you know who to look for."
+                    msg: "You look at the drawing."
                 },
                 "Yes": {
                     if: {
@@ -4533,6 +4569,15 @@ WorldData = {
         },
         hell: {
             cmd: {
+                h: {
+                    msg: "Here are your basic commands (maybe if you type \"hint\" you'll get one or two extra)<br><br>\
+                    move (up|down)<br>\
+                    look<br>\
+                    inv<br>\
+                    clear<br>\
+                    help<br>\
+                    hint<br>"
+                },
                 "hint": {
                     if: {
                         cond: "talked to the beaver",
@@ -4572,9 +4617,19 @@ WorldData = {
                     }
                 },
                 l: {
-                    msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
-                    clear: 1,
-                    end: 666
+                    if: {
+                        cond: "tempted fate lol",
+                        msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
+                        clear: 1,
+                        end: 666
+                    },
+                    else: {
+                        msg: "You look around. Fires burn everywhere. You see beavers off in the distance. Look around again?",
+                        get: {
+                            item: "tempted fate lol",
+                            data: -1
+                        }
+                    }
                 },
                 m: {
                     cmd: {
@@ -5575,7 +5630,106 @@ WorldData = {
                     }
                 },
             }
-        }
+        },
+        WonderPetSchoolhouse: {
+                if: {
+                    cond: "looked outside the schoolhouse already",
+                    cmd: {
+                        h: {
+                            if: {
+                                cond: "WonderPetsMissionQuestion",
+                                msg: "Commands:<br><br>\
+                                look<br>\
+                                kill Wonder Pets<br>\
+                                inv<br>\
+                                help<br>\
+                                clear<br>\
+                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                            }
+                        },
+                        l: {
+                            if: {
+                                cond: "WonderPetsMissionQuestion",
+                                msg: "The animals look at you uncomfortably. You think about how nice it would feel to kill them...(\"kill Wonder Pets\" or \"mission\" are the only two options here)",
+                                clear: 1
+                            },
+                            else: {
+                                img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
+                                msg: "The building seems to only contain one room, and it has a colourful rug with the alphabet written around the edge on the floor, and children's toys scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
+                            \"We're so glad you're here!\" The hamster says to you. <br><br>\
+                            \"We really need your help!\" The duckling adds. \"See, our friend Tuck is not feeling well today, and we need someone to help us on our missions!\" The duckling motions to a turtle lying in its tank. <br><br>\
+                            You nod, still unsure why you, a trained assassin, were sent here...<br><br>\
+                            Then, you hear a ringing sound, and you turn to see that a cylindrical tin pen-holder that is decidedly *not* a phone is shaking and ringing as though it's a phone. The hamster immediately begins to sing: <br><br>\
+                            \"The phone, the phone is ringing!\"<br><br>\
+                            \"The phone, we'll be right there!\" The duckling continues. You stare at the animals in confusion.<br><br>\
+                            \"The phone, the phone is ringing!\" The turtle chimes in from its tank.<br><br>\
+                            \"There's an animal in trouble\" (the hamster again)<br><br>\
+                            \"There's an animal in trouble\" (the duckling)<br><br>\
+                            \"There's an animal in trouble somewhere.\" The turtle finishes the song and the hamster at last picks up the phone. <br><br>\
+                            After listening to the phone for approximately half a second, the hamster gasps. \"What's happening?\" You inquire. <br><br>\
+                            \"It's a c-\" the hamster starts to sing the answer, but you slash it across the face with your claws. The hamster shrinks back and decides that it would be best to just give a straight answer.<br><br>\
+                            \"There's, um, there's a cat...t-trapped in a tree.\" The hamster says shakily. <br><br>\
+                            The duckling and the hamster look at one another, probably regretting hiring an assassin to help them with their little 'save the animals' missions.<br><br>\
+                            Do you go on the mission right now? (yes/no)",
+                                get: {
+                                    item: "WonderPetsMissionQuestion",
+                                    data: -1
+                                },
+                                clear: 1
+                            },
+                        },
+                        "(Yes|mission)": {
+                            msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that you've stepped back. <br><br>\
+                            The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
+                            As you fly toward your destination, the animals start to sing: <br><br>\
+                            \"Wonder Pets, Wonder Pets, we're on our way-\" You cut them off immediately.<br><br>\
+                            \"What did I say about singing?\" You snarl at them. Quivering, they wisely decide not to reply.<br><br>\
+                            After some time, you arrive in a foresty area near a housing area. You vaguely see a cat in the tree. The cat's pretty high up, so you don't see any details.",
+                            dest: Locations.UnluckyMission,
+                        },
+                        "No": {
+                            msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
+                        },
+                        "kill": {
+                            cmd: {
+                                "wonder": {
+                                    cmd: {
+                                        "pets": {
+                                            msg: "A true murderer at heart, huh? Alright, go kill the harmless little class pets and prevent them from saving kittens or helping pandas.<br><br>\
+                                            You lunge at the hamster first, and the duckling and the turtle scream in terror as you slit its throat. You turn to the duckling next, and lastly you kill the turtle. The boat-plane thing aggressively picks you up and transports you back to Assassin's Headquarters. You get a very stern talking-to, and then a threatening-looking human comes in with a gun. You try to resist, running all over the room. A few other agents get shot accidentally in the process. The human manages to shoot you. As you lie, gasping your last breaths, you wonder if it was worth it.",
+                                            inc: "food", count: 3,
+                                            inc2: "Wonder Pets kill point",
+                                            end: 307
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                },
+                else: {
+                    cmd: {
+                        l: {
+                            img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
+                            msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
+                            get: {
+                                item: "looked outside the schoolhouse already",
+                                data: -1
+                            },
+                            clear: 1
+                        }
+                    }
+            }
+        },
+        UnluckyMission: {
+            cmd: {
+                l: {
+                    msg: "You look around."
+                },
+
+            }
+        },
     },
 },
 
