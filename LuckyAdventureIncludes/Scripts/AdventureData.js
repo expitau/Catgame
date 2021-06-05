@@ -917,6 +917,31 @@ WorldData = {
                         get: {
                             item: "chose kill Baba",
                             data: 0
+                        },
+                        get2: {
+                            item: "revived Baba",
+                            data: -1
+                        },
+                        get3: {
+                            item: "chose to revive someone",
+                            data: -1
+                        },
+                        cmd: {
+                            "Baba": {
+                                msg: "You casually rewind time. You watch the blood un-pool itself back into Baba as he comes alive again.",
+                                get: {
+                                    item: "chose kill Baba",
+                                    data: 0
+                                },
+                                get2: {
+                                    item: "revived Baba",
+                                    data: -1
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
+                            }
                         }
                     },
                     else: {
@@ -929,7 +954,7 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "chose death Mumu",
+                        cond: "chose kill Mumu",
                         msg: "Command list time! (for now): <br><br>\
                     revive<br>\
                     look<br>\
@@ -967,7 +992,7 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "chose death Mumu",
+                        cond: "chose kill Mumu",
                         img: "Images/LivingRoomMumuDead.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is lying dead in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
@@ -979,7 +1004,7 @@ WorldData = {
                         cmd: {
                             "mumu": {
                                 if: {
-                                    cond: "chose death Mumu",
+                                    cond: "chose kill Mumu",
                                     msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
                                 },
                                 else: {
@@ -1000,7 +1025,7 @@ WorldData = {
                         cmd: {
                             "mumu": {
                                 if: {
-                                    cond: "chose death Mumu",
+                                    cond: "chose kill Mumu",
                                     msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
                                 },
                                 else: {
@@ -1027,7 +1052,7 @@ WorldData = {
                     cmd: {
                         "mumu": {
                             if: {
-                                cond: "chose death Mumu",
+                                cond: "chose kill Mumu",
                                 msg: "You meow at her dead body. Shockingly, there is no response. If you feel remorseful, you can \"revive\" her."
                             },
                             else: {
@@ -1070,7 +1095,7 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "chose death Mumu",
+                                    cond: "chose kill Mumu",
                                     msg: "You can't kill her again, she's already dead! You can choose to revive her, though...(command is \"revive\")"
                                 },
                                 else: {
@@ -1111,12 +1136,20 @@ WorldData = {
                 },
                 "revive": {
                     if: {
-                        cond: "chose death Mumu",
+                        cond: "chose kill Mumu",
                         msg: "As you look at Mumu's dead body, you start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now...",
                         get: {
-                            item: "chose death Mumu",
+                            item: "chose kill Mumu",
                             data: 0
-                        }
+                        },
+                        get2: {
+                            item: "revived Mumu",
+                            data: -1
+                        },
+                        get3: {
+                            item: "chose to revive someone",
+                            data: -1
+                        },
                     },
                     else: {
                         msg: "Revive who? What?"
@@ -1777,7 +1810,15 @@ WorldData = {
                                 get: {
                                     item: "chose kill Nathan",
                                     data: 0
-                                }
+                                },
+                                get2: {
+                                    item: "revived Nathan",
+                                    data: -1
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "?"
@@ -1845,7 +1886,7 @@ WorldData = {
                                         if: {
                                             cond: "has been to Emily's house before",
                                             img: "Images/Hallway3EveryoneDead.jpeg",
-                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name).",
+                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
                                             clear: 1
                                         },
                                         else: {
@@ -2130,7 +2171,22 @@ WorldData = {
                         },
                     },
                     else: {
-                        msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You see a few plants near the window, including one that that smells vaguely of skunk. Hmm. You notice some dried plants on the desk, and the human is wrapping them up in sort of cylindrical shapes. Humans mystify you. You leave after a while.",
+                        if: {
+                            cond: "revived Maia",
+                            if: {
+                                cond: "weed",
+                                msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human looking around in confusion. You remember killing and reviving the human. <br><br>\
+                                Wandering in, you hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You notice that there's still weed in the room. <br><br>\
+                                Later, you leave the room and return to the hallway. You can type \"weed\" to get more weed."
+                            },
+                            else: {
+                                msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human looking around in confusion. You remember killing and reviving the human. <br><br>\
+                            Wandering in, you hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You see a few plants near the window, including one that that smells vaguely of skunk. Hmm. You notice some dried plants on the desk, and the human is wrapping them up in sort of cylindrical shapes. Humans mystify you. You leave after a while."
+                            },
+                        },
+                        else: {
+                            msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You see a few plants near the window, including one that that smells vaguely of skunk. Hmm. You notice some dried plants on the desk, and the human is wrapping them up in sort of cylindrical shapes. Humans mystify you. You leave after a while.",
+                        },
                     }
                 },
                 "Aliyah": {
@@ -2581,6 +2637,7 @@ WorldData = {
                                 if: {
                                     cond: "Name Andrew",
                                     img: "Images/AndrewDiningHall.JPG",
+                                    img2: "Images/LuckyDrinking.png",
                                     msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -2589,6 +2646,7 @@ WorldData = {
                                 },
                                 else: {
                                     img: "Images/AndrewDiningHall.JPG",
+                                    img2: "Images/LuckyDrinking.png",
                                     msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -2761,7 +2819,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Reu",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "Revive? The tall human is still alive!"
@@ -2778,7 +2840,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Maia",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "You can't revive someone who's still alive..."
@@ -2795,7 +2861,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Nathan",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "You can't revive someone who's still alive..."
@@ -2812,7 +2882,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Emily",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "You can't revive someone who's still alive..."
@@ -2829,7 +2903,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Andrew",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "You can't kill someone who's still alive."
@@ -2851,7 +2929,11 @@ WorldData = {
                                 get2: {
                                     item: "revived Aliyah",
                                     data: -1
-                                }
+                                },
+                                get3: {
+                                    item: "chose to revive someone",
+                                    data: -1
+                                },
                             },
                             else: {
                                 msg: "You can't revive someone who's still alive..."
@@ -3142,7 +3224,11 @@ WorldData = {
                                     get2: {
                                         item: "revived Emily",
                                         data: -1
-                                    }
+                                    },
+                                    get3: {
+                                        item: "chose to revive someone",
+                                        data: -1
+                                    },
                                 },
                                 else: {
                                     msg: "The human's ghost glares at you as you approach, knowing that you are about to revive it. It likes being a ghost! You ignore its disapproval and rewind time to let the human live again.",
@@ -3153,7 +3239,11 @@ WorldData = {
                                     get2: {
                                         item: "revived Emily",
                                         data: -1
-                                    }
+                                    },
+                                    get3: {
+                                        item: "chose to revive someone",
+                                        data: -1
+                                    },
                                 },
                             },
                             "Eevee": {
@@ -3167,7 +3257,11 @@ WorldData = {
                                     get2: {
                                         item: "revived Eevee",
                                         data: -1
-                                    }
+                                    },
+                                    get3: {
+                                        item: "chose to revive someone",
+                                        data: -1
+                                    },
                                 },
                                 else: {
                                     msg: "Huh?"
@@ -3408,7 +3502,11 @@ WorldData = {
                                     get2: {
                                         item: "revived Eevee",
                                         data: -1
-                                    }
+                                    },
+                                    get3: {
+                                        item: "chose to revive someone",
+                                        data: -1
+                                    },
                                 },
                                 else: {
                                     msg: "revive??"
@@ -3494,8 +3592,8 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "save the pets mission - completed",
-                                    msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later!<br>Your completed/in progress missions appear in your inventory. You can return to the hallway outside Nathan's room by typing \"Nathan\" Perhaps there are still things you can do to unlock a mission!",
+                                    cond: "Wonder Pets mission - completed",
+                                    msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later!<br>Your completed/in progress missions appear in your inventory. You can return to the hallway outside Nathan's room by typing \"Nathan\" Perhaps there are still things you can do to unlock a mission (try talking to Maia and see if that leads you anywhere)!",
                                     clear: 1
                                 },
                                 else: {
@@ -3584,7 +3682,7 @@ WorldData = {
                                         msg: "Hold on, what are you accepting? You don't have a mission...Look around first, or if no missions are being offered, return to Nathan's new house by typing \"Nathan\". It's possible that there's something you can do there to qualify you for a mission.",
                                     }
                                 },
-                            }
+                            },
                         },
                     },
                 },
@@ -4608,20 +4706,58 @@ WorldData = {
             },
         },
         hell: {
-            cmd: {
-                h: {
-                    msg: "Here are your basic commands (maybe if you type \"hint\" you'll get one or two extra)<br><br>\
+            if: {
+                cond: "unremorseful serial killer banished",
+                cmd: {
+                    "(h|hint)": {
+                        msg: "Since you've been specifically *banished* to hell for your crimes, you have less possible things to do, but it's possible to unlock actions.<br><br>\
+                        look<br>\
+                        move (up|down)<br>\
+                        inv<br>\
+                        clear<br>\
+                        help<br>\
+                        hint<br>"
+                    },
+                    d: {
+                        msg: "You descend into a different part of hell (different options now).",
+                        get: {
+                            item: "unremorseful serial killer banished",
+                            data: 0
+                        },
+                        dest: Locations.hell
+                    },
+                    l: {
+                        if: {
+                            cond: "tempted fate lol",
+                            msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
+                            clear: 1,
+                            end: 666
+                        },
+                        else: {
+                            msg: "You look around. Fires burn everywhere. You see beavers off in the distance. Look around again?",
+                            get: {
+                                item: "tempted fate lol",
+                                data: -1
+                            }
+                        }
+                    }
+                }
+            },
+            else: {
+                cmd: {
+                    h: {
+                        msg: "Here are your basic commands (maybe if you type \"hint\" you'll get one or two extra)<br><br>\
                     move (up|down)<br>\
                     look<br>\
                     inv<br>\
                     clear<br>\
                     help<br>\
                     hint<br>"
-                },
-                "hint": {
-                    if: {
-                        cond: "talked to the beaver",
-                        msg: "Here's the list of commands:<br><br>\
+                    },
+                    "hint": {
+                        if: {
+                            cond: "talked to the beaver",
+                            msg: "Here's the list of commands:<br><br>\
                     follow<br>\
                     move (up|down)<br>\
                     kill beavers<br>\
@@ -4630,9 +4766,9 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
-                    },
-                    else: {
-                        msg: "Here you go:<br><br>\
+                        },
+                        else: {
+                            msg: "Here you go:<br><br>\
                     move (up|down)<br>\
                     talk to beavers<br>\
                     kill beavers<br>\
@@ -4641,35 +4777,36 @@ WorldData = {
                     clear<br>\
                     help<br>\
                     hint<br>"
+                        },
                     },
-                },
-                kill: {
-                    cmd: {
-                        "(beaver|beavers|them|everyone)": {
-                            msg: "You kill the beavers. <br><br>Now what?<br><br>\
+                    kill: {
+                        cmd: {
+                            "(beaver|beavers|them|everyone)": {
+                                msg: "You kill the beavers. <br><br>Now what?<br><br>\
                             Perhaps now you are the master of hell or something. You don't see anyone around. You feel a bit lonely. You suppose that this must be your personal hell, since if this were a group situation, it'd be pretty well-populated. Or maybe everyone became beavers. You laugh at the concept. <br><br>\
                             \
                             You look at your paws and find, to your horror, that you are morphing into a beaver! When someone pops into hell, you attack them as easy street plays.",
-                            inc: "kill point Beaver",
+                                inc: "kill point Beaver",
+                                clear: 1,
+                                end: 666
+                            }
+                        }
+                    },
+                    l: {
+                        if: {
+                            cond: "tempted fate lol",
+                            msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
                             clear: 1,
                             end: 666
+                        },
+                        else: {
+                            msg: "You look around. Fires burn everywhere. You see beavers off in the distance. Look around again?",
+                            get: {
+                                item: "tempted fate lol",
+                                data: -1
+                            }
                         }
-                    }
-                },
-                l: {
-                    if: {
-                        cond: "tempted fate lol",
-                        msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
-                        clear: 1,
-                        end: 666
                     },
-                    else: {
-                        msg: "You look around. Fires burn everywhere. You see beavers off in the distance. Look around again?",
-                        get: {
-                            item: "tempted fate lol",
-                            data: -1
-                        }
-                    }
                 },
                 m: {
                     cmd: {
@@ -5425,13 +5562,17 @@ WorldData = {
                 l: {
                     msg: "Revive? (\"yes\" or \"no\")",
                 },
-                "yes": {
+                "(yes|revive)": {
                     if: {
                         cond: "Mumu life/death question",
                         msg: "You decide to revive Mumu. You start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now... <br><br>",
                         get: {
                             item: "Mumu life/death question",
                             data: 0
+                        },
+                        get2: {
+                            item: "revived Mumu",
+                            data: -1
                         },
                         dest: Locations.living_room
                     },
@@ -5443,6 +5584,10 @@ WorldData = {
                                 item: "Baba life/death question",
                                 data: 0
                             },
+                            get2: {
+                                item: "revived Baba",
+                                data: -1
+                            },
                             dest: Locations.office
                         },
                         else: {
@@ -5453,6 +5598,10 @@ WorldData = {
                                     item: "Emily life/death question",
                                     data: 0
                                 },
+                                get2: {
+                                    item: "revived Emily",
+                                    data: -1
+                                },
                             },
                             else: {
                                 if: {
@@ -5461,6 +5610,10 @@ WorldData = {
                                     get: {
                                         item: "Eevee life/death question",
                                         data: 0
+                                    },
+                                    get2: {
+                                        item: "revived Eevee",
+                                        data: -1
                                     },
                                     dest: Locations.Emily
                                 },
@@ -5472,6 +5625,10 @@ WorldData = {
                                             item: "Reu life/death question",
                                             data: 0
                                         },
+                                        get2: {
+                                            item: "revived Reu",
+                                            data: -1
+                                        },
                                         dest: Locations.hallway3
                                     },
                                     else: {
@@ -5481,6 +5638,10 @@ WorldData = {
                                             get: {
                                                 item: "Maia life/death question",
                                                 data: 0
+                                            },
+                                            get2: {
+                                                item: "revived Maia",
+                                                data: -1
                                             },
                                             dest: Locations.hallway3
                                         },
@@ -5492,6 +5653,10 @@ WorldData = {
                                                     item: "Nathan life/death question",
                                                     data: 0
                                                 },
+                                                get2: {
+                                                    item: "revived Nathan",
+                                                    data: -1
+                                                },
                                                 dest: Locations.hallway3
                                             },
                                             else: {
@@ -5501,6 +5666,10 @@ WorldData = {
                                                     get: {
                                                         item: "Andrew life/death question",
                                                         data: 0
+                                                    },
+                                                    get2: {
+                                                        item: "revived Andrew",
+                                                        data: -1
                                                     },
                                                     dest: Locations.hallway3
                                                 },
@@ -5513,6 +5682,10 @@ WorldData = {
                                                         get: {
                                                             item: "Aliyah life/death question",
                                                             data: 0
+                                                        },
+                                                        get2: {
+                                                            item: "revived Aliyah",
+                                                            data: -1
                                                         },
                                                         dest: Locations.hallway3
                                                     },
@@ -5528,16 +5701,20 @@ WorldData = {
                         }
                     }
                 },
-                "no": {
+                "(no|kill)": {
                     if: {
                         cond: "Mumu life/death question",
                         msg: "You leave her dead :) You can still change your mind and revive her (command is \"revive\"). You are still in the living room.",
                         get: {
-                            item: "chose death Mumu",
+                            item: "chose kill Mumu",
                             data: -1
                         },
                         get2: {
                             item: "Mumu life/death question",
+                            data: 0
+                        },
+                        get3: {
+                            item: "revived Mumu",
                             data: 0
                         },
                         dest: Locations.living_room
@@ -5554,6 +5731,10 @@ WorldData = {
                                 item: "chose kill Baba",
                                 data: -1
                             },
+                            get3: {
+                                item: "revived Baba",
+                                data: 0
+                            },
                             dest: Locations.office
                         },
                         else: {
@@ -5567,6 +5748,10 @@ WorldData = {
                                 get2: {
                                     item: "chose kill Emily",
                                     data: -1
+                                },
+                                get3: {
+                                    item: "revived Emily",
+                                    data: 0
                                 },
                                 dest: Locations.Emily
                             },
@@ -5582,6 +5767,10 @@ WorldData = {
                                         item: "chose kill Eevee",
                                         data: -1
                                     },
+                                    get3: {
+                                        item: "revived Eevee",
+                                        data: 0
+                                    },
                                 },
                                 else: {
                                     if: {
@@ -5594,6 +5783,10 @@ WorldData = {
                                         get2: {
                                             item: "chose kill Reu",
                                             data: -1
+                                        },
+                                        get3: {
+                                            item: "revived Reu",
+                                            data: 0
                                         },
                                         dest: Locations.hallway3
                                     },
@@ -5609,6 +5802,10 @@ WorldData = {
                                                 item: "chose kill Maia",
                                                 data: -1
                                             },
+                                            get3: {
+                                                item: "revived Maia",
+                                                data: 0
+                                            },
                                             dest: Locations.hallway3
                                         },
                                         else: {
@@ -5622,6 +5819,10 @@ WorldData = {
                                                 get2: {
                                                     item: "chose kill Nathan",
                                                     data: -1
+                                                },
+                                                get3: {
+                                                    item: "revived Nathan",
+                                                    data: 0
                                                 },
                                                 dest: Locations.hallway3
                                             },
@@ -5639,6 +5840,10 @@ WorldData = {
                                                         item: "chose kill Andrew",
                                                         data: -1
                                                     },
+                                                    get3: {
+                                                        item: "revived Andrew",
+                                                        data: 0
+                                                    },
                                                     dest: Locations.hallway3
                                                 },
                                                 else: {
@@ -5654,6 +5859,10 @@ WorldData = {
                                                         get2: {
                                                             item: "chose kill Aliyah",
                                                             data: -1
+                                                        },
+                                                        get3: {
+                                                            item: "revived Aliyah",
+                                                            data: 0
                                                         },
                                                         dest: Locations.hallway3
                                                     },
@@ -5675,12 +5884,35 @@ WorldData = {
             if: {
                 cond: "looked outside the schoolhouse already",
                 cmd: {
+                    "hint": {
+                        if: {
+                            cond: "started to rescue the cat",
+                            msg: "Just type rescue, check back in after if you get stuck. \"Kill Wonder Pets\" is also an option if you wanted to, though."
+                        },
+                        else: {
+                            msg: "Hint time: here are your options:<br><br>\
+                            look<br>\
+                            move (down|up)<br>\
+                            inv<br>\
+                            clear<br>\
+                            help<br>\
+                            hint<br>"
+                        }
+                    },
                     h: {
                         if: {
                             cond: "WonderPetsMissionQuestion",
                             msg: "Commands:<br><br>\
                                 look<br>\
                                 kill Wonder Pets<br>\
+                                inv<br>\
+                                help<br>\
+                                clear<br>\
+                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                        },
+                        else: {
+                            msg: "Commands:<br><br>\
+                                look<br>\
                                 inv<br>\
                                 help<br>\
                                 clear<br>\
@@ -5695,7 +5927,7 @@ WorldData = {
                         },
                         else: {
                             img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
-                            msg: "The building seems to only contain one room, and it has a colourful rug with the alphabet written around the edge on the floor, and children's toys scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
+                            msg: "The building seems to only contain one room, and it has a colourful rug on the floor with the alphabet written around the edge, and children's toys are scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
                             \"We're so glad you're here!\" The hamster says to you. <br><br>\
                             \"We really need your help!\" The duckling adds. \"See, our friend Tuck is not feeling well today, and we need someone to help us on our missions!\" The duckling motions to a turtle lying in its tank. <br><br>\
                             You nod, still unsure why you, a trained assassin, were sent here...<br><br>\
@@ -5729,6 +5961,10 @@ WorldData = {
                                 They blink at you in surprise.<br><br>\
                                 Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
                                 Your surroundings solidify again. Look around!",
+                            get: {
+                                item: "started to rescue the cat",
+                                data: 0
+                            },
                             clear: 1,
                             dest: Locations.UnluckyEncounter,
                         },
@@ -5755,26 +5991,34 @@ WorldData = {
                         msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
                     },
                     "kill": {
+                        msg: "A true murderer at heart, huh? Alright, go kill the harmless little class pets and prevent them from saving kittens or helping pandas. Just know that I am judging you.<br><br>\
+                        You lunge at the hamster first, and the duckling and the turtle scream in terror as you slit its throat. You turn to the duckling next, and lastly you kill the turtle. The boat-plane thing aggressively picks you up and transports you back to Assassin's Headquarters. You get a very stern talking-to, and then a threatening-looking human comes in with a gun. You try to resist, running all over the room. A few other agents get shot accidentally in the process. The human manages to shoot you. As you lie, gasping your last breaths, you wonder if it was worth it.",
+                        inc: "food",
+                        inc2: "food",
+                        inc3: "food",
+                        inc4: "kill point WP",
+                        end: 307,
                         cmd: {
                             "wonder": {
                                 cmd: {
                                     "pets": {
                                         msg: "A true murderer at heart, huh? Alright, go kill the harmless little class pets and prevent them from saving kittens or helping pandas.<br><br>\
-                                            You lunge at the hamster first, and the duckling and the turtle scream in terror as you slit its throat. You turn to the duckling next, and lastly you kill the turtle. The boat-plane thing aggressively picks you up and transports you back to Assassin's Headquarters. You get a very stern talking-to, and then a threatening-looking human comes in with a gun. You try to resist, running all over the room. A few other agents get shot accidentally in the process. The human manages to shoot you. As you lie, gasping your last breaths, you wonder if it was worth it.",
-                                        inc: "food", count: 3,
-                                        inc2: "Wonder Pets kill point",
-                                        end: 307
+                                        You lunge at the hamster first, and the duckling and the turtle scream in terror as you slit its throat. You turn to the duckling next, and lastly you kill the turtle. The boat-plane thing aggressively picks you up and transports you back to Assassin's Headquarters. You get a very stern talking-to, and then a threatening-looking human comes in with a gun. You try to resist, running all over the room. A few other agents get shot accidentally in the process. The human manages to shoot you. As you lie, gasping your last breaths, you wonder if it was worth it.",
+                                        inc: "food",
+                                        inc2: "food",
+                                        inc3: "food",
+                                        inc4: "kill point WP",
+                                        end: 307,
                                     }
                                 }
                             }
                         }
                     }
                 }
-
             },
             else: {
                 cmd: {
-                    l: {
+                    "(look|l|.*)": {
                         img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
                         msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
                         get: {
@@ -5790,31 +6034,291 @@ WorldData = {
             cmd: {
                 l: {
                     if: {
-                        cond: "Unlucky wants to try again",
-                        msg: "You look around to find yourself in a plain, featureless black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
-                        \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
-                        \"My name is Unlucky. I'm you, but evil.\" Unlucky says, reintroducing herself. You suppose that she really was serious about the whole 'redoing it' thing.\
-                        \"You're me but evil? I'm not exactly an angel myself-\" You start to say, when you start to see dark wispy shapes coming out of Unlucky. Her eyes start to turn fully black and her pupils glow red. The darkness creeps over and threatens to envelop you. <br><br>\
-                        Shrinking back, you try to fend it off with your telekinesis, but it's too powerful. Unlucky smiles, knowing that she now has the upper hand."
+                        cond: "Things are getting pretty darn Unlucky now...",
+                        if: {
+                            cond: "chose to revive someone",
+                            if: {
+                                cond: "revived Baba",
+                                if: {
+                                    cond: "revived Mumu",
+                                    if: {
+                                        cond: "revived Reu",
+                                        if: {
+                                            cond: "revived Nathan",
+                                            if: {
+                                                cond: "revived Maia",
+                                                if: {
+                                                    cond: "revived Aliyah",
+                                                    if: {
+                                                        cond: "revived Andrew",
+                                                        if: {
+                                                            cond: "revived Emily",
+                                                            if: {
+                                                                cond: "revived Eevee",
+                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                                                                \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
+                                                                You stay silent, hoping that she will decide to spare you.<br><br>\
+                                                                \"I'm going to rewind time.\" She decides.<br><br>\
+                                                                \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
+                                                                The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
+                                                                end: 30,
+                                                            },
+                                                            else: {
+                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                                                Unlucky continues speaking:<br><br>\
+                                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                                                You open your eyes to find yourself in a place that you presume to be hell.",
+                                                                get: {
+                                                                    item: "unremorseful serial killer banished",
+                                                                    data: -1
+                                                                },
+                                                                get2: {
+                                                                    item: "Wonder Pets mission",
+                                                                    data: 0
+                                                                },
+                                                                get3: {
+                                                                    item: "Wonder Pets mission - completed",
+                                                                    data: 1
+                                                                },
+                                                                dest: Locations.hell
+                                                            }
+                                                        },
+                                                        else: {
+                                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                                            Unlucky continues speaking:<br><br>\
+                                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                                            You open your eyes to find yourself in a place that you presume to be hell.",
+                                                            get: {
+                                                                item: "unremorseful serial killer banished",
+                                                                data: -1
+                                                            },
+                                                            get2: {
+                                                                item: "Wonder Pets mission",
+                                                                data: 0
+                                                            },
+                                                            get3: {
+                                                                item: "Wonder Pets mission - completed",
+                                                                data: 1
+                                                            },
+                                                            dest: Locations.hell
+                                                        }
+                                                    },
+                                                    else: {
+                                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                                        Unlucky continues speaking:<br><br>\
+                                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                                        get: {
+                                                            item: "unremorseful serial killer banished",
+                                                            data: -1
+                                                        },
+                                                        get2: {
+                                                            item: "Wonder Pets mission",
+                                                            data: 0
+                                                        },
+                                                        get3: {
+                                                            item: "Wonder Pets mission - completed",
+                                                            data: 1
+                                                        },
+                                                        dest: Locations.hell
+                                                    }
+                                                },
+                                                else: {
+                                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                                    They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                                    Unlucky continues speaking:<br><br>\
+                                                    \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                                    You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                                    You open your eyes to find yourself in a place that you presume to be hell.",
+                                                    get: {
+                                                        item: "unremorseful serial killer banished",
+                                                        data: -1
+                                                    },
+                                                    get2: {
+                                                        item: "Wonder Pets mission",
+                                                        data: 0
+                                                    },
+                                                    get3: {
+                                                        item: "Wonder Pets mission - completed",
+                                                        data: 1
+                                                    },
+                                                    dest: Locations.hell
+                                                }
+                                            },
+                                            else: {
+                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                                Unlucky continues speaking:<br><br>\
+                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                                You open your eyes to find yourself in a place that you presume to be hell.",
+                                                get: {
+                                                    item: "unremorseful serial killer banished",
+                                                    data: -1
+                                                },
+                                                get2: {
+                                                    item: "Wonder Pets mission",
+                                                    data: 0
+                                                },
+                                                get3: {
+                                                    item: "Wonder Pets mission - completed",
+                                                    data: 1
+                                                },
+                                                dest: Locations.hell
+                                            }
+                                        },
+                                        else: {
+                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                            Unlucky continues speaking:<br><br>\
+                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                            You open your eyes to find yourself in a place that you presume to be hell.",
+                                            get: {
+                                                item: "unremorseful serial killer banished",
+                                                data: -1
+                                            },
+                                            get2: {
+                                                item: "Wonder Pets mission",
+                                                data: 0
+                                            },
+                                            get3: {
+                                                item: "Wonder Pets mission - completed",
+                                                data: 1
+                                            },
+                                            dest: Locations.hell
+                                        }
+                                    },
+                                    else: {
+                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                        Unlucky continues speaking:<br><br>\
+                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                        get: {
+                                            item: "unremorseful serial killer banished",
+                                            data: -1
+                                        },
+                                        get2: {
+                                            item: "Wonder Pets mission",
+                                            data: 0
+                                        },
+                                        get3: {
+                                            item: "Wonder Pets mission - completed",
+                                            data: 1
+                                        },
+                                        dest: Locations.hell
+                                    }
+                                },
+                                else: {
+                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                        Unlucky continues speaking:<br><br>\
+                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                    get: {
+                                        item: "unremorseful serial killer banished",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "Wonder Pets mission",
+                                        data: 0
+                                    },
+                                    get3: {
+                                        item: "Wonder Pets mission - completed",
+                                        data: 1
+                                    },
+                                    dest: Locations.hell
+                                }
+                            },
+                            else: {
+                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                Unlucky continues speaking:<br><br>\
+                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                You open your eyes to find yourself in a place that you presume to be hell.",
+                                get: {
+                                    item: "unremorseful serial killer banished",
+                                    data: -1
+                                },
+                                get2: {
+                                    item: "Wonder Pets mission",
+                                    data: 0
+                                },
+                                get3: {
+                                    item: "Wonder Pets mission - completed",
+                                    data: 1
+                                },
+                                dest: Locations.hell
+                            }
+                        },
+                        else: {
+                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                        \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
+                        You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                        You open your eyes to find yourself in a place that you presume to be hell.",
+                            get: {
+                                item: "unremorseful serial killer banished",
+                                data: -1
+                            },
+                            get2: {
+                                item: "Wonder Pets mission",
+                                data: 0
+                            },
+                            get3: {
+                                item: "Wonder Pets mission - completed",
+                                data: 1
+                            },
+                            dest: Locations.hell
+                        },
                     },
                     else: {
                         if: {
-                            cond: "already talked to Unlucky",
-                            img: "Images/FierceLucky.png",
-                            msg: "Unlucky snarls at you."
+                            cond: "Unlucky wants to try again",
+                            img: "Images/UnluckyMurder.jpeg",
+                            msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
+                            \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
+                            \"My name is Unlucky. I'm you, but evil.\" Unlucky says, reintroducing herself. You suppose that she really was serious about the whole 'redoing it' thing.\
+                            \"You're me but evil? I'm not exactly an angel myself-\" You start to say, when you notice the dark wispy shapes coming out of Unlucky. Her eyes have turned fully black and her pupils glow red. The darkness creeps over to you and threatens to envelop you, forcing you to the ground. <br><br>\
+                            Shrinking back, you try to fend it off with your telekinesis, but it's too powerful.\
+                            (\"look\" to continue the storyline, there are no other possible commands)",
+                            get: {
+                                item: "Things are getting pretty darn Unlucky now...",
+                                data: -1
+                            }
                         },
                         else: {
                             msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat. <br><br>\
-                    You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
-                    \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
-                    \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
-                    \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
-                    \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
-                    \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
-                    \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
-                    \"But...yeah...I suppose that's why I named myself Unlucky...\" There's a short awkward silence as both of you don't know what to say.<br><br><br>\
-                    \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
-                    \"Let's do this again.\" She mutters to herself. Your surroundings blur into one another. Try looking around.",
+                                You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
+                                \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
+                                \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
+                                \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
+                                \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
+                                \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
+                                \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
+                                \"But...yeah...I suppose that's why I named myself Unlucky...\" There's a short awkward silence as both of you don't know what to say.<br><br><br>\
+                                \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
+                                \"Let's do this again.\" She mutters to herself. Your surroundings blur into one another. Try looking around.",
                             get: {
                                 item: "already talked to Unlucky",
                                 data: -1
