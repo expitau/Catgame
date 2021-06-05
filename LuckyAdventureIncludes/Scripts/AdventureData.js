@@ -806,8 +806,27 @@ WorldData = {
                         }
                     },
                     else: {
-                        img: "Images/Office.jpeg",
-                        msg: "You're in the office, baba is here working on his laptop. You like baba, baba gives nice pets.<br>\
+                        if: {
+                            cond: "revived Baba",
+                            img: "Images/Office.jpeg",
+                            msg: "You're in the office. Baba is alive now, just working on his laptop.<br>\
+                            N: Living room<br>\
+                            E: Dining room<br>\
+                            - Baba is here",
+                            clear: 1,
+                            cmd: {
+                                "baba": {
+                                    msg: "Baba is watching the blinking lights on the laptop. Type \"watch\" to look at it.",
+                                    get: {
+                                        item: "want to watch computer??",
+                                        data: -1
+                                    },
+                                }
+                            }
+                        },
+                        else: {
+                            img: "Images/Office.jpeg",
+                        msg: "You're in the office, Baba is here working on his laptop. You like Baba, Baba gives nice pets.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
                 - Baba is here",
@@ -821,6 +840,7 @@ WorldData = {
                                 },
                             }
                         }
+                    },
                     },
 
                 },
@@ -1456,7 +1476,7 @@ WorldData = {
                     inc: "rest",
 
                 },
-                "Nathan": {
+                "(Nathan|room)": {
                     msg: "You head over to Nathan's room.",
                     dest: Locations.nathan1
                 },
@@ -1509,14 +1529,21 @@ WorldData = {
                     if: {
                         cond: "Grebel",
                         img: "Images/NathanRoomPortal.jpeg",
-                        msg: "You're back in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of! You can also go back to Nathan's new room by typing \"portal.\"",
+                        msg: "You're back in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of! You can also go back to Nathan's new room by typing \"portal.\" <br><br>\
+                        Leave the room by typing \"basement\"",
                         clear: 1,
                     },
                     else: {
                         img: "Images/NathanRoom1.jpeg",
-                        msg: "You are in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of!",
+                        msg: "You are in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of!<br><br>\
+                        Leave the room by typing \"basement\"",
                         clear: 1,
                     },
+                },
+                "(basement|b)": {
+                    img: "Images/Basement.jpeg",
+                    msg: "You leave Nathan's room and return to the basement.",
+                    dest: Locations.basement
                 },
                 "cat": {
                     cmd: {
@@ -1541,11 +1568,37 @@ WorldData = {
                     },
                 },
                 "bed": {
-                    msg: "You curl up on Nathan's bed. Mmm, comfortable. You wonder if under the bed is any more comfortable?",
+                    if: {
+                        cond: "went on bed already, it's rabbit hole time",
+                        if: {
+                            cond: "Grebel",
+                            msg: "You crawl under Nathan's bed and make your way to the portal. You go through and end up in Nathan's new room.",
+                            dest: Locations.nathan2
+                        },
+                        else: {
+                            msg: "You've already been on top of the bed, so you crawl under Nathan's bed. You like to be here, it's safe and comfortable, maybe not as comfortable as the actual bed, but -<br><br>You suddenly notice a blue shimmery circle-like shape appear on the ground, no larger than one of your paws. Curious, you creep closer to it. The circle grows rapidly and swallows you! Where are you? (\"look\")",
+                            get: {
+                                item: "Grebel",
+                                data: -1
+                            },
+                            get2: {
+                                item: "recently arrived",
+                                data: -1
+                            },
+                            dest: Locations.nathan2
+                        },
+                    },
+                    else: {
+                        msg: "You curl up on Nathan's bed. Mmm, comfortable. You wonder if under the bed is any more comfortable?",
                     get: {
                         item: "rest",
                         data: 1
                     },
+                    get: {
+                        item: "went on bed already, it's rabbit hole time",
+                        data: -1
+                    },
+                },
                 },
                 "(offer|give|squirrel)": {
                     if: {
@@ -1674,7 +1727,9 @@ WorldData = {
                             if: {
                                 cond: "recently arrived",
                                 img: "Images/Nathan2.jpeg",
-                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. Type \"portal\" to return home.",
+                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
+                                You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+                                Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
                                     item: "recently arrived",
@@ -1725,7 +1780,7 @@ WorldData = {
                                 },
                                 else: {
                                     img: "Images/DeadNathan.jpeg",
-                                    msg: "Padding into Nathan's room from the hall, you lunge at Nathan, plunging your claws into him. As he bleeds out onto the carpet, you start to perhaps regret your actions. Should you revive him? (\"Yes\" or \"no\")",
+                                    msg: "Creeping up behind Nathan, you lunge at him, plunging your claws into him. As he bleeds out onto the carpet, you start to perhaps regret your actions. Should you revive him? (\"Yes\" or \"no\")",
                                     get: {
                                         item: "Nathan life/death question",
                                         data: -1
@@ -2439,6 +2494,69 @@ WorldData = {
                 },
                 "kill": {
                     cmd: {
+                        "(all|everyone)": {
+                            if: {
+                                cond: "kill point Em",
+                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\" <br><br>\
+                                Now what?",
+                            get: {
+                                item: "chose kill Reu",
+                                data: 0
+                            },
+                            get2: {
+                                item: "chose kill Maia",
+                                data: 0
+                            },
+                            get3: {
+                                item: "chose kill Nathan",
+                                data: 0
+                            },
+                            get4: {
+                                item: "chose kill Andrew",
+                                data: 0
+                            },
+                            get5: {
+                                item: "chose kill Aliyah",
+                                data: 0
+                            },
+                            inc6: "kill point R",
+                            inc7: "kill point Maia",
+                            inc8: "kill point N",
+                            inc9: "kill point A",
+                            inc10: "kill point Aliyah",
+                            
+                            },
+                            else: {
+                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\"<br><br>\
+                                You can head to the garden now, maybe you'll find a surprise there.<br><br>\
+                                (try \"garden\")",
+                                get: {
+                                    item: "chose kill Reu",
+                                    data: 0
+                                },
+                                get2: {
+                                    item: "chose kill Maia",
+                                    data: 0
+                                },
+                                get3: {
+                                    item: "chose kill Nathan",
+                                    data: 0
+                                },
+                                get4: {
+                                    item: "chose kill Andrew",
+                                    data: 0
+                                },
+                                get5: {
+                                    item: "chose kill Aliyah",
+                                    data: 0
+                                },
+                                inc6: "kill point R",
+                                inc7: "kill point Maia",
+                                inc8: "kill point N",
+                                inc9: "kill point A",
+                                inc10: "kill point Aliyah",
+                        },
+                        },
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
                             if: {
                                 cond: "chose kill Andrew",
@@ -2589,6 +2707,50 @@ WorldData = {
                                 },
                                 else: {
                                     msg: ">:( Why would you want to kill the Treacys?? You can try again if you *want* but that makes you a mean person...",
+                                    get: {
+                                        item: "Treacy killer",
+                                        data: -1
+                                    },
+                                },
+                            }
+                        },
+                        "Claire": {
+                            if: {
+                                cond: "licence to kill revoked",
+                                msg: "Killing things doesn't feel so fun anymore..."
+                            },
+                            else: {
+                                if: {
+                                    cond: "Treacy killer",
+                                    msg: "Lucky reluctantly goes to kill Claire. After the slaughter, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
+                                    You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
+                                    inc: "kill point Claire",
+                                    end: 540
+                                },
+                                else: {
+                                    msg: ">:( Why would you want to kill Claire?? You can try again if you *want* but that makes you a mean person...",
+                                    get: {
+                                        item: "Treacy killer",
+                                        data: -1
+                                    },
+                                },
+                            }
+                        },
+                        "Jackie": {
+                            if: {
+                                cond: "licence to kill revoked",
+                                msg: "Killing things doesn't feel so fun anymore..."
+                            },
+                            else: {
+                                if: {
+                                    cond: "Treacy killer",
+                                    msg: "Lucky reluctantly goes to kill Jackie. After the slaughter, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
+                                    You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
+                                    inc: "kill point Jackie",
+                                    end: 540
+                                },
+                                else: {
+                                    msg: ">:( Why would you want to kill Jackie?? You can try again if you *want* but that makes you a mean person...",
                                     get: {
                                         item: "Treacy killer",
                                         data: -1
@@ -2808,6 +2970,33 @@ WorldData = {
                 "revive": {
                     msg: "Revive who?",
                     cmd: {
+                        "(all|everyone)": {
+                            msg: "You go around and revive everyone you'd killed in this building.",
+                            get: {
+                                item: "chose kill Reu",
+                                data: 0
+                            },
+                            get2: {
+                                item: "chose kill Maia",
+                                data: 0
+                            },
+                            get3: {
+                                item: "chose kill Nathan",
+                                data: 0
+                            },
+                            get4: {
+                                item: "chose kill Emily",
+                                data: 0
+                            },
+                            get5: {
+                                item: "chose kill Andrew",
+                                data: 0
+                            },
+                            get6: {
+                                item: "chose kill Aliyah",
+                                data: 0
+                            },
+                        },
                         "Reu": {
                             if: {
                                 cond: "chose kill Reu",
@@ -2919,7 +3108,7 @@ WorldData = {
                         "Aliyah": {
                             if: {
                                 cond: "chose kill Aliyah",
-                                msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
+                                msg: "You decide to revive the human (good choice) using your amnesic healing tears. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                 Later, you return to the hall.",
                                 inc: "rest",
                                 get: {
@@ -3160,46 +3349,58 @@ WorldData = {
                                                                             item: "Eevee life/death question",
                                                                             data: -1
                                                                         },
-                                                                        inc2: "kill point Ev",
+                                                                        get2: {
+                                                                            item: "Name Eevee",
+                                                                            data: -1
+                                                                        },
+                                                                        inc3: "kill point Ev",
                                                                         dest: Locations.DecisionRoom
                                                                     },
                                                                     else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                        You are now in the hallway of the building Nathan's living in.",
                                                                         dest: Locations.hallway3,
                                                                     },
                                                                 },
                                                                 else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                    You are now in the hallway of the building Nathan's living in.",
                                                                     dest: Locations.hallway3,
                                                                 },
                                                             },
                                                             else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                You are now in the hallway of the building Nathan's living in.",
                                                                 dest: Locations.hallway3,
                                                             },
                                                         },
                                                         else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                            You are now in the hallway of the building Nathan's living in.",
                                                             dest: Locations.hallway3,
                                                         },
                                                     },
                                                     else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                        You are now in the hallway of the building Nathan's living in.",
                                                         dest: Locations.hallway3,
                                                     },
                                                 },
                                                 else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                    You are now in the hallway of the building Nathan's living in.",
                                                     dest: Locations.hallway3,
                                                 },
                                             },
                                             else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                You are now in the hallway of the building Nathan's living in.",
                                                 dest: Locations.hallway3,
                                             },
                                         },
                                         else: {
-                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                            You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
@@ -3441,42 +3642,50 @@ WorldData = {
                                                                         dest: Locations.DecisionRoom
                                                                     },
                                                                     else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                        You are now in the hallway of the building Nathan's living in.",
                                                                         dest: Locations.hallway3,
                                                                     },
                                                                 },
                                                                 else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                    You are now in the hallway of the building Nathan's living in.",
                                                                     dest: Locations.hallway3,
                                                                 },
                                                             },
                                                             else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                                You are now in the hallway of the building Nathan's living in.",
                                                                 dest: Locations.hallway3,
                                                             },
                                                         },
                                                         else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                            You are now in the hallway of the building Nathan's living in.",
                                                             dest: Locations.hallway3,
                                                         },
                                                     },
                                                     else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                        You are now in the hallway of the building Nathan's living in.",
                                                         dest: Locations.hallway3,
                                                     },
                                                 },
                                                 else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                    You are now in the hallway of the building Nathan's living in.",
                                                     dest: Locations.hallway3,
                                                 },
                                             },
                                             else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                                You are now in the hallway of the building Nathan's living in.",
                                                 dest: Locations.hallway3,
                                             },
                                         },
                                         else: {
-                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.",
+                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
+                                            You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
@@ -4479,28 +4688,20 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "kill point N",
-                                    inc: "kill point L",
                                     if: {
                                         cond: "kill point A",
-                                        inc: "kill point L",
                                         if: {
                                             cond: "kill point Maia",
-                                            inc: "kill point L",
                                             if: {
                                                 cond: "kill point M",
-                                                inc: "kill point L",
                                                 if: {
                                                     cond: "kill point Em",
-                                                    inc: "kill point L",
                                                     if: {
                                                         cond: "kill point Aliyah",
-                                                        inc: "kill point L",
                                                         if: {
                                                             cond: "kill point Ev",
-                                                            inc: "kill point L",
                                                             if: {
                                                                 cond: "kill point R",
-                                                                inc: "kill point L",
                                                                 if: {
                                                                     cond: "kill point B",
                                                                     msg: "You are ready. You are transported to the Assassin's Headquarters",
@@ -4581,10 +4782,24 @@ WorldData = {
                     },
                 },
                 l: {
-                    msg: "Leprechaun Heaven seems amazing! Gold is abundant, and that includes goldfish - they come here when they die. Leprechauns are unicycling all over the place, doing fancy tricks. They hand you a matching outfit and ask you to join them in their leprechauning. You are reluctant, but they're insistent. <br><br>\"We all resisted at first, but now we embrace it!\"<br><br> They say to you. You back away, but they creep ever closer. You're not so sure that this is heaven anymore...",
-                    img: "https://images4-f.ravelrycache.com/uploads/rdavis8483/543913653/IMG_8100_small2.JPG",
-                    clear: 1,
-                    end: 777,
+                    if: {
+                        cond: "looked around Leprechaun heaven already",
+                        msg: "The leprechauns hand you a matching outfit and ask you to join them in their leprechauning. You are reluctant, but they're insistent. <br><br>\
+                        \"We all resisted at first, but now we embrace it!\"<br><br> \
+                        They say to you. You back away, but they creep ever closer. You're not so sure that this is heaven anymore...",
+                        img: "https://images4-f.ravelrycache.com/uploads/rdavis8483/543913653/IMG_8100_small2.JPG",
+                        clear: 1,
+                        end: 777,
+                    },
+                    else: {
+                        msg: "Leprechaun Heaven seems amazing! Gold is abundant, and that includes goldfish - they come here when they die. Leprechauns are unicycling all over the place, doing fancy tricks. Look around again? <br><br>\
+                        (\"look\")",
+                        get: {
+                            item: "looked around Leprechaun heaven already",
+                            data: -1
+                        }
+                    }
+                    
                 },
                 m: {
                     cmd: {
@@ -5602,6 +5817,7 @@ WorldData = {
                                     item: "revived Emily",
                                     data: -1
                                 },
+                                dest: Locations.Emily
                             },
                             else: {
                                 if: {
@@ -5633,7 +5849,7 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "Maia life/death decision",
+                                            cond: "Maia life/death question",
                                             msg: "Because you hate consequences, you decide to revive the human. You return to the hallway.",
                                             get: {
                                                 item: "Maia life/death question",
@@ -5647,8 +5863,8 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "Nathan life/death decision",
-                                                msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a coward), you decide to revive the human. Afterwards, you return to the hallway.",
+                                                cond: "Nathan life/death question",
+                                                msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a *coward*), you decide to revive the human. Afterwards, you return to the hallway.",
                                                 get: {
                                                     item: "Nathan life/death question",
                                                     data: 0
@@ -5661,7 +5877,7 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "Andrew life/death decision",
+                                                    cond: "Andrew life/death question",
                                                     msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
                                                     get: {
                                                         item: "Andrew life/death question",
@@ -5675,7 +5891,7 @@ WorldData = {
                                                 },
                                                 else: {
                                                     if: {
-                                                        cond: "Aliyah life/death decision",
+                                                        cond: "Aliyah life/death question",
                                                         msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                                         Later, you return to the hall.",
                                                         inc: "rest",
@@ -5775,7 +5991,8 @@ WorldData = {
                                 else: {
                                     if: {
                                         cond: "Reu life/death question",
-                                        msg: "Yes! You decide to keep Reu dead, live on the edge. \"Revive Reu\" brings the human back to life, if you change your mind for some reason.",
+                                        msg: "Yes! You decide to keep Reu dead, live on the edge. \"Revive Reu\" brings the human back to life, if you change your mind for some reason.<br><br>\
+                                        You are now in the hallway",
                                         get: {
                                             item: "Reu life/death question",
                                             data: 0
@@ -5793,7 +6010,8 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: "Maia life/death question",
-                                            msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that.",
+                                            msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that. <br><br>\
+                                            You are now in the hallway",
                                             get: {
                                                 item: "Maia life/death question",
                                                 data: 0
@@ -5811,7 +6029,7 @@ WorldData = {
                                         else: {
                                             if: {
                                                 cond: "Nathan life/death question",
-                                                msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that.",
+                                                msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that. You are now in the hallway outside his room",
                                                 get: {
                                                     item: "Nathan life/death question",
                                                     data: 0
