@@ -489,29 +489,13 @@ WorldData = {
                         s: {
                             if: {
                                 cond: {
-                                    contains: "food"
+                                    contains1: "food",
+                                    contains2: "water",
+                                    contains3: "rest"
                                 },
 
-                                if: {
-                                    cond: {
-                                        contains: "water"
-                                    },
-
-                                    if: {
-                                        cond: {
-                                            contains: "rest"
-                                        },
-
-                                        msg: "You are ready. You wander over and meow at baba until he lets you outside",
-                                        dest: Locations.outside
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
-                                },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                msg: "You are ready. You wander over and meow at baba until he lets you outside",
+                                dest: Locations.outside
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
