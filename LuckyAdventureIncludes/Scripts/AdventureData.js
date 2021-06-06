@@ -235,237 +235,21 @@ WorldData = {
                 },
             },
         },
-        "Chichien's": {
-            cmd: {
-                "brain": {
-                    cmd: {
-                        "is": {
-                            cmd: {
-                                "too": {
-                                    cmd: {
-                                        "smol": {
-                                            cmd: {
-                                                "understand": {
-                                                    if: {
-                                                        cond: {
-                                                            contains: "warning 5"
-                                                        },
-
-                                                        msg: "That's it! I will not tolerate this anymore! >:(",
-                                                        end: 9
-                                                    },
-                                                    else: {
-                                                        if: {
-                                                            cond: {
-                                                                contains: "warning 4"
-                                                            },
-
-                                                            msg: "Don't mock me :(",
-                                                            get: {
-                                                                item: "warning 5",
-                                                                data: -1
-                                                            },
-                                                            inc: "warning",
-                                                        },
-                                                        else: {
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "warning 3"
-                                                                },
-
-                                                                msg: "Don't mock me :(",
-                                                                get: {
-                                                                    item: "warning 4",
-                                                                    data: -1
-                                                                },
-                                                                inc: "warning"
-                                                            },
-                                                            else: {
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "warning 2"
-                                                                    },
-
-                                                                    msg: "Don't mock me :(",
-                                                                    get: {
-                                                                        item: "warning 3",
-                                                                        data: -1
-                                                                    },
-                                                                    inc: "warning"
-                                                                },
-                                                                else: {
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "warning"
-                                                                        },
-
-                                                                        msg: "Don't mock me :(",
-                                                                        get: {
-                                                                            item: "warning 2",
-                                                                            data: -1
-                                                                        },
-                                                                        inc: "warning"
-                                                                    },
-                                                                    else: {
-                                                                        msg: "Don't mock me :(",
-                                                                        inc: "warning"
-                                                                    }
-                                                                },
-                                                            },
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "(mocks|mock)": {
+        "mock": {
             if: {
                 cond: {
-                    contains: "warning 5"
+                    has: {
+                        item: "warning",
+                        amt: 5
+                    }
                 },
-
                 msg: "That's it! I will not tolerate this anymore! >:(",
                 end: 9
             },
             else: {
-                if: {
-                    cond: {
-                        contains: "warning 4"
-                    },
-
-                    msg: "Don't mock me :(",
-                    get: {
-                        item: "warning 5",
-                        data: -1
-                    },
-                    inc: "warning",
-                },
-                else: {
-                    if: {
-                        cond: {
-                            contains: "warning 3"
-                        },
-
-                        msg: "Don't mock me :(",
-                        get: {
-                            item: "warning 4",
-                            data: -1
-                        },
-                        inc: "warning"
-                    },
-                    else: {
-                        if: {
-                            cond: {
-                                contains: "warning 2"
-                            },
-
-                            msg: "Don't mock me :(",
-                            get: {
-                                item: "warning 3",
-                                data: -1
-                            },
-                            inc: "warning"
-                        },
-                        else: {
-                            if: {
-                                cond: {
-                                    contains: "warning"
-                                },
-
-                                msg: "Don't mock me :(",
-                                get: {
-                                    item: "warning 2",
-                                    data: -1
-                                },
-                                inc: "warning"
-                            },
-                            else: {
-                                msg: "No!!!",
-                                inc: "warning"
-                            }
-                        },
-                    },
-                }
+                inc: "warning",
+                msg: "Don't mock me :(",
             },
-            cmd: {
-                "you": {
-                    if: {
-                        cond: {
-                            contains: "warning 5"
-                        },
-
-                        msg: "That's it! I will not tolerate this anymore! >:(",
-                        end: 9
-                    },
-                    else: {
-                        if: {
-                            cond: {
-                                contains: "warning 4"
-                            },
-
-                            msg: "Don't mock me :(",
-                            get: {
-                                item: "warning 5",
-                                data: -1
-                            },
-                            inc: "warning",
-                        },
-                        else: {
-                            if: {
-                                cond: {
-                                    contains: "warning 3"
-                                },
-
-                                msg: "Don't mock me :(",
-                                get: {
-                                    item: "warning 4",
-                                    data: -1
-                                },
-                                inc: "warning"
-                            },
-                            else: {
-                                if: {
-                                    cond: {
-                                        contains: "warning 2"
-                                    },
-
-                                    msg: "Don't mock me :(",
-                                    get: {
-                                        item: "warning 3",
-                                        data: -1
-                                    },
-                                    inc: "warning"
-                                },
-                                else: {
-                                    if: {
-                                        cond: {
-                                            contains: "warning"
-                                        },
-
-                                        msg: "Don't mock me :(",
-                                        get: {
-                                            item: "warning 2",
-                                            data: -1
-                                        },
-                                        inc: "warning"
-                                    },
-                                    else: {
-                                        msg: "No!!!",
-                                        inc: "warning"
-                                    }
-                                },
-                            },
-                        }
-                    }
-                }
-            }
         }
     },
     locations: {
@@ -489,6 +273,7 @@ WorldData = {
                         s: {
                             if: {
                                 cond: {
+                                    type: "and",
                                     contains1: "food",
                                     contains2: "water",
                                     contains3: "rest",
@@ -3641,7 +3426,6 @@ WorldData = {
                 cond: {
                     contains: "chose kill Emily"
                 },
-
                 cmd: {
                     "hint": {
                         if: {
@@ -3878,108 +3662,38 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: {
-                                                contains: "kill point N"
+                                                contains1: "kill point N",
+                                                contains2: "kill point A",
+                                                contains3: "kill point Maia",
+                                                contains4: "kill point M",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point Aliyah",
+                                                contains8: "kill point R",
+                                                contains9: "kill point B",
                                             },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point A"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Maia"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point M"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Em"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point Aliyah"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point R"
-                                                                    },
-
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "kill point B"
-                                                                        },
-
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
-                                                                        get: {
-                                                                            item: "Eevee life/death question",
-                                                                            data: -1
-                                                                        },
-                                                                        get2: {
-                                                                            item: "Name Eevee",
-                                                                            data: -1
-                                                                        },
-                                                                        inc3: "kill point Ev",
-                                                                        dest: Locations.DecisionRoom
-                                                                    },
-                                                                    else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
-                                                                        dest: Locations.hallway3,
-                                                                    },
-                                                                },
-                                                                else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                    You are now in the hallway of the building Nathan's living in.",
-                                                                    dest: Locations.hallway3,
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                You are now in the hallway of the building Nathan's living in.",
-                                                                dest: Locations.hallway3,
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                            You are now in the hallway of the building Nathan's living in.",
-                                                            dest: Locations.hallway3,
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                        You are now in the hallway of the building Nathan's living in.",
-                                                        dest: Locations.hallway3,
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                    You are now in the hallway of the building Nathan's living in.",
-                                                    dest: Locations.hallway3,
-                                                },
+                                            msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
+                                            get: {
+                                                item: "Eevee life/death question",
+                                                data: -1
                                             },
-                                            else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                You are now in the hallway of the building Nathan's living in.",
-                                                dest: Locations.hallway3,
+                                            get2: {
+                                                item: "Name Eevee",
+                                                data: -1
                                             },
+                                            inc3: "kill point Ev",
+                                            dest: Locations.DecisionRoom
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                            You are now in the hallway of the building Nathan's living in.",
+                                                                        You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
                                 },
-                            }
-                        },
+                            },
+                        }
                     },
+
                     "(garden|Grebel|portal|leave)": {
                         msg: "You head back to the garden through the portal and walk up to outside Nathan's room. You're in the hallway.",
                         dest: Locations.hallway3
@@ -5480,116 +5194,28 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "kill point N"
+                                        contains1: "kill point N",
+                                        contains2: "kill point A",
+                                        contains3: "kill point Maia",
+                                        contains4: "kill point M",
+                                        contains5: "kill point Em",
+                                        contains6: "kill point Aliyah",
+                                        contains7: "kill point Ev",
+                                        contains8: "kill point R",
+                                        contains9: "kill point B"
                                     },
-
-                                    if: {
-                                        cond: {
-                                            contains: "kill point A"
-                                        },
-
-                                        if: {
-                                            cond: {
-                                                contains: "kill point Maia"
-                                            },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point M"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Em"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point Aliyah"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Ev"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point R"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point B"
-                                                                    },
-
-                                                                    msg: "You are ready. You are transported to the Assassin's Headquarters",
-                                                                    inc: "licence to kill",
-                                                                    inc2: "kill point L",
-                                                                    dest: Locations.Headquarters
-                                                                },
-                                                                else: {
-                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                    inc: "kill point L",
-                                                                    inc: "thou art banished!",
-                                                                    dest: Locations.hell,
-                                                                },
-                                                                else: {
-                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                    inc: "kill point L",
-                                                                    inc: "thou art banished!",
-                                                                    dest: Locations.hell
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                inc: "kill point L",
-                                                                inc: "thou art banished!",
-                                                                dest: Locations.hell
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                            inc: "kill point L",
-                                                            inc: "thou art banished!",
-                                                            dest: Locations.hell
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                        inc: "kill point L",
-                                                        inc: "thou art banished!",
-                                                        dest: Locations.hell
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                    inc: "kill point L",
-                                                    inc: "thou art banished!",
-                                                    dest: Locations.hell
-                                                },
-                                            },
-                                            else: {
-                                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                inc: "kill point L",
-                                                inc: "thou art banished!",
-                                                dest: Locations.hell
-                                            },
-                                        },
-                                        else: {
-                                            msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                            inc: "kill point L",
-                                            inc: "thou art banished!",
-                                            dest: Locations.hell
-                                        },
-                                    },
-                                    else: {
-                                        msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                        inc: "kill point L",
-                                        inc: "thou art banished!",
-                                        dest: Locations.hell
-                                    },
+                                    msg: "You are ready. You are transported to the Assassin's Headquarters",
+                                    inc: "licence to kill",
+                                    inc2: "kill point L",
+                                    dest: Locations.Headquarters
                                 },
+                                else: {
+                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                    inc: "kill point L",
+                                    inc: "thou art banished!",
+                                    dest: Locations.hell,
+                                },
+
                                 else: {
                                     msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
                                     inc: "kill point L",
@@ -5727,7 +5353,6 @@ WorldData = {
                                                         cond: {
                                                             contains: "attempt #1- fail"
                                                         },
-
                                                         msg: "I see that you're trying again. Well, I believe in you, I suppose.",
                                                         get: {
                                                             item: "attempt #2- fail",
@@ -7761,6 +7386,7 @@ WorldData = {
         "(halp|help|helpp|helppp)": "h",
         "(hunt squirrel|hunt squirrel|chase squirrel|chase squirrels|find squirrel|find a squirrel|hunting time)": "squirrel",
         "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
+        "(chichiens brain is too smol to understand|mocks|mocks you)": "mock",
         "adventure time": "s",
         "get weed": "weed",
         "(inventory|inv)": "i",
