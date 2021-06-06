@@ -115,10 +115,6 @@ function follow_cmd(ctxt, cmd) {
     }
 
     while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-        console.log("AAAAAAAAAAAAAAAAAAAAAA")
-        console.log(evaluatecond(out.if.cond))
-        console.log(out.if.cond)
-        console.log("BBBBBBBBBBBBB")
         if (evaluatecond(out.if.cond)) {
             out = out.if;
         } else {

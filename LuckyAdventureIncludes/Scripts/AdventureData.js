@@ -273,10 +273,9 @@ WorldData = {
                         s: {
                             if: {
                                 cond: {
-                                    type: "and",
                                     contains1: "food",
                                     contains2: "water",
-                                    contains3: "rest",
+                                    contains3: "rest"
                                 },
                                 msg: "You are ready. You wander over and meow at baba until he lets you outside",
                                 dest: Locations.outside
