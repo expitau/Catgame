@@ -117,21 +117,13 @@ WorldData = {
                     cmd: {
                         "(s|outside)": {
                             if: {
-                                cond: "You have eaten food",
-                                if: {
-                                    cond: "You have had a drink",
-                                    if: {
-                                        cond: "You are well rested",
-                                        msg: "You are ready. You wander over and meow at baba until he lets you outside",
-                                        dest: Locations.outside
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
+                                cond: {
+                                    contains1: "You have eaten food",
+                                    contains2: "You have had a drink",
+                                    contains3: "You are well rested"
                                 },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                msg: "You are ready. You wander over and meow at baba until he lets you outside",
+                                dest: Locations.outside
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
@@ -247,7 +239,9 @@ WorldData = {
                     cmd: {
                         "food": {
                             if: {
-                                cond: "You have eaten food",
+                                cond: {
+                                    contains: "You have eaten food"
+                                },
                                 msg: "You've already eaten food, but you force yourself to eat more anyway.",
                                 inc: "You have eaten food"
                             },
@@ -361,7 +355,9 @@ WorldData = {
                             cmd: {
                                 "sock": {
                                     if: {
-                                        cond: "A sock",
+                                        cond: {
+                                            contains: "A sock"
+                                        },
                                         msg: "You give mumu the sock, and she is instantly comforted. She thanks you by telling you how to finally defeat the wretched lulu<br><br>\
                                     \"Mbpthh mfthh mphh mmm pfhht mbt mbewow...\"<br><br>\
                                     ...prehaps her mouth was too full",
@@ -398,7 +394,9 @@ WorldData = {
                     cmd: {
                         water: {
                             if: {
-                                cond: "broken",
+                                cond: {
+                                    contains: "broken"
+                                },
                                 msg: "The glass is already on the ground"
                             },
                             else: {
@@ -421,7 +419,9 @@ WorldData = {
             cmd: {
                 l: {
                     if: {
-                        cond: "lulu",
+                        cond: {
+                            contains: "lulu"
+                        },
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
                         N: Outside<br>\
                         E: Hallway<br>\
@@ -445,23 +445,15 @@ WorldData = {
                     cmd: {
                         "(n|outside)": {
                             if: {
-                                cond: "You have eaten food",
-                                if: {
-                                    cond: "You have had a drink",
-                                    if: {
-                                        cond: "You are well rested",
-                                        msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
+                                cond: {
+                                    contains1: "You have eaten food",
+                                    contains2: "You have had a drink",
+                                    contains3: "You are well rested"
+                                },
+                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
                                         You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
                                         You can't get down.",
-                                        end: 3
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
-                                },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                end: 3
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
@@ -624,7 +616,9 @@ WorldData = {
                     cmd: {
                         "sock": {
                             if: {
-                                cond: "A sock",
+                                cond: {
+                                    contains: "A sock"
+                                },
                                 msg: "You already have a sock, you can't carry another"
                             },
                             else: {

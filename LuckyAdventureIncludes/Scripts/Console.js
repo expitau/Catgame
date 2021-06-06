@@ -43,13 +43,41 @@ var inv = {};
 var endflag = 0;
 var waitingcount = 0;
 
-function has(item) {
+function has(item, count=NULL) {
     for (const [invitem, invdata] of Object.entries(inv)) {
-        if (item == invitem && invdata != 0) {
+        if (item == invitem && ((count == NULL && invdata != 0) || (count != NULL && abs(invdata) == abs(count)))) {
             return true;
         }
     }
     return false;
+}
+
+function evaluateelmt(type, value) {
+    if (type.match(new RegExp("contains\d*", "gi"))) {
+        return has(value);
+    }
+    if (type.match(new Regxp("has\d*","gi")) && value.hasOwnProperty("amt") && value.hasOwnProperty("item")){
+        return has(value.item, value.amt);
+    }
+    return false;
+}
+
+function evaluatecond(condition) {
+    if (!condition.hasOwnProperty("type") || condition.type == "and") {
+        for (const [type, value] of Object.entries(condition)) {
+            if (!evaluateelmt(type, value)) {
+                return false;
+            }
+        }
+        return true;
+    } else if (condition.type == "or") {
+        for (const [type, value] of Object.entries(condition)) {
+            if (evaluateelmt(type, value)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 function follow_cmd(ctxt, cmd) {
@@ -58,8 +86,8 @@ function follow_cmd(ctxt, cmd) {
 
     while (cmd[i]) {
         for (const [trigger, action] of Object.entries(out)) {
-            while (trigger.match(new RegExp("if\d*", "gi")) && action.match(new RegExp("cont","gi"))) {
-                if (has(action.cond)) {
+            while (trigger.match(new RegExp("if\d*", "gi")) && action.match(new RegExp("cont", "gi"))) {
+                if (evaluatecond(action.cond)) {
                     out = action;
                 } else {
                     out = out.else;
@@ -85,7 +113,7 @@ function follow_cmd(ctxt, cmd) {
     }
 
     while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-        if (has(out.if.cond)) {
+        if (evaluatecond(out.if.cond)) {
             out = out.if;
         } else {
             out = out.else;
