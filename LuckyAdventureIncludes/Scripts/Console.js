@@ -44,7 +44,7 @@ var waitingcount = 0;
 
 function has(item, count=NULL) {
     for (const [invitem, invdata] of Object.entries(inv)) {
-        if (item == invitem && ((count == NULL && invdata != 0) || (count != NULL && abs(invdata) == abs(count)))) {
+        if (item == invitem && ((count == NULL && invdata != 0) || (count != NULL && abs(invdata) >= abs(count)))) {
             return true;
         }
     }
@@ -57,6 +57,9 @@ function evaluateelmt(type, value) {
     }
     if (type.match(new Regxp("has\d*","gi")) && value.hasOwnProperty("amt") && value.hasOwnProperty("item")){
         return has(value.item, value.amt);
+    }
+    if (type.match(new RegExp("cond\d*", "gi"))){
+        return evaluatecond(value);
     }
     return false;
 }
