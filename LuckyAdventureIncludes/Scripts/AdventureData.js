@@ -40,7 +40,10 @@ WorldData = {
         kill: {
             msg: "What would you like to kill?",
             if: {
-                cond: "licence to kill revoked",
+                cond: {
+                    contains: "licence to kill revoked"
+                },
+
                 msg: "Since your licence was revoked, you don't feel like you deserve to kill things :(",
                 cmd: {
                     ".*": {
@@ -53,19 +56,34 @@ WorldData = {
                 cmd: {
                     ".*": {
                         if: {
-                            cond: "keeps trying to kill the unkillable...", count: 7,
+                            cond: {
+                                has: {
+                                    item: "keeps trying to kill the unkillable...",
+                                    amt: 7
+                                }
+                            },
+
                             msg: "I give up, you're too murderous for this game.",
                             end: 273
                         },
                         else: {
                             if: {
-                                cond: "keeps trying to kill the unkillable...", count: 5,
+                                cond: {
+                                    has: {
+                                        item: "keeps trying to kill the unkillable...",
+                                        amt: 5
+                                    }
+                                },
+
                                 msg: "gosh darn it! Stop trying to kill things that aren't killable!",
                                 inc: "keeps trying to kill the unkillable..."
                             },
                             else: {
                                 if: {
-                                    cond: "keeps trying to kill the unkillable...",
+                                    cond: {
+                                        contains: "keeps trying to kill the unkillable..."
+                                    },
+
                                     msg: "You can't kill that. Darn it!",
                                     inc: "keeps trying to kill the unkillable..."
                                 },
@@ -84,7 +102,10 @@ WorldData = {
         },
         "Headquarters": {
             if: {
-                cond: "licence to kill",
+                cond: {
+                    contains: "licence to kill"
+                },
+
                 msg: "You go to headquarters.",
                 dest: Locations.Headquarters
             },
@@ -94,7 +115,13 @@ WorldData = {
         },
         "(counting|c)": {
             if: {
-                cond: "thing", count: 15,
+                cond: {
+                    has: {
+                        item: "thing",
+                        amt: 15
+                    }
+                },
+
                 msg: "yay you can count to 15!",
                 inc: "thing",
                 end: 15
@@ -180,13 +207,22 @@ WorldData = {
         },
         "secret": {
             if: {
-                cond: "secrety secrets", count: 3,
+                cond: {
+                    has: {
+                        item: "secrety secrets",
+                        amt: 3
+                    }
+                },
+
                 msg: "*whispers* My secret is that I've always dreamed of being a seahorse.",
                 end: 799
             },
             else: {
                 if: {
-                    cond: "secrety secrets",
+                    cond: {
+                        contains: "secrety secrets"
+                    },
+
                     msg: "Do you really think something's going to happen?",
                     inc: "secrety secrets"
                 },
@@ -211,13 +247,19 @@ WorldData = {
                                             cmd: {
                                                 "understand": {
                                                     if: {
-                                                        cond: "warning 5",
+                                                        cond: {
+                                                            contains: "warning 5"
+                                                        },
+
                                                         msg: "That's it! I will not tolerate this anymore! >:(",
                                                         end: 9
                                                     },
                                                     else: {
                                                         if: {
-                                                            cond: "warning 4",
+                                                            cond: {
+                                                                contains: "warning 4"
+                                                            },
+
                                                             msg: "Don't mock me :(",
                                                             get: {
                                                                 item: "warning 5",
@@ -227,7 +269,10 @@ WorldData = {
                                                         },
                                                         else: {
                                                             if: {
-                                                                cond: "warning 3",
+                                                                cond: {
+                                                                    contains: "warning 3"
+                                                                },
+
                                                                 msg: "Don't mock me :(",
                                                                 get: {
                                                                     item: "warning 4",
@@ -237,7 +282,10 @@ WorldData = {
                                                             },
                                                             else: {
                                                                 if: {
-                                                                    cond: "warning 2",
+                                                                    cond: {
+                                                                        contains: "warning 2"
+                                                                    },
+
                                                                     msg: "Don't mock me :(",
                                                                     get: {
                                                                         item: "warning 3",
@@ -247,7 +295,10 @@ WorldData = {
                                                                 },
                                                                 else: {
                                                                     if: {
-                                                                        cond: "warning",
+                                                                        cond: {
+                                                                            contains: "warning"
+                                                                        },
+
                                                                         msg: "Don't mock me :(",
                                                                         get: {
                                                                             item: "warning 2",
@@ -276,13 +327,19 @@ WorldData = {
         },
         "(mocks|mock)": {
             if: {
-                cond: "warning 5",
+                cond: {
+                    contains: "warning 5"
+                },
+
                 msg: "That's it! I will not tolerate this anymore! >:(",
                 end: 9
             },
             else: {
                 if: {
-                    cond: "warning 4",
+                    cond: {
+                        contains: "warning 4"
+                    },
+
                     msg: "Don't mock me :(",
                     get: {
                         item: "warning 5",
@@ -292,7 +349,10 @@ WorldData = {
                 },
                 else: {
                     if: {
-                        cond: "warning 3",
+                        cond: {
+                            contains: "warning 3"
+                        },
+
                         msg: "Don't mock me :(",
                         get: {
                             item: "warning 4",
@@ -302,7 +362,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "warning 2",
+                            cond: {
+                                contains: "warning 2"
+                            },
+
                             msg: "Don't mock me :(",
                             get: {
                                 item: "warning 3",
@@ -312,7 +375,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "warning",
+                                cond: {
+                                    contains: "warning"
+                                },
+
                                 msg: "Don't mock me :(",
                                 get: {
                                     item: "warning 2",
@@ -331,13 +397,19 @@ WorldData = {
             cmd: {
                 "you": {
                     if: {
-                        cond: "warning 5",
+                        cond: {
+                            contains: "warning 5"
+                        },
+
                         msg: "That's it! I will not tolerate this anymore! >:(",
                         end: 9
                     },
                     else: {
                         if: {
-                            cond: "warning 4",
+                            cond: {
+                                contains: "warning 4"
+                            },
+
                             msg: "Don't mock me :(",
                             get: {
                                 item: "warning 5",
@@ -347,7 +419,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "warning 3",
+                                cond: {
+                                    contains: "warning 3"
+                                },
+
                                 msg: "Don't mock me :(",
                                 get: {
                                     item: "warning 4",
@@ -357,7 +432,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "warning 2",
+                                    cond: {
+                                        contains: "warning 2"
+                                    },
+
                                     msg: "Don't mock me :(",
                                     get: {
                                         item: "warning 3",
@@ -367,7 +445,10 @@ WorldData = {
                                 },
                                 else: {
                                     if: {
-                                        cond: "warning",
+                                        cond: {
+                                            contains: "warning"
+                                        },
+
                                         msg: "Don't mock me :(",
                                         get: {
                                             item: "warning 2",
@@ -407,11 +488,20 @@ WorldData = {
                     cmd: {
                         s: {
                             if: {
-                                cond: "food",
+                                cond: {
+                                    contains: "food"
+                                },
+
                                 if: {
-                                    cond: "water",
+                                    cond: {
+                                        contains: "water"
+                                    },
+
                                     if: {
-                                        cond: "rest",
+                                        cond: {
+                                            contains: "rest"
+                                        },
+
                                         msg: "You are ready. You wander over and meow at baba until he lets you outside",
                                         dest: Locations.outside
                                     },
@@ -478,7 +568,10 @@ WorldData = {
                     cmd: {
                         "squirrel": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
@@ -560,7 +653,10 @@ WorldData = {
                     cmd: {
                         "squirrel": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
@@ -604,7 +700,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "lucky hath deleted water",
+                        cond: {
+                            contains: "lucky hath deleted water"
+                        },
+
                         msg: "Alrighty, here are your possible commands: <br><br>\
                         look<br>\
                         look at food<br>\
@@ -632,7 +731,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "lucky hath deleted water",
+                        cond: {
+                            contains: "lucky hath deleted water"
+                        },
+
                         img: "Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
@@ -700,7 +802,13 @@ WorldData = {
                         },
                         "water": {
                             if: {
-                                cond: "they tried to make me drink gross water", count: 5,
+                                cond: {
+                                    has: {
+                                        item: "they tried to make me drink gross water",
+                                        amt: 5
+                                    }
+                                },
+
                                 msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
                                 get: {
                                     item: "lucky hath deleted water",
@@ -709,7 +817,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "they tried to make me drink gross water",
+                                    cond: {
+                                        contains: "they tried to make me drink gross water"
+                                    },
+
                                     msg: "Stop trying to make me drink it, it's gross!!!",
                                     inc: "they tried to make me drink gross water"
                                 },
@@ -730,7 +841,13 @@ WorldData = {
                 },
                 "water": {
                     if: {
-                        cond: "they tried to make me drink gross water", count: 5,
+                        cond: {
+                            has: {
+                                item: "they tried to make me drink gross water",
+                                amt: 5
+                            }
+                        },
+
                         msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
                         get: {
                             item: "lucky hath deleted water",
@@ -739,7 +856,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "they tried to make me drink gross water",
+                            cond: {
+                                contains: "they tried to make me drink gross water"
+                            },
+
                             msg: "Stop trying to make me drink it, it's gross!!!",
                             inc: "they tried to make me drink gross water"
                         },
@@ -758,7 +878,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "chose kill Baba",
+                        cond: {
+                            contains: "chose kill Baba"
+                        },
+
                         msg: "Here ya go, here are the possible commands: <br><br>\
                     revive<br>\
                     look<br>\
@@ -788,7 +911,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "chose kill Baba",
+                        cond: {
+                            contains: "chose kill Baba"
+                        },
+
                         img: "Images/OfficeBabaDead.jpeg",
                         msg: "You're in the office, baba is dead.<br>\
                 N: Living room<br>\
@@ -807,7 +933,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "revived Baba",
+                            cond: {
+                                contains: "revived Baba"
+                            },
+
                             img: "Images/Office.jpeg",
                             msg: "You're in the office. Baba is alive now, just working on his laptop.<br>\
                             N: Living room<br>\
@@ -848,7 +977,10 @@ WorldData = {
                     cmd: {
                         "Baba": {
                             if: {
-                                cond: "chose kill Baba",
+                                cond: {
+                                    contains: "chose kill Baba"
+                                },
+
                                 msg: "You meow at his dead body. No response. (\"revive\" if you want)"
                             },
                             else: {
@@ -865,12 +997,18 @@ WorldData = {
                     cmd: {
                         "Baba": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "chose kill baba",
+                                    cond: {
+                                        contains: "chose kill baba"
+                                    },
+
                                     msg: "You can't re-kill him, he's still dead! You can revive him if you want, though. (command is \"revive\")"
                                 },
                                 else: {
@@ -890,7 +1028,10 @@ WorldData = {
                     cmd: {
                         "baba": {
                             if: {
-                                cond: "chose kill Baba",
+                                cond: {
+                                    contains: "chose kill Baba"
+                                },
+
                                 msg: "You can't hop up on a dead body, although you do want to watch the blinking lights...(type \"watch\" to watch)",
                                 get: {
                                     item: "want to watch computer??",
@@ -909,7 +1050,10 @@ WorldData = {
                 },
                 watch: {
                     if: {
-                        cond: "want to watch computer??",
+                        cond: {
+                            contains: "want to watch computer??"
+                        },
+
                         msg: "The more you watch, the more enthralled you become. Pictures are moving around the screen! It's very entertaining for a cat. You lose your mind to this hypnotic state.",
                         end: 2
                     },
@@ -932,7 +1076,10 @@ WorldData = {
                 },
                 "revive": {
                     if: {
-                        cond: "chose kill Baba",
+                        cond: {
+                            contains: "chose kill Baba"
+                        },
+
                         msg: "You casually rewind time. You watch the blood un-pool itself back into Baba as he comes alive again.",
                         get: {
                             item: "chose kill Baba",
@@ -974,7 +1121,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "chose kill Mumu",
+                        cond: {
+                            contains: "chose kill Mumu"
+                        },
+
                         msg: "Command list time! (for now): <br><br>\
                     revive<br>\
                     look<br>\
@@ -1012,7 +1162,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "chose kill Mumu",
+                        cond: {
+                            contains: "chose kill Mumu"
+                        },
+
                         img: "Images/LivingRoomMumuDead.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is lying dead in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
@@ -1024,7 +1177,10 @@ WorldData = {
                         cmd: {
                             "mumu": {
                                 if: {
-                                    cond: "chose kill Mumu",
+                                    cond: {
+                                        contains: "chose kill Mumu"
+                                    },
+
                                     msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
                                 },
                                 else: {
@@ -1045,7 +1201,10 @@ WorldData = {
                         cmd: {
                             "mumu": {
                                 if: {
-                                    cond: "chose kill Mumu",
+                                    cond: {
+                                        contains: "chose kill Mumu"
+                                    },
+
                                     msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
                                 },
                                 else: {
@@ -1057,7 +1216,10 @@ WorldData = {
                 },
                 "chess": {
                     if: {
-                        cond: "won chess game!",
+                        cond: {
+                            contains: "won chess game!"
+                        },
+
                         img: "Images/ChessProLucky.JPEG",
                         msg: "You play chess against yourself and win again!",
                         inc: "won chess game!"
@@ -1072,7 +1234,10 @@ WorldData = {
                     cmd: {
                         "mumu": {
                             if: {
-                                cond: "chose kill Mumu",
+                                cond: {
+                                    contains: "chose kill Mumu"
+                                },
+
                                 msg: "You meow at her dead body. Shockingly, there is no response. If you feel remorseful, you can \"revive\" her."
                             },
                             else: {
@@ -1089,7 +1254,10 @@ WorldData = {
                     cmd: {
                         "water": {
                             if: {
-                                cond: "broken before",
+                                cond: {
+                                    contains: "broken before"
+                                },
+
                                 msg: "You decide to break the glass again. As you watch the glass shatter on the ground, you wait for the leprechaun to show up again to rewind time. It doesn't show up. You sigh. You have to do *everything* around here! You rewind time yourself to fix the glass."
                             },
                             else: {
@@ -1110,12 +1278,18 @@ WorldData = {
                     cmd: {
                         "Mumu": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "chose kill Mumu",
+                                    cond: {
+                                        contains: "chose kill Mumu"
+                                    },
+
                                     msg: "You can't kill her again, she's already dead! You can choose to revive her, though...(command is \"revive\")"
                                 },
                                 else: {
@@ -1156,7 +1330,10 @@ WorldData = {
                 },
                 "revive": {
                     if: {
-                        cond: "chose kill Mumu",
+                        cond: {
+                            contains: "chose kill Mumu"
+                        },
+
                         msg: "As you look at Mumu's dead body, you start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now...",
                         get: {
                             item: "chose kill Mumu",
@@ -1190,7 +1367,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "lulu",
+                        cond: {
+                            contains: "lulu"
+                        },
+
                         img: "Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
                     N: Outside<br>\
@@ -1217,11 +1397,20 @@ WorldData = {
                     cmd: {
                         n: {
                             if: {
-                                cond: "food",
+                                cond: {
+                                    contains: "food"
+                                },
+
                                 if: {
-                                    cond: "water",
+                                    cond: {
+                                        contains: "water"
+                                    },
+
                                     if: {
-                                        cond: "rest",
+                                        cond: {
+                                            contains: "rest"
+                                        },
+
                                         msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
                                     You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
                                     You can't get down.",
@@ -1322,7 +1511,10 @@ WorldData = {
                     cmd: {
                         "Lulu": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore...(and you probably can't kill her anyway :( )"
                             },
                             else: {
@@ -1495,11 +1687,20 @@ WorldData = {
                 },
                 "(door|leave|escape|e)": {
                     if: {
-                        cond: "food",
+                        cond: {
+                            contains: "food"
+                        },
+
                         if: {
-                            cond: "water",
+                            cond: {
+                                contains: "water"
+                            },
+
                             if: {
-                                cond: "rest",
+                                cond: {
+                                    contains: "rest"
+                                },
+
                                 msg: "You are ready. You wander over and meow at baba until he lets you outside",
                                 dest: Locations.outside
                             },
@@ -1540,7 +1741,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "Grebel",
+                        cond: {
+                            contains: "Grebel"
+                        },
+
                         img: "Images/NathanRoomPortal.jpeg",
                         msg: "You're back in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of! You can also go back to Nathan's new room by typing \"portal.\" <br><br>\
                         Leave the room by typing \"basement\"",
@@ -1582,9 +1786,15 @@ WorldData = {
                 },
                 "bed": {
                     if: {
-                        cond: "went on bed already, it's rabbit hole time",
+                        cond: {
+                            contains: "went on bed already, it's rabbit hole time"
+                        },
+
                         if: {
-                            cond: "Grebel",
+                            cond: {
+                                contains: "Grebel"
+                            },
+
                             msg: "You crawl under Nathan's bed and make your way to the portal. You go through and end up in Nathan's new room.",
                             dest: Locations.nathan2
                         },
@@ -1615,9 +1825,15 @@ WorldData = {
                 },
                 "(offer|give|squirrel)": {
                     if: {
-                        cond: "squirrel",
+                        cond: {
+                            contains: "squirrel"
+                        },
+
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "You lay the squirrel on the pillow proudly. Nathan will love it! Or at least he would have loved it, if you hadn't killed him...You could go to his new room, revive him, and offer the squirrel...",
                         },
                         else: {
@@ -1630,7 +1846,10 @@ WorldData = {
                 },
                 "portal": {
                     if: {
-                        cond: "Grebel",
+                        cond: {
+                            contains: "Grebel"
+                        },
+
                         msg: "You crawl under Nathan's bed and make your way to the portal. You go through and end up in Nathan's new room.",
                         dest: Locations.nathan2
                     },
@@ -1653,9 +1872,15 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "weed",
+                        cond: {
+                            contains: "weed"
+                        },
+
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "Here, list: <br><br>\
                             Revive Nathan<br>\
                             look<br>\
@@ -1687,7 +1912,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "Here, have a list of all commands:<br><br>\
                             revive Nathan <br>\
                             look<br>\
@@ -1716,16 +1944,25 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "chose kill Nathan",
+                        cond: {
+                            contains: "chose kill Nathan"
+                        },
+
                         img: "Images/DeadNathan.jpeg",
                         msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\".",
                         clear: 1
                     },
                     else: {
                         if: {
-                            cond: "recently arrived",
+                            cond: {
+                                contains: "recently arrived"
+                            },
+
                             if: {
-                                cond: "went into portal 2",
+                                cond: {
+                                    contains: "went into portal 2"
+                                },
+
                                 img: "Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself in the middle of a room where Nathan is at a desk working on his computer. <br><br>\
                                 You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
@@ -1759,7 +1996,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "went into portal 2",
+                                    cond: {
+                                        contains: "went into portal 2"
+                                    },
+
                                     msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
                                     img: "Images/Nathan2.jpeg",
                                     get: {
@@ -1789,7 +2029,10 @@ WorldData = {
                 },
                 "(Bullet Journal|BJ)": {
                     if: {
-                        cond: "chose kill Nathan",
+                        cond: {
+                            contains: "chose kill Nathan"
+                        },
+
                         msg: "?"
                     },
                     else: {
@@ -1798,7 +2041,10 @@ WorldData = {
                 },
                 "Nathan": {
                     if: {
-                        cond: "chose kill Nathan",
+                        cond: {
+                            contains: "chose kill Nathan"
+                        },
+
                         img: "Images/DeadNathan.jpeg",
                         msg: "You admire Nathan as he lies dead on the floor. You do love a successful kill. (\"revive Nathan\" if you've grown a conscience)"
                     },
@@ -1812,12 +2058,18 @@ WorldData = {
                     cmd: {
                         Nathan: {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "Really? Trying to kill the same person twice? If you can't keep track of who you've killed, maybe the murder game isn't for you."
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -1838,7 +2090,10 @@ WorldData = {
                     cmd: {
                         "weed": {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "Nathan is dead, but you decide to put the weed in his room anyway.",
                                 get: {
                                     item: "weed",
@@ -1865,9 +2120,15 @@ WorldData = {
                 },
                 "(offer|give|squirrel)": {
                     if: {
-                        cond: "squirrel",
+                        cond: {
+                            contains: "squirrel"
+                        },
+
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan would love it! He is lying dead on the floor. <br><br>\
                             (You are still in Nathan's room)",
                             get: {
@@ -1877,7 +2138,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "kill point N",
+                                cond: {
+                                    contains: "kill point N"
+                                },
+
                                 msg: "You lay the squirrel on his pillow proudly (the lower bed; he has them in a bunk bed position but you can't get up the ladder). Nathan will love it! He is there, but hasn't noticed you yet. You recall killing him before reviving him...Ah, you do enjoy fantasizing about murder.",
                                 get: {
                                     item: "squirrel",
@@ -1902,7 +2166,10 @@ WorldData = {
                     cmd: {
                         "Nathan": {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "Fine, fine, you revive Nathan using your magical healing tears. *rolls eyes*",
                                 get: {
                                     item: "chose kill Nathan",
@@ -1971,17 +2238,35 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "chose kill Aliyah",
+                        cond: {
+                            contains: "chose kill Aliyah"
+                        },
+
                         if: {
-                            cond: "chose kill Maia",
+                            cond: {
+                                contains: "chose kill Maia"
+                            },
+
                             if: {
-                                cond: "chose kill Reu",
+                                cond: {
+                                    contains: "chose kill Reu"
+                                },
+
                                 if: {
-                                    cond: "chose kill Nathan",
+                                    cond: {
+                                        contains: "chose kill Nathan"
+                                    },
+
                                     if: {
-                                        cond: "chose kill Andrew",
+                                        cond: {
+                                            contains: "chose kill Andrew"
+                                        },
+
                                         if: {
-                                            cond: "has been to Emily's house before",
+                                            cond: {
+                                                contains: "has been to Emily's house before"
+                                            },
+
                                             img: "Images/Hallway3EveryoneDead.jpeg",
                                             msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
                                             clear: 1,
@@ -2031,7 +2316,10 @@ WorldData = {
                                     cmd: {
                                         "Andy": {
                                             if: {
-                                                cond: "chose kill Nathan",
+                                                cond: {
+                                                    contains: "chose kill Nathan"
+                                                },
+
                                                 msg: "A ghost starts running down the hall, and you realize that it's Nathan! He is singing, and you listen to the words:<br><br><br>\
                                                 \"My... sweet... Werdna...<br>\
                      My... sweetheart<br>\
@@ -2150,9 +2438,15 @@ WorldData = {
                     cmd: {
                         "verses": {
                             if: {
-                                cond: "heard the main part of the song already bc I don't want spoilers >:(",
+                                cond: {
+                                    contains: "heard the main part of the song already bc I don't want spoilers >:("
+                                },
+
                                 if: {
-                                    cond: "chose kill Nathan",
+                                    cond: {
+                                        contains: "chose kill Nathan"
+                                    },
+
                                     msg: "The ghost materializes and begins to sing, a spotlight falling onto him (where the spotlight came from, you have no idea...):<br><br><br>\
                                     \"I could be, a flip flop.<br>\
                        Wherever Werdna goes.<br>\
@@ -2192,9 +2486,15 @@ WorldData = {
                 },
                 "Reu": {
                     if: {
-                        cond: "chose kill Reu",
+                        cond: {
+                            contains: "chose kill Reu"
+                        },
+
                         if: {
-                            cond: "Name Phyllis",
+                            cond: {
+                                contains: "Name Phyllis"
+                            },
+
                             msg: "You walk into the room of the tall human who you had killed. The human still lies on the couch. You say hello to Phyllis. Phyllis does not respond. You return to the hallway. (\"revive Reu\" if you want)"
                         },
                         else: {
@@ -2204,7 +2504,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Name Phyllis",
+                            cond: {
+                                contains: "Name Phyllis"
+                            },
+
                             img: "Images/Phyllis.JPG",
                             msg: "You pad into the room of the tall human that you have seen before. It smiles at you. <br><br>\"Well hello again!\" The human says. <br><br>You meow at Phyllis. It does not respond.<br><br>You take another nap on the human's couch, and return to the hallway a few hours later.",
                             inc: "rest",
@@ -2222,7 +2525,10 @@ WorldData = {
                 },
                 "(Treacys|Treacy|Claire|Jackie|Jackie Claire|Claire Jackie)": {
                     if: {
-                        cond: "Name Claire",
+                        cond: {
+                            contains: "Name Claire"
+                        },
+
                         msg: "You wander down the hall, through a lounge area and down the hall some more. You see one room in particular that has two name signs on either side of the door. \"Jackie\" one reads, and the other \"Claire\". The door is closed, so you rewind time slowly until it's open, it's now probably 10 PM. You pad into their room, surprising them. \"Where did this cat come from?!\" The shorter-haired one (who you recognize as Claire) said to the other. The other human shrugs, mystified \"This cat looks an awful lot like Nathan's cat Lucky, from the pictures I've seen\" Claire remarks. The other nods, looking at you closely. A pair of female humans walk by and plead with Claire to put on a cloak. Claire refuses. <br><br>You decide that you're bored of this, and you skip ahead in time to where you had been before (and erase their memories, of course). You are now standing at their closed door at a time past 11:30 PM",
                     },
                     else: {
@@ -2250,9 +2556,15 @@ WorldData = {
                 },
                 "Maia": {
                     if: {
-                        cond: "chose kill Maia",
+                        cond: {
+                            contains: "chose kill Maia"
+                        },
+
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "You go into the room of someone you had killed. You see the body on the floor, still holding the crossbow that it had tried to use to defend itself. You laugh to yourself. Going over to the plants by the window, you sniff them. Why would the human grow a plant that smelled of skunk? You decide to take a sample to bring to Nathan to see what he makes of it, but remember that he is dead. You decide to take it anyway. maybe you'll revive him so he can take it, or you can just keep it...<br><br>\
                             You return to the hallway. (\"revive Nathan\" and then \"deliver weed\" to give to Nathan, or \"revive Maia\" if you suddenly have a conscience)",
                             inc: "weed",
@@ -2264,9 +2576,15 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "revived Maia",
+                            cond: {
+                                contains: "revived Maia"
+                            },
+
                             if: {
-                                cond: "weed",
+                                cond: {
+                                    contains: "weed"
+                                },
+
                                 msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human looking around in confusion. You remember killing and reviving the human. <br><br>\
                                 Wandering in, you hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You notice that there's still weed in the room. <br><br>\
                                 Later, you leave the room and return to the hallway. You can type \"weed\" to get more weed."
@@ -2283,7 +2601,10 @@ WorldData = {
                 },
                 "Aliyah": {
                     if: {
-                        cond: "chose kill Aliyah",
+                        cond: {
+                            contains: "chose kill Aliyah"
+                        },
+
                         msg: "You enter the room of a human that you'd killed before. You feel a little guilty, since the human had been so happy to see you. You take note of an open closet door with a portal shimmering from inside. You wonder if you should go in...(\"go\" or just \"leave\")",
                         get: {
                             item: "the gift of knowledge",
@@ -2301,9 +2622,15 @@ WorldData = {
                 },
                 "(Andy|Dandrewlion|Werdna)": {
                     if: {
-                        cond: "chose kill Andrew",
+                        cond: {
+                            contains: "chose kill Andrew"
+                        },
+
                         if: {
-                            cond: "Name Andrew",
+                            cond: {
+                                contains: "Name Andrew"
+                            },
+
                             msg: "You head to Andrew's room. You see him lying on the ground and you admire your handiwork. You can't believe that you'd found the human to be intimidating before. You take a nap on the couch (of course) and then return to the hallway. (\"revive Dandrewlion\" if you want)",
                             inc: "rest"
                         },
@@ -2314,9 +2641,15 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Name Andrew",
+                            cond: {
+                                contains: "Name Andrew"
+                            },
+
                             if: {
-                                cond: "banana",
+                                cond: {
+                                    contains: "banana"
+                                },
+
                                 img: "Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
                             You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
@@ -2334,7 +2667,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "banana",
+                                cond: {
+                                    contains: "banana"
+                                },
+
                                 img: "Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
                                 You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
@@ -2353,12 +2689,18 @@ WorldData = {
                 },
                 "cage": {
                     if: {
-                        cond: "chose kill Andrew",
+                        cond: {
+                            contains: "chose kill Andrew"
+                        },
+
                         msg: "Andrew is dead, \"revive Andy\" to see what the \"cage\" command does.",
                     },
                     else: {
                         if: {
-                            cond: "Name Andrew",
+                            cond: {
+                                contains: "Name Andrew"
+                            },
+
                             img: "Images/CagedAndrew.JPG",
                             msg: "You see Andrew trapped in a cage!"
                         },
@@ -2372,12 +2714,18 @@ WorldData = {
                     cmd: {
                         "(Dandrewlion|Andy|Werdna)": {
                             if: {
-                                cond: "chose kill Andrew",
+                                cond: {
+                                    contains: "chose kill Andrew"
+                                },
+
                                 msg: "You can't really bother a dead body..."
                             },
                             else: {
                                 if: {
-                                    cond: "Name Andrew",
+                                    cond: {
+                                        contains: "Name Andrew"
+                                    },
+
                                     msg: "You decide that you want Andrew to pay attention to you. Trotting up to its room, you come up to it and paw at its leg. Andrew looks down and is very surprised to see you. You decide to hop up on its lap and settle in. The human seems unsure of what to do, but ultimately accepts it, and pets you. The metal pole defense contraption will protect you both now. You fall asleep.",
                                 },
                                 else: {
@@ -2392,9 +2740,15 @@ WorldData = {
                     cmd: {
                         "(duet|time|Andrew|Emily)": {
                             if: {
-                                cond: "chose kill Emily",
+                                cond: {
+                                    contains: "chose kill Emily"
+                                },
+
                                 if: {
-                                    cond: "chose kill Andrew",
+                                    cond: {
+                                        contains: "chose kill Andrew"
+                                    },
+
                                     msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
                                         \"revive Emily\" and \"revive Andy\" to fix it."
                                 },
@@ -2405,19 +2759,28 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "chose kill Andrew",
+                                    cond: {
+                                        contains: "chose kill Andrew"
+                                    },
+
                                     msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
                                     \"revive Werdna\" to fix it..."
                                 },
                                 else: {
                                     if: {
-                                        cond: "chose kill Nathan",
+                                        cond: {
+                                            contains: "chose kill Nathan"
+                                        },
+
                                         msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
                                 \"revive Nathan\" before trying to do the trumpet duet again."
                                     },
                                     else: {
                                         if: {
-                                            cond: "Name Andrew",
+                                            cond: {
+                                                contains: "Name Andrew"
+                                            },
+
                                             msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
                                 \"My... sweet... Werdna...<br>\
                                 My... sweetheart<br>\
@@ -2533,7 +2896,10 @@ WorldData = {
                     cmd: {
                         "(all|everyone)": {
                             if: {
-                                cond: "kill point Em",
+                                cond: {
+                                    contains: "kill point Em"
+                                },
+
                                 msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\" <br><br>\
                                 Now what?",
                                 get: {
@@ -2596,17 +2962,26 @@ WorldData = {
                         },
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
                             if: {
-                                cond: "chose kill Andrew",
+                                cond: {
+                                    contains: "chose kill Andrew"
+                                },
+
                                 msg: "Uh...you've already killed this one..."
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
                                     if: {
-                                        cond: "Name Andrew",
+                                        cond: {
+                                            contains: "Name Andrew"
+                                        },
+
                                         msg: "You lunge at Andrew. The human yelps, startled. You could have chosen friendship, but instead you knock Andrew over with the impact of your leap (the element of surprise and your telekinetic powers may have helped knock him down as well). Your claws are driven into its flesh as the two of you hit the ground. <br><br>\"Not so intimidating anymore!\" You think to yourself. <br><br>As Andrew bleeds out, you look back up at the metal pole contraption. It didn't seem to have been helpful in keeping intruders such as yourself away. You feel a bit tired, so you curl up on the human's chest and fall asleep for a little while. You are asleep for a while, and then you awaken and realize that you should rewind time to heal the human, so you don't get in trouble. Hm. Revive? (\"yes\" or \"no\")",
                                         inc: "rest",
                                         inc2: "kill point A",
@@ -2632,12 +3007,18 @@ WorldData = {
                         },
                         Maia: {
                             if: {
-                                cond: "chose kill Maia",
+                                cond: {
+                                    contains: "chose kill Maia"
+                                },
+
                                 msg: "You've already killed this human. It lies on the ground, still holding the crossbow. You return to the hallway."
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -2653,12 +3034,18 @@ WorldData = {
                         },
                         Aliyah: {
                             if: {
-                                cond: "chose kill Aliyah",
+                                cond: {
+                                    contains: "chose kill Aliyah"
+                                },
+
                                 msg: "You've killed this one already, keep up!"
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -2674,17 +3061,26 @@ WorldData = {
                         },
                         Reu: {
                             if: {
-                                cond: "chose kill Reu",
+                                cond: {
+                                    contains: "chose kill Reu"
+                                },
+
                                 msg: "Uh...you can't kill someone who's still dead. Try \"revive Reu\" first if you want to kill him again."
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
                                     if: {
-                                        cond: "Name Phyllis",
+                                        cond: {
+                                            contains: "Name Phyllis"
+                                        },
+
                                         msg: "You re-enter the room of a tall human. It looks up from its desk at you and smiles. <br><br>\"Well, hello again!\" It starts to say. You run at the human and leap, sinking your claws into its throat. It stands and attempts to remove you from its throat, but you're determined. The human collapses on its couch after some struggle. <br><br>Once the life has left its eyes, you survey the room. You see a seal on the couch and you remember that its name is Phyllis. You pad over to Phyllis and meow at it. It does not respond.<br><br>You hop onto the chair that it had been sitting on before you had entered, and you note that it is a spinning chair. You spin yourself in the chair excitedly for a while. <br><br>\
                                         Now you have to decide: will you revive the human? (\"yes\" or \"no\")",
                                         inc: "kill point R",
@@ -2709,12 +3105,18 @@ WorldData = {
                         },
                         Nathan: {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "Really? Trying to kill the same person twice? If you can't keep track of who you've killed, maybe the murder game isn't for you."
                             },
                             else: {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -2730,12 +3132,18 @@ WorldData = {
                         },
                         "(Treacys|treacy|Jackie Claire|Claire Jackie)": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "Treacy killer",
+                                    cond: {
+                                        contains: "Treacy killer"
+                                    },
+
                                     msg: "Lucky reluctantly goes to kill the Treacys. After slaughtering both of them, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
                                     You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Claire",
@@ -2753,12 +3161,18 @@ WorldData = {
                         },
                         "Claire": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "Treacy killer",
+                                    cond: {
+                                        contains: "Treacy killer"
+                                    },
+
                                     msg: "Lucky reluctantly goes to kill Claire. After the slaughter, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
                                     You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Claire",
@@ -2775,12 +3189,18 @@ WorldData = {
                         },
                         "Jackie": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "Treacy killer",
+                                    cond: {
+                                        contains: "Treacy killer"
+                                    },
+
                                     msg: "Lucky reluctantly goes to kill Jackie. After the slaughter, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
                                     You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Jackie",
@@ -2797,12 +3217,18 @@ WorldData = {
                         },
                         Jake: {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "Jake killer",
+                                    cond: {
+                                        contains: "Jake killer"
+                                    },
+
                                     msg: "Lucky reluctantly goes to kill Jake., solely doing it because you asked her to. After slaughtering the human, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you? You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth. Take a nap, even.",
                                     inc: "kill point Jake",
                                     end: 541
@@ -2823,9 +3249,15 @@ WorldData = {
                     cmd: {
                         "(milk|hall)": {
                             if: {
-                                cond: "chose kill Andrew",
+                                cond: {
+                                    contains: "chose kill Andrew"
+                                },
+
                                 if: {
-                                    cond: "Name Andrew",
+                                    cond: {
+                                        contains: "Name Andrew"
+                                    },
+
                                     msg: "You trot up to Andrew's room to see the human, and then you remember that you'd killed it. \"revive Andy\" to get chocolate milk together."
                                 },
                                 else: {
@@ -2834,7 +3266,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "Name Andrew",
+                                    cond: {
+                                        contains: "Name Andrew"
+                                    },
+
                                     img: "Images/AndrewDiningHall.JPG",
                                     img2: "Images/LuckyDrinking.png",
                                     msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
@@ -2860,7 +3295,10 @@ WorldData = {
                     cmd: {
                         "hat": {
                             if: {
-                                cond: "chose kill Andrew",
+                                cond: {
+                                    contains: "chose kill Andrew"
+                                },
+
                                 msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
                             },
                             else: {
@@ -2875,13 +3313,19 @@ WorldData = {
                 },
                 "mirror": {
                     if: {
-                        cond: "chose kill Andrew",
+                        cond: {
+                            contains: "chose kill Andrew"
+                        },
+
                         msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
                         You eventually go back to the hallway."
                     },
                     else: {
                         if: {
-                            cond: "Name Andrew",
+                            cond: {
+                                contains: "Name Andrew"
+                            },
+
                             msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
                         },
                         else: {
@@ -2891,14 +3335,20 @@ WorldData = {
                 },
                 "banana": {
                     if: {
-                        cond: "chose kill Andrew",
+                        cond: {
+                            contains: "chose kill Andrew"
+                        },
+
                         msg: "You go to one of your victims' rooms and get a banana from a shelf.",
                         inc: "banana",
                         inc2: "food"
                     },
                     else: {
                         if: {
-                            cond: "Name Andrew",
+                            cond: {
+                                contains: "Name Andrew"
+                            },
+
                             img: "Images/AndrewBanana.PNG",
                             msg: "Andrew eats a banana"
                         },
@@ -2910,9 +3360,15 @@ WorldData = {
                 },
                 "weed": {
                     if: {
-                        cond: "chose kill Maia",
+                        cond: {
+                            contains: "chose kill Maia"
+                        },
+
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "You go into the room of one of the humans that you had killed. It still lies dead on the floor. You step over its body to get some of the plant from the window. Perhaps Nathan will know what to do with it - hmm, you've killed Nathan... I suppose you'll have to revive him if you want to deliver the weed. You take it and return to the hallway. (\"revive Nathan\" and then \"deliver weed\" to give to Nathan, also \"revive Maia\" if you want that)",
                             inc: "weed",
                         },
@@ -2923,7 +3379,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "chose kill Nathan",
+                            cond: {
+                                contains: "chose kill Nathan"
+                            },
+
                             msg: "You walk up to one of the female humans in its room. The human turns around, not pleased to see you. You get the impression that it doesn't like cats. You decide to play nice and you sit at its feet. You notice that the human has some kind of plant in its hands. You tilt your head at it inquiringly. The human notices you looking at the plant. <br><br>\"It's weed, it's like the human equivalent of catnip.\" The human explains. You nod. You do enjoy catnip.<br><br>\"Weed probably isn't good for cats, but if you want, you can keep me company as I go deliver it to Nathan's room. I deal weed out of his window.\" It says.<br><br> Realizing that Nathan is dead, which means that there is no one for the human to deliver it to, you decide to take the weed. You can revive Nathan if you want, or just hold on to the weed. (\"revive Nathan\" and then \"deliver weed\" to give to Nathan)",
                             inc: "weed",
                         },
@@ -2937,7 +3396,10 @@ WorldData = {
                     cmd: {
                         "weed": {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "Nathan is dead, but you decide to put the weed in his room anyway.",
                                 get: {
                                     item: "weed",
@@ -2972,12 +3434,18 @@ WorldData = {
                 },
                 "Headquarters": {
                     if: {
-                        cond: "licence to kill revoked",
+                        cond: {
+                            contains: "licence to kill revoked"
+                        },
+
                         msg: "Your licence to kill was revoked, remember?"
                     },
                     else: {
                         if: {
-                            cond: "licence to kill",
+                            cond: {
+                                contains: "licence to kill"
+                            },
+
                             msg: "You are transported back to Headquarters",
                             dest: Locations.Headquarters
                         },
@@ -2988,7 +3456,10 @@ WorldData = {
                 },
                 "(Emily|garden)": {
                     if: {
-                        cond: "has been to Emily's house before",
+                        cond: {
+                            contains: "has been to Emily's house before"
+                        },
+
                         msg: "You go through the garden portal.",
                         dest: Locations.Emily
                     },
@@ -3005,7 +3476,10 @@ WorldData = {
                 },
                 "(Follow|go)": {
                     if: {
-                        cond: "the gift of knowledge",
+                        cond: {
+                            contains: "the gift of knowledge"
+                        },
+
                         msg: "You go into the closet where you'd seen the human disappear, as it sits working at its desk.. Where are you?",
                         dest: Locations.AliyahRoom2,
                     },
@@ -3045,7 +3519,10 @@ WorldData = {
                         },
                         "Reu": {
                             if: {
-                                cond: "chose kill Reu",
+                                cond: {
+                                    contains: "chose kill Reu"
+                                },
+
                                 msg: "Alright, fine. You decide to revive the tall human, using the power of your healing tears so as to not delete any events you might have done in between killing and reviving the human. You return to the hallway.",
                                 get: {
                                     item: "chose kill Reu",
@@ -3066,7 +3543,10 @@ WorldData = {
                         },
                         "Maia": {
                             if: {
-                                cond: "chose kill Maia",
+                                cond: {
+                                    contains: "chose kill Maia"
+                                },
+
                                 msg: "You decide to revive Maia because you're boring and you don't like living on the edge.",
                                 get: {
                                     item: "chose kill Maia",
@@ -3087,7 +3567,10 @@ WorldData = {
                         },
                         "Nathan": {
                             if: {
-                                cond: "chose kill Nathan",
+                                cond: {
+                                    contains: "chose kill Nathan"
+                                },
+
                                 msg: "You decide to revive Nathan because you're boring and you don't like living on the edge.",
                                 get: {
                                     item: "chose kill Nathan",
@@ -3108,7 +3591,10 @@ WorldData = {
                         },
                         "Emily": {
                             if: {
-                                cond: "chose kill Emily",
+                                cond: {
+                                    contains: "chose kill Emily"
+                                },
+
                                 msg: "*sigh* fine.",
                                 get: {
                                     item: "chose kill Emily",
@@ -3129,7 +3615,10 @@ WorldData = {
                         },
                         "(Andy|Dandrewlion|Werdna)": {
                             if: {
-                                cond: "chose kill Andrew",
+                                cond: {
+                                    contains: "chose kill Andrew"
+                                },
+
                                 msg: "Fine, fine.",
                                 get: {
                                     item: "chose kill Andrew",
@@ -3153,7 +3642,10 @@ WorldData = {
                         },
                         "Aliyah": {
                             if: {
-                                cond: "chose kill Aliyah",
+                                cond: {
+                                    contains: "chose kill Aliyah"
+                                },
+
                                 msg: "You decide to revive the human (good choice) using your amnesic healing tears. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                 Later, you return to the hall.",
                                 inc: "rest",
@@ -3180,11 +3672,17 @@ WorldData = {
         },
         Emily: {
             if: {
-                cond: "chose kill Emily",
+                cond: {
+                    contains: "chose kill Emily"
+                },
+
                 cmd: {
                     "hint": {
                         if: {
-                            cond: "chose kill Eevee",
+                            cond: {
+                                contains: "chose kill Eevee"
+                            },
+
                             msg: "Here are all your possible commands for Emily's room:<br><br>\
                     revive Emily<br>\
                     revive Eevee<br>\
@@ -3218,11 +3716,20 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "Name Eevee",
+                            cond: {
+                                contains: "Name Eevee"
+                            },
+
                             if: {
-                                cond: "chose kill Eevee",
+                                cond: {
+                                    contains: "chose kill Eevee"
+                                },
+
                                 if: {
-                                    cond: "Name Emily",
+                                    cond: {
+                                        contains: "Name Emily"
+                                    },
+
                                     img1: "Images/DeadEmily.jpeg",
                                     img2: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. <br><br>\
@@ -3253,7 +3760,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "Name Emily",
+                                    cond: {
+                                        contains: "Name Emily"
+                                    },
+
                                     img1: "Images/DeadEmily.jpeg",
                                     img2: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
@@ -3285,7 +3795,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "Name Emily",
+                                cond: {
+                                    contains: "Name Emily"
+                                },
+
                                 img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend? Also, Emily lies dead on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                 clear: 1,
@@ -3299,7 +3812,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "chose kill Eevee",
+                                    cond: {
+                                        contains: "chose kill Eevee"
+                                    },
+
                                     img1: "Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. A cat lies dead on the floor. Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
@@ -3333,7 +3849,10 @@ WorldData = {
                     },
                     "Emily": {
                         if: {
-                            cond: "Name Emily",
+                            cond: {
+                                contains: "Name Emily"
+                            },
+
                             msg: "You trot over to where Emily lies on the floor. You admire your handiwork. (If you feel guilty, type \"revive Emily\")"
                         },
                         else: {
@@ -3342,7 +3861,10 @@ WorldData = {
                     },
                     "(Eevee|cat)": {
                         if: {
-                            cond: "chose kill Eevee",
+                            cond: {
+                                contains: "chose kill Eevee"
+                            },
+
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee\""
                         },
                         else: {
@@ -3361,7 +3883,10 @@ WorldData = {
                         cmd: {
                             "Emily": {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -3370,31 +3895,61 @@ WorldData = {
                             },
                             "Eevee": {
                                 if: {
-                                    cond: "chose kill Eevee",
+                                    cond: {
+                                        contains: "chose kill Eevee"
+                                    },
+
                                     msg: "You chose to keep her dead, you can't kill her again (unless you revive her- \"revive Eevee\")"
                                 },
                                 else: {
                                     if: {
-                                        cond: "licence to kill revoked",
+                                        cond: {
+                                            contains: "licence to kill revoked"
+                                        },
+
                                         msg: "Killing things doesn't feel so fun anymore..."
                                     },
                                     else: {
                                         if: {
-                                            cond: "kill point N",
+                                            cond: {
+                                                contains: "kill point N"
+                                            },
+
                                             if: {
-                                                cond: "kill point A",
+                                                cond: {
+                                                    contains: "kill point A"
+                                                },
+
                                                 if: {
-                                                    cond: "kill point Maia",
+                                                    cond: {
+                                                        contains: "kill point Maia"
+                                                    },
+
                                                     if: {
-                                                        cond: "kill point M",
+                                                        cond: {
+                                                            contains: "kill point M"
+                                                        },
+
                                                         if: {
-                                                            cond: "kill point Em",
+                                                            cond: {
+                                                                contains: "kill point Em"
+                                                            },
+
                                                             if: {
-                                                                cond: "kill point Aliyah",
+                                                                cond: {
+                                                                    contains: "kill point Aliyah"
+                                                                },
+
                                                                 if: {
-                                                                    cond: "kill point R",
+                                                                    cond: {
+                                                                        contains: "kill point R"
+                                                                    },
+
                                                                     if: {
-                                                                        cond: "kill point B",
+                                                                        cond: {
+                                                                            contains: "kill point B"
+                                                                        },
+
                                                                         msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
                                                                         get: {
                                                                             item: "Eevee life/death question",
@@ -3467,7 +4022,10 @@ WorldData = {
                         cmd: {
                             "Emily": {
                                 if: {
-                                    cond: "Name Emily",
+                                    cond: {
+                                        contains: "Name Emily"
+                                    },
+
                                     msg: "Emily's ghost glares at you as you approach. It knows what's about to happen, and it likes being a ghost! You rewind time, making it so she never died.",
                                     get: {
                                         item: "chose kill Emily",
@@ -3500,7 +4058,10 @@ WorldData = {
                             },
                             "Eevee": {
                                 if: {
-                                    cond: "chose kill Eevee",
+                                    cond: {
+                                        contains: "chose kill Eevee"
+                                    },
+
                                     msg: "You sigh and rewind time to allow Eevee to live. You do hate having to deal with consequences for your actions, you suppose.",
                                     get: {
                                         item: "chose kill Eevee",
@@ -3528,7 +4089,10 @@ WorldData = {
                 cmd: {
                     "hint": {
                         if: {
-                            cond: "chose kill Eevee",
+                            cond: {
+                                contains: "chose kill Eevee"
+                            },
+
                             msg: "Here are all your possible commands for Emily's room:<br><br>\
                             revive Eevee<br>\
                             look (what you see changes)<br>\
@@ -3560,9 +4124,15 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "Name Eevee",
+                            cond: {
+                                contains: "Name Eevee"
+                            },
+
                             if: {
-                                cond: "chose kill Eevee",
+                                cond: {
+                                    contains: "chose kill Eevee"
+                                },
+
                                 img: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee lies dead.",
                                 clear: 1
@@ -3576,7 +4146,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "chose kill Eevee",
+                                cond: {
+                                    contains: "chose kill Eevee"
+                                },
+
                                 img1: "Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
@@ -3595,9 +4168,15 @@ WorldData = {
                     },
                     "Emily": {
                         if: {
-                            cond: "Name Emily",
+                            cond: {
+                                contains: "Name Emily"
+                            },
+
                             if: {
-                                cond: "chose kill Eevee",
+                                cond: {
+                                    contains: "chose kill Eevee"
+                                },
+
                                 msg: "As you admire the wonderfully growing beans, Emily walks into the room. Ah, it seems that you have managed to find the human's house! Emily seems surprised to see you.<br><br>\"Lucky?\" It asks you. You roll your eyes. \"Yes?\" You meow back at it. Emily seems unsure what it should say next. Emily suddenly realizes that Eevee lying dead on the floor, and it looks at you in shock! You decide that it's time to revive Eevee, so you rewind time to undo it. If you still want to kill her, be more careful this time!",
                                 get: {
                                     item: "chose kill Eevee",
@@ -3610,7 +4189,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "chose kill Eevee",
+                                cond: {
+                                    contains: "chose kill Eevee"
+                                },
+
                                 msg: "As you admire the wonderfully growing beans, a human walks into the room. It seems surprised to see you.<br><br>\"Lucky?\" It asks you. You roll your eyes. \"Yes?\" You meow back at it. It seems unsure what it should say next. Then, the human suddenly realizes that Eevee is lying dead on the floor, and it looks at you in shock! You decide that it's time to revive Eevee, so you rewind time to undo it. If you still want to kill her, be more careful this time!",
                                 get: {
                                     item: "chose kill Eevee",
@@ -3628,7 +4210,10 @@ WorldData = {
                     },
                     "(Eevee|cat)": {
                         if: {
-                            cond: "chose kill Eevee",
+                            cond: {
+                                contains: "chose kill Eevee"
+                            },
+
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee.\""
                         },
                         else: {
@@ -3644,7 +4229,10 @@ WorldData = {
                         cmd: {
                             "Emily": {
                                 if: {
-                                    cond: "licence to kill revoked",
+                                    cond: {
+                                        contains: "licence to kill revoked"
+                                    },
+
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
@@ -3659,31 +4247,61 @@ WorldData = {
                             },
                             "Eevee": {
                                 if: {
-                                    cond: "chose kill Eevee",
+                                    cond: {
+                                        contains: "chose kill Eevee"
+                                    },
+
                                     msg: "You chose to keep her dead, you can't kill her again (unless you revive her- \"revive Eevee\")"
                                 },
                                 else: {
                                     if: {
-                                        cond: "licence to kill revoked",
+                                        cond: {
+                                            contains: "licence to kill revoked"
+                                        },
+
                                         msg: "Killing things doesn't feel so fun anymore..."
                                     },
                                     else: {
                                         if: {
-                                            cond: "kill point N",
+                                            cond: {
+                                                contains: "kill point N"
+                                            },
+
                                             if: {
-                                                cond: "kill point A",
+                                                cond: {
+                                                    contains: "kill point A"
+                                                },
+
                                                 if: {
-                                                    cond: "kill point Maia",
+                                                    cond: {
+                                                        contains: "kill point Maia"
+                                                    },
+
                                                     if: {
-                                                        cond: "kill point M",
+                                                        cond: {
+                                                            contains: "kill point M"
+                                                        },
+
                                                         if: {
-                                                            cond: "kill point Em",
+                                                            cond: {
+                                                                contains: "kill point Em"
+                                                            },
+
                                                             if: {
-                                                                cond: "kill point Aliyah",
+                                                                cond: {
+                                                                    contains: "kill point Aliyah"
+                                                                },
+
                                                                 if: {
-                                                                    cond: "kill point R",
+                                                                    cond: {
+                                                                        contains: "kill point R"
+                                                                    },
+
                                                                     if: {
-                                                                        cond: "kill point B",
+                                                                        cond: {
+                                                                            contains: "kill point B"
+                                                                        },
+
                                                                         msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now here comes the question: rewind time to save her or not? (\"yes\" or \"no\")",
                                                                         inc: "kill point Ev",
                                                                         get: {
@@ -3753,7 +4371,10 @@ WorldData = {
                         cmd: {
                             "Eevee": {
                                 if: {
-                                    cond: "chose kill Eevee",
+                                    cond: {
+                                        contains: "chose kill Eevee"
+                                    },
+
                                     msg: "You sigh and rewind time to allow Eevee to live. You do hate having to deal with consequences for your actions, you suppose.",
                                     get: {
                                         item: "chose kill Eevee",
@@ -3781,7 +4402,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "has mission",
+                        cond: {
+                            contains: "has mission"
+                        },
+
                         msg: "Alrighty Agent Lucky, here are all the possible commands:<br><br>\
                     look (tells you what mission(s) are available)<br>\
                     \
@@ -3809,15 +4433,24 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "Save the cats mission - completed",
+                        cond: {
+                            contains: "Save the cats mission - completed"
+                        },
+
                         msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later! <br>Your completed/assigned missions appear in your inventory along with their status.",
                         clear: 1
                     },
                     else: {
                         if: {
-                            cond: "weed mission - completed",
+                            cond: {
+                                contains: "weed mission - completed"
+                            },
+
                             if: {
-                                cond: "befriend",
+                                cond: {
+                                    contains: "befriend"
+                                },
+
                                 msg: "You are in Assassin's Headquarters! <br><br>You currently have one available mission:<br><br>\
                     Due to the self-restraint you showed on your weed mission (which actually allowed us to gather more intel than if you had killed them), your next mission is also not an assassination. You will be gathering intel on a group of individuals who are suspected to be illegally trafficking exotic cat species (such as caracals, lynxes, and servals). You may even be able to free some of them. <br><br>(respond \"Accept\" to accept, or just return to the hallway outside Nathan's room by typing \"Nathan\")<br><br>Your completed/assigned missions appear in your inventory.",
                                 inc: "Save the cats mission",
@@ -3840,7 +4473,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "weed",
+                                cond: {
+                                    contains: "weed"
+                                },
+
                                 msg: "You are in Assassin's Headquarters! <br><br>You currently have one available quest:<br><br>\
                                 Your mission is to go undercover on the streets and help send high-up drug dealers to jail. <br><br>(respond \"Accept\" to accept, or just return to the hallway outside Nathan's room by typing \"Nathan\")<br><br>Your completed/assigned missions appear in your inventory along with their status.",
                                 inc: "weed mission",
@@ -3852,7 +4488,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "Wonder Pets mission - completed",
+                                    cond: {
+                                        contains: "Wonder Pets mission - completed"
+                                    },
+
                                     msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later!<br>Your completed/in progress missions appear in your inventory. You can return to the hallway outside Nathan's room by typing \"Nathan\" Perhaps there are still things you can do to unlock a mission (try talking to Maia and see if that leads you anywhere)!",
                                     clear: 1
                                 },
@@ -3872,19 +4511,31 @@ WorldData = {
                 },
                 "Decline": {
                     if: {
-                        cond: "has mission",
+                        cond: {
+                            contains: "has mission"
+                        },
+
                         msg: "How dare you pick an option that wasn't given! It was simple! \"Nathan\" or \"accept\", how hard is it? That's it! I quit! No more game for you!",
                         end: 100
                     },
                     else: {
                         if: {
-                            cond: "declined a mission that doesn't even *exist*!", count: 5,
+                            cond: {
+                                has: {
+                                    item: "declined a mission that doesn't even *exist*!",
+                                    amt: 5
+                                }
+                            },
+
                             msg: "I've had enough of this! Why can't you just play the game normally?? Who just spams certain commands??",
                             end: 101
                         },
                         else: {
                             if: {
-                                cond: "declined a mission that doesn't even *exist*!",
+                                cond: {
+                                    contains: "declined a mission that doesn't even *exist*!"
+                                },
+
                                 msg: "And you've declined the nonexistent mission for a second time...I see...",
                                 inc: "declined a mission that doesn't even *exist*!"
                             },
@@ -3901,13 +4552,19 @@ WorldData = {
                 },
                 "Accept": {
                     if: {
-                        cond: "north Aliyah",
+                        cond: {
+                            contains: "north Aliyah"
+                        },
+
                         msg: "You go into the room again and get beamed into the assassination mission destination again. Maybe this time you should actually try completing the mission instead of wandering everywhere? You do have a job here...",
                         dest: Locations.Assassin
                     },
                     else: {
                         if: {
-                            cond: "Assassination mission",
+                            cond: {
+                                contains: "Assassination mission"
+                            },
+
                             msg: "You have accepted the mission!  <br><br>\
                             \
                             You are not led to a plane, as you normally are, you are led to a strange room with a television next to a peculiar machine, a cylindrical chamber. It is the height of a human (it's probably originally designed for humans), so there's plenty of space.\
@@ -3919,19 +4576,28 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "Save the cats mission",
+                                cond: {
+                                    contains: "Save the cats mission"
+                                },
+
                                 msg: "You have accepted the mission! You travel to an unknown location via private plane (luckily you have the plane to yourself) and you are further briefed on the specifics of the mission on the way over. <br><br>You land after several hours of flying. Stretching your legs, you step out of the plane. Look around to get your bearings.",
                                 dest: Locations.SaveCats
                             },
                             else: {
                                 if: {
-                                    cond: "weed mission",
+                                    cond: {
+                                        contains: "weed mission"
+                                    },
+
                                     msg: "You are transported via private plane to Spain. Unfortunately, you do not have the plane to yourself. Some other secret agent that they call \"007\" also had a different mission in the same city. You think he's obnoxious, but you do both have a \"licence to kill,\" as they say. When you land, you are instructed to behave like a normal cat and make your way to a particular location, where a huge deal is going down involving a hybrid drug, a cross between meth and cocaine. When you arrive, you look around (respond \"look\")",
                                     dest: Locations.Spain,
                                 },
                                 else: {
                                     if: {
-                                        cond: "Wonder Pets mission",
+                                        cond: {
+                                            contains: "Wonder Pets mission"
+                                        },
+
                                         msg: "You have accepted the mission!<br><br>\
                                         You are taken outside to a hangar, where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br>\
                                         A door opens from outside and an odd contraption that looks as though it's a child's toy flies through it and lands in front of you. You blink in confusion.<br><br>\
@@ -3957,7 +4623,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "north Spain",
+                        cond: {
+                            contains: "north Spain"
+                        },
+
                         msg: "Agent Lucky, here are your possible options at this moment on this mission:<br><br>\
                     look<br>\
                     move (north|east|up|down)<br>\
@@ -4012,7 +4681,10 @@ WorldData = {
                 },
                 "(intel|befriend)": {
                     if: {
-                        cond: "north Spain",
+                        cond: {
+                            contains: "north Spain"
+                        },
+
                         msg: "You pad up to the group, meowing at them. They pet you, and you enjoy their company. <br>All you have to do is hang around until they reveal enough incriminating information. You have undetectable cameras placed in your eyes as contact lenses, constantly streaming to Headquarters. You get a lot of video evidence over the course of a couple days (including their big drug bust) and you even come along when they go to meet someone higher-up! When you eventually return, your work pays off, and you have unlocked another mission! You are now back at Headquarters. Look around to get details on the mission.",
                         get: {
                             item: "weed mission",
@@ -4035,7 +4707,10 @@ WorldData = {
                 },
                 "kill": {
                     if: {
-                        cond: "north Spain",
+                        cond: {
+                            contains: "north Spain"
+                        },
+
                         msg: "You innocently trot up to the small group, and at the last second before one of their hands touches you, you leap onto it. Using the element of surprise (and your extensive experience), you kill everyone in sight. This time, you actually have a licence to kill. You don't have to rewind time. Huh. <br><br>You make sure that they're all dead, and you go to the meet-up location. You lead everyone to the place where they were, and they congratulate you on a job well done. Mission complete! You are now in Headquarters, you can look around to see if you have a mission!",
                         get: {
                             item: "weed mission",
@@ -4050,7 +4725,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "squirrel serial killer",
+                            cond: {
+                                contains: "squirrel serial killer"
+                            },
+
                             msg: "Another squirrel? Alright...<br><br>\
                             You hunt around until you find one, snapping its neck quickly. This is good practice for your career as an assassin.",
                             inc: "squirrel",
@@ -4058,7 +4736,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "squirrel",
+                                cond: {
+                                    contains: "squirrel"
+                                },
+
                                 msg: "You rewind time to kill the squirrel. You chase it and snap its neck. This is one kill that you don't have to rewind. Mm. You wish you could go back and put the squirrel on Meow's pillow. Maybe after this quest you will.",
                                 inc: "kill point S",
                                 get: {
@@ -4088,7 +4769,10 @@ WorldData = {
                 },
                 "eat": {
                     if: {
-                        cond: "kill point S",
+                        cond: {
+                            contains: "kill point S"
+                        },
+
                         msg: "You eat the squirrel. Tasty. The only problem is that now you can't put it on Meow's pillow. Well, you could always go rewind time and re-kill this one. You stop and think for a second. Is this an unlimited food source?",
                         inc: "food",
                         get: {
@@ -4102,7 +4786,10 @@ WorldData = {
                     cmd: {
                         "squirrel": {
                             if: {
-                                cond: "kill point S",
+                                cond: {
+                                    contains: "kill point S"
+                                },
+
                                 msg: "You eat the squirrel. Tasty. The only problem is that now you can't put it on Meow's pillow. Well, you could always go rewind time and re-kill this one. You stop and think for a second. Is this an unlimited food source?",
                                 inc: "food",
                                 get: {
@@ -4126,11 +4813,20 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "north Aliyah",
+                        cond: {
+                            contains: "north Aliyah"
+                        },
+
                         if: {
-                            cond: "who to kill first?",
+                            cond: {
+                                contains: "who to kill first?"
+                            },
+
                             if: {
-                                cond: "got asked question",
+                                cond: {
+                                    contains: "got asked question"
+                                },
+
                                 msg: "Agent Lucky, here are all possible commands at this point (changes as you progress):<br><br>\
                             Yes<br>\
                             No<br>\
@@ -4169,9 +4865,15 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "who to kill first?",
+                            cond: {
+                                contains: "who to kill first?"
+                            },
+
                             if: {
-                                cond: "got asked question",
+                                cond: {
+                                    contains: "got asked question"
+                                },
+
                                 msg: "Agent Lucky, here are all possible commands at this point (changes as you progress):<br><br>\
                             Yes<br>\
                             No<br>\
@@ -4212,7 +4914,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "looked already",
+                        cond: {
+                            contains: "looked already"
+                        },
+
                         msg: "You've got two paths: <br><br>\
                         S: You are supposed to head south to get to your target.<br>\
                         N: North is the opposite of south and so that's the direction you would go to waste time.",
@@ -4244,22 +4949,34 @@ WorldData = {
                     cmd: {
                         n: {
                             if: {
-                                cond: "who to kill first?",
+                                cond: {
+                                    contains: "who to kill first?"
+                                },
+
                                 msg: "Um...why would you be going north?? You have an assassination to do! Get on task!",
                             },
                             else: {
                                 if: {
-                                    cond: "accepted already",
+                                    cond: {
+                                        contains: "accepted already"
+                                    },
+
                                     msg: "You've already been north, you've seen all the interesting things there are to see! Just go south and complete the mission already! You really do love to procrastinate!"
                                 },
                                 else: {
                                     if: {
-                                        cond: "rejected",
+                                        cond: {
+                                            contains: "rejected"
+                                        },
+
                                         msg: "Nothing's really happening to the north...you wish that you'd taken up Aliyah on her offer...",
                                     },
                                     else: {
                                         if: {
-                                            cond: "chose kill Aliyah",
+                                            cond: {
+                                                contains: "chose kill Aliyah"
+                                            },
+
                                             msg: "You head north. You do like to waste time. Why did you choose north? You hadn't even seen anything interesting in that direction...<br><br>\
                                             As you stalk off, looking around for something to do, you see a figure disappear around a corner. You narrow your eyes. As you turn the corner, intent on figuring out what the human is up to, you realize that you know this one already! This is the ghost of someone you'd killed before!<br><br>\
                                             As you get closer, the ghost turns and smiles at you. <br><br>\
@@ -4273,9 +4990,15 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "Name Aliyah",
+                                                cond: {
+                                                    contains: "Name Aliyah"
+                                                },
+
                                                 if: {
-                                                    cond: "north Aliyah",
+                                                    cond: {
+                                                        contains: "north Aliyah"
+                                                    },
+
                                                     msg: "Aliyah is waiting for your answer as she stands in front of the portal..."
                                                 },
                                                 else: {
@@ -4313,7 +5036,10 @@ WorldData = {
 
                         s: {
                             if: {
-                                cond: "north Aliyah",
+                                cond: {
+                                    contains: "north Aliyah"
+                                },
+
                                 msg: "You shake your head and turn away from Aliyah. You look over your shoulder to find that she seems disappointed, but shrugs and enters the portal by herself. As it closes behind her, you note that you've lost the chance to find out where the portal leads...<br><br>\
                                 Shaking it off, you head south. <br><br>\
                                 \
@@ -4374,13 +5100,19 @@ WorldData = {
                     cmd: {
                         "Aliyah": {
                             if: {
-                                cond: "chose kill Aliyah",
+                                cond: {
+                                    contains: "chose kill Aliyah"
+                                },
+
                                 msg: "You...can't kill a ghost...<br><br>\
                             If you *really* want to kill the human, you can \"revive Aliyah\" and then \"kill Aliyah\""
                             },
                             else: {
                                 if: {
-                                    cond: "north Aliyah",
+                                    cond: {
+                                        contains: "north Aliyah"
+                                    },
+
                                     msg: "You decide to kill Aliyah (again). As she bleeds out, you step over her body toward the portal. You leave her dead there. When you come back, you'll be where you started when you were beamed in. <br><br>\
                                 You come out of the portal into a room. Where are you? Try looking around<br><br>\
                                 (You can come back to where you were beamed in by typing \"Assassination\" or you can go back to headquarters with \"Headquarters.\" ",
@@ -4398,9 +5130,15 @@ WorldData = {
                         },
                         "(him|Spongebob)": {
                             if: {
-                                cond: "who to kill first?",
+                                cond: {
+                                    contains: "who to kill first?"
+                                },
+
                                 if: {
-                                    cond: "kill point Sandy",
+                                    cond: {
+                                        contains: "kill point Sandy"
+                                    },
+
                                     msg: "You make your way to Spongebob's pineapple. You see through his window that he is sitting on a chair in his living room. You paw at his door.<br><br>\
                                     Answering the door, he smiles asks you your name. <br><br>\
                                     \"My name is Lucky.\" You answer. He welcomes you inside, offering to cook you a Krabby Patty. You have no idea what that is, but you nod anyway. The two of you start to chat as he starts to cook on the stove, and you start thinking of ways to kill him. You are about to pounce on him when you suddenly remember that sponges regenerate when they are cut apart. If you cut him in half, there will just be two living sponges!<br><br>\
@@ -4438,9 +5176,15 @@ WorldData = {
                         },
                         "(Sandy|her)": {
                             if: {
-                                cond: "who to kill first?",
+                                cond: {
+                                    contains: "who to kill first?"
+                                },
+
                                 if: {
-                                    cond: "kill point Sandy",
+                                    cond: {
+                                        contains: "kill point Sandy"
+                                    },
+
                                     msg: "You've already killed Sandy! Go get Spongebob already!"
                                 },
                                 else: {
@@ -4465,7 +5209,10 @@ WorldData = {
                 },
                 "follow": {
                     if: {
-                        cond: "north Aliyah",
+                        cond: {
+                            contains: "north Aliyah"
+                        },
+
                         msg: "You follow Aliyah into the shimmery portal. When you get to the other side, she laughs to herself. <br><br>\
                         \"Silly me! I've forgotten something at Grebel!\" She goes into a different portal. You are left alone.<br><br>\
                         \
@@ -4486,7 +5233,10 @@ WorldData = {
                 },
                 "Yes": {
                     if: {
-                        cond: "question uninterrupted",
+                        cond: {
+                            contains: "question uninterrupted"
+                        },
+
                         msg: "Spongebob looks at you eagerly, waiting for your answer. You smile. <br><br>\
                         \"Alright.\" You agree. You decide not to kill him.<br><br>\
                         You, Spongebob, and Patrick become very close friends, and you live together happily forever. And by \"forever\" I mean about a month. A month in, Headquarters sends another assassin in who kills you, Spongebob, and Patrick. As you're bleeding out after being fatally injured, you admit to Spongebob that you had initially been sent there to kill him, and that this assassin was just here to finish the job.",
@@ -4494,7 +5244,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "question interrupted by cops",
+                            cond: {
+                                contains: "question interrupted by cops"
+                            },
+
                             msg: "You say yes, but as you're answering, a few cops burst into the pineapple house (that sea star must have tipped them off as to your location!) and arrest you for the murder of Sandy Cheeks. Spongebob looks at you in horror as you are marched away. <br><br>\
                             \
                             You spend the night in jail, and in the morning you escape using your telekinesis to pick the lock. You go to the meeting place and get beamed out of wherever you are. You materialize back in Headquarters, and you look at the TV next to the chamber to see some fish cops running up to the spot that you had just dematerialized from. It's hard for you to wrap your head around the concept that you had been inside a TV show.<br><br>\
@@ -4529,7 +5282,10 @@ WorldData = {
                 },
                 "No": {
                     if: {
-                        cond: "question uninterrupted",
+                        cond: {
+                            contains: "question uninterrupted"
+                        },
+
                         msg: "\"Yes, I think we'll be great friends.\" You say. <br><br>\
                         \"Want to walk with me to that side of town?\" You ask him, pointing in the general direction of the meeting point.<br><br>\
                         \"Sure!\" He replies, beaming. He follows you straight there, and you stop at the spot (which looks like any other part of the ocean floor) and press a button on your space suit. <br><br>\
@@ -4551,7 +5307,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "question interrupted by cops",
+                            cond: {
+                                contains: "question interrupted by cops"
+                            },
+
                             msg: "You ignore his question, and you start looking around for ways to get him out of the house and toward the meeting point by force. You spot a back door out of the pineapple. <br><br>\
                             \"Want to go for a walk with me? I wanted to explore that side of town\" You ask him, pointing toward the back door. He nods, and the two of you go out the door. As you are walking off, nearing the meeting point, you see some officers approaching Spongebob's house, and they see you as you walk away! You quickly drag Spongebob along more quickly, and upon arriving at the meeting point, you hurriedly press a button on your suit that causes you to start dematerializing. <br><br>\
                             \"Hey, you! Stop! You are a key suspect in the murder of Sandy Cheeks!\" An officer says as she approaches. Spongebob looks to you in sheer horror. <br><br>\
@@ -4586,7 +5345,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "south kill",
+                        cond: {
+                            contains: "south kill"
+                        },
+
                         msg: "Agent Lucky, here are all your possible commands at the moment (NOTE: this list updates as you progress):<br><br>\
                     look<br>\
                     move (up|down)<br>\
@@ -4625,7 +5387,10 @@ WorldData = {
                         },
                         n: {
                             if: {
-                                cond: "south kill",
+                                cond: {
+                                    contains: "south kill"
+                                },
+
                                 msg: "You chase after the leaf! It tumbles in the wind as you sprint after it. Unfortunately, the leaf flies up out of your reach, swept away by the wind.",
                                 get: {
                                     item: "north leaf",
@@ -4640,7 +5405,10 @@ WorldData = {
                 },
                 "kill": {
                     if: {
-                        cond: "south kill",
+                        cond: {
+                            contains: "south kill"
+                        },
+
                         msg: "You decide to kill them all. This is going to be fun. Good thing you have a licence to kill, there's no rewinding necessary! You creep into the warehouse, avoiding the people standing guard. First, you want to see what's going on in more detail. <br><br>\
                         \
                         A few different cat species are here, one row has leopards, the row next to it has caracals, and the next one has lynxes. You shake your head to yourself. The cats aren't supposed to exist in the same habitat. <br><br>\
@@ -4672,7 +5440,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "north leaf",
+                            cond: {
+                                contains: "north leaf"
+                            },
+
                             msg: "You look around for something to kill. The leaf! You rewind time slightly so it's within your reach, and you snatch it right out of the air triumphantly. This is good practice for your mission. Is it time to go south now?",
                         },
                         else: {
@@ -4734,28 +5505,58 @@ WorldData = {
                         "Leprechaun": {
                             msg: "You have killed a leprechaun!",
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
                                 if: {
-                                    cond: "kill point N",
+                                    cond: {
+                                        contains: "kill point N"
+                                    },
+
                                     if: {
-                                        cond: "kill point A",
+                                        cond: {
+                                            contains: "kill point A"
+                                        },
+
                                         if: {
-                                            cond: "kill point Maia",
+                                            cond: {
+                                                contains: "kill point Maia"
+                                            },
+
                                             if: {
-                                                cond: "kill point M",
+                                                cond: {
+                                                    contains: "kill point M"
+                                                },
+
                                                 if: {
-                                                    cond: "kill point Em",
+                                                    cond: {
+                                                        contains: "kill point Em"
+                                                    },
+
                                                     if: {
-                                                        cond: "kill point Aliyah",
+                                                        cond: {
+                                                            contains: "kill point Aliyah"
+                                                        },
+
                                                         if: {
-                                                            cond: "kill point Ev",
+                                                            cond: {
+                                                                contains: "kill point Ev"
+                                                            },
+
                                                             if: {
-                                                                cond: "kill point R",
+                                                                cond: {
+                                                                    contains: "kill point R"
+                                                                },
+
                                                                 if: {
-                                                                    cond: "kill point B",
+                                                                    cond: {
+                                                                        contains: "kill point B"
+                                                                    },
+
                                                                     msg: "You are ready. You are transported to the Assassin's Headquarters",
                                                                     inc: "licence to kill",
                                                                     inc2: "kill point L",
@@ -4835,7 +5636,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "looked around Leprechaun heaven already",
+                        cond: {
+                            contains: "looked around Leprechaun heaven already"
+                        },
+
                         msg: "The leprechauns hand you a matching outfit and ask you to join them in their leprechauning. You are reluctant, but they're insistent. <br><br>\
                         \"We all resisted at first, but now we embrace it!\"<br><br> \
                         They say to you. You back away, but they creep ever closer. You're not so sure that this is heaven anymore...",
@@ -4857,7 +5661,10 @@ WorldData = {
                     cmd: {
                         u: {
                             if: {
-                                cond: "attempt #7-fail",
+                                cond: {
+                                    contains: "attempt #7-fail"
+                                },
+
                                 msg: "Alright, alright, you passed the test *rolls eyes*",
                                 get: {
                                     item: "attempt #7-fail",
@@ -4891,7 +5698,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "attempt #6-fail",
+                                    cond: {
+                                        contains: "attempt #6-fail"
+                                    },
+
                                     msg: "I'm done writing messages.",
                                     get: {
                                         item: "attempt #7-fail",
@@ -4900,7 +5710,10 @@ WorldData = {
                                 },
                                 else: {
                                     if: {
-                                        cond: "attempt #5-fail",
+                                        cond: {
+                                            contains: "attempt #5-fail"
+                                        },
+
                                         msg: "I'm done writing messages.",
                                         get: {
                                             item: "attempt #6-fail",
@@ -4909,7 +5722,10 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "attempt #4- fail",
+                                            cond: {
+                                                contains: "attempt #4- fail"
+                                            },
+
                                             msg: "Yeah, nothing's happening.",
                                             get: {
                                                 item: "attempt #5-fail",
@@ -4918,7 +5734,10 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "attempt #3- fail",
+                                                cond: {
+                                                    contains: "attempt #3- fail"
+                                                },
+
                                                 msg: "And we're on attempt 4 now...you can probably stop now...nothing's going to happen",
                                                 get: {
                                                     item: "attempt #4- fail",
@@ -4927,7 +5746,10 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "attempt #2- fail",
+                                                    cond: {
+                                                        contains: "attempt #2- fail"
+                                                    },
+
                                                     msg: "Uh...and you're still trying...alright...",
                                                     get: {
                                                         item: "attempt #3- fail",
@@ -4936,7 +5758,10 @@ WorldData = {
                                                 },
                                                 else: {
                                                     if: {
-                                                        cond: "attempt #1- fail",
+                                                        cond: {
+                                                            contains: "attempt #1- fail"
+                                                        },
+
                                                         msg: "I see that you're trying again. Well, I believe in you, I suppose.",
                                                         get: {
                                                             item: "attempt #2- fail",
@@ -4974,7 +5799,10 @@ WorldData = {
         },
         hell: {
             if: {
-                cond: "unremorseful serial killer banished",
+                cond: {
+                    contains: "unremorseful serial killer banished"
+                },
+
                 cmd: {
                     "(h|hint)": {
                         msg: "Since you've been specifically *banished* to hell for your crimes, you have less possible things to do, but it's possible to unlock actions.<br><br>\
@@ -4999,7 +5827,10 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "tempted fate lol",
+                            cond: {
+                                contains: "tempted fate lol"
+                            },
+
                             msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
                             clear: 1,
                             end: 666
@@ -5027,7 +5858,10 @@ WorldData = {
                     },
                     "hint": {
                         if: {
-                            cond: "talked to the beaver",
+                            cond: {
+                                contains: "talked to the beaver"
+                            },
+
                             msg: "Here's the list of commands:<br><br>\
                     follow<br>\
                     move (up|down)<br>\
@@ -5065,7 +5899,13 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "tempted fate lol", count: 2,
+                            cond: {
+                                has: {
+                                    item: "tempted fate lol",
+                                    amt: 2
+                                }
+                            },
+
                             msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
                             clear: 1,
                             end: 666
@@ -5083,7 +5923,10 @@ WorldData = {
                         cmd: {
                             u: {
                                 if: {
-                                    cond: "thou art banished!",
+                                    cond: {
+                                        contains: "thou art banished!"
+                                    },
+
                                     msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
                                 },
                                 else: {
@@ -5094,14 +5937,20 @@ WorldData = {
                             },
                             d: {
                                 if: {
-                                    cond: "highway to hell 5",
+                                    cond: {
+                                        contains: "highway to hell 5"
+                                    },
+
                                     msg: "Whoops, you dig through and find that there's a lava pit there. You are now burning to...death? You're already in hell...<br>\
                                     You climb out of the pit and find that although you are in excruciating pain, you haven't died. Hell is weird.",
                                     end: 321
                                 },
                                 else: {
                                     if: {
-                                        cond: "highway to hell 4",
+                                        cond: {
+                                            contains: "highway to hell 4"
+                                        },
+
                                         msg: "Your digging seems to pay off! You can feel that the ground in the hole is close to breaking!",
                                         get: {
                                             item: "highway to hell 5",
@@ -5110,7 +5959,10 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "highway to hell 3",
+                                            cond: {
+                                                contains: "highway to hell 3"
+                                            },
+
                                             msg: "You continue to dig",
                                             get: {
                                                 item: "highway to hell 4",
@@ -5119,7 +5971,10 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "highway to hell 2",
+                                                cond: {
+                                                    contains: "highway to hell 2"
+                                                },
+
                                                 msg: "You dig as quickly as you can. It's unclear if anything will happen.",
                                                 get: {
                                                     item: "highway to hell 3",
@@ -5128,7 +5983,10 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "highway to hell 1",
+                                                    cond: {
+                                                        contains: "highway to hell 1"
+                                                    },
+
                                                     msg: "You begin to dig in the ground",
                                                     get: {
                                                         item: "highway to hell 2",
@@ -5151,17 +6009,26 @@ WorldData = {
                     },
                     "(meow|beaver|beavers)": {
                         if: {
-                            cond: "talked to the beaver",
+                            cond: {
+                                contains: "talked to the beaver"
+                            },
+
                             msg: "Want to follow the beavers? (\"follow\" if yes)",
                             cmd: {
                                 "(beaver|beavers)": {
                                     if: {
-                                        cond: "talked to the beaver",
+                                        cond: {
+                                            contains: "talked to the beaver"
+                                        },
+
                                         msg: "Want to follow the beavers? (\"follow\" if yes)"
                                     },
                                     else: {
                                         if: {
-                                            cond: "already followed the beaver",
+                                            cond: {
+                                                contains: "already followed the beaver"
+                                            },
+
                                             msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
                                         },
                                         else: {
@@ -5178,17 +6045,26 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "already followed the beaver",
+                                cond: {
+                                    contains: "already followed the beaver"
+                                },
+
                                 msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!",
                                 cmd: {
                                     "(beaver|beavers)": {
                                         if: {
-                                            cond: "talked to the beaver",
+                                            cond: {
+                                                contains: "talked to the beaver"
+                                            },
+
                                             msg: "Want to follow the beavers? (\"follow\" if yes)"
                                         },
                                         else: {
                                             if: {
-                                                cond: "already followed the beaver",
+                                                cond: {
+                                                    contains: "already followed the beaver"
+                                                },
+
                                                 msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
                                             },
                                             else: {
@@ -5213,12 +6089,18 @@ WorldData = {
                                 cmd: {
                                     "(beaver|beavers)": {
                                         if: {
-                                            cond: "talked to the beaver",
+                                            cond: {
+                                                contains: "talked to the beaver"
+                                            },
+
                                             msg: "Want to follow the beavers? (\"follow\" if yes)"
                                         },
                                         else: {
                                             if: {
-                                                cond: "already followed the beaver",
+                                                cond: {
+                                                    contains: "already followed the beaver"
+                                                },
+
                                                 msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
                                             },
                                             else: {
@@ -5237,7 +6119,10 @@ WorldData = {
                     },
                     "(follow|yes)": {
                         if: {
-                            cond: "talked to the beaver",
+                            cond: {
+                                contains: "talked to the beaver"
+                            },
+
                             msg: "You follow the beavers to a set of three shimmering portals. Which portal should you enter? (1, 2, or 3?)",
                             get: {
                                 item: "talked to the beaver",
@@ -5254,7 +6139,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "already followed the beaver",
+                                cond: {
+                                    contains: "already followed the beaver"
+                                },
+
                                 msg: "You...you've already done that. You know where the portals are, just pick: 1, 2, or 3?"
                             },
                             else: {
@@ -5264,7 +6152,10 @@ WorldData = {
                     },
                     "(1|one|first|left)": {
                         if: {
-                            cond: "the great beaver question",
+                            cond: {
+                                contains: "the great beaver question"
+                            },
+
                             msg: "You go into portal 1 (the one on the left) and appear back in your house, in the kitchen!",
                             dest: Locations.kitchen
                         },
@@ -5274,9 +6165,15 @@ WorldData = {
                     },
                     "(2|two|second|middle)": {
                         if: {
-                            cond: "the great beaver question",
+                            cond: {
+                                contains: "the great beaver question"
+                            },
+
                             if: {
-                                cond: "Grebel",
+                                cond: {
+                                    contains: "Grebel"
+                                },
+
                                 msg: "You go into portal 2 (the one in the middle) and appear in the room where Nathan currently lives!",
                                 get: {
                                     item: "recently arrived",
@@ -5299,7 +6196,10 @@ WorldData = {
                     },
                     "(3|three|third|right)": {
                         if: {
-                            cond: "the great beaver question",
+                            cond: {
+                                contains: "the great beaver question"
+                            },
+
                             msg: "You go into portal 3 (the one on the right) and appear in a room (look around)!",
                             dest: Locations.AliyahRoom2
                         },
@@ -5314,9 +6214,15 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "licence to kill",
+                        cond: {
+                            contains: "licence to kill"
+                        },
+
                         if: {
-                            cond: "Assassination mission",
+                            cond: {
+                                contains: "Assassination mission"
+                            },
+
                             msg: "Alright, here are your available commands:<br><br>\
                             look<br>\
                             leave<br>\
@@ -5359,9 +6265,15 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "licence to kill",
+                        cond: {
+                            contains: "licence to kill"
+                        },
+
                         if: {
-                            cond: "Assassination mission",
+                            cond: {
+                                contains: "Assassination mission"
+                            },
+
                             img: "Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
@@ -5396,18 +6308,27 @@ WorldData = {
                 },
                 "Headquarters": {
                     if: {
-                        cond: "licence to kill revoked",
+                        cond: {
+                            contains: "licence to kill revoked"
+                        },
+
                         msg: "You have lost your licence to kill, so you can't go back to Headquarters."
                     },
                     else: {
                         if: {
-                            cond: "Assassination mission",
+                            cond: {
+                                contains: "Assassination mission"
+                            },
+
                             msg: "You are transported back to Headquarters. Look around- you can re-accept the mission to go back to the mission.",
                             dest: Locations.Headquarters
                         },
                         else: {
                             if: {
-                                cond: "Assassination mission - completed",
+                                cond: {
+                                    contains: "Assassination mission - completed"
+                                },
+
                                 msg: "You are transported back to Headquarters. Look around to see if you have a mission.",
                                 dest: Locations.Headquarters
                             },
@@ -5419,7 +6340,10 @@ WorldData = {
                 },
                 "(Assassination|mission)": {
                     if: {
-                        cond: "Assassination mission",
+                        cond: {
+                            contains: "Assassination mission"
+                        },
+
                         msg: "You return to the place that Headquarters had beamed you to. Perhaps now it's time you go south?",
                         dest: Locations.Assassin
                     },
@@ -5433,7 +6357,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "stairs question",
+                        cond: {
+                            contains: "stairs question"
+                        },
+
                         msg: "Alright, here are your commands for now (they change as you progress through the game):<br><br>\
                             be careful<br>\
                             just go<br>\
@@ -5494,7 +6421,10 @@ WorldData = {
                 },
                 "(Zara|right|r)": {
                     if: {
-                        cond: "Name Zara",
+                        cond: {
+                            contains: "Name Zara"
+                        },
+
                         msg: "Entering Zara's room, you climb over mountains of clothes to see them laying on its side on its bed. <br><br>",
                         dest: Locations.ZaraRoom
                     },
@@ -5516,7 +6446,10 @@ WorldData = {
                     cmd: {
                         "Zara": {
                             if: {
-                                cond: "licence to kill revoked",
+                                cond: {
+                                    contains: "licence to kill revoked"
+                                },
+
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
@@ -5540,7 +6473,10 @@ WorldData = {
                 },
                 "bed": {
                     if: {
-                        cond: "parents' bed",
+                        cond: {
+                            contains: "parents' bed"
+                        },
+
                         msg: "You curl up on the bed. Mm. Cozy wonderful sleep :) ",
                         inc: "rest"
                     },
@@ -5550,7 +6486,10 @@ WorldData = {
                 },
                 "door": {
                     if: {
-                        cond: "bathroom and walk-in closet",
+                        cond: {
+                            contains: "bathroom and walk-in closet"
+                        },
+
                         msg: "You head for the mysterious door and it leads to a small room with clothing on hangers and in laundry baskets, and then a small bathroom with a blue floor, a sink, and a toilet. The toilet water is calling to you but so does the pile of laundry in the small room. You return to the hallway, but you can come straight to the toilet or laundry now that you know where they are..",
                         get: {
                             item: "laundry",
@@ -5574,7 +6513,10 @@ WorldData = {
                 },
                 "laundry": {
                     if: {
-                        cond: "laundry",
+                        cond: {
+                            contains: "laundry"
+                        },
+
                         msg: "You curl up in the laundry in the small room between the bedroom and the connected bathroom. Cozy.",
                         inc: "rest",
                     },
@@ -5592,7 +6534,10 @@ WorldData = {
                 },
                 "careful": {
                     if: {
-                        cond: "stairs question",
+                        cond: {
+                            contains: "stairs question"
+                        },
+
                         msg: "You step carefully down the stairs, coming to the bottom. You see a living room and a door that leads outside.",
                         get: {
                             item: "stairs question",
@@ -5607,7 +6552,10 @@ WorldData = {
                     cmd: {
                         "go": {
                             if: {
-                                cond: "stairs question",
+                                cond: {
+                                    contains: "stairs question"
+                                },
+
                                 msg: "You go down the stairs at your usual speed. You’ve seen worse than some pesky stairs. <br><br>\
                                 The stairs are no match for the great and powerful Lucky-<br><br>AH!You're falling down the stairs!!<br><br>\
                                 A lovely funeral was held.<br><br>\
@@ -5672,7 +6620,10 @@ WorldData = {
             cmd: {
                 "hint": {
                     if: {
-                        cond: "follow Z",
+                        cond: {
+                            contains: "follow Z"
+                        },
+
                         msg: "Here are all the possible commands right now: <br><br>\
                         look<br>\
                         follow<br>\
@@ -5700,7 +6651,10 @@ WorldData = {
                 },
                 l: {
                     if: {
-                        cond: "follow Z",
+                        cond: {
+                            contains: "follow Z"
+                        },
+
                         msg: "You are in a bedroom. The bed is covered in fluffy stuffed animals, so it looks more cuddly than most human beds. <br><br>\
                         There is a human in the room that you think is probably male, but after meeting Zara, you aren't sure about gender anymore.<br><br>\
                         \"Lucky, this is Elliot, he/him. Elliot, this is Lucky, she/her\" Zara says, introducing you two. You can either return to Zara's room by typing \"return\" or sleep on Elliot's bed.",
@@ -5715,7 +6669,10 @@ WorldData = {
                 },
                 "follow": {
                     if: {
-                        cond: "follow Z",
+                        cond: {
+                            contains: "follow Z"
+                        },
+
                         msg: "You follow Zara back into their room.",
                         get: {
                             item: "follow Z",
@@ -5732,7 +6689,10 @@ WorldData = {
                 },
                 "(return|leave)": {
                     if: {
-                        cond: "follow Z",
+                        cond: {
+                            contains: "follow Z"
+                        },
+
                         msg: "You are now back in Zara's room.",
                         get: {
                             item: "follow Z",
@@ -5741,7 +6701,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Name Zara",
+                            cond: {
+                                contains: "Name Zara"
+                            },
+
                             msg: "You leave Zara's room. You are now in the hallway.",
                             dest: Locations.AliyahHallway
                         },
@@ -5760,7 +6723,10 @@ WorldData = {
                         },
                         "Elliot": {
                             if: {
-                                cond: "follow Z",
+                                cond: {
+                                    contains: "follow Z"
+                                },
+
                                 msg: "Zara shoots you a look as if they can tell what you're thinking and you decide against it."
                             },
                             else: {
@@ -5771,7 +6737,10 @@ WorldData = {
                 },
                 "(sleep|bed)": {
                     if: {
-                        cond: "follow Z",
+                        cond: {
+                            contains: "follow Z"
+                        },
+
                         msg: "You curl up on Elliot's bed with the stuffed animals. Mm, cozy!",
                         inc: "rest"
                     },
@@ -5810,7 +6779,10 @@ WorldData = {
                     cmd: {
                         u: {
                             if: {
-                                cond: "idk why but they're trying to go even further up than Home Hardware 4",
+                                cond: {
+                                    contains: "idk why but they're trying to go even further up than Home Hardware 4"
+                                },
+
                                 msg: "Aha, I have fooled you. You've gone so far up that you've gone down! Welcome to hell!",
                                 get: {
                                     item: "idk why but they're trying to go even further up than Home Hardware 5",
@@ -5837,7 +6809,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "idk why but they're trying to go even further up than Home Hardware 3",
+                                    cond: {
+                                        contains: "idk why but they're trying to go even further up than Home Hardware 3"
+                                    },
+
                                     msg: "You're not going to get anywhere this time..",
                                     get: {
                                         item: "idk why but they're trying to go even further up than Home Hardware 4",
@@ -5846,7 +6821,10 @@ WorldData = {
                                 },
                                 else: {
                                     if: {
-                                        cond: "idk why but they're trying to go even further up than Home Hardware 2",
+                                        cond: {
+                                            contains: "idk why but they're trying to go even further up than Home Hardware 2"
+                                        },
+
                                         msg: "You're not going to get anywhere this time..",
                                         get: {
                                             item: "idk why but they're trying to go even further up than Home Hardware 3",
@@ -5855,7 +6833,10 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "idk why but they're trying to go even further up than Home Hardware 1",
+                                            cond: {
+                                                contains: "idk why but they're trying to go even further up than Home Hardware 1"
+                                            },
+
                                             msg: "I see you're still trying. Huh. There's something to be said for perseverence, I suppose.",
                                             get: {
                                                 item: "idk why but they're trying to go even further up than Home Hardware 2",
@@ -5884,7 +6865,10 @@ WorldData = {
                 },
                 "(yes|revive)": {
                     if: {
-                        cond: "Mumu life/death question",
+                        cond: {
+                            contains: "Mumu life/death question"
+                        },
+
                         msg: "You decide to revive Mumu. You start to cry in regret, and as your tears fall onto her, she starts to wake up. Your tears have healed her! They also seem to have had an amnesic effect: she doesn't remember you killing her! It's probably a good idea to leave now... <br><br>",
                         get: {
                             item: "Mumu life/death question",
@@ -5898,7 +6882,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Baba life/death question",
+                            cond: {
+                                contains: "Baba life/death question"
+                            },
+
                             msg: "You decide to revive Baba.",
                             get: {
                                 item: "Baba life/death question",
@@ -5912,7 +6899,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "Emily life/death question",
+                                cond: {
+                                    contains: "Emily life/death question"
+                                },
+
                                 msg: "You rewind time, watching the human's struggle happen in reverse. It is now alive, having no memory of what just happened.",
                                 get: {
                                     item: "Emily life/death question",
@@ -5926,7 +6916,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "Eevee life/death question",
+                                    cond: {
+                                        contains: "Eevee life/death question"
+                                    },
+
                                     msg: "You decide to rewind time to avoid facing consequences. The fluffy cat remembers nothing.",
                                     get: {
                                         item: "Eevee life/death question",
@@ -5940,7 +6933,10 @@ WorldData = {
                                 },
                                 else: {
                                     if: {
-                                        cond: "Reu life/death question",
+                                        cond: {
+                                            contains: "Reu life/death question"
+                                        },
+
                                         msg: "You decide to revive Reu by rewinding time. You return to the hallway.",
                                         get: {
                                             item: "Reu life/death question",
@@ -5954,7 +6950,10 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "Maia life/death question",
+                                            cond: {
+                                                contains: "Maia life/death question"
+                                            },
+
                                             msg: "Because you hate consequences, you decide to revive the human. You return to the hallway.",
                                             get: {
                                                 item: "Maia life/death question",
@@ -5968,7 +6967,10 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "Nathan life/death question",
+                                                cond: {
+                                                    contains: "Nathan life/death question"
+                                                },
+
                                                 msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a *coward*), you decide to revive the human. <br><br>\
                                                 Afterwards, you go to the hallway.",
                                                 get: {
@@ -5983,7 +6985,10 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "Andrew life/death question",
+                                                    cond: {
+                                                        contains: "Andrew life/death question"
+                                                    },
+
                                                     msg: "You decide to revive the human, probably because you want to sleep on its couch but you feel a little weird about doing it while the human is dead... Afterwards, you return to the hallway.",
                                                     get: {
                                                         item: "Andrew life/death question",
@@ -5997,7 +7002,10 @@ WorldData = {
                                                 },
                                                 else: {
                                                     if: {
-                                                        cond: "Aliyah life/death question",
+                                                        cond: {
+                                                            contains: "Aliyah life/death question"
+                                                        },
+
                                                         msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                                         Later, you return to the hall.",
                                                         inc: "rest",
@@ -6025,7 +7033,10 @@ WorldData = {
                 },
                 "(no|kill)": {
                     if: {
-                        cond: "Mumu life/death question",
+                        cond: {
+                            contains: "Mumu life/death question"
+                        },
+
                         msg: "You leave her dead :) You can still change your mind and revive her (command is \"revive\"). You are still in the living room.",
                         get: {
                             item: "chose kill Mumu",
@@ -6043,7 +7054,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Baba life/death question",
+                            cond: {
+                                contains: "Baba life/death question"
+                            },
+
                             msg: "Alright, Baba can stay dead. If you want to be boring, type \"revive.\"",
                             get: {
                                 item: "Baba life/death question",
@@ -6061,7 +7075,10 @@ WorldData = {
                         },
                         else: {
                             if: {
-                                cond: "Emily life/death question",
+                                cond: {
+                                    contains: "Emily life/death question"
+                                },
+
                                 msg: "Coolio, Emily stays dead. If your conscience kicks in, type \"revive Emily.\"",
                                 get: {
                                     item: "Emily life/death question",
@@ -6079,7 +7096,10 @@ WorldData = {
                             },
                             else: {
                                 if: {
-                                    cond: "Eevee life/death question",
+                                    cond: {
+                                        contains: "Eevee life/death question"
+                                    },
+
                                     msg: "Yay, living life on the edge. Type \"revive Eevee\" if you chage your mind.",
                                     get: {
                                         item: "Eevee life/death question",
@@ -6096,7 +7116,10 @@ WorldData = {
                                 },
                                 else: {
                                     if: {
-                                        cond: "Reu life/death question",
+                                        cond: {
+                                            contains: "Reu life/death question"
+                                        },
+
                                         msg: "Yes! You decide to keep Reu dead, live on the edge. \"Revive Reu\" brings the human back to life, if you change your mind for some reason.<br><br>\
                                         You are now in the hallway",
                                         get: {
@@ -6115,7 +7138,10 @@ WorldData = {
                                     },
                                     else: {
                                         if: {
-                                            cond: "Maia life/death question",
+                                            cond: {
+                                                contains: "Maia life/death question"
+                                            },
+
                                             msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Maia\" brings the human back to life, if you want that. <br><br>\
                                             You are now in the hallway",
 
@@ -6135,7 +7161,10 @@ WorldData = {
                                         },
                                         else: {
                                             if: {
-                                                cond: "Nathan life/death question",
+                                                cond: {
+                                                    contains: "Nathan life/death question"
+                                                },
+
                                                 msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that. You are now in the hallway outside his room",
 
                                                 get: {
@@ -6154,7 +7183,10 @@ WorldData = {
                                             },
                                             else: {
                                                 if: {
-                                                    cond: "Andrew life/death question",
+                                                    cond: {
+                                                        contains: "Andrew life/death question"
+                                                    },
+
                                                     msg: "Yes! You decide to keep the human dead, living life on the edge! You take a nap on the human's chest, just to feel like you have truly beat it. <br><br>After a while, you return to the hallway. <br><br>\
                                                 \"Revive Andy\" brings the human back to life, if you want that.",
                                                     inc: "rest",
@@ -6174,7 +7206,10 @@ WorldData = {
                                                 },
                                                 else: {
                                                     if: {
-                                                        cond: "Aliyah life/death question",
+                                                        cond: {
+                                                            contains: "Aliyah life/death question"
+                                                        },
+
                                                         msg: "You decide to leave the human dead, which I can normally get behind, but really? The human wanted nothing more than to pet you! Don't you feel even the slightest bit of remorse? Ah, forget it...you're too far gone...<br><br>\
                                                         You return to the hall, leaving the dead body in the room. You notice that a closet door is open in the room, but decide not to explore it. (\"go\" to go see what's happening, \"revive Aliyah\" to revive)<br><br>\
                                                         You are now in the hallway.",
@@ -6208,11 +7243,17 @@ WorldData = {
         },
         WonderPetSchoolhouse: {
             if: {
-                cond: "looked outside the schoolhouse already",
+                cond: {
+                    contains: "looked outside the schoolhouse already"
+                },
+
                 cmd: {
                     "hint": {
                         if: {
-                            cond: "started to rescue the cat",
+                            cond: {
+                                contains: "started to rescue the cat"
+                            },
+
                             msg: "Just type rescue, check back in after if you get stuck. \"Kill Wonder Pets\" is also an option if you wanted to, though."
                         },
                         else: {
@@ -6227,7 +7268,10 @@ WorldData = {
                     },
                     h: {
                         if: {
-                            cond: "WonderPetsMissionQuestion",
+                            cond: {
+                                contains: "WonderPetsMissionQuestion"
+                            },
+
                             msg: "Commands:<br><br>\
                                 look<br>\
                                 kill Wonder Pets<br>\
@@ -6247,7 +7291,10 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "WonderPetsMissionQuestion",
+                            cond: {
+                                contains: "WonderPetsMissionQuestion"
+                            },
+
                             msg: "The animals look at you uncomfortably. You think about how nice it would feel to kill them...(\"kill Wonder Pets\" or \"mission\" are the only two options here)",
                             clear: 1
                         },
@@ -6278,7 +7325,10 @@ WorldData = {
                     },
                     "(Yes|mission|rescue)": {
                         if: {
-                            cond: "started to rescue the cat",
+                            cond: {
+                                contains: "started to rescue the cat"
+                            },
+
                             msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him. You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
                                 Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
                                 \"What's gonna work?\" Linny asks. <br><br>\
@@ -6360,27 +7410,60 @@ WorldData = {
             cmd: {
                 "(l|look|.*)": {
                     if: {
-                        cond: "Things are getting pretty darn Unlucky now...",
+                        cond: {
+                            contains: "Things are getting pretty darn Unlucky now..."
+                        },
+
                         if: {
-                            cond: "chose to revive someone",
+                            cond: {
+                                contains: "chose to revive someone"
+                            },
+
                             if: {
-                                cond: "revived Baba",
+                                cond: {
+                                    contains: "revived Baba"
+                                },
+
                                 if: {
-                                    cond: "revived Mumu",
+                                    cond: {
+                                        contains: "revived Mumu"
+                                    },
+
                                     if: {
-                                        cond: "revived Reu",
+                                        cond: {
+                                            contains: "revived Reu"
+                                        },
+
                                         if: {
-                                            cond: "revived Nathan",
+                                            cond: {
+                                                contains: "revived Nathan"
+                                            },
+
                                             if: {
-                                                cond: "revived Maia",
+                                                cond: {
+                                                    contains: "revived Maia"
+                                                },
+
                                                 if: {
-                                                    cond: "revived Aliyah",
+                                                    cond: {
+                                                        contains: "revived Aliyah"
+                                                    },
+
                                                     if: {
-                                                        cond: "revived Andrew",
+                                                        cond: {
+                                                            contains: "revived Andrew"
+                                                        },
+
                                                         if: {
-                                                            cond: "revived Emily",
+                                                            cond: {
+                                                                contains: "revived Emily"
+                                                            },
+
                                                             if: {
-                                                                cond: "revived Eevee",
+                                                                cond: {
+                                                                    contains: "revived Eevee"
+                                                                },
+
                                                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                                                 \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                                                                 \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
@@ -6631,7 +7714,10 @@ WorldData = {
                     },
                     else: {
                         if: {
-                            cond: "Unlucky wants to try again",
+                            cond: {
+                                contains: "Unlucky wants to try again"
+                            },
+
                             img: "Images/UnluckyMurder.jpeg",
                             msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
                             \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
