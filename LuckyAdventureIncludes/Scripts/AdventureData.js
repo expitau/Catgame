@@ -489,29 +489,12 @@ WorldData = {
                         s: {
                             if: {
                                 cond: {
-                                    contains: "food"
+                                    contains1: "food",
+                                    contains2: "water",
+                                    contains3: "rest",
                                 },
-
-                                if: {
-                                    cond: {
-                                        contains: "water"
-                                    },
-
-                                    if: {
-                                        cond: {
-                                            contains: "rest"
-                                        },
-
-                                        msg: "You are ready. You wander over and meow at baba until he lets you outside",
-                                        dest: Locations.outside
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
-                                },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                msg: "You are ready. You wander over and meow at baba until he lets you outside",
+                                dest: Locations.outside
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
@@ -1398,31 +1381,14 @@ WorldData = {
                         n: {
                             if: {
                                 cond: {
-                                    contains: "food"
+                                    contains1: "food",
+                                    contains2: "water",
+                                    contains3: "rest",
                                 },
-
-                                if: {
-                                    cond: {
-                                        contains: "water"
-                                    },
-
-                                    if: {
-                                        cond: {
-                                            contains: "rest"
-                                        },
-
-                                        msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
+                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
                                     You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
                                     You can't get down.",
-                                        end: 3
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
-                                },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                end: 3
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
