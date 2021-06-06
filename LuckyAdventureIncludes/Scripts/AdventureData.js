@@ -66,11 +66,11 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: "keeps trying to kill the unkillable...",
-                                    msg: "You try to kill it, but you can't. It seems that an impenetrable force field has formed around it. Darn it!",
+                                    msg: "You can't kill that. Darn it!",
                                     inc: "keeps trying to kill the unkillable..."
                                 },
                                 else: {
-                                    msg: "You try to kill it, but you can't. It seems that an impenetrable force field has formed around it. Darn it!",
+                                    msg: "You can't kill that. Darn it!",
                                     get: {
                                         item: "keeps trying to kill the unkillable...",
                                         data: -1
@@ -826,21 +826,21 @@ WorldData = {
                         },
                         else: {
                             img: "Images/Office.jpeg",
-                        msg: "You're in the office, Baba is here working on his laptop. You like Baba, Baba gives nice pets.<br>\
+                            msg: "You're in the office, Baba is here working on his laptop. You like Baba, Baba gives nice pets.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
                 - Baba is here",
-                        clear: 1,
-                        cmd: {
-                            "baba": {
-                                msg: "Baba is watching the blinking lights on the laptop. Type \"watch\" to look at it.",
-                                get: {
-                                    item: "want to watch computer??",
-                                    data: -1
-                                },
+                            clear: 1,
+                            cmd: {
+                                "baba": {
+                                    msg: "Baba is watching the blinking lights on the laptop. Type \"watch\" to look at it.",
+                                    get: {
+                                        item: "want to watch computer??",
+                                        data: -1
+                                    },
+                                }
                             }
-                        }
-                    },
+                        },
                     },
 
                 },
@@ -1445,6 +1445,19 @@ WorldData = {
         },
         basement: {
             cmd: {
+                h: {
+                    msg: "Commands for the basement:<br><br>\
+                    look<br>\
+                    blanket<br>\
+                    laundry<br>\
+                    Nathan<br>\
+                    door / leave<br>\
+                    upstairs<br>\
+                    inv<br>\
+                    help<br>\
+                    clear<br>\
+                    hint"
+                },
                 "hint": {
                     msg: "Here's what you can do: <br><br>\
                     look<br>\
@@ -1590,15 +1603,15 @@ WorldData = {
                     },
                     else: {
                         msg: "You curl up on Nathan's bed. Mmm, comfortable. You wonder if under the bed is any more comfortable?",
-                    get: {
-                        item: "rest",
-                        data: 1
+                        get: {
+                            item: "rest",
+                            data: 1
+                        },
+                        get: {
+                            item: "went on bed already, it's rabbit hole time",
+                            data: -1
+                        },
                     },
-                    get: {
-                        item: "went on bed already, it's rabbit hole time",
-                        data: -1
-                    },
-                },
                 },
                 "(offer|give|squirrel)": {
                     if: {
@@ -1706,43 +1719,72 @@ WorldData = {
                         cond: "chose kill Nathan",
                         img: "Images/DeadNathan.jpeg",
                         msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\".",
-                        get: {
-                            item: "went into portal 2",
-                            data: 0
-                        },
                         clear: 1
                     },
                     else: {
                         if: {
-                            cond: "went into portal 2",
-                            msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
-                            img: "Images/Nathan2.jpeg",
-                            get: {
-                                item: "recently arrived",
-                                data: 0
-                            },
-                            clear: 1
-                        },
-                        else: {
+                            cond: "recently arrived",
                             if: {
-                                cond: "recently arrived",
+                                cond: "went into portal 2",
                                 img: "Images/Nathan2.jpeg",
-                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
+                                msg: "You come out of the blue shimmery circle and find yourself in the middle of a room where Nathan is at a desk working on his computer. <br><br>\
                                 You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
-                                Type \"portal\" to return home, or \"hallway\" to leave the room.",
+                                Type \"portal\" to go through the closet portal, returning to your house, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
                                     item: "recently arrived",
                                     data: 0
                                 },
+                                get2: {
+                                    item: "Grebel",
+                                    data: -1
+                                },
                                 clear: 1
                             },
                             else: {
                                 img: "Images/Nathan2.jpeg",
-                                msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
-                                clear: 1
-                            }
+                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
+                                    You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+                                    Type \"portal\" to return home, or \"hallway\" to leave the room.",
+                                clear: 1,
+                                get: {
+                                    item: "recently arrived",
+                                    data: 0
+                                },
+                                get2: {
+                                    item: "Grebel",
+                                    data: -1
+                                },
+                                clear: 1,
+                            },
+                            else: {
+                                if: {
+                                    cond: "went into portal 2",
+                                    msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
+                                    img: "Images/Nathan2.jpeg",
+                                    get: {
+                                        item: "recently arrived",
+                                        data: 0
+                                    },
+                                    get2: {
+                                        item: "Grebel",
+                                        data: -1
+                                    },
+                                    clear: 1
+                                },
+                                else: {
+                                    img: "Images/Nathan2.jpeg",
+                                    msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
+                                    clear: 1
+                                }
+                            },
                         },
+                        else: {
+                            img: "Images/Nathan2.jpeg",
+                            msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
+                            clear: 1
+                        }
+
                     },
                 },
                 "(Bullet Journal|BJ)": {
@@ -1942,18 +1984,13 @@ WorldData = {
                                             cond: "has been to Emily's house before",
                                             img: "Images/Hallway3EveryoneDead.jpeg",
                                             msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
-                                            clear: 1
+                                            clear: 1,
                                         },
                                         else: {
                                             img: "Images/Hallway3EveryoneDead.jpeg",
                                             msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
                                             Maybe check out the garden! (\"garden\")",
                                             clear: 1
-                                        },
-                                        else: {
-                                            img: "Images/Hallway3.jpeg",
-                                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                            clear: 1,
                                         },
                                     },
                                     else: {
@@ -2499,32 +2536,32 @@ WorldData = {
                                 cond: "kill point Em",
                                 msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\" <br><br>\
                                 Now what?",
-                            get: {
-                                item: "chose kill Reu",
-                                data: 0
-                            },
-                            get2: {
-                                item: "chose kill Maia",
-                                data: 0
-                            },
-                            get3: {
-                                item: "chose kill Nathan",
-                                data: 0
-                            },
-                            get4: {
-                                item: "chose kill Andrew",
-                                data: 0
-                            },
-                            get5: {
-                                item: "chose kill Aliyah",
-                                data: 0
-                            },
-                            inc6: "kill point R",
-                            inc7: "kill point Maia",
-                            inc8: "kill point N",
-                            inc9: "kill point A",
-                            inc10: "kill point Aliyah",
-                            
+                                get: {
+                                    item: "chose kill Reu",
+                                    data: -1
+                                },
+                                get2: {
+                                    item: "chose kill Maia",
+                                    data: -1
+                                },
+                                get3: {
+                                    item: "chose kill Nathan",
+                                    data: -1
+                                },
+                                get4: {
+                                    item: "chose kill Andrew",
+                                    data: -1
+                                },
+                                get5: {
+                                    item: "chose kill Aliyah",
+                                    data: -1
+                                },
+                                inc6: "kill point R",
+                                inc7: "kill point Maia",
+                                inc8: "kill point N",
+                                inc9: "kill point A",
+                                inc10: "kill point Aliyah",
+
                             },
                             else: {
                                 msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\"<br><br>\
@@ -2532,30 +2569,30 @@ WorldData = {
                                 (try \"garden\")",
                                 get: {
                                     item: "chose kill Reu",
-                                    data: 0
+                                    data: -1
                                 },
                                 get2: {
                                     item: "chose kill Maia",
-                                    data: 0
+                                    data: -1
                                 },
                                 get3: {
                                     item: "chose kill Nathan",
-                                    data: 0
+                                    data: -1
                                 },
                                 get4: {
                                     item: "chose kill Andrew",
-                                    data: 0
+                                    data: -1
                                 },
                                 get5: {
                                     item: "chose kill Aliyah",
-                                    data: 0
+                                    data: -1
                                 },
                                 inc6: "kill point R",
                                 inc7: "kill point Maia",
                                 inc8: "kill point N",
                                 inc9: "kill point A",
                                 inc10: "kill point Aliyah",
-                        },
+                            },
                         },
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
                             if: {
@@ -2950,12 +2987,21 @@ WorldData = {
                     },
                 },
                 "(Emily|garden)": {
-                    msg: "You go to a door that leads outside, and you skip time until someone has opened it. You slip out behind them, unnoticed. You find the garden, and you explore a little. As you're sniffing a bean plant, you blink and realize that the scene has changed. You look under your feet to see the now-familiar blue shimmery circle shrinking. It stops at about a paw wide. You paw at it, hoping for a way to escape, and it readily opens. You go back to the garden, and then return to the strange room. If you want to return, you can always go back to the garden (type \"garden\" to return) You take a look around.",
-                    get: {
-                        item: "has been to Emily's house before",
-                        data: -1
+                    if: {
+                        cond: "has been to Emily's house before",
+                        msg: "You go through the garden portal.",
+                        dest: Locations.Emily
                     },
-                    dest: Locations.Emily
+                    else: {
+                        msg: "You go to a door that leads outside, and you skip time until someone has opened it. You slip out behind them, unnoticed. You find the garden, and you explore a little. As you're sniffing a bean plant, you blink and realize that the scene has changed. You see the now-familiar blue shimmery circle next to you.<br><br>\
+                     If you want to return, you can always go back to the garden through the portal. <br><br>\
+                    (type \"garden\" to return)",
+                        get: {
+                            item: "has been to Emily's house before",
+                            data: -1
+                        },
+                        dest: Locations.Emily
+                    },
                 },
                 "(Follow|go)": {
                     if: {
@@ -3179,7 +3225,8 @@ WorldData = {
                                     cond: "Name Emily",
                                     img1: "Images/DeadEmily.jpeg",
                                     img2: "Images/Emily.jpeg",
-                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
+                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. <br><br>\
+                                    Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
@@ -3191,7 +3238,9 @@ WorldData = {
                                 },
                                 else: {
                                     img: "Images/Emily.jpeg",
-                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
+                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. <br><br>\
+                                    Eevee is lying dead on the floor. <br><br>\
+                                    Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
@@ -3207,7 +3256,8 @@ WorldData = {
                                     cond: "Name Emily",
                                     img1: "Images/DeadEmily.jpeg",
                                     img2: "Images/Emily.jpeg",
-                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
+                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
+                                    Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
@@ -3220,7 +3270,8 @@ WorldData = {
                                 else: {
                                     img1: "Images/HeartBean2.jpeg",
                                     img2: "Images/Emily.jpeg",
-                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. Also, a dead body lies on the floor as its ghost wanders around gleefully.",
+                                    msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
+                                    Also, a dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
@@ -3408,7 +3459,7 @@ WorldData = {
                             }
                         },
                     },
-                    "(garden|Grebel|portal)": {
+                    "(garden|Grebel|portal|leave)": {
                         msg: "You head back to the garden through the portal and walk up to outside Nathan's room. You're in the hallway.",
                         dest: Locations.hallway3
                     },
@@ -3807,7 +3858,7 @@ WorldData = {
                                 },
                                 else: {
                                     msg: "You are in Assassin's Headquarters! <br><br>You currently have one available quest:<br><br>\
-                                    Your mission is to join a team of other secret agents on a mission to save someone. You will receive further details if you choose to accept it.<br><br>(respond \"Accept\" to accept, or just return to the hallway outside Nathan's room by typing \"Nathan\")<br><br>Your completed/assigned missions appear in your inventory along with their status.",
+                                    Your mission is to join a team of other secret agents, filling in for a sick agent. You will be on a mission to save someone. You will receive further details when you arrive, but just know that it's not an assassination if that's what you wanted.<br><br>(respond \"Accept\" to accept, or just return to the hallway outside Nathan's room by typing \"Nathan\")<br><br>Your completed/assigned missions appear in your inventory along with their status.",
                                     inc: "Wonder Pets mission",
                                     get2: {
                                         item: "has mission",
@@ -3822,7 +3873,7 @@ WorldData = {
                 "Decline": {
                     if: {
                         cond: "has mission",
-                        msg: "How dare you pick an option that wasn't given! It was simple! \"return\" or \"accept\", how hard is it? That's it! I quit! No more game for you!",
+                        msg: "How dare you pick an option that wasn't given! It was simple! \"Nathan\" or \"accept\", how hard is it? That's it! I quit! No more game for you!",
                         end: 100
                     },
                     else: {
@@ -3882,10 +3933,11 @@ WorldData = {
                                     if: {
                                         cond: "Wonder Pets mission",
                                         msg: "You have accepted the mission!<br><br>\
-                                        You are taken outside to a hangar where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br>\
+                                        You are taken outside to a hangar, where you see planes and cars. You wait for them to direct you to one, but they seem to be waiting for something.<br><br>\
                                         A door opens from outside and an odd contraption that looks as though it's a child's toy flies through it and lands in front of you. You blink in confusion.<br><br>\
                                         The agents motion at you to enter, so you do. What kind of mission is this?<br><br>\
-                                        You arrive at a building. Look around."
+                                        You arrive at a building. Look around.",
+                                        dest: Locations.WonderPetSchoolhouse
                                     },
                                     else: {
                                         msg: "Hold on, what are you accepting? You don't have a mission...Look around first, or if no missions are being offered, return to Nathan's new house by typing \"Nathan\". It's possible that there's something you can do there to qualify you for a mission.",
@@ -3895,7 +3947,7 @@ WorldData = {
                         },
                     },
                 },
-                "(Grebel|Nathan|hallway)": {
+                "(Grebel|Nathan|hallway|return)": {
                     msg: "You return to the hallway outside Nathan's room. To get back to Headquarters, you can kill another leprechaun, or type \"Headquarters.\" You could kill people or get weed, or from here you can find Eevee though that weird garden portal.",
                     dest: Locations.hallway3,
                 },
@@ -4799,7 +4851,7 @@ WorldData = {
                             data: -1
                         }
                     }
-                    
+
                 },
                 m: {
                     cmd: {
@@ -4933,13 +4985,17 @@ WorldData = {
                         help<br>\
                         hint<br>"
                     },
-                    d: {
-                        msg: "You descend into a different part of hell (different options now).",
-                        get: {
-                            item: "unremorseful serial killer banished",
-                            data: 0
+                    m: {
+                        cmd: {
+                            d: {
+                                msg: "You descend into a different part of hell (different options now).",
+                                get: {
+                                    item: "unremorseful serial killer banished",
+                                    data: 0
+                                },
+                                dest: Locations.hell
+                            },
                         },
-                        dest: Locations.hell
                     },
                     l: {
                         if: {
@@ -5009,7 +5065,7 @@ WorldData = {
                     },
                     l: {
                         if: {
-                            cond: "tempted fate lol",
+                            cond: "tempted fate lol", count: 2,
                             msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
                             clear: 1,
                             end: 666
@@ -5019,189 +5075,238 @@ WorldData = {
                             get: {
                                 item: "tempted fate lol",
                                 data: -1
-                            }
+                            },
+                            inc: "tempted fate lol"
                         }
                     },
-                },
-                m: {
-                    cmd: {
-                        u: {
-                            if: {
-                                cond: "thou art banished!",
-                                msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
-                            },
-                            else: {
-                                msg: "You ascend to Leprechaun Heaven! Leprechauns are frolicking.",
-                                dest: Locations.heaven
-                            }
-
-                        },
-                        d: {
-                            if: {
-                                cond: "highway to hell 5",
-                                msg: "Whoops, you dig through and find that there's a lava pit there. You are now burning to...death? You're already in hell...<br>\
-                                    You climb out of the pit and find that although you are in excruciating pain, you haven't died. Hell is weird.",
-                                end: 321
-                            },
-                            else: {
+                    m: {
+                        cmd: {
+                            u: {
                                 if: {
-                                    cond: "highway to hell 4",
-                                    msg: "Your digging seems to pay off! You can feel that the ground in the hole is close to breaking!",
-                                    get: {
-                                        item: "highway to hell 5",
-                                        data: -1
-                                    }
+                                    cond: "thou art banished!",
+                                    msg: "No! You have been banished for a reason! Killing a leprechaun is simply unforgivable! You should be ashamed of yourself..."
+                                },
+                                else: {
+                                    msg: "You ascend to Leprechaun Heaven! Leprechauns are frolicking.",
+                                    dest: Locations.heaven
+                                }
+
+                            },
+                            d: {
+                                if: {
+                                    cond: "highway to hell 5",
+                                    msg: "Whoops, you dig through and find that there's a lava pit there. You are now burning to...death? You're already in hell...<br>\
+                                    You climb out of the pit and find that although you are in excruciating pain, you haven't died. Hell is weird.",
+                                    end: 321
                                 },
                                 else: {
                                     if: {
-                                        cond: "highway to hell 3",
-                                        msg: "You continue to dig",
+                                        cond: "highway to hell 4",
+                                        msg: "Your digging seems to pay off! You can feel that the ground in the hole is close to breaking!",
                                         get: {
-                                            item: "highway to hell 4",
+                                            item: "highway to hell 5",
                                             data: -1
                                         }
                                     },
                                     else: {
                                         if: {
-                                            cond: "highway to hell 2",
-                                            msg: "You dig as quickly as you can. It's unclear if anything will happen.",
+                                            cond: "highway to hell 3",
+                                            msg: "You continue to dig",
                                             get: {
-                                                item: "highway to hell 3",
+                                                item: "highway to hell 4",
                                                 data: -1
                                             }
                                         },
                                         else: {
                                             if: {
-                                                cond: "highway to hell 1",
-                                                msg: "You begin to dig in the ground",
+                                                cond: "highway to hell 2",
+                                                msg: "You dig as quickly as you can. It's unclear if anything will happen.",
                                                 get: {
-                                                    item: "highway to hell 2",
+                                                    item: "highway to hell 3",
                                                     data: -1
                                                 }
                                             },
                                             else: {
-                                                msg: "Uh, you're already in hell. I'm not entirely sure where you think you're going...",
-                                                get: {
-                                                    item: "highway to hell 1",
-                                                    data: -1
-                                                }
+                                                if: {
+                                                    cond: "highway to hell 1",
+                                                    msg: "You begin to dig in the ground",
+                                                    get: {
+                                                        item: "highway to hell 2",
+                                                        data: -1
+                                                    }
+                                                },
+                                                else: {
+                                                    msg: "Uh, you're already in hell. I'm not entirely sure where you think you're going...",
+                                                    get: {
+                                                        item: "highway to hell 1",
+                                                        data: -1
+                                                    }
+                                                },
                                             },
                                         },
+                                    }
+                                },
+                            },
+                        }
+                    },
+                    "(meow|beaver|beavers)": {
+                        if: {
+                            cond: "talked to the beaver",
+                            msg: "Want to follow the beavers? (\"follow\" if yes)",
+                            cmd: {
+                                "(beaver|beavers)": {
+                                    if: {
+                                        cond: "talked to the beaver",
+                                        msg: "Want to follow the beavers? (\"follow\" if yes)"
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: "already followed the beaver",
+                                            msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                                        },
+                                        else: {
+                                            msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                                Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                                            get: {
+                                                item: "talked to the beaver",
+                                                data: -1
+                                            }
+                                        }
                                     },
                                 }
                             },
                         },
-                    }
-                },
-                "(talk|meow|beaver|beavers)": {
-                    if: {
-                        cond: "talked to the beaver",
-                        msg: "Want to follow the beavers? (\"follow\" if yes)"
-                    },
-                    else: {
-                        if: {
-                            cond: "already followed the beaver",
-                            msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
-                        },
                         else: {
-                            msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
-                    Although they don't understand you, they seem to want to lead you somewhere. Follow?",
-                            get: {
-                                item: "talked to the beaver",
-                                data: -1
-                            }
-                        }
-                    },
-                    cmd: {
-                        "(beaver|beavers)": {
                             if: {
-                                cond: "talked to the beaver",
-                                msg: "Want to follow the beavers? (\"follow\" if yes)"
+                                cond: "already followed the beaver",
+                                msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!",
+                                cmd: {
+                                    "(beaver|beavers)": {
+                                        if: {
+                                            cond: "talked to the beaver",
+                                            msg: "Want to follow the beavers? (\"follow\" if yes)"
+                                        },
+                                        else: {
+                                            if: {
+                                                cond: "already followed the beaver",
+                                                msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                                            },
+                                            else: {
+                                                msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                                    Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                                                get: {
+                                                    item: "talked to the beaver",
+                                                    data: -1
+                                                }
+                                            }
+                                        },
+                                    }
+                                },
                             },
                             else: {
-                                if: {
-                                    cond: "already followed the beaver",
-                                    msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
-                                },
-                                else: {
-                                    msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                                msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
                             Although they don't understand you, they seem to want to lead you somewhere. Follow?",
-                                    get: {
-                                        item: "talked to the beaver",
-                                        data: -1
+                                get: {
+                                    item: "talked to the beaver",
+                                    data: -1
+                                },
+                                cmd: {
+                                    "(beaver|beavers)": {
+                                        if: {
+                                            cond: "talked to the beaver",
+                                            msg: "Want to follow the beavers? (\"follow\" if yes)"
+                                        },
+                                        else: {
+                                            if: {
+                                                cond: "already followed the beaver",
+                                                msg: "You've already talked to and followed the beaver! Either pick a portal (1, 2, or 3) or do something else!"
+                                            },
+                                            else: {
+                                                msg: "You walk up to the beavers and decide to talk to them. Of course, they don't understand what you say, since you're a cat and beavers don't understand cats. That would just be ridiculous!<br><br>\
+                                    Although they don't understand you, they seem to want to lead you somewhere. Follow?",
+                                                get: {
+                                                    item: "talked to the beaver",
+                                                    data: -1
+                                                }
+                                            }
+                                        },
                                     }
-                                }
-                            },
-                        }
-                    },
-                },
-                "(follow|yes)": {
-                    if: {
-                        cond: "talked to the beaver",
-                        msg: "You follow the beavers to a set of three shimmering portals. Which portal should you enter? (1, 2, or 3?)",
-                        get: {
-                            item: "talked to the beaver",
-                            data: 0
-                        },
-                        get2: {
-                            item: "already followed the beaver",
-                            data: -1
-                        },
-                        get3: {
-                            item: "the great beaver question",
-                            data: -1
-                        },
-                    },
-                    else: {
-                        if: {
-                            cond: "already followed the beaver",
-                            msg: "You...you've already done that. You know where the portals are, just pick: 1, 2, or 3?"
-                        },
-                        else: {
-                            msg: "Huh?"
-                        }
-                    }
-                },
-                "(1|one|first|left)": {
-                    if: {
-                        cond: "the great beaver question",
-                        msg: "You go into portal 1 (the one on the left) and appear back in your house, in the kitchen!",
-                        dest: Locations.kitchen
-                    },
-                    else: {
-                        msg: "What?"
-                    }
-                },
-                "(2|two|second|middle)": {
-                    if: {
-                        cond: "the great beaver question",
-                        if: {
-                            cond: "Grebel",
-                            msg: "You go into portal 2 (the one in the middle) and appear in the room where Nathan currently lives!",
-                            dest: Locations.nathan2
-                        },
-                        else: {
-                            msg: "You go into portal 2 (the one in the middle) and appear in a room you've never been in before! Look around!",
-                            dest: Locations.nathan2,
-                            get: {
-                                item: "went into portal 2",
-                                data: -1
+                                },
                             }
                         },
                     },
-                    else: {
-                        msg: "What?"
-                    }
-                },
-                "(3|three|third|right)": {
-                    if: {
-                        cond: "the great beaver question",
-                        msg: "You go into portal 3 (the one on the right) and appear in a room (look around)!",
-                        dest: Locations.AliyahRoom2
+                    "(follow|yes)": {
+                        if: {
+                            cond: "talked to the beaver",
+                            msg: "You follow the beavers to a set of three shimmering portals. Which portal should you enter? (1, 2, or 3?)",
+                            get: {
+                                item: "talked to the beaver",
+                                data: 0
+                            },
+                            get2: {
+                                item: "already followed the beaver",
+                                data: -1
+                            },
+                            get3: {
+                                item: "the great beaver question",
+                                data: -1
+                            },
+                        },
+                        else: {
+                            if: {
+                                cond: "already followed the beaver",
+                                msg: "You...you've already done that. You know where the portals are, just pick: 1, 2, or 3?"
+                            },
+                            else: {
+                                msg: "Huh?"
+                            }
+                        }
                     },
-                    else: {
-                        msg: "What?"
-                    }
+                    "(1|one|first|left)": {
+                        if: {
+                            cond: "the great beaver question",
+                            msg: "You go into portal 1 (the one on the left) and appear back in your house, in the kitchen!",
+                            dest: Locations.kitchen
+                        },
+                        else: {
+                            msg: "What?"
+                        }
+                    },
+                    "(2|two|second|middle)": {
+                        if: {
+                            cond: "the great beaver question",
+                            if: {
+                                cond: "Grebel",
+                                msg: "You go into portal 2 (the one in the middle) and appear in the room where Nathan currently lives!",
+                                get: {
+                                    item: "recently arrived",
+                                    data: -1
+                                },
+                                dest: Locations.nathan2
+                            },
+                            else: {
+                                msg: "You go into portal 2 (the one in the middle) and appear in a room you've never been in before! Look around!",
+                                dest: Locations.nathan2,
+                                get: {
+                                    item: "went into portal 2",
+                                    data: -1
+                                },
+                            },
+                        },
+                        else: {
+                            msg: "What?"
+                        }
+                    },
+                    "(3|three|third|right)": {
+                        if: {
+                            cond: "the great beaver question",
+                            msg: "You go into portal 3 (the one on the right) and appear in a room (look around)!",
+                            dest: Locations.AliyahRoom2
+                        },
+                        else: {
+                            msg: "What?"
+                        }
+                    },
                 },
             },
         },
@@ -5864,7 +5969,8 @@ WorldData = {
                                         else: {
                                             if: {
                                                 cond: "Nathan life/death question",
-                                                msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a *coward*), you decide to revive the human. Afterwards, you return to the hallway.",
+                                                msg: "Because you are a *cough cough chicken cough cough* (sorry, I meant to say a *coward*), you decide to revive the human. <br><br>\
+                                                Afterwards, you go to the hallway.",
                                                 get: {
                                                     item: "Nathan life/death question",
                                                     data: 0
@@ -6194,8 +6300,8 @@ WorldData = {
                             \"Wonder Pets, Wonder Pets, we're on our way-\" You cut them off immediately.<br><br>\
                             \"What did I say about singing?\" You snarl at them. Quivering, they wisely decide not to reply.<br><br>\
                             After some time, you arrive in a foresty area near a housing area. You vaguely see a cat in the tree. The cat's pretty high up, so you don't see any details.<br><br>\
-                            \"M-my name's Linny, pronouns he/him, I'm a Guinea Pig.\" The guinea pig says. Whoops. You'd been referring to him as a hamster this whole time. Oh well.<br><br>\
-                            \"I'm Ming-ming, pronouns she/her, I'm a duck who's just learned to fly!\" The duckling adds proudly, showing you that she can get a whole five inches off the ground. You nod. <br><br>\
+                            \"M-my name's Linny, pronouns he/him, I'm a guinea pig.\" Linny says. Whoops. You'd been referring to him as a hamster this whole time. Oh well.<br><br>\
+                            \"I'm Ming-ming, pronouns she/her, I'm a duck who's just learned to fly!\" The duckling adds proudly, showing you that she can get a whole five inches off the ground. You nod, trying to resist pointing out how close she was to the ground. <br><br>\
                             \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
                             \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
                             (respond with \"rescue\", this is the only possible command)",
@@ -6250,7 +6356,7 @@ WorldData = {
         },
         UnluckyEncounter: {
             cmd: {
-                l: {
+                "(l|look|.*)": {
                     if: {
                         cond: "Things are getting pretty darn Unlucky now...",
                         if: {
@@ -6280,6 +6386,7 @@ WorldData = {
                                                                 \"I'm going to rewind time.\" She decides.<br><br>\
                                                                 \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
                                                                 The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
+                                                                clear: 1,
                                                                 end: 30,
                                                             },
                                                             else: {
@@ -6302,6 +6409,7 @@ WorldData = {
                                                                     item: "Wonder Pets mission - completed",
                                                                     data: 1
                                                                 },
+                                                                clear: 1,
                                                                 dest: Locations.hell
                                                             }
                                                         },
@@ -6325,6 +6433,7 @@ WorldData = {
                                                                 item: "Wonder Pets mission - completed",
                                                                 data: 1
                                                             },
+                                                            clear: 1,
                                                             dest: Locations.hell
                                                         }
                                                     },
@@ -6348,6 +6457,7 @@ WorldData = {
                                                             item: "Wonder Pets mission - completed",
                                                             data: 1
                                                         },
+                                                        clear: 1,
                                                         dest: Locations.hell
                                                     }
                                                 },
@@ -6371,6 +6481,7 @@ WorldData = {
                                                         item: "Wonder Pets mission - completed",
                                                         data: 1
                                                     },
+                                                    clear: 1,
                                                     dest: Locations.hell
                                                 }
                                             },
@@ -6394,6 +6505,7 @@ WorldData = {
                                                     item: "Wonder Pets mission - completed",
                                                     data: 1
                                                 },
+                                                clear: 1,
                                                 dest: Locations.hell
                                             }
                                         },
@@ -6417,6 +6529,7 @@ WorldData = {
                                                 item: "Wonder Pets mission - completed",
                                                 data: 1
                                             },
+                                            clear: 1,
                                             dest: Locations.hell
                                         }
                                     },
@@ -6440,6 +6553,7 @@ WorldData = {
                                             item: "Wonder Pets mission - completed",
                                             data: 1
                                         },
+                                        clear: 1,
                                         dest: Locations.hell
                                     }
                                 },
@@ -6463,6 +6577,7 @@ WorldData = {
                                         item: "Wonder Pets mission - completed",
                                         data: 1
                                     },
+                                    clear: 1,
                                     dest: Locations.hell
                                 }
                             },
@@ -6486,6 +6601,7 @@ WorldData = {
                                     item: "Wonder Pets mission - completed",
                                     data: 1
                                 },
+                                clear: 1,
                                 dest: Locations.hell
                             }
                         },
@@ -6507,6 +6623,7 @@ WorldData = {
                                 item: "Wonder Pets mission - completed",
                                 data: 1
                             },
+                            clear: 1,
                             dest: Locations.hell
                         },
                     },
@@ -6516,17 +6633,19 @@ WorldData = {
                             img: "Images/UnluckyMurder.jpeg",
                             msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
                             \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
-                            \"My name is Unlucky. I'm you, but evil.\" Unlucky says, reintroducing herself. You suppose that she really was serious about the whole 'redoing it' thing.\
-                            \"You're me but evil? I'm not exactly an angel myself-\" You start to say, when you notice the dark wispy shapes coming out of Unlucky. Her eyes have turned fully black and her pupils glow red. The darkness creeps over to you and threatens to envelop you, forcing you to the ground. <br><br>\
-                            Shrinking back, you try to fend it off with your telekinesis, but it's too powerful.\
-                            (\"look\" to continue the storyline, there are no other possible commands)",
+                            \"My name is Unlucky. I'm a representation of your sins. If you've behaved yourself, you should be fine, but if you haven't (and I know you haven't), I'm your worst enemy.\" Unlucky says. You suppose that she really was serious about the whole 'redoing it' thing.<br><br>\
+                            \"You-\" You start to say, when you notice the dark wispy shapes coming out of Unlucky. Her eyes have turned fully black and her pupils glow red. <br><br>\
+                            \"The more bad things you do, the more powerful I get.\" The darkness grows, creeping over to you and threatening to envelop you, forcing you to the ground. <br><br>\
+                            Shrinking back, you try to fend it off with your telekinesis.\
+                            (type anything)",
                             get: {
                                 item: "Things are getting pretty darn Unlucky now...",
                                 data: -1
-                            }
+                            },
+                            clear: 1
                         },
                         else: {
-                            msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat. <br><br>\
+                            msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat of its gaze. <br><br>\
                                 You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
                                 \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
                                 \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
@@ -6534,9 +6653,9 @@ WorldData = {
                                 \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
                                 \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
                                 \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
-                                \"But...yeah...I suppose that's why I named myself Unlucky...\" There's a short awkward silence as both of you don't know what to say.<br><br><br>\
+                                \"But...yeah...I suppose that's why I named myself Unlucky...\"<br><br>\
                                 \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
-                                \"Let's do this again.\" She mutters to herself. Your surroundings blur into one another. Try looking around.",
+                                \"We're doing this again.\" She mutters to herself. You blink in confusion. Your surroundings blur again. Try looking around again.",
                             get: {
                                 item: "already talked to Unlucky",
                                 data: -1
@@ -6544,7 +6663,8 @@ WorldData = {
                             get2: {
                                 item: "Unlucky wants to try again",
                                 data: -1
-                            }
+                            },
+                            clear: 1
                         },
                     },
                 },
