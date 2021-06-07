@@ -470,7 +470,6 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
-
                         msg: "Alrighty, here are your possible commands: <br><br>\
                         look<br>\
                         look at food<br>\
@@ -501,25 +500,23 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
-
                         img: "Images/DiningRoomNoWater.jpeg",
-                        msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+                        msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
-                 - There's water here",
+                 - THERE'S NO WATER",
                         clear: 1,
                         cmd: {
                             "water": {
-                                msg: "There is no water"
+                                msg: "There is no water >:("
                             },
                             "food": {
                                 msg: "The food looks tasty"
                             }
                         }
-
                     },
                     else: {
                         img: "Images/DiningRoom.jpeg",
@@ -943,16 +940,8 @@ WorldData = {
                         clear: 1,
                         cmd: {
                             "mumu": {
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Mumu"
-                                    },
+                                msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
 
-                                    msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
-                                },
-                                else: {
-                                    msg: "Mumu looks sad"
-                                },
                             },
                         },
                     },
@@ -967,16 +956,7 @@ WorldData = {
                         clear: 1,
                         cmd: {
                             "mumu": {
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Mumu"
-                                    },
-
-                                    msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
-                                },
-                                else: {
-                                    msg: "Mumu looks sad"
-                                },
+                                msg: "Mumu looks sad"
                             },
                         },
                     },
@@ -1004,7 +984,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Mumu"
                                 },
-
                                 msg: "You meow at her dead body. Shockingly, there is no response. If you feel remorseful, you can \"revive\" her."
                             },
                             else: {
@@ -1076,7 +1055,7 @@ WorldData = {
                 g: {
                     cmd: {
                         "water": {
-                            msg: "The glass is empty, so you can't drink from it. You meow at baba, but he's too \"busy\" watching the blinking lights"
+                            msg: "The glass is empty, so you can't drink from it."
                         }
                     }
                 },
@@ -1730,8 +1709,7 @@ WorldData = {
                             },
                             else: {
                                 img: "Images/Nathan2.jpeg",
-                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
-                                    You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+                                msg: "You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
@@ -3429,7 +3407,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Eevee"
                                 },
-
                                 if: {
                                     cond: {
                                         contains: "Name Emily"
@@ -3640,7 +3617,7 @@ WorldData = {
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
+                                            You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
@@ -3885,7 +3862,6 @@ WorldData = {
                                     cond: {
                                         contains: "chose kill Eevee"
                                     },
-
                                     msg: "You chose to keep her dead, you can't kill her again (unless you revive her- \"revive Eevee\")"
                                 },
                                 else: {
@@ -3942,7 +3918,6 @@ WorldData = {
                                     cond: {
                                         contains: "chose kill Eevee"
                                     },
-
                                     msg: "You sigh and rewind time to allow Eevee to live. You do hate having to deal with consequences for your actions, you suppose.",
                                     get: {
                                         item: "chose kill Eevee",
@@ -5365,7 +5340,7 @@ WorldData = {
                     },
                     kill: {
                         cmd: {
-                            "(beaver|beavers|them|everyone)": {
+                            "(beaver|beavers|them|everyone|.*)": {
                                 msg: "You kill the beavers. <br><br>Now what?<br><br>\
                             Perhaps now you are the master of hell or something. You don't see anyone around. You feel a bit lonely. You suppose that this must be your personal hell, since if this were a group situation, it'd be pretty well-populated. Or maybe everyone became beavers. You laugh at the concept. <br><br>\
                             \
@@ -6725,7 +6700,6 @@ WorldData = {
                 cond: {
                     contains: "looked outside the schoolhouse already"
                 },
-
                 cmd: {
                     "hint": {
                         if: {
@@ -6910,8 +6884,9 @@ WorldData = {
 
                                 if: {
                                     cond: {
-                                    contains: "revived Eevee"
+                                        contains: "revived Eevee"
                                     },
+                                    img: "Images/DarkTitans.jpeg",
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                     \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                                     \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
@@ -6923,6 +6898,7 @@ WorldData = {
                                     end: 30,
                                 },
                                 else: {
+                                    img: "Images/DarkTitans.jpeg",
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                     \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                     They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
@@ -6947,6 +6923,7 @@ WorldData = {
                                 }
                             },
                             else: {
+                                img: "Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                 \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                 They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
@@ -6971,6 +6948,7 @@ WorldData = {
                             }
                         },
                         else: {
+                            img: "Images/DarkTitans.jpeg",
                             msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                         \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                         \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
@@ -7041,7 +7019,6 @@ WorldData = {
         },
     },
 },
-
     Aliases = {
         "move": "m",
         "(north|run away|run|run inside|go inside)": "n",
