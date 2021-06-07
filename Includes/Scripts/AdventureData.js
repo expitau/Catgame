@@ -523,7 +523,6 @@ WorldData = {
                         },
                         img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
-
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
@@ -1734,7 +1733,6 @@ WorldData = {
 
                                 msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
                                     You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
-
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
@@ -6924,9 +6922,7 @@ WorldData = {
                                     \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                     They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
                                     Unlucky continues speaking:<br><br>\
-
                                     \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
-
                                     You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                                     You open your eyes to find yourself in a place that you presume to be hell.",
                                     get: {
