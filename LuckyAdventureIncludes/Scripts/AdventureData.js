@@ -1989,73 +1989,29 @@ WorldData = {
                 l: {
                     if: {
                         cond: {
-                            contains: "chose kill Aliyah"
+                            contains1: "chose kill Aliyah",
+                            contains2: "chose kill Maia",
+                            contains3: "chose kill Reu",
+                            contains4: "chose kill Nathan",
+                            contains6: "kill point Aliyah",
+                            contains8: "chose kill Andrew",
+                            contains9: "kill point B",
                         },
-
                         if: {
                             cond: {
-                                contains: "chose kill Maia"
+                                contains: "has been to Emily's house before"
                             },
 
-                            if: {
-                                cond: {
-                                    contains: "chose kill Reu"
-                                },
-
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Nathan"
-                                    },
-
-                                    if: {
-                                        cond: {
-                                            contains: "chose kill Andrew"
-                                        },
-
-                                        if: {
-                                            cond: {
-                                                contains: "has been to Emily's house before"
-                                            },
-
-                                            img: "Images/Hallway3EveryoneDead.jpeg",
-                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
-                                            clear: 1,
-                                        },
-                                        else: {
-                                            img: "Images/Hallway3EveryoneDead.jpeg",
-                                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
-                                            Maybe check out the garden! (\"garden\")",
-                                            clear: 1
-                                        },
-                                    },
-                                    else: {
-                                        img: "Images/Hallway3.jpeg",
-                                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                        clear: 1,
-                                    },
-                                },
-                                else: {
-                                    img: "Images/Hallway3.jpeg",
-                                    msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                    clear: 1,
-                                },
-                            },
-                            else: {
-                                img: "Images/Hallway3.jpeg",
-                                msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                                clear: 1,
-                            },
-                        },
-                        else: {
-                            img: "Images/Hallway3.jpeg",
-                            msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
+                            img: "Images/Hallway3EveryoneDead.jpeg",
+                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
                             clear: 1,
                         },
-                    },
-                    else: {
-                        img: "Images/Hallway3.jpeg",
-                        msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
-                        clear: 1,
+                        else: {
+                            img: "Images/Hallway3EveryoneDead.jpeg",
+                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
+                                            Maybe check out the garden! (\"garden\")",
+                            clear: 1
+                        },
                     },
                 },
                 "song": {
@@ -3943,97 +3899,30 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: {
-                                                contains: "kill point N"
+                                                contains1: "kill point N",
+                                                contains2: "kill point A",
+                                                contains3: "kill point Maia",
+                                                contains4: "kill point M",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point Aliyah",
+                                                contains8: "kill point R",
+                                                contains9: "kill point B",
                                             },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point A"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Maia"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point M"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Em"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point Aliyah"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point R"
-                                                                    },
-
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "kill point B"
-                                                                        },
-
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now here comes the question: rewind time to save her or not? (\"yes\" or \"no\")",
-                                                                        inc: "kill point Ev",
-                                                                        get: {
-                                                                            item: "Eevee life/death question",
-                                                                            data: -1
-                                                                        },
-                                                                        dest: Locations.DecisionRoom
-                                                                    },
-                                                                    else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
-                                                                        dest: Locations.hallway3,
-                                                                    },
-                                                                },
-                                                                else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                    You are now in the hallway of the building Nathan's living in.",
-                                                                    dest: Locations.hallway3,
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                You are now in the hallway of the building Nathan's living in.",
-                                                                dest: Locations.hallway3,
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                            You are now in the hallway of the building Nathan's living in.",
-                                                            dest: Locations.hallway3,
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                        You are now in the hallway of the building Nathan's living in.",
-                                                        dest: Locations.hallway3,
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                    You are now in the hallway of the building Nathan's living in.",
-                                                    dest: Locations.hallway3,
-                                                },
+                                            msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
+                                            get: {
+                                                item: "Eevee life/death question",
+                                                data: -1
                                             },
-                                            else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                You are now in the hallway of the building Nathan's living in.",
-                                                dest: Locations.hallway3,
+                                            get2: {
+                                                item: "Name Eevee",
+                                                data: -1
                                             },
+                                            inc3: "kill point Ev",
+                                            dest: Locations.DecisionRoom
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                            You are now in the hallway of the building Nathan's living in.",
+                                                                        You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
@@ -7003,243 +6892,44 @@ WorldData = {
                         cond: {
                             contains: "Things are getting pretty darn Unlucky now..."
                         },
-
                         if: {
                             cond: {
                                 contains: "chose to revive someone"
                             },
-
                             if: {
                                 cond: {
-                                    contains: "revived Baba"
+                                    contains1: "revived Baba",
+                                    contains2: "revived Mumu",
+                                    contains3: "revived Reu",
+                                    contains4: "revived Nathan",
+                                    contains5: "revived Maia",
+                                    contains6: "revived Aliyah",
+                                    contains7: "revived Andrew",
+                                    contains8: "revived Emily"
                                 },
 
                                 if: {
                                     cond: {
-                                        contains: "revived Mumu"
+                                    contains: "revived Eevee"
                                     },
-
-                                    if: {
-                                        cond: {
-                                            contains: "revived Reu"
-                                        },
-
-                                        if: {
-                                            cond: {
-                                                contains: "revived Nathan"
-                                            },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "revived Maia"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "revived Aliyah"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "revived Andrew"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "revived Emily"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "revived Eevee"
-                                                                },
-
-                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
-                                                                \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
-                                                                You stay silent, hoping that she will decide to spare you.<br><br>\
-                                                                \"I'm going to rewind time.\" She decides.<br><br>\
-                                                                \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
-                                                                The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
-                                                                clear: 1,
-                                                                end: 30,
-                                                            },
-                                                            else: {
-                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                                Unlucky continues speaking:<br><br>\
-                                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                                You open your eyes to find yourself in a place that you presume to be hell.",
-                                                                get: {
-                                                                    item: "unremorseful serial killer banished",
-                                                                    data: -1
-                                                                },
-                                                                get2: {
-                                                                    item: "Wonder Pets mission",
-                                                                    data: 0
-                                                                },
-                                                                get3: {
-                                                                    item: "Wonder Pets mission - completed",
-                                                                    data: 1
-                                                                },
-                                                                clear: 1,
-                                                                dest: Locations.hell
-                                                            }
-                                                        },
-                                                        else: {
-                                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                            Unlucky continues speaking:<br><br>\
-                                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                            You open your eyes to find yourself in a place that you presume to be hell.",
-                                                            get: {
-                                                                item: "unremorseful serial killer banished",
-                                                                data: -1
-                                                            },
-                                                            get2: {
-                                                                item: "Wonder Pets mission",
-                                                                data: 0
-                                                            },
-                                                            get3: {
-                                                                item: "Wonder Pets mission - completed",
-                                                                data: 1
-                                                            },
-                                                            clear: 1,
-                                                            dest: Locations.hell
-                                                        }
-                                                    },
-                                                    else: {
-                                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                        Unlucky continues speaking:<br><br>\
-                                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                        You open your eyes to find yourself in a place that you presume to be hell.",
-                                                        get: {
-                                                            item: "unremorseful serial killer banished",
-                                                            data: -1
-                                                        },
-                                                        get2: {
-                                                            item: "Wonder Pets mission",
-                                                            data: 0
-                                                        },
-                                                        get3: {
-                                                            item: "Wonder Pets mission - completed",
-                                                            data: 1
-                                                        },
-                                                        clear: 1,
-                                                        dest: Locations.hell
-                                                    }
-                                                },
-                                                else: {
-                                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                    They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                    Unlucky continues speaking:<br><br>\
-                                                    \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                    You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                    You open your eyes to find yourself in a place that you presume to be hell.",
-                                                    get: {
-                                                        item: "unremorseful serial killer banished",
-                                                        data: -1
-                                                    },
-                                                    get2: {
-                                                        item: "Wonder Pets mission",
-                                                        data: 0
-                                                    },
-                                                    get3: {
-                                                        item: "Wonder Pets mission - completed",
-                                                        data: 1
-                                                    },
-                                                    clear: 1,
-                                                    dest: Locations.hell
-                                                }
-                                            },
-                                            else: {
-                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                Unlucky continues speaking:<br><br>\
-                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                You open your eyes to find yourself in a place that you presume to be hell.",
-                                                get: {
-                                                    item: "unremorseful serial killer banished",
-                                                    data: -1
-                                                },
-                                                get2: {
-                                                    item: "Wonder Pets mission",
-                                                    data: 0
-                                                },
-                                                get3: {
-                                                    item: "Wonder Pets mission - completed",
-                                                    data: 1
-                                                },
-                                                clear: 1,
-                                                dest: Locations.hell
-                                            }
-                                        },
-                                        else: {
-                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                            Unlucky continues speaking:<br><br>\
-                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                            You open your eyes to find yourself in a place that you presume to be hell.",
-                                            get: {
-                                                item: "unremorseful serial killer banished",
-                                                data: -1
-                                            },
-                                            get2: {
-                                                item: "Wonder Pets mission",
-                                                data: 0
-                                            },
-                                            get3: {
-                                                item: "Wonder Pets mission - completed",
-                                                data: 1
-                                            },
-                                            clear: 1,
-                                            dest: Locations.hell
-                                        }
-                                    },
-                                    else: {
-                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                        Unlucky continues speaking:<br><br>\
-                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                        You open your eyes to find yourself in a place that you presume to be hell.",
-                                        get: {
-                                            item: "unremorseful serial killer banished",
-                                            data: -1
-                                        },
-                                        get2: {
-                                            item: "Wonder Pets mission",
-                                            data: 0
-                                        },
-                                        get3: {
-                                            item: "Wonder Pets mission - completed",
-                                            data: 1
-                                        },
-                                        clear: 1,
-                                        dest: Locations.hell
-                                    }
+                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                                    \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
+                                    You stay silent, hoping that she will decide to spare you.<br><br>\
+                                    \"I'm going to rewind time.\" She decides.<br><br>\
+                                    \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
+                                     The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
+                                    clear: 1,
+                                    end: 30,
                                 },
                                 else: {
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                        Unlucky continues speaking:<br><br>\
-                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                    They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                    Unlucky continues speaking:<br><br>\
+                                    \"You did revive most of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                    You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                    You open your eyes to find yourself in a place that you presume to be hell.",
                                     get: {
                                         item: "unremorseful serial killer banished",
                                         data: -1
@@ -7261,7 +6951,7 @@ WorldData = {
                                 \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                 They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
                                 Unlucky continues speaking:<br><br>\
-                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
                                 You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                                 You open your eyes to find yourself in a place that you presume to be hell.",
                                 get: {
@@ -7328,6 +7018,7 @@ WorldData = {
                                 \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
                                 \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
                                 \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
+                                \"Well, honestly maybe it's not exactly that I'm the evil version of you, but rather I'm just your worst enemy, so from your perspective I'm sort of like the evil you...\"<br><br>\
                                 \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
                                 \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
                                 \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
