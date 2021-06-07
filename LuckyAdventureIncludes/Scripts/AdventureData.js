@@ -3898,7 +3898,7 @@ WorldData = {
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
+                                            You are now in the hallway of the building Nathan's living in.",
                                             dest: Locations.hallway3,
                                         },
                                     },
