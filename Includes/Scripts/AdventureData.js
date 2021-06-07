@@ -500,14 +500,9 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
-<<<<<<< HEAD:Includes/Scripts/AdventureData.js
 
                         img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
-=======
-                        img: "Images/DiningRoomNoWater.jpeg",
-                        msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
->>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
