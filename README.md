@@ -1,5 +1,4 @@
 # LuckyTextAdventure
 An amazing text adventure, made by Aliyah
 
-# Driver Documentation
-Hey aliyah put things here plz
+(Console.js)[LuckyAdventureIncludes/Scripts/Console.js] serves as a driver for data in (AdventureData.js)[LuckyAdventureIncludes/Scripts/AdventureData.js].

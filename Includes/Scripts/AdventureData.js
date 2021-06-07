@@ -105,7 +105,6 @@ WorldData = {
                 cond: {
                     contains: "licence to kill"
                 },
-
                 msg: "You go to headquarters.",
                 dest: Locations.Headquarters
             },
@@ -256,7 +255,7 @@ WorldData = {
         kitchen: {
             cmd: {
                 l: {
-                    img: "Images/kitchen.jpeg",
+                    img: "Includes/Images/kitchen.jpeg",
                     msg: "You're in the kitchen, it gets pretty loud here sometimes, but the sun is shining through the window and is very warm.<br>\
                 N: The dining room<br>\
                 S: There's a door leading outside<br>\
@@ -293,7 +292,7 @@ WorldData = {
                 u: {
                     cmd: {
                         "sun": {
-                            img: "Images/ChichienSun.jpeg",
+                            img: "Includes/Images/ChichienSun.jpeg",
                             msg: "You sit in the sun. It's very warm and nice. Just as you start to relax, the dishwasher turns on and you freak out and run to the dining room.",
                             dest: Locations.dining_room
                         }
@@ -329,7 +328,24 @@ WorldData = {
                     msg: "You wander around the forest until you come across a familiar-looking plant. It smells amazing! You roll around in it and eat some of it, thoroughly enjoying yourself. After a while, you realize that in your...inebriated state... you'd accidentally lifted the house off the ground with your telekinetic powers! Oops. You blink, restoring it back to how it was.",
                 },
                 "squirrel": {
-                    msg: "Frolicking about in the forest, you come across a squirrel! This is your chance to contribute to the family. Nathan will love it! You bolt after it, but it climbs a tree quickly. You contemplate following, but you don't really want to get stuck up there...",
+                    if: {
+                        cond: {
+                            unseen: "squirrel msg"
+                        },
+                        msg: "Frolicking about in the forest, you come across a squirrel! This is your chance to contribute to the family. Nathan will love it! You bolt after it, but it climbs a tree quickly. You contemplate following, but you don't really want to get stuck up there..."
+                    },
+                    else: {
+                        if: {
+                            cond: {
+                                unseen: "fast squirrel msg"
+                            },
+                            msg: "The squirrel looks pretty fast, do you want to chase it?"
+                        },
+                        else: {
+                            msg: "You sprint after the squirrel. It's pretty speedy, but you're speedier! You kill the squirrel and you're now excited to put it on Nathan's pillow!",
+                            inc: "squirrel"
+                        }
+                    }
                 },
                 "kill": {
                     cmd: {
@@ -430,7 +446,11 @@ WorldData = {
                                 msg: "You find a squirrel and kill it! You can put this on Nathan's pillow!",
                                 inc: "squirrel"
                             }
-                        }
+                        },
+                        "goose": {
+                            msg: "Mr. Goose laughs at your feeble attempt at fighting. He banishes you to hell.",
+                            dest: Locations.hell
+                        },
                     },
                 },
                 m: {
@@ -450,7 +470,8 @@ WorldData = {
                     msg: "You have been put in your place by Mr. Goose, and you now realize that you should not have tried to fight him in the first place. As you look up at the great bird, you recognize that he is all-powerful and while there is not much you can control in life, it is a certainty that Mr. Goose is great. Perhaps that is all that is truly important. Reading your mind, the all-powerful Mr. Goose seems to smile at you.<br><br>\
                     \"Would you like to join my goose cult?\" Mr. Goose offers.<br><br>\
                     You are taken aback, but it sounds like a pretty good suggestion. There's nothing interesting happening back in your house, time for an adventure.<br><br>\
-                    You join a group of geese and walk off into the forest. You look back at the house to find that Baba is looking out the window, shocked to see a house-height goose walking off into the forest with his cat. You laugh to yourself. No one will believe him when he explains how he lost the cat. <br><br>You're very excited about your new goose friends!",
+                    You join a group of geese and walk off into the forest. You look back at the house to find that Baba is looking out the window, shocked to see a house-height goose walking off into the forest with his cat. You laugh to yourself. No one will believe him when he explains how he lost the cat. <br><br>\
+                    You're very excited about your new goose friends!",
                     end: 6,
                 },
                 "violence": {
@@ -500,7 +521,7 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
-                        img: "Images/DiningRoomNoWater.jpeg",
+                        img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
@@ -519,7 +540,7 @@ WorldData = {
                         }
                     },
                     else: {
-                        img: "Images/DiningRoom.jpeg",
+                        img: "Includes/Images/DiningRoom.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
@@ -679,7 +700,7 @@ WorldData = {
                             contains: "chose kill Baba"
                         },
 
-                        img: "Images/OfficeBabaDead.jpeg",
+                        img: "Includes/Images/OfficeBabaDead.jpeg",
                         msg: "You're in the office, baba is dead.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
@@ -701,7 +722,7 @@ WorldData = {
                                 contains: "revived Baba"
                             },
 
-                            img: "Images/Office.jpeg",
+                            img: "Includes/Images/Office.jpeg",
                             msg: "You're in the office. Baba is alive now, just working on his laptop.<br>\
                             N: Living room<br>\
                             E: Dining room<br>\
@@ -718,7 +739,7 @@ WorldData = {
                             }
                         },
                         else: {
-                            img: "Images/Office.jpeg",
+                            img: "Includes/Images/Office.jpeg",
                             msg: "You're in the office, Baba is here working on his laptop. You like Baba, Baba gives nice pets.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
@@ -930,7 +951,7 @@ WorldData = {
                             contains: "chose kill Mumu"
                         },
 
-                        img: "Images/LivingRoomMumuDead.jpeg",
+                        img: "Includes/Images/LivingRoomMumuDead.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is lying dead in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -946,7 +967,7 @@ WorldData = {
                         },
                     },
                     else: {
-                        img: "Images/LivingRoom.jpeg",
+                        img: "Includes/Images/LivingRoom.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is sleeping in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -967,12 +988,12 @@ WorldData = {
                             contains: "won chess game!"
                         },
 
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Includes/Images/ChessProLucky.JPEG",
                         msg: "You play chess against yourself and win again!",
                         inc: "won chess game!"
                     },
                     else: {
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Includes/Images/ChessProLucky.JPEG",
                         msg: "You use your telekinetic powers to play chess against yourself. Shockingly, you won!",
                         inc: "won chess game!"
                     },
@@ -1117,7 +1138,7 @@ WorldData = {
                             contains: "lulu"
                         },
 
-                        img: "Images/Entryway.jpeg",
+                        img: "Includes/Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -1126,7 +1147,7 @@ WorldData = {
                         clear: 1
                     },
                     else: {
-                        img: "Images/Entryway.jpeg",
+                        img: "Includes/Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside. You see the dreaded Lulu at the end of the hall, she trots into emily's room<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -1185,7 +1206,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Hallway1.jpeg",
+                    img: "Includes/Images/Hallway1.jpeg",
                     msg: "You are in the middle of the hallway, James' door is closed.<br>\
                     E: Hallway<br>\
                     S: Bathroom<br>\
@@ -1224,7 +1245,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Hallway2.jpeg",
+                    img: "Includes/Images/Hallway2.jpeg",
                     msg: "You are at the end of the hallway, Emily's door is next to you, and you see Lulu's ugly face peering at you from on top of the bed<br>\
                     N: Emily's room<br>\
                     S: Meow's room<br>\
@@ -1393,7 +1414,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Basement.jpeg",
+                    img: "Includes/Images/Basement.jpeg",
                     msg: "You are in the basement! There's a blanket that you like to sit on, there's the laundry, and there's Nathan's room.",
                     clear: 1,
 
@@ -1446,7 +1467,7 @@ WorldData = {
                     }
                 },
                 "upstairs": {
-                    img: "Images/DiningRoom.jpeg",
+                    img: "Includes/Images/DiningRoom.jpeg",
                     msg: "You go upstairs.",
                     dest: Locations.dining_room
                 }
@@ -1474,20 +1495,20 @@ WorldData = {
                             contains: "Grebel"
                         },
 
-                        img: "Images/NathanRoomPortal.jpeg",
+                        img: "Includes/Images/NathanRoomPortal.jpeg",
                         msg: "You're back in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of! You can also go back to Nathan's new room by typing \"portal.\" <br><br>\
                         Leave the room by typing \"basement\"",
                         clear: 1,
                     },
                     else: {
-                        img: "Images/NathanRoom1.jpeg",
+                        img: "Includes/Images/NathanRoom1.jpeg",
                         msg: "You are in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of!<br><br>\
                         Leave the room by typing \"basement\"",
                         clear: 1,
                     },
                 },
                 "(basement|b)": {
-                    img: "Images/Basement.jpeg",
+                    img: "Includes/Images/Basement.jpeg",
                     msg: "You leave Nathan's room and return to the basement.",
                     dest: Locations.basement
                 },
@@ -1677,7 +1698,7 @@ WorldData = {
                             contains: "chose kill Nathan"
                         },
 
-                        img: "Images/DeadNathan.jpeg",
+                        img: "Includes/Images/DeadNathan.jpeg",
                         msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\".",
                         clear: 1
                     },
@@ -1692,7 +1713,7 @@ WorldData = {
                                     contains: "went into portal 2"
                                 },
 
-                                img: "Images/Nathan2.jpeg",
+                                img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself in the middle of a room where Nathan is at a desk working on his computer. <br><br>\
                                 You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
                                 Type \"portal\" to go through the closet portal, returning to your house, or \"hallway\" to leave the room.",
@@ -1708,7 +1729,7 @@ WorldData = {
                                 clear: 1
                             },
                             else: {
-                                img: "Images/Nathan2.jpeg",
+                                img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
@@ -1729,7 +1750,7 @@ WorldData = {
                                     },
 
                                     msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
-                                    img: "Images/Nathan2.jpeg",
+                                    img: "Includes/Images/Nathan2.jpeg",
                                     get: {
                                         item: "recently arrived",
                                         data: 0
@@ -1741,14 +1762,14 @@ WorldData = {
                                     clear: 1
                                 },
                                 else: {
-                                    img: "Images/Nathan2.jpeg",
+                                    img: "Includes/Images/Nathan2.jpeg",
                                     msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
                                     clear: 1
                                 }
                             },
                         },
                         else: {
-                            img: "Images/Nathan2.jpeg",
+                            img: "Includes/Images/Nathan2.jpeg",
                             msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
                             clear: 1
                         }
@@ -1773,11 +1794,11 @@ WorldData = {
                             contains: "chose kill Nathan"
                         },
 
-                        img: "Images/DeadNathan.jpeg",
+                        img: "Includes/Images/DeadNathan.jpeg",
                         msg: "You admire Nathan as he lies dead on the floor. You do love a successful kill. (\"revive Nathan\" if you've grown a conscience)"
                     },
                     else: {
-                        img: "Images/NathanPhoto.JPG",
+                        img: "Includes/Images/NathanPhoto.JPG",
                         msg: "\"Hello!\" You mew at Nathan. He jumps. <br><br>\"Lucky?\" he exclaims. He picks you up and hugs you. \"I don't know how you're here...perhaps you're just a figment of my imagination, a sign that I'm up too late...\" You glance at the clock and realize that time has passed since you last looked outside, it's now about 5 AM. You decide that you want to have time to yourself to wander around the building, so you rewind time so that he hasn't noticed you yet. It's now about 11:30 PM. You think about leaving the room.",
                     },
                 },
@@ -1801,7 +1822,7 @@ WorldData = {
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
-                                    img: "Images/DeadNathan.jpeg",
+                                    img: "Includes/Images/DeadNathan.jpeg",
                                     msg: "Creeping up behind Nathan, you lunge at him, plunging your claws into him. As he bleeds out onto the carpet, you start to perhaps regret your actions. Should you revive him? (\"Yes\" or \"no\")",
                                     get: {
                                         item: "Nathan life/death question",
@@ -1927,11 +1948,15 @@ WorldData = {
         },
         hallway3: {
             cmd: {
+                "upstairs": {
+                    msg: "You are now in the upstairs hallway (you can still get to anyone in the building from here)."
+                },
                 "(hallway|leave)": {
                     msg: "You are in the hallway (look around)."
                 },
                 "foyer": {
-                    msg: "You're downstairs in the foyer. You see a garden outside. Want to check it out? (\"garden\")"
+                    msg: "You're downstairs in the foyer. You can still get to everyone in the building from here.<br><br>\
+                    You see a garden outside. Want to check it out? (\"garden\")"
                 },
                 "andrew": {
                     msg: "The name seems vaguely familiar...try Andy, Dandrewlion, or Werdna",
@@ -1967,29 +1992,57 @@ WorldData = {
                 l: {
                     if: {
                         cond: {
-                            contains1: "chose kill Aliyah",
-                            contains2: "chose kill Maia",
-                            contains3: "chose kill Reu",
-                            contains4: "chose kill Nathan",
-                            contains6: "kill point Aliyah",
-                            contains8: "chose kill Andrew",
-                            contains9: "kill point B",
+                            type: "or",
+                            contains1: "licence to kill",
+                            contains2: "licence to kill revoked",
                         },
                         if: {
                             cond: {
-                                contains: "has been to Emily's house before"
+                                contains: "weed",
                             },
-
-                            img: "Images/Hallway3EveryoneDead.jpeg",
-                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
-                            clear: 1,
+                            img: "Includes/Images/Hallway3Weed.jpeg",
+                            msg: "Hall-wandering time! Who do you want to visit?"
                         },
                         else: {
-                            img: "Images/Hallway3EveryoneDead.jpeg",
-                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
-                                            Maybe check out the garden! (\"garden\")",
-                            clear: 1
+                            img: "Includes/Images/Hallway3Weed.jpeg",
+                            msg: "Hall-wandering time! Who do you want to visit? Might I suggest visiting Maia for weed?<br><br>\
+                        (\"weed\")"
+                        }
+                    },
+                    else: {
+                        if: {
+                            cond: {
+                                contains1: "chose kill Aliyah",
+                                contains2: "chose kill Maia",
+                                contains3: "chose kill Reu",
+                                contains4: "chose kill Nathan",
+                                contains6: "kill point Aliyah",
+                                contains8: "chose kill Andrew",
+                                contains9: "kill point B",
+                            },
+                            if: {
+                                cond: {
+                                    contains: "has been to Emily's house before"
+                                },
+                                img: "Includes/Images/Hallway3EveryoneDead.jpeg",
+                                msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
+                                clear: 1,
+                            },
+                            else: {
+                                img: "Includes/Images/Hallway3EveryoneDead.jpeg",
+                                msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
+                            Maybe check out the garden! (\"garden\")",
+                                clear: 1
+                            },
                         },
+                        else: {
+                            img: "Includes/Images/Hallway3NoWeed.jpeg",
+                            msg: "Hall-wandering time! Who do you want to visit?"
+                        },
+                        else: {
+                            img: "Includes/Images/Hallway3NoWeed.jpeg",
+                            msg: "Hall-wandering time! Who do you want to visit?"
+                        }
                     },
                 },
                 "song": {
@@ -2006,52 +2059,52 @@ WorldData = {
 
                                                 msg: "A ghost starts running down the hall, and you realize that it's Nathan! He is singing, and you listen to the words:<br><br><br>\
                                                 \"My... sweet... Werdna...<br>\
-                     My... sweetheart<br>\
-                     If you believe in the power of friendship<br>\
-                     Nothing can keep us apart...<br><br>\
-                     But that's just not good enough for me!<br>\
-                     Without Werdna I cannot be<br>\
-                     for if you would not have me then I'll... be<br><br>\
-                     a robot for my Werdna!<br>\
-                     Just for Werdna I will be a robot<br>\
-                     But one small issue is that I may overheat<br>\
-                     Just because, my Werdna is so hot.<br><br>\
-                     My Werdna is too hot for me<br>\
-                     But if not a robot, what else can I be?<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, you're beautiful.<br><br>\
-                     I could be, some chocolate milk<br>\
-                     Nothing quite as sweet.<br>\
-                     An added bonus would be,<br>\
-                     that Werdna's lips, I would meet...<br><br>\
-                     But while chocolate milk is finite<br>\
-                     My love for Werdna is unending<br>\
-                     Because Werdna is my one true love,<br>\
-                     no one else is even contending<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, Werdna I love you<br><br>\
-                     I could be, a chin-up bar<br>\
-                     To make my Wernda stronk<br>\
-                     The problem is, is Werdna's weight<br>\
-                     My Werdna is too chomnk. <br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, Werdna won't you love me.<br><br>\
-                     I could be, a mirror.<br>\
-                     diverting Werdna's gaze.<br>\
-                     For then I'd spend, my final days<br>\
-                     Looking at his wonderful face<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, won't you call me yours\"<br><br><br>\
-                     Having reached the end of the song, the ghost disappears..<br><br>\
-                     Nathan's ghost pops back in to inform you that there are a few extended verses, if you want to hear them.",
+                                                My... sweetheart<br>\
+                                                If you believe in the power of friendship<br>\
+                                                Nothing can keep us apart...<br><br>\
+                                                But that's just not good enough for me!<br>\
+                                                Without Werdna I cannot be<br>\
+                                                for if you would not have me then I'll... be<br><br>\
+                                                a robot for my Werdna!<br>\
+                                                Just for Werdna I will be a robot<br>\
+                                                But one small issue is that I may overheat<br>\
+                                                Just because, my Werdna is so hot.<br><br>\
+                                                My Werdna is too hot for me<br>\
+                                                But if not a robot, what else can I be?<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, you're beautiful.<br><br>\
+                                                I could be, some chocolate milk<br>\
+                                                Nothing quite as sweet.<br>\
+                                                An added bonus would be,<br>\
+                                                that Werdna's lips, I would meet...<br><br>\
+                                                But while chocolate milk is finite<br>\
+                                                My love for Werdna is unending<br>\
+                                                Because Werdna is my one true love,<br>\
+                                                no one else is even contending<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, Werdna I love you<br><br>\
+                                                I could be, a chin-up bar<br>\
+                                                To make my Wernda stronk<br>\
+                                                The problem is, is Werdna's weight<br>\
+                                                My Werdna is too chomnk. <br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, Werdna won't you love me.<br><br>\
+                                                I could be, a mirror.<br>\
+                                                diverting Werdna's gaze.<br>\
+                                                For then I'd spend, my final days<br>\
+                                                Looking at his wonderful face<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, won't you call me yours\"<br><br><br>\
+                                                Having reached the end of the song, the ghost disappears..<br><br>\
+                                                Nathan's ghost pops back in to inform you that there are a few extended verses, if you want to hear them.",
                                                 get: {
                                                     item: "heard the main part of the song already bc I don't want spoilers >:(",
                                                     data: -1
@@ -2173,32 +2226,28 @@ WorldData = {
                         cond: {
                             contains: "chose kill Reu"
                         },
-
                         if: {
                             cond: {
                                 contains: "Name Phyllis"
                             },
-
                             msg: "You walk into the room of the tall human who you had killed. The human still lies on the couch. You say hello to Phyllis. Phyllis does not respond. You return to the hallway. (\"revive Reu\" if you want)"
                         },
                         else: {
                             msg: "You walk into the room of the tall human who you had killed. The human still lies dead on the couch. You spin for a bit on the spinning chair and then return to the hall (\"revive Reu\" if you want)"
                         }
-
                     },
                     else: {
                         if: {
                             cond: {
                                 contains: "Name Phyllis"
                             },
-
-                            img: "Images/Phyllis.JPG",
+                            img: "Includes/Images/Phyllis.JPG",
                             msg: "You pad into the room of the tall human that you have seen before. It smiles at you. <br><br>\"Well hello again!\" The human says. <br><br>You meow at Phyllis. It does not respond.<br><br>You take another nap on the human's couch, and return to the hallway a few hours later.",
                             inc: "rest",
                         },
                         else: {
                             msg: "You scratch at one of the doors, which is slightly open. A tall human crosses the room and looks at you in confusion. \"Well hello\" It says to you. You pad into the room and see a stuffed blueish blob seated on the couch. \"That's Phyllis\" The human explains to you. You curl up on the couch next to Phyllis and fall asleep. A few hours later, you awaken and leave the room. The tall human watches you leave, confused and unsure of what to do about this random cat wandering the building. You laugh to yourself.",
-                            img: "Images/Phyllis.JPG",
+                            img: "Includes/Images/Phyllis.JPG",
                             inc: "rest",
                             get: {
                                 item: "Name Phyllis",
@@ -2221,7 +2270,7 @@ WorldData = {
 
                 },
                 "Cloak": {
-                    img: "Images/CloakClaire.JPG",
+                    img: "Includes/Images/CloakClaire.JPG",
                     msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                     get: {
                         item: "Name Claire",
@@ -2229,7 +2278,7 @@ WorldData = {
                     },
                     cmd: {
                         "Claire": {
-                            img: "Images/CloakClaire.JPG",
+                            img: "Includes/Images/CloakClaire.JPG",
                             msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                             get: {
                                 item: "Name Claire",
@@ -2334,7 +2383,7 @@ WorldData = {
                                     contains: "banana"
                                 },
 
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
                             You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
                             \
@@ -2343,7 +2392,7 @@ WorldData = {
                                 inc: "rest",
                             },
                             else: {
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
                             You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
                                 inc: "rest",
@@ -2355,7 +2404,7 @@ WorldData = {
                                     contains: "banana"
                                 },
 
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
                                 You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
                                 You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
@@ -2363,7 +2412,7 @@ WorldData = {
                                 inc: "rest",
                             },
                             else: {
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
                             In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
                                 inc: "rest",
@@ -2385,11 +2434,11 @@ WorldData = {
                                 contains: "Name Andrew"
                             },
 
-                            img: "Images/CagedAndrew.JPG",
+                            img: "Includes/Images/CagedAndrew.JPG",
                             msg: "You see Andrew trapped in a cage!"
                         },
                         else: {
-                            img: "Images/CagedAndrew.JPG",
+                            img: "Includes/Images/CagedAndrew.JPG",
                             msg: "You see a human trapped in a cage!"
                         }
                     },
@@ -2954,8 +3003,8 @@ WorldData = {
                                         contains: "Name Andrew"
                                     },
 
-                                    img: "Images/AndrewDiningHall.JPG",
-                                    img2: "Images/LuckyDrinking.png",
+                                    img: "Includes/Images/AndrewDiningHall.JPG",
+                                    img2: "Includes/Images/LuckyDrinking.png",
                                     msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -2963,8 +3012,8 @@ WorldData = {
                                     inc: "water",
                                 },
                                 else: {
-                                    img: "Images/AndrewDiningHall.JPG",
-                                    img2: "Images/LuckyDrinking.png",
+                                    img: "Includes/Images/AndrewDiningHall.JPG",
+                                    img2: "Includes/Images/LuckyDrinking.png",
                                     msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -3033,11 +3082,11 @@ WorldData = {
                                 contains: "Name Andrew"
                             },
 
-                            img: "Images/AndrewBanana.PNG",
+                            img: "Includes/Images/AndrewBanana.PNG",
                             msg: "Andrew eats a banana"
                         },
                         else: {
-                            img: "Images/AndrewBanana.PNG",
+                            img: "Includes/Images/AndrewBanana.PNG",
                             msg: "The human eats a banana.",
                         },
                     },
@@ -3412,29 +3461,29 @@ WorldData = {
                                         contains: "Name Emily"
                                     },
 
-                                    img1: "Images/DeadEmily.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/DeadEmily.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. <br><br>\
                                     Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img1: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img1: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img: "Images/Emily.jpeg",
+                                    img: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. <br><br>\
                                     Eevee is lying dead on the floor. <br><br>\
                                     Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
@@ -3446,29 +3495,29 @@ WorldData = {
                                         contains: "Name Emily"
                                     },
 
-                                    img1: "Images/DeadEmily.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/DeadEmily.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
                                     Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean2.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean2.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img1: "Images/HeartBean2.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/HeartBean2.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
                                     Also, a dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
@@ -3481,13 +3530,13 @@ WorldData = {
                                     contains: "Name Emily"
                                 },
 
-                                img: "Images/Emily.jpeg",
+                                img: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend? Also, Emily lies dead on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                 clear: 1,
                                 cmd: {
                                     "bean": {
-                                        img: "Images/BabyHeartBeans.jpeg",
-                                        img2: "Images/HeartBean.jpeg",
+                                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                                        img2: "Includes/Images/HeartBean.jpeg",
                                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                     }
                                 }
@@ -3498,25 +3547,25 @@ WorldData = {
                                         contains: "chose kill Eevee"
                                     },
 
-                                    img1: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. A cat lies dead on the floor. Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         },
                                     }
                                 },
                                 else: {
-                                    img1: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend? Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         },
                                     }
@@ -3525,8 +3574,8 @@ WorldData = {
                         },
                     },
                     "bean": {
-                        img: "Images/BabyHeartBeans.jpeg",
-                        img2: "Images/HeartBean.jpeg",
+                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                        img2: "Includes/Images/HeartBean.jpeg",
                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                     },
                     "Emily": {
@@ -3550,7 +3599,7 @@ WorldData = {
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee\""
                         },
                         else: {
-                            img: "Images/Eevee.jpeg",
+                            img: "Includes/Images/Eevee.jpeg",
                             msg: "A large light-coloured fluffy cat enters the room. <br><br>\"Hello!\" You say to her. <br><br>\"This is my house!\" She hisses at you. You take a step back and try to appear as non-threatening as possible. \"I've arrived here using a portal, I'm just planning on wandering around for a bit and then returning to where I came from\" You explain. <br><br>\
                             Eevee notices the body of the human on the floor and looks at you in shock. \"Did you...kill her?\" She asks you. \"Yep!\" You reply. The cat doesn't seem to know what to say to that.<br><br>\
                             \"So anyway,as I was saying\" you continue, \"I came here using a portal!\"\
@@ -3745,13 +3794,13 @@ WorldData = {
                                     contains: "chose kill Eevee"
                                 },
 
-                                img: "Images/Emily.jpeg",
+                                img: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee lies dead.",
                                 clear: 1
                             },
                             else: {
-                                img1: "Images/HeartBean2.jpeg",
-                                img2: "Images/Emily.jpeg",
+                                img1: "Includes/Images/HeartBean2.jpeg",
+                                img2: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside.",
                                 clear: 1
                             },
@@ -3762,20 +3811,20 @@ WorldData = {
                                     contains: "chose kill Eevee"
                                 },
 
-                                img1: "Images/Emily.jpeg",
+                                img1: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                             else: {
-                                img1: "Images/Emily.jpeg",
+                                img1: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                         }
                     },
                     "bean": {
-                        img: "Images/BabyHeartBeans.jpeg",
-                        img2: "Images/HeartBean.jpeg",
+                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                        img2: "Includes/Images/HeartBean.jpeg",
                         msg: "You admire the bean plants. You rewind time and fast-forward again, seeing them grow up.",
                     },
                     "Emily": {
@@ -3829,7 +3878,7 @@ WorldData = {
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee.\""
                         },
                         else: {
-                            img: "Images/Eevee.jpeg",
+                            img: "Includes/Images/Eevee.jpeg",
                             msg: "A large light-coloured fluffy cat enters the room. <br><br>\"Hello!\" You say to her. <br><br>\"This is my house!\" She hisses at you. You take a step back and try to appear as non-threatening as possible. \"I've arrived here using a portal, I'm just planning on wandering around for a bit and then returning to where I came from\" You explain. <br><br>\"A portal?\" She asks. <br><br>\"Yes, it's a blue shimmery circle that allows me to travel through space.\" You add. <br><br>She seems skeptical, so you lead her to the circle. <br><br> \"I see nothing\" She scoffs. You blink in confusion. It's right there, in plain sight! You think to yourself...You decide to take a quick trip to the other building and back, to prove it. When you come back, the cat seems shocked. <br><br>\"You just vanished into thin air!\" She exclaims. You smile. <br><br>\"That's only one of the things I can do.\" You lift the bean plants off the table telekinetically to demonstrate. You realize that you don't even know this cat's name. \"What's your name?\" You ask her. \"Eevee\" She responds.",
                             get: {
                                 item: "Name Eevee",
@@ -5256,7 +5305,6 @@ WorldData = {
                 cond: {
                     contains: "unremorseful serial killer banished"
                 },
-
                 cmd: {
                     "(h|hint)": {
                         msg: "Since you've been specifically *banished* to hell for your crimes, you have less possible things to do, but it's possible to unlock actions.<br><br>\
@@ -5284,7 +5332,6 @@ WorldData = {
                             cond: {
                                 contains: "tempted fate lol"
                             },
-
                             msg: "Beavers surround you as you catch on fire and as Easy Street plays.",
                             clear: 1,
                             end: 666
@@ -5671,7 +5718,6 @@ WorldData = {
                         cond: {
                             contains: "licence to kill"
                         },
-
                         if: {
                             cond: {
                                 contains: "Assassination mission"
@@ -5722,24 +5768,23 @@ WorldData = {
                         cond: {
                             contains: "licence to kill"
                         },
-
                         if: {
                             cond: {
                                 contains: "Assassination mission"
                             },
 
-                            img: "Images/AliyahRoom2.jpeg",
+                            img: "Includes/Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
                         },
                         else: {
-                            img: "Images/AliyahRoom2.jpeg",
+                            img: "Includes/Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
                         },
                     },
                     else: {
-                        img: "Images/AliyahRoom2.jpeg",
+                        img: "Includes/Images/AliyahRoom2.jpeg",
                         msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now.)",
                         clear: 1
                     },
@@ -5869,7 +5914,7 @@ WorldData = {
                     clear: 1
                 },
                 l: {
-                    img: "Images/AliyahHallway.jpeg",
+                    img: "Includes/Images/AliyahHallway.jpeg",
                     msg: "You are in a hallway with four open doors. One leads to a bathroom, and the others lead to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
                     clear: 1
                 },
@@ -6072,136 +6117,50 @@ WorldData = {
         },
         ZaraRoom: {
             cmd: {
-                "hint": {
-                    if: {
-                        cond: {
-                            contains: "follow Z"
-                        },
-
-                        msg: "Here are all the possible commands right now: <br><br>\
-                        look<br>\
-                        follow<br>\
-                        return / leave<br>\
-                        kill Zara<br>\
-                        kill Elliot<br>\
-                        sleep / bed\
-                        inv<br>\
-                        help<br>\
-                        clear<br>\
-                        hint"
-                    },
-                    else: {
-                        msg: "Here are all the possible commands right now: <br><br>\
-                        look<br>\
-                        follow<br>\
-                        return / leave<br>\
-                        kill Zara<br>\
-                        sleep / bed\
-                        inv<br>\
-                        help<br>\
-                        clear<br>\
-                        hint"
-                    },
+                "(hint|h)": {
+                    msg: "Here are all the possible commands right now: <br><br>\
+                    look<br>\
+                    return / leave<br>\
+                    kill Zara<br>\
+                    sleep / bed\
+                    inv<br>\
+                    help<br>\
+                    clear<br>\
+                    hint"
                 },
                 l: {
-                    if: {
-                        cond: {
-                            contains: "follow Z"
-                        },
-
-                        msg: "You are in a bedroom. The bed is covered in fluffy stuffed animals, so it looks more cuddly than most human beds. <br><br>\
-                        There is a human in the room that you think is probably male, but after meeting Zara, you aren't sure about gender anymore.<br><br>\
-                        \"Lucky, this is Elliot, he/him. Elliot, this is Lucky, she/her\" Zara says, introducing you two. You can either return to Zara's room by typing \"return\" or sleep on Elliot's bed.",
-                        clear: 1
-                    },
-                    else: {
-                        msg: "You look around. Zara notices you looking around and asks:<br><br>\
-                        \"Do you wanna visit my friend with me?\"<br><br>\
-                        You think that the room you're in looks messy and uninteresting anyway, so you suppose that you should follow them. (type \"follow\" to follow, type \"leave\" to go back to the hallway)",
-                        clear: 1
-                    },
-                },
-                "follow": {
-                    if: {
-                        cond: {
-                            contains: "follow Z"
-                        },
-
-                        msg: "You follow Zara back into their room.",
-                        get: {
-                            item: "follow Z",
-                            data: 0
-                        }
-                    },
-                    else: {
-                        msg: "You follow Zara into a portal in their room, your tail waving high. The portal is tall enough for the human to walk through. Look around!",
-                        get: {
-                            item: "follow Z",
-                            data: -1
-                        }
-                    },
+                    msg: "You look around the room.<br><br>",
+                    clear: 1
                 },
                 "(return|leave)": {
                     if: {
                         cond: {
-                            contains: "follow Z"
+                            contains: "Name Zara"
                         },
-
-                        msg: "You are now back in Zara's room.",
-                        get: {
-                            item: "follow Z",
-                            data: 0
-                        },
+                        msg: "You leave Zara's room. You are now in the hallway.",
+                        dest: Locations.AliyahHallway
                     },
                     else: {
-                        if: {
-                            cond: {
-                                contains: "Name Zara"
-                            },
-
-                            msg: "You leave Zara's room. You are now in the hallway.",
-                            dest: Locations.AliyahHallway
-                        },
-                        else: {
-                            msg: "You leave the room. You are now in the hallway.",
-                            dest: Locations.AliyahHallway
-                        }
+                        msg: "You leave the room. You are now in the hallway.",
+                        dest: Locations.AliyahHallway
                     }
                 },
                 "kill": {
+                    msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
+                            \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
+                    inc: "rest",
                     cmd: {
                         "Zara": {
                             msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
                             \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
                             inc: "rest",
                         },
-                        "Elliot": {
-                            if: {
-                                cond: {
-                                    contains: "follow Z"
-                                },
-
-                                msg: "Zara shoots you a look as if they can tell what you're thinking and you decide against it."
-                            },
-                            else: {
-                                msg: "Elliot? He isn't here..."
-                            }
-                        }
                     }
                 },
                 "(sleep|bed)": {
-                    if: {
-                        cond: {
-                            contains: "follow Z"
-                        },
+                    msg: "You curl up on Zara's bed and fall asleep.",
+                    inc: "rest",
 
-                        msg: "You curl up on Elliot's bed with the stuffed animals. Mm, cozy!",
-                        inc: "rest"
-                    },
-                    else: {
-                        msg: "You curl up on Zara's bed and fall asleep.",
-                        inc: "rest",
-                    }
                 }
             },
         },
@@ -6221,7 +6180,9 @@ WorldData = {
                     msg: "Welcome to Home Hardware!",
                     clear: 1
                 },
-                "g": {
+                "(g|buy)": {
+                    msg: "You browse the store and find a catnip plant! You use your telekinetic powers to lift it, and you walk over to the cashier and set it down in front of her. Maia walks up and pays for it, and you leave with the plant.",
+                    end: 789,
                     cmd: {
                         "(plants|plant)": {
                             msg: "You browse the store and find a catnip plant! You use your telekinetic powers to lift it, and you walk over to the cashier and set it down in front of her. Maia walks up and pays for it, and you leave with the plant.",
@@ -6698,8 +6659,22 @@ WorldData = {
         WonderPetSchoolhouse: {
             if: {
                 cond: {
-                    contains: "looked outside the schoolhouse already"
+                    unseen: "looked outside the schoolhouse already",
                 },
+                cmd: {
+                    "(look|l|.*)": {
+                        img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
+                        msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
+                        get: {
+                            item: "looked outside the schoolhouse already",
+                            data: -1
+                        },
+                        clear: 1
+                    }
+                }
+
+            },
+            else: {
                 cmd: {
                     "hint": {
                         if: {
@@ -6747,7 +6722,6 @@ WorldData = {
                             cond: {
                                 contains: "WonderPetsMissionQuestion"
                             },
-
                             msg: "The animals look at you uncomfortably. You think about how nice it would feel to kill them...(\"kill Wonder Pets\" or \"mission\" are the only two options here)",
                             clear: 1
                         },
@@ -6779,26 +6753,9 @@ WorldData = {
                     "(Yes|mission|rescue)": {
                         if: {
                             cond: {
-                                contains: "started to rescue the cat"
+                                unseen: "started to rescue the cat",
                             },
-
-                            msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him. You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
-                                Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
-                                \"What's gonna work?\" Linny asks. <br><br>\
-                                \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
-                                \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
-                                They blink at you in surprise.<br><br>\
-                                Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
-                                Your surroundings solidify again. Look around!",
-                            get: {
-                                item: "started to rescue the cat",
-                                data: 0
-                            },
-                            clear: 1,
-                            dest: Locations.UnluckyEncounter,
-                        },
-                        else: {
-                            img: "Images/WonderPets.jpeg",
+                            img: "Includes/Images/WonderPets.jpeg",
                             msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
                             As you fly toward your destination, the animals start to sing: <br><br>\
@@ -6810,11 +6767,20 @@ WorldData = {
                             \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
                             \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
                             (respond with \"rescue\", this is the only possible command)",
-                            get: {
-                                item: "started to rescue the cat",
-                                data: -1
-                            },
                         },
+                        else: {
+                            msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him.<br><br>\
+                            You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
+                                Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
+                                \"What's gonna work?\" Linny asks. <br><br>\
+                                \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
+                                \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
+                                They blink at you in surprise.<br><br>\
+                                Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
+                                Your surroundings solidify again. Look around!",
+                            clear: 1,
+                            dest: Locations.UnluckyEncounter,
+                        }
                     },
                     "No": {
                         msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
@@ -6845,65 +6811,106 @@ WorldData = {
                     }
                 }
             },
-            else: {
-                cmd: {
-                    "(look|l|.*)": {
-                        img: "https://s3.amazonaws.com/images.hamlethub.com/hhresized/500/6932/201905/Peter-Parley-Schoolhouse-2-1558533334.jpg",
-                        msg: "You take a second to look around outside the schoolhouse before the weird boat/plane contraption flies you inside through the chimney at the top of the building. You cough as smoke flies up your nose. What is happening?? (\"look\" again)",
-                        get: {
-                            item: "looked outside the schoolhouse already",
-                            data: -1
-                        },
-                        clear: 1
-                    }
-                }
-            }
         },
         UnluckyEncounter: {
             cmd: {
-                "(l|look|.*)": {
+                "(l|look.*)": {
                     if: {
                         cond: {
-                            contains: "Things are getting pretty darn Unlucky now..."
+                            unseen: "Unlucky wants to try again",
                         },
+                        msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat of its gaze. <br><br>\
+                        You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
+                        \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
+                        \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
+                        \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
+                        \"Well, honestly maybe it's not exactly that I'm the evil version of you, but rather I'm just your worst enemy, so from your perspective I'm sort of like the evil you...\"<br><br>\
+                        \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
+                         \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
+                        \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
+                        \"But...yeah...I suppose that's why I named myself Unlucky...\"<br><br>\
+                        \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
+                        \"We're doing this again.\" She mutters to herself. You blink in confusion. Your surroundings blur again. Try looking around again.",
+                        clear: 1
+                    },
+                    else: {
                         if: {
                             cond: {
-                                contains: "chose to revive someone"
+                                unseen: "Things are getting pretty darn Unlucky now...",
                             },
+                            img: "Includes/Images/UnluckyMurder.jpeg",
+                            msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
+                            \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
+                            \"My name is Unlucky. I'm a representation of your sins. If you've behaved yourself, you should be fine, but if you haven't (and I know you haven't), I'm your worst enemy.\" Unlucky says. You suppose that she really was serious about the whole 'redoing it' thing.<br><br>\
+                            \"You-\" You start to say, when you notice the dark wispy shapes coming out of Unlucky. Her eyes have turned fully black and her pupils glow red. <br><br>\
+                            \"The more bad things you do, the more powerful I get.\" The darkness grows, creeping over to you and threatening to envelop you, forcing you to the ground. <br><br>\
+                            Shrinking back, you try to fend it off with your telekinesis.<br><br>\
+                            (type anything)",
+                        },
+                        else: {
                             if: {
                                 cond: {
-                                    contains1: "revived Baba",
-                                    contains2: "revived Mumu",
-                                    contains3: "revived Reu",
-                                    contains4: "revived Nathan",
-                                    contains5: "revived Maia",
-                                    contains6: "revived Aliyah",
-                                    contains7: "revived Andrew",
-                                    contains8: "revived Emily"
+                                    contains: "chose to revive someone"
                                 },
-
                                 if: {
                                     cond: {
-                                        contains: "revived Eevee"
+                                        contains1: "revived Baba",
+                                        contains2: "revived Mumu",
+                                        contains3: "revived Reu",
+                                        contains4: "revived Nathan",
+                                        contains5: "revived Maia",
+                                        contains6: "revived Aliyah",
+                                        contains7: "revived Andrew",
+                                        contains8: "revived Emily"
                                     },
-                                    img: "Images/DarkTitans.jpeg",
-                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
-                                    \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
-                                    You stay silent, hoping that she will decide to spare you.<br><br>\
-                                    \"I'm going to rewind time.\" She decides.<br><br>\
-                                    \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
-                                     The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
-                                    clear: 1,
-                                    end: 30,
+
+                                    if: {
+                                        cond: {
+                                            contains: "revived Eevee"
+                                        },
+                                        img: "Includes/Images/DarkTitans.jpeg",
+                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                                        \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
+                                        You stay silent, hoping that she will decide to spare you.<br><br>\
+                                        \"I'm going to rewind time.\" She decides.<br><br>\
+                                        \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
+                                         The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
+                                        clear: 1,
+                                        end: 30,
+                                    },
+                                    else: {
+                                        img: "Includes/Images/DarkTitans.jpeg",
+                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                        Unlucky continues speaking:<br><br>\
+                                        \"You did revive most of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                        get: {
+                                            item: "unremorseful serial killer banished",
+                                            data: -1
+                                        },
+                                        get2: {
+                                            item: "Wonder Pets mission",
+                                            data: 0
+                                        },
+                                        get3: {
+                                            item: "Wonder Pets mission - completed",
+                                            data: 1
+                                        },
+                                        clear: 1,
+                                        dest: Locations.hell
+                                    }
                                 },
                                 else: {
-                                    img: "Images/DarkTitans.jpeg",
+                                    img: "Includes/Images/DarkTitans.jpeg",
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                     \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                     They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
                                     Unlucky continues speaking:<br><br>\
-                                    \"You did revive most of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                    \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
                                     You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                                     You open your eyes to find yourself in a place that you presume to be hell.",
                                     get: {
@@ -6923,14 +6930,12 @@ WorldData = {
                                 }
                             },
                             else: {
-                                img: "Images/DarkTitans.jpeg",
+                                img: "Includes/Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                Unlucky continues speaking:<br><br>\
-                                \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
-                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                You open your eyes to find yourself in a place that you presume to be hell.",
+                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                            \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
+                            You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                            You open your eyes to find yourself in a place that you presume to be hell.",
                                 get: {
                                     item: "unremorseful serial killer banished",
                                     data: -1
@@ -6945,75 +6950,9 @@ WorldData = {
                                 },
                                 clear: 1,
                                 dest: Locations.hell
-                            }
-                        },
-                        else: {
-                            img: "Images/DarkTitans.jpeg",
-                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
-                        \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
-                        You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                        You open your eyes to find yourself in a place that you presume to be hell.",
-                            get: {
-                                item: "unremorseful serial killer banished",
-                                data: -1
                             },
-                            get2: {
-                                item: "Wonder Pets mission",
-                                data: 0
-                            },
-                            get3: {
-                                item: "Wonder Pets mission - completed",
-                                data: 1
-                            },
-                            clear: 1,
-                            dest: Locations.hell
-                        },
-                    },
-                    else: {
-                        if: {
-                            cond: {
-                                contains: "Unlucky wants to try again"
-                            },
-
-                            img: "Images/UnluckyMurder.jpeg",
-                            msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
-                            \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
-                            \"My name is Unlucky. I'm a representation of your sins. If you've behaved yourself, you should be fine, but if you haven't (and I know you haven't), I'm your worst enemy.\" Unlucky says. You suppose that she really was serious about the whole 'redoing it' thing.<br><br>\
-                            \"You-\" You start to say, when you notice the dark wispy shapes coming out of Unlucky. Her eyes have turned fully black and her pupils glow red. <br><br>\
-                            \"The more bad things you do, the more powerful I get.\" The darkness grows, creeping over to you and threatening to envelop you, forcing you to the ground. <br><br>\
-                            Shrinking back, you try to fend it off with your telekinesis.\
-                            (type anything)",
-                            get: {
-                                item: "Things are getting pretty darn Unlucky now...",
-                                data: -1
-                            },
-                            clear: 1
-                        },
-                        else: {
-                            msg: "You look around to find yourself in a plain, featureless white room. The cat sits in front of you, glaring so hard you can practically feel the heat of its gaze. <br><br>\
-                                You examine the cat. It has tortoiseshell patterning that, come to think of it, looks a lot like yours. In fact, it looks exactly like yours. You don't look in mirrors often, but you think that this cat looks remarkably like you.<br><br>\
-                                \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
-                                \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
-                                \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
-                                \"Well, honestly maybe it's not exactly that I'm the evil version of you, but rather I'm just your worst enemy, so from your perspective I'm sort of like the evil you...\"<br><br>\
-                                \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
-                                \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
-                                \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
-                                \"But...yeah...I suppose that's why I named myself Unlucky...\"<br><br>\
-                                \"First time having a nemesis, huh?\" You say. She scowls.<br><br>\
-                                \"We're doing this again.\" She mutters to herself. You blink in confusion. Your surroundings blur again. Try looking around again.",
-                            get: {
-                                item: "already talked to Unlucky",
-                                data: -1
-                            },
-                            get2: {
-                                item: "Unlucky wants to try again",
-                                data: -1
-                            },
-                            clear: 1
-                        },
-                    },
+                        }
+                    }
                 },
             }
         },
@@ -7055,6 +6994,7 @@ WorldData = {
         "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
         "(chichiens brain is too smol to understand|mocks|mocks you)": "mock",
         "adventure time": "s",
+        "(Mr. Goose|mr goose)": "goose",
         "get weed": "weed",
         "(inventory|inv)": "i",
         "(talk to treacys)": "Treacys",
