@@ -104,7 +104,7 @@ WorldData = {
             if: {
                 cond: {
                     contains: "licence to kill"
-                },
+                }, 
                 msg: "You go to headquarters.",
                 dest: Locations.Headquarters
             },
@@ -523,6 +523,7 @@ WorldData = {
                         },
                         img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
@@ -1730,7 +1731,10 @@ WorldData = {
                             },
                             else: {
                                 img: "Includes/Images/Nathan2.jpeg",
-                                msg: "You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+
+                                msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
+                                    You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
@@ -1957,6 +1961,7 @@ WorldData = {
                 "foyer": {
                     msg: "You're downstairs in the foyer. You can still get to everyone in the building from here.<br><br>\
                     You see a garden outside. Want to check it out? (\"garden\")"
+
                 },
                 "andrew": {
                     msg: "The name seems vaguely familiar...try Andy, Dandrewlion, or Werdna",
@@ -2043,6 +2048,7 @@ WorldData = {
                             img: "Includes/Images/Hallway3NoWeed.jpeg",
                             msg: "Hall-wandering time! Who do you want to visit?"
                         }
+
                     },
                 },
                 "song": {
@@ -2105,6 +2111,7 @@ WorldData = {
                                                 Werdna, won't you call me yours\"<br><br><br>\
                                                 Having reached the end of the song, the ghost disappears..<br><br>\
                                                 Nathan's ghost pops back in to inform you that there are a few extended verses, if you want to hear them.",
+
                                                 get: {
                                                     item: "heard the main part of the song already bc I don't want spoilers >:(",
                                                     data: -1
@@ -6131,6 +6138,7 @@ WorldData = {
                 l: {
                     msg: "You look around the room.<br><br>",
                     clear: 1
+
                 },
                 "(return|leave)": {
                     if: {
@@ -6149,6 +6157,7 @@ WorldData = {
                     msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
                             \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
                     inc: "rest",
+
                     cmd: {
                         "Zara": {
                             msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
@@ -6160,6 +6169,7 @@ WorldData = {
                 "(sleep|bed)": {
                     msg: "You curl up on Zara's bed and fall asleep.",
                     inc: "rest",
+
 
                 }
             },
@@ -6755,6 +6765,7 @@ WorldData = {
                             cond: {
                                 unseen: "started to rescue the cat",
                             },
+
                             img: "Includes/Images/WonderPets.jpeg",
                             msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
@@ -6767,6 +6778,7 @@ WorldData = {
                             \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
                             \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
                             (respond with \"rescue\", this is the only possible command)",
+
                         },
                         else: {
                             msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him.<br><br>\
@@ -6781,6 +6793,7 @@ WorldData = {
                             clear: 1,
                             dest: Locations.UnluckyEncounter,
                         }
+
                     },
                     "No": {
                         msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
@@ -6906,11 +6919,14 @@ WorldData = {
                                 },
                                 else: {
                                     img: "Includes/Images/DarkTitans.jpeg",
+
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                     \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                     They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
                                     Unlucky continues speaking:<br><br>\
+
                                     \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
+
                                     You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                                     You open your eyes to find yourself in a place that you presume to be hell.",
                                     get: {
@@ -6930,12 +6946,14 @@ WorldData = {
                                 }
                             },
                             else: {
+
                                 img: "Includes/Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                             \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                             \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
                             You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                             You open your eyes to find yourself in a place that you presume to be hell.",
+
                                 get: {
                                     item: "unremorseful serial killer banished",
                                     data: -1
@@ -6950,6 +6968,7 @@ WorldData = {
                                 },
                                 clear: 1,
                                 dest: Locations.hell
+
                             },
                         }
                     }
