@@ -1709,14 +1709,9 @@ WorldData = {
                                 clear: 1
                             },
                             else: {
-<<<<<<< HEAD:Includes/Scripts/AdventureData.js
                                 img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
                                     You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
-=======
-                                img: "Images/Nathan2.jpeg",
-                                msg: "You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
->>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
@@ -1987,7 +1982,6 @@ WorldData = {
                                 contains: "has been to Emily's house before"
                             },
 
-<<<<<<< HEAD:Includes/Scripts/AdventureData.js
                             if: {
                                 cond: {
                                     contains: "chose kill Reu"
@@ -2048,19 +2042,6 @@ WorldData = {
                         msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                         clear: 1,
                     },
-=======
-                            img: "Images/Hallway3EveryoneDead.jpeg",
-                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
-                            clear: 1,
-                        },
-                        else: {
-                            img: "Images/Hallway3EveryoneDead.jpeg",
-                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
-                                            Maybe check out the garden! (\"garden\")",
-                            clear: 1
-                        },
-                    },
->>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                 },
                 "song": {
                     cmd: {
