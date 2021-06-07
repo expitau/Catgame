@@ -235,237 +235,21 @@ WorldData = {
                 },
             },
         },
-        "Chichien's": {
-            cmd: {
-                "brain": {
-                    cmd: {
-                        "is": {
-                            cmd: {
-                                "too": {
-                                    cmd: {
-                                        "smol": {
-                                            cmd: {
-                                                "understand": {
-                                                    if: {
-                                                        cond: {
-                                                            contains: "warning 5"
-                                                        },
-
-                                                        msg: "That's it! I will not tolerate this anymore! >:(",
-                                                        end: 9
-                                                    },
-                                                    else: {
-                                                        if: {
-                                                            cond: {
-                                                                contains: "warning 4"
-                                                            },
-
-                                                            msg: "Don't mock me :(",
-                                                            get: {
-                                                                item: "warning 5",
-                                                                data: -1
-                                                            },
-                                                            inc: "warning",
-                                                        },
-                                                        else: {
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "warning 3"
-                                                                },
-
-                                                                msg: "Don't mock me :(",
-                                                                get: {
-                                                                    item: "warning 4",
-                                                                    data: -1
-                                                                },
-                                                                inc: "warning"
-                                                            },
-                                                            else: {
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "warning 2"
-                                                                    },
-
-                                                                    msg: "Don't mock me :(",
-                                                                    get: {
-                                                                        item: "warning 3",
-                                                                        data: -1
-                                                                    },
-                                                                    inc: "warning"
-                                                                },
-                                                                else: {
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "warning"
-                                                                        },
-
-                                                                        msg: "Don't mock me :(",
-                                                                        get: {
-                                                                            item: "warning 2",
-                                                                            data: -1
-                                                                        },
-                                                                        inc: "warning"
-                                                                    },
-                                                                    else: {
-                                                                        msg: "Don't mock me :(",
-                                                                        inc: "warning"
-                                                                    }
-                                                                },
-                                                            },
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "(mocks|mock)": {
+        "mock": {
             if: {
                 cond: {
-                    contains: "warning 5"
+                    has: {
+                        item: "warning",
+                        amt: 5
+                    }
                 },
-
                 msg: "That's it! I will not tolerate this anymore! >:(",
                 end: 9
             },
             else: {
-                if: {
-                    cond: {
-                        contains: "warning 4"
-                    },
-
-                    msg: "Don't mock me :(",
-                    get: {
-                        item: "warning 5",
-                        data: -1
-                    },
-                    inc: "warning",
-                },
-                else: {
-                    if: {
-                        cond: {
-                            contains: "warning 3"
-                        },
-
-                        msg: "Don't mock me :(",
-                        get: {
-                            item: "warning 4",
-                            data: -1
-                        },
-                        inc: "warning"
-                    },
-                    else: {
-                        if: {
-                            cond: {
-                                contains: "warning 2"
-                            },
-
-                            msg: "Don't mock me :(",
-                            get: {
-                                item: "warning 3",
-                                data: -1
-                            },
-                            inc: "warning"
-                        },
-                        else: {
-                            if: {
-                                cond: {
-                                    contains: "warning"
-                                },
-
-                                msg: "Don't mock me :(",
-                                get: {
-                                    item: "warning 2",
-                                    data: -1
-                                },
-                                inc: "warning"
-                            },
-                            else: {
-                                msg: "No!!!",
-                                inc: "warning"
-                            }
-                        },
-                    },
-                }
+                inc: "warning",
+                msg: "Don't mock me :(",
             },
-            cmd: {
-                "you": {
-                    if: {
-                        cond: {
-                            contains: "warning 5"
-                        },
-
-                        msg: "That's it! I will not tolerate this anymore! >:(",
-                        end: 9
-                    },
-                    else: {
-                        if: {
-                            cond: {
-                                contains: "warning 4"
-                            },
-
-                            msg: "Don't mock me :(",
-                            get: {
-                                item: "warning 5",
-                                data: -1
-                            },
-                            inc: "warning",
-                        },
-                        else: {
-                            if: {
-                                cond: {
-                                    contains: "warning 3"
-                                },
-
-                                msg: "Don't mock me :(",
-                                get: {
-                                    item: "warning 4",
-                                    data: -1
-                                },
-                                inc: "warning"
-                            },
-                            else: {
-                                if: {
-                                    cond: {
-                                        contains: "warning 2"
-                                    },
-
-                                    msg: "Don't mock me :(",
-                                    get: {
-                                        item: "warning 3",
-                                        data: -1
-                                    },
-                                    inc: "warning"
-                                },
-                                else: {
-                                    if: {
-                                        cond: {
-                                            contains: "warning"
-                                        },
-
-                                        msg: "Don't mock me :(",
-                                        get: {
-                                            item: "warning 2",
-                                            data: -1
-                                        },
-                                        inc: "warning"
-                                    },
-                                    else: {
-                                        msg: "No!!!",
-                                        inc: "warning"
-                                    }
-                                },
-                            },
-                        }
-                    }
-                }
-            }
         }
     },
     locations: {
@@ -493,7 +277,6 @@ WorldData = {
                                     contains2: "water",
                                     contains3: "rest"
                                 },
-
                                 msg: "You are ready. You wander over and meow at baba until he lets you outside",
                                 dest: Locations.outside
                             },
@@ -687,7 +470,6 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
-
                         msg: "Alrighty, here are your possible commands: <br><br>\
                         look<br>\
                         look at food<br>\
@@ -718,25 +500,29 @@ WorldData = {
                         cond: {
                             contains: "lucky hath deleted water"
                         },
+<<<<<<< HEAD:Includes/Scripts/AdventureData.js
 
                         img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+=======
+                        img: "Images/DiningRoomNoWater.jpeg",
+                        msg: "You're in the dining room, where the food and water bowls normally are, but there's no water. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
+>>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                 N: The entryway<br>\
                 S: The kitchen<br>\
                 W: The office<br>\
                 D: The basement<br>\
                  - There's food here<br>\
-                 - There's water here",
+                 - THERE'S NO WATER",
                         clear: 1,
                         cmd: {
                             "water": {
-                                msg: "There is no water"
+                                msg: "There is no water >:("
                             },
                             "food": {
                                 msg: "The food looks tasty"
                             }
                         }
-
                     },
                     else: {
                         img: "Includes/Images/DiningRoom.jpeg",
@@ -1160,16 +946,8 @@ WorldData = {
                         clear: 1,
                         cmd: {
                             "mumu": {
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Mumu"
-                                    },
+                                msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
 
-                                    msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
-                                },
-                                else: {
-                                    msg: "Mumu looks sad"
-                                },
                             },
                         },
                     },
@@ -1184,16 +962,7 @@ WorldData = {
                         clear: 1,
                         cmd: {
                             "mumu": {
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Mumu"
-                                    },
-
-                                    msg: "You walk over to Mumu to admire your handiwork. You nod approvingly to yourself, but you do feel a little guilt. You can revive her by typing \"revive\" if you want."
-                                },
-                                else: {
-                                    msg: "Mumu looks sad"
-                                },
+                                msg: "Mumu looks sad"
                             },
                         },
                     },
@@ -1221,7 +990,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Mumu"
                                 },
-
                                 msg: "You meow at her dead body. Shockingly, there is no response. If you feel remorseful, you can \"revive\" her."
                             },
                             else: {
@@ -1293,7 +1061,7 @@ WorldData = {
                 g: {
                     cmd: {
                         "water": {
-                            msg: "The glass is empty, so you can't drink from it. You meow at baba, but he's too \"busy\" watching the blinking lights"
+                            msg: "The glass is empty, so you can't drink from it."
                         }
                     }
                 },
@@ -1382,31 +1150,14 @@ WorldData = {
                         n: {
                             if: {
                                 cond: {
-                                    contains: "food"
+                                    contains1: "food",
+                                    contains2: "water",
+                                    contains3: "rest",
                                 },
-
-                                if: {
-                                    cond: {
-                                        contains: "water"
-                                    },
-
-                                    if: {
-                                        cond: {
-                                            contains: "rest"
-                                        },
-
-                                        msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
+                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
                                     You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
                                     You can't get down.",
-                                        end: 3
-                                    },
-                                    else: {
-                                        msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                    }
-                                },
-                                else: {
-                                    msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
-                                }
+                                end: 3
                             },
                             else: {
                                 msg: "You're not ready to go outside yet, you need to be well fed, have a drink, and rest first",
@@ -1963,9 +1714,14 @@ WorldData = {
                                 clear: 1
                             },
                             else: {
+<<<<<<< HEAD:Includes/Scripts/AdventureData.js
                                 img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
                                     You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+=======
+                                img: "Images/Nathan2.jpeg",
+                                msg: "You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
+>>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
                                 clear: 1,
                                 get: {
@@ -2223,14 +1979,20 @@ WorldData = {
                 l: {
                     if: {
                         cond: {
-                            contains: "chose kill Aliyah"
+                            contains1: "chose kill Aliyah",
+                            contains2: "chose kill Maia",
+                            contains3: "chose kill Reu",
+                            contains4: "chose kill Nathan",
+                            contains6: "kill point Aliyah",
+                            contains8: "chose kill Andrew",
+                            contains9: "kill point B",
                         },
-
                         if: {
                             cond: {
-                                contains: "chose kill Maia"
+                                contains: "has been to Emily's house before"
                             },
 
+<<<<<<< HEAD:Includes/Scripts/AdventureData.js
                             if: {
                                 cond: {
                                     contains: "chose kill Reu"
@@ -2291,6 +2053,19 @@ WorldData = {
                         msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                         clear: 1,
                     },
+=======
+                            img: "Images/Hallway3EveryoneDead.jpeg",
+                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
+                            clear: 1,
+                        },
+                        else: {
+                            img: "Images/Hallway3EveryoneDead.jpeg",
+                            msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
+                                            Maybe check out the garden! (\"garden\")",
+                            clear: 1
+                        },
+                    },
+>>>>>>> e82e50a5c002b3a19796d4ddf315a572da5f121f:LuckyAdventureIncludes/Scripts/AdventureData.js
                 },
                 "song": {
                     cmd: {
@@ -3659,7 +3434,6 @@ WorldData = {
                 cond: {
                     contains: "chose kill Emily"
                 },
-
                 cmd: {
                     "hint": {
                         if: {
@@ -3708,7 +3482,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Eevee"
                                 },
-
                                 if: {
                                     cond: {
                                         contains: "Name Emily"
@@ -3896,97 +3669,26 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: {
-                                                contains: "kill point N"
+                                                contains1: "kill point N",
+                                                contains2: "kill point A",
+                                                contains3: "kill point Maia",
+                                                contains4: "kill point M",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point Aliyah",
+                                                contains8: "kill point R",
+                                                contains9: "kill point B",
                                             },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point A"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Maia"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point M"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Em"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point Aliyah"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point R"
-                                                                    },
-
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "kill point B"
-                                                                        },
-
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
-                                                                        get: {
-                                                                            item: "Eevee life/death question",
-                                                                            data: -1
-                                                                        },
-                                                                        get2: {
-                                                                            item: "Name Eevee",
-                                                                            data: -1
-                                                                        },
-                                                                        inc3: "kill point Ev",
-                                                                        dest: Locations.DecisionRoom
-                                                                    },
-                                                                    else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
-                                                                        dest: Locations.hallway3,
-                                                                    },
-                                                                },
-                                                                else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                    You are now in the hallway of the building Nathan's living in.",
-                                                                    dest: Locations.hallway3,
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                You are now in the hallway of the building Nathan's living in.",
-                                                                dest: Locations.hallway3,
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                            You are now in the hallway of the building Nathan's living in.",
-                                                            dest: Locations.hallway3,
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                        You are now in the hallway of the building Nathan's living in.",
-                                                        dest: Locations.hallway3,
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                    You are now in the hallway of the building Nathan's living in.",
-                                                    dest: Locations.hallway3,
-                                                },
+                                            msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
+                                            get: {
+                                                item: "Eevee life/death question",
+                                                data: -1
                                             },
-                                            else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                You are now in the hallway of the building Nathan's living in.",
-                                                dest: Locations.hallway3,
+                                            get2: {
+                                                item: "Name Eevee",
+                                                data: -1
                                             },
+                                            inc3: "kill point Ev",
+                                            dest: Locations.DecisionRoom
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
@@ -3995,9 +3697,10 @@ WorldData = {
                                         },
                                     },
                                 },
-                            }
-                        },
+                            },
+                        }
                     },
+
                     "(garden|Grebel|portal|leave)": {
                         msg: "You head back to the garden through the portal and walk up to outside Nathan's room. You're in the hallway.",
                         dest: Locations.hallway3
@@ -4234,7 +3937,6 @@ WorldData = {
                                     cond: {
                                         contains: "chose kill Eevee"
                                     },
-
                                     msg: "You chose to keep her dead, you can't kill her again (unless you revive her- \"revive Eevee\")"
                                 },
                                 else: {
@@ -4248,93 +3950,26 @@ WorldData = {
                                     else: {
                                         if: {
                                             cond: {
-                                                contains: "kill point N"
+                                                contains1: "kill point N",
+                                                contains2: "kill point A",
+                                                contains3: "kill point Maia",
+                                                contains4: "kill point M",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point Aliyah",
+                                                contains8: "kill point R",
+                                                contains9: "kill point B",
                                             },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point A"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Maia"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point M"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Em"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point Aliyah"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point R"
-                                                                    },
-
-                                                                    if: {
-                                                                        cond: {
-                                                                            contains: "kill point B"
-                                                                        },
-
-                                                                        msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now here comes the question: rewind time to save her or not? (\"yes\" or \"no\")",
-                                                                        inc: "kill point Ev",
-                                                                        get: {
-                                                                            item: "Eevee life/death question",
-                                                                            data: -1
-                                                                        },
-                                                                        dest: Locations.DecisionRoom
-                                                                    },
-                                                                    else: {
-                                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                        You are now in the hallway of the building Nathan's living in.",
-                                                                        dest: Locations.hallway3,
-                                                                    },
-                                                                },
-                                                                else: {
-                                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                    You are now in the hallway of the building Nathan's living in.",
-                                                                    dest: Locations.hallway3,
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                                You are now in the hallway of the building Nathan's living in.",
-                                                                dest: Locations.hallway3,
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                            You are now in the hallway of the building Nathan's living in.",
-                                                            dest: Locations.hallway3,
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                        You are now in the hallway of the building Nathan's living in.",
-                                                        dest: Locations.hallway3,
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                    You are now in the hallway of the building Nathan's living in.",
-                                                    dest: Locations.hallway3,
-                                                },
+                                            msg: "You decide to kill Eevee. You unsheathe your claws into her throat. She is surprised but fights back. Unfortunately for her, you are well-experienced. You have killed many before her. Baba, Mumu, Nathan, a few of his friends...<br><br>She gets a few scratches in before she ultimately succumbs to you. You feel powerful. Now comes the question: should you revive her? (\"Yes\" or \"no\")",
+                                            get: {
+                                                item: "Eevee life/death question",
+                                                data: -1
                                             },
-                                            else: {
-                                                msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
-                                                You are now in the hallway of the building Nathan's living in.",
-                                                dest: Locations.hallway3,
+                                            get2: {
+                                                item: "Name Eevee",
+                                                data: -1
                                             },
+                                            inc3: "kill point Ev",
+                                            dest: Locations.DecisionRoom
                                         },
                                         else: {
                                             msg: "You lunge at the fluffy cat, but unfortunately, she is too powerful for you. You manage to get a scratch or two in, but you ultimately are forced to run off and escape to the hallway through the portal. You rewind time for good measure, just so she won't remember the exchange. Phew. Perhaps you need a bit more experience before you can kill her.<br><br>\
@@ -4358,7 +3993,6 @@ WorldData = {
                                     cond: {
                                         contains: "chose kill Eevee"
                                     },
-
                                     msg: "You sigh and rewind time to allow Eevee to live. You do hate having to deal with consequences for your actions, you suppose.",
                                     get: {
                                         item: "chose kill Eevee",
@@ -5498,116 +5132,28 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "kill point N"
+                                        contains1: "kill point N",
+                                        contains2: "kill point A",
+                                        contains3: "kill point Maia",
+                                        contains4: "kill point M",
+                                        contains5: "kill point Em",
+                                        contains6: "kill point Aliyah",
+                                        contains7: "kill point Ev",
+                                        contains8: "kill point R",
+                                        contains9: "kill point B"
                                     },
-
-                                    if: {
-                                        cond: {
-                                            contains: "kill point A"
-                                        },
-
-                                        if: {
-                                            cond: {
-                                                contains: "kill point Maia"
-                                            },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "kill point M"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "kill point Em"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "kill point Aliyah"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "kill point Ev"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "kill point R"
-                                                                },
-
-                                                                if: {
-                                                                    cond: {
-                                                                        contains: "kill point B"
-                                                                    },
-
-                                                                    msg: "You are ready. You are transported to the Assassin's Headquarters",
-                                                                    inc: "licence to kill",
-                                                                    inc2: "kill point L",
-                                                                    dest: Locations.Headquarters
-                                                                },
-                                                                else: {
-                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                    inc: "kill point L",
-                                                                    inc: "thou art banished!",
-                                                                    dest: Locations.hell,
-                                                                },
-                                                                else: {
-                                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                    inc: "kill point L",
-                                                                    inc: "thou art banished!",
-                                                                    dest: Locations.hell
-                                                                },
-                                                            },
-                                                            else: {
-                                                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                                inc: "kill point L",
-                                                                inc: "thou art banished!",
-                                                                dest: Locations.hell
-                                                            },
-                                                        },
-                                                        else: {
-                                                            msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                            inc: "kill point L",
-                                                            inc: "thou art banished!",
-                                                            dest: Locations.hell
-                                                        },
-                                                    },
-                                                    else: {
-                                                        msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                        inc: "kill point L",
-                                                        inc: "thou art banished!",
-                                                        dest: Locations.hell
-                                                    },
-                                                },
-                                                else: {
-                                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                    inc: "kill point L",
-                                                    inc: "thou art banished!",
-                                                    dest: Locations.hell
-                                                },
-                                            },
-                                            else: {
-                                                msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                                inc: "kill point L",
-                                                inc: "thou art banished!",
-                                                dest: Locations.hell
-                                            },
-                                        },
-                                        else: {
-                                            msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                            inc: "kill point L",
-                                            inc: "thou art banished!",
-                                            dest: Locations.hell
-                                        },
-                                    },
-                                    else: {
-                                        msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
-                                        inc: "kill point L",
-                                        inc: "thou art banished!",
-                                        dest: Locations.hell
-                                    },
+                                    msg: "You are ready. You are transported to the Assassin's Headquarters",
+                                    inc: "licence to kill",
+                                    inc2: "kill point L",
+                                    dest: Locations.Headquarters
                                 },
+                                else: {
+                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                    inc: "kill point L",
+                                    inc: "thou art banished!",
+                                    dest: Locations.hell,
+                                },
+
                                 else: {
                                     msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
                                     inc: "kill point L",
@@ -5745,7 +5291,6 @@ WorldData = {
                                                         cond: {
                                                             contains: "attempt #1- fail"
                                                         },
-
                                                         msg: "I see that you're trying again. Well, I believe in you, I suppose.",
                                                         get: {
                                                             item: "attempt #2- fail",
@@ -5870,7 +5415,7 @@ WorldData = {
                     },
                     kill: {
                         cmd: {
-                            "(beaver|beavers|them|everyone)": {
+                            "(beaver|beavers|them|everyone|.*)": {
                                 msg: "You kill the beavers. <br><br>Now what?<br><br>\
                             Perhaps now you are the master of hell or something. You don't see anyone around. You feel a bit lonely. You suppose that this must be your personal hell, since if this were a group situation, it'd be pretty well-populated. Or maybe everyone became beavers. You laugh at the concept. <br><br>\
                             \
@@ -7230,7 +6775,6 @@ WorldData = {
                 cond: {
                     contains: "looked outside the schoolhouse already"
                 },
-
                 cmd: {
                     "hint": {
                         if: {
@@ -7397,243 +6941,46 @@ WorldData = {
                         cond: {
                             contains: "Things are getting pretty darn Unlucky now..."
                         },
-
                         if: {
                             cond: {
                                 contains: "chose to revive someone"
                             },
-
                             if: {
                                 cond: {
-                                    contains: "revived Baba"
+                                    contains1: "revived Baba",
+                                    contains2: "revived Mumu",
+                                    contains3: "revived Reu",
+                                    contains4: "revived Nathan",
+                                    contains5: "revived Maia",
+                                    contains6: "revived Aliyah",
+                                    contains7: "revived Andrew",
+                                    contains8: "revived Emily"
                                 },
 
                                 if: {
                                     cond: {
-                                        contains: "revived Mumu"
+                                        contains: "revived Eevee"
                                     },
-
-                                    if: {
-                                        cond: {
-                                            contains: "revived Reu"
-                                        },
-
-                                        if: {
-                                            cond: {
-                                                contains: "revived Nathan"
-                                            },
-
-                                            if: {
-                                                cond: {
-                                                    contains: "revived Maia"
-                                                },
-
-                                                if: {
-                                                    cond: {
-                                                        contains: "revived Aliyah"
-                                                    },
-
-                                                    if: {
-                                                        cond: {
-                                                            contains: "revived Andrew"
-                                                        },
-
-                                                        if: {
-                                                            cond: {
-                                                                contains: "revived Emily"
-                                                            },
-
-                                                            if: {
-                                                                cond: {
-                                                                    contains: "revived Eevee"
-                                                                },
-
-                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
-                                                                \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
-                                                                You stay silent, hoping that she will decide to spare you.<br><br>\
-                                                                \"I'm going to rewind time.\" She decides.<br><br>\
-                                                                \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
-                                                                The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
-                                                                clear: 1,
-                                                                end: 30,
-                                                            },
-                                                            else: {
-                                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                                Unlucky continues speaking:<br><br>\
-                                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                                You open your eyes to find yourself in a place that you presume to be hell.",
-                                                                get: {
-                                                                    item: "unremorseful serial killer banished",
-                                                                    data: -1
-                                                                },
-                                                                get2: {
-                                                                    item: "Wonder Pets mission",
-                                                                    data: 0
-                                                                },
-                                                                get3: {
-                                                                    item: "Wonder Pets mission - completed",
-                                                                    data: 1
-                                                                },
-                                                                clear: 1,
-                                                                dest: Locations.hell
-                                                            }
-                                                        },
-                                                        else: {
-                                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                            Unlucky continues speaking:<br><br>\
-                                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                            You open your eyes to find yourself in a place that you presume to be hell.",
-                                                            get: {
-                                                                item: "unremorseful serial killer banished",
-                                                                data: -1
-                                                            },
-                                                            get2: {
-                                                                item: "Wonder Pets mission",
-                                                                data: 0
-                                                            },
-                                                            get3: {
-                                                                item: "Wonder Pets mission - completed",
-                                                                data: 1
-                                                            },
-                                                            clear: 1,
-                                                            dest: Locations.hell
-                                                        }
-                                                    },
-                                                    else: {
-                                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                        Unlucky continues speaking:<br><br>\
-                                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                        You open your eyes to find yourself in a place that you presume to be hell.",
-                                                        get: {
-                                                            item: "unremorseful serial killer banished",
-                                                            data: -1
-                                                        },
-                                                        get2: {
-                                                            item: "Wonder Pets mission",
-                                                            data: 0
-                                                        },
-                                                        get3: {
-                                                            item: "Wonder Pets mission - completed",
-                                                            data: 1
-                                                        },
-                                                        clear: 1,
-                                                        dest: Locations.hell
-                                                    }
-                                                },
-                                                else: {
-                                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                    They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                    Unlucky continues speaking:<br><br>\
-                                                    \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                    You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                    You open your eyes to find yourself in a place that you presume to be hell.",
-                                                    get: {
-                                                        item: "unremorseful serial killer banished",
-                                                        data: -1
-                                                    },
-                                                    get2: {
-                                                        item: "Wonder Pets mission",
-                                                        data: 0
-                                                    },
-                                                    get3: {
-                                                        item: "Wonder Pets mission - completed",
-                                                        data: 1
-                                                    },
-                                                    clear: 1,
-                                                    dest: Locations.hell
-                                                }
-                                            },
-                                            else: {
-                                                msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                                \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                                They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                                Unlucky continues speaking:<br><br>\
-                                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                                You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                                You open your eyes to find yourself in a place that you presume to be hell.",
-                                                get: {
-                                                    item: "unremorseful serial killer banished",
-                                                    data: -1
-                                                },
-                                                get2: {
-                                                    item: "Wonder Pets mission",
-                                                    data: 0
-                                                },
-                                                get3: {
-                                                    item: "Wonder Pets mission - completed",
-                                                    data: 1
-                                                },
-                                                clear: 1,
-                                                dest: Locations.hell
-                                            }
-                                        },
-                                        else: {
-                                            msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                            \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                            They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                            Unlucky continues speaking:<br><br>\
-                                            \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                            You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                            You open your eyes to find yourself in a place that you presume to be hell.",
-                                            get: {
-                                                item: "unremorseful serial killer banished",
-                                                data: -1
-                                            },
-                                            get2: {
-                                                item: "Wonder Pets mission",
-                                                data: 0
-                                            },
-                                            get3: {
-                                                item: "Wonder Pets mission - completed",
-                                                data: 1
-                                            },
-                                            clear: 1,
-                                            dest: Locations.hell
-                                        }
-                                    },
-                                    else: {
-                                        msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                        Unlucky continues speaking:<br><br>\
-                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                        You open your eyes to find yourself in a place that you presume to be hell.",
-                                        get: {
-                                            item: "unremorseful serial killer banished",
-                                            data: -1
-                                        },
-                                        get2: {
-                                            item: "Wonder Pets mission",
-                                            data: 0
-                                        },
-                                        get3: {
-                                            item: "Wonder Pets mission - completed",
-                                            data: 1
-                                        },
-                                        clear: 1,
-                                        dest: Locations.hell
-                                    }
+                                    img: "Images/DarkTitans.jpeg",
+                                    msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
+                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, figures start to materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
+                                    \"You did decide to revive everyone, which shows remorse, to some extent, but it can just as easily be you just wanting to avoid consequences, so you're not quite let off the hook in my mind. I hunted you down to kill you, but now that I've realized that you revive everyone you kill, I find myself wanting to feel sympathy for you...\"<br><br>\
+                                    You stay silent, hoping that she will decide to spare you.<br><br>\
+                                    \"I'm going to rewind time.\" She decides.<br><br>\
+                                    \"You will start all of this from the beginning again. If you want to avoid meeting me, don't kill people at all, or at least don't accept that mission and try to do things to qualify for a different mission.\"<br><br\
+                                     The darkness surrounds you, but it doesn't feel as painful as you thought it would. It feels comforting. You allow your memories to slip away as you are transported back to your house. This time, you can choose to make the right choices...",
+                                    clear: 1,
+                                    end: 30,
                                 },
                                 else: {
+                                    img: "Images/DarkTitans.jpeg",
                                     msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
-                                        \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
-                                        They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
-                                        Unlucky continues speaking:<br><br>\
-                                        \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
-                                        You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
-                                        You open your eyes to find yourself in a place that you presume to be hell.",
+                                    \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
+                                    They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
+                                    Unlucky continues speaking:<br><br>\
+                                    \"You did revive most of them, so maybe you felt remorse at times, but you didn't revive everyone. Eevee still lies dead. She didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                    You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
+                                    You open your eyes to find yourself in a place that you presume to be hell.",
                                     get: {
                                         item: "unremorseful serial killer banished",
                                         data: -1
@@ -7651,11 +6998,12 @@ WorldData = {
                                 }
                             },
                             else: {
+                                img: "Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                                 \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed (some of which you may have revived).\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you'd just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some, you killed in past lives. <br><br>\
                                 They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. You can't find any sympathy in their hollow eyes. <br><br>\
                                 Unlucky continues speaking:<br><br>\
-                                \"You did revive some of them, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve that.\" She turns and nods toward the crowd behind her.<br><br>\
+                                \"You did some reviving, so maybe you felt remorse at times, but you didn't revive everyone. They didn't deserve to be killed.\" She turns and nods toward the crowd behind her.<br><br>\
                                 You can do nothing but lie there as you are surrounded by those who had once been your victims. They envelop you in blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                                 You open your eyes to find yourself in a place that you presume to be hell.",
                                 get: {
@@ -7675,6 +7023,7 @@ WorldData = {
                             }
                         },
                         else: {
+                            img: "Images/DarkTitans.jpeg",
                             msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                         \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                         \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
@@ -7722,6 +7071,7 @@ WorldData = {
                                 \"Who are you?\" You ask the cat. It smirks at you.<br><br>\
                                 \"Isn't it obvious? I'm you, but evil.\" The cat says. You roll your eyes. You note that she even sounds like you...<br><br>\
                                 \"You're me but evil? I'm not exactly an angel myself\" You reply. \"I've killed pretty much everyone I know, and I don't exactly feel guilty about it.\" The cat nods. <br><br>\
+                                \"Well, honestly maybe it's not exactly that I'm the evil version of you, but rather I'm just your worst enemy, so from your perspective I'm sort of like the evil you...\"<br><br>\
                                 \"My name's Unlucky, by the way. Pronouns are she/her.\" She adds. You blink at her.<br><br>\
                                 \"Did you...did you name yourself Unlucky just so you'd be the opposite of me?\" You ask incredulously. The cat looks a little uncomfortable<br><br>\
                                 \"W-well, when you say it like that, it sounds lame...\" She replies.<br><br>\
@@ -7744,7 +7094,6 @@ WorldData = {
         },
     },
 },
-
     Aliases = {
         "move": "m",
         "(north|run away|run|run inside|go inside)": "n",
@@ -7779,6 +7128,7 @@ WorldData = {
         "(halp|help|helpp|helppp)": "h",
         "(hunt squirrel|hunt squirrel|chase squirrel|chase squirrels|find squirrel|find a squirrel|hunting time)": "squirrel",
         "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
+        "(chichiens brain is too smol to understand|mocks|mocks you)": "mock",
         "adventure time": "s",
         "get weed": "weed",
         "(inventory|inv)": "i",
