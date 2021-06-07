@@ -13,27 +13,27 @@ function checkInput() {
 }
 
 function output(line) {
-    console.log("OUTPUT: " + line);
+    // console.log("output: " + line);
 
     if (line) {
-        for (const part of line.split("<br>")) {
-            console.log(part);
-            if (part != "") {
-                document.getElementById("consoletext").appendChild(document.createTextNode(part));
-            }
+        if (line.startsWith("image/")) {
+            img = line.split("image/")[1]
+            imageElement = document.createElement("img")
+            imageElement.setAttribute("src", img)
+            imageElement.setAttribute("width", "42%")
+            document.getElementById("consoletext").appendChild(imageElement);
             document.getElementById("consoletext").appendChild(document.createElement("br"));
+            document.getElementById("consoletext").appendChild(document.createElement("br"));
+        } else {
+            for (const part of line.split("<br>")) {
+                console.log(part);
+                if (part != "") {
+                    document.getElementById("consoletext").appendChild(document.createTextNode(part));
+                }
+                document.getElementById("consoletext").appendChild(document.createElement("br"));
+            }
         }
     }
-    document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
-}
-function imgout(img) {
-    console.log("OUTPUT: IMAGE");
-    imageElement = document.createElement("img")
-    imageElement.setAttribute("src", img)
-    imageElement.setAttribute("width", "42%")
-    document.getElementById("consoletext").appendChild(imageElement);
-    document.getElementById("consoletext").appendChild(document.createElement("br"));
-    document.getElementById("consoletext").appendChild(document.createElement("br"));
     document.getElementById("console").scrollTop = document.getElementById("console").scrollHeight;
 }
 
@@ -42,7 +42,7 @@ var inv = {};
 var endflag = 0;
 var waitingcount = 0;
 
-function has(item, count=null) {
+function has(item, count = null) {
     for (const [invitem, invdata] of Object.entries(inv)) {
         if (item == invitem && ((count == null && invdata != 0) || (count != null && Math.abs(invdata) >= Math.abs(count)))) {
             return true;
@@ -55,11 +55,18 @@ function evaluateelmt(type, value) {
     if (type.match(new RegExp("contains\d*", "gi"))) {
         return has(value);
     }
-    if (type.match(new RegExp("has\d*","gi")) && value.hasOwnProperty("amt") && value.hasOwnProperty("item")){
+    if (type.match(new RegExp("has\d*", "gi")) && value.hasOwnProperty("amt") && value.hasOwnProperty("item")) {
         return has(value.item, value.amt);
     }
-    if (type.match(new RegExp("cond\d*", "gi"))){
+    if (type.match(new RegExp("cond\d*", "gi"))) {
         return evaluatecond(value);
+    }
+    if (type.match(new RegExp("unseen", "gi"))) {
+        if (has(value)) {
+            return false;
+        } else {
+            return true;
+        }
     }
     return false;
 }
@@ -67,14 +74,14 @@ function evaluateelmt(type, value) {
 function evaluatecond(condition) {
     if (!condition.hasOwnProperty("type") || condition.type == "and") {
         for (const [type, value] of Object.entries(condition)) {
-            if (!type.match(new RegExp("type\d*","gi")) && !evaluateelmt(type, value)) {
+            if (!type.match(new RegExp("type\d*", "gi")) && !evaluateelmt(type, value)) {
                 return false;
             }
         }
         return true;
     } else if (condition.type == "or") {
         for (const [type, value] of Object.entries(condition)) {
-            if (!type.match(new RegExp("type\d*","gi")) && evaluateelmt(type, value)) {
+            if (!type.match(new RegExp("type\d*", "gi")) && evaluateelmt(type, value)) {
                 return true;
             }
         }
@@ -87,16 +94,17 @@ function follow_cmd(ctxt, cmd) {
     var i = 0;
     out = ctxt;
 
-    while (cmd[i]) {
-        while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
+    while (true) {
+        if (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
             if (evaluatecond(out.if.cond)) {
+                if (out.if.cond.hasOwnProperty("unseen")) {
+                    inv[out.if.cond.unseen] = -1;
+                }
                 out = out.if;
             } else {
                 out = out.else;
             }
-        }
-
-        if (out.hasOwnProperty("cmd")) {
+        } else if (out.hasOwnProperty("cmd") && cmd[i]) {
             found = false;
             for (const [cur_cmd, result] of Object.entries(out.cmd)) {
                 if (cmd[i].match(new RegExp("^" + cur_cmd + "$", "i"))) {
@@ -114,84 +122,41 @@ function follow_cmd(ctxt, cmd) {
         }
     }
 
-    while (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-        if (evaluatecond(out.if.cond)) {
-            out = out.if;
-        } else {
-            out = out.else;
-        }
-    }
-    found = false;
     for (const key of Object.keys(out)) {
         if (key != "cmd") {
-            found = true;
+            return out;
         }
     }
 
-    if (!found) {
-        out = follow_cmd(WorldData, cmd);
-    }
-    return out;
+    return follow_cmd(WorldData, cmd);
 }
 
-function handle(line) {
-    if (endflag == -2) {
+function end(flag) {
+    if (flag == -2) {
         output("Press enter to continue watching the blinking lights");
-        endflag = 2;
-    } else if (endflag == 6) {
+        flag = 2;
+    } else if (flag == 6) {
         output("You have the Goose Cult ending");
-    } else if (endflag == 8) {
+    } else if (flag == 8) {
         window.location.href = "https://www.youtube.com/embed/g_y15ozNchY?autoplay=1";
-    } else if (endflag == 2) {
+    } else if (flag == 2) {
         window.location.href = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-    } else if (endflag == 666) {
+    } else if (flag == 666) {
         window.location.href = "https://www.youtube.com/embed/lDnva_3fcTc?autoplay=1";
-    } else if (endflag == 540) {
+    } else if (flag == 540) {
         window.location.href = "https://www.youtube.com/embed/KPP4Cfupzhs?autoplay=1";
-    } else if (endflag == 541) {
+    } else if (flag == 541) {
         window.location.href = "https://www.youtube.com/embed/UyANUnGoGcE?autoplay=1";
-    } else if (endflag == 799) {
+    } else if (flag == 799) {
         window.location.href = "https://www.youtube.com/embed/qCMZYEIlztY?autoplay=1";
-    } else if (endflag > 0) {
+    } else {
         location.reload()
     }
-    var cmd = line.toLowerCase();
-    for (const [word, repl] of Object.entries(Aliases)) {
-        cmd = cmd.replace(new RegExp(word, "gi"), repl.toLowerCase());
-    }
-    cmd = cmd.trim().replace(/  +/gi, " ").split(" ");
-    console.log(cmd);
+}
 
-    if (cmd == "") {
-        waitingcount++;
-        if (waitingcount == 10) {
-            output("hello?");
-        }
-        if (waitingcount == 23) {
-            output("are you okay?");
-        }
-        if (waitingcount == 29) {
-            output("you can say something you know...");
-        }
-        if (waitingcount == 42) {
-            output("it's been a while");
-        }
-        if (waitingcount == 50) {
-            output("chichien needs you");
-        }
-        if (waitingcount == 60) {
-            output("ah whatever");
-        }
-        if (waitingcount == 64) {
-            output("Chichien was bored to death<br><br>THE END (ending 0/4)<br><br>Press any key to continue<br>");
-            endflag = 5;
-        }
-        return;
-    } else if (WorldData.locations.hasOwnProperty(loc)) {
-        waitingcount = 0;
-        context = follow_cmd(WorldData.locations[loc], cmd);
-        console.log(context);
-        var executionOrder = ["clear\d*", "img\d*", "msg\d*", "dest\d*", "inv\d*", "get\d*", "inc\d*", "end\d*"]
+function processcmds(context){
+    var executionOrder = ["clear\d*", "img\d*", "msg\d*", "dest\d*", "inv\d*", "get\d*", "inc\d*", "end\d*"]
+
         function regexIndexOf(arr, str) {
             for (var i = 0; i < arr.length; i++) {
                 if (str.match(new RegExp(arr[i], "gi"))) {
@@ -200,12 +165,14 @@ function handle(line) {
             }
             return -1
         }
+
         for (const [trigger, action] of Object.entries(context).sort(function (a, b) {
             return regexIndexOf(executionOrder, a[0]) - regexIndexOf(executionOrder, b[0]);
         })) {
             if (trigger.match(new RegExp("img\d*", "gi"))) {
-                imgout(action);
+                output("image/" + action);
             }
+
             if (trigger.match(new RegExp("clear\d*", "gi"))) {
                 document.getElementById("consoletext").innerHTML = "";
             }
@@ -259,18 +226,50 @@ function handle(line) {
                 output("THE END (ending " + action + "/4)<br><br>Credits to Nathan, Aliyah, Zara and Maia (equally), (illustrations by Zara, content by the four of us)<br><br>Press enter to continue<br>")
             }
         }
+}
+
+function handle(line) {
+    if (endflag != 0){
+        end(flag);
+    }
+    
+    var cmd = line.toLowerCase();
+    for (const [word, repl] of Object.entries(Aliases)) {
+        cmd = cmd.replace(new RegExp(word, "gi"), repl.toLowerCase());
+    }
+    cmd = cmd.trim().replace(/  +/gi, " ").split(" ");
+    console.log(cmd);
+
+    if (cmd == "") {
+        waitingcount++;
+        if (waitingcount == 10) {
+            output("hello?");
+        }
+        if (waitingcount == 23) {
+            output("are you okay?");
+        }
+        if (waitingcount == 29) {
+            output("you can say something you know...");
+        }
+        if (waitingcount == 42) {
+            output("it's been a while");
+        }
+        if (waitingcount == 50) {
+            output("chichien needs you");
+        }
+        if (waitingcount == 60) {
+            output("ah whatever");
+        }
+        if (waitingcount == 64) {
+            output("Chichien was bored to death<br><br>THE END (ending 0/4)<br><br>Press any key to continue<br>");
+            endflag = 5;
+        }
+        return;
     } else {
         waitingcount = 0;
-        context = follow_cmd(WorldData, cmd);
-        if (context.hasOwnProperty("msg")) {
-            output(follow_cmd(WorldData, cmd).msg);
-        } else if (context.hasOwnProperty("inv")) {
-            if (context.inv == 1) {
-                output("AAAA INV");
-            }
-        } else {
-            console.log("ERROR: No msg found in context ");
-            console.log(context);
-        }
+        context = follow_cmd((WorldData.locations.hasOwnProperty(loc) ? WorldData.locations[loc] : WorldData), cmd);
+
+        processcmds(context);
+        
     }
 }

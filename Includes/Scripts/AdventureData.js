@@ -472,7 +472,7 @@ WorldData = {
         kitchen: {
             cmd: {
                 l: {
-                    img: "Images/kitchen.jpeg",
+                    img: "Includes/Images/kitchen.jpeg",
                     msg: "You're in the kitchen, it gets pretty loud here sometimes, but the sun is shining through the window and is very warm.<br>\
                 N: The dining room<br>\
                 S: There's a door leading outside<br>\
@@ -510,7 +510,7 @@ WorldData = {
                 u: {
                     cmd: {
                         "sun": {
-                            img: "Images/ChichienSun.jpeg",
+                            img: "Includes/Images/ChichienSun.jpeg",
                             msg: "You sit in the sun. It's very warm and nice. Just as you start to relax, the dishwasher turns on and you freak out and run to the dining room.",
                             dest: Locations.dining_room
                         }
@@ -719,7 +719,7 @@ WorldData = {
                             contains: "lucky hath deleted water"
                         },
 
-                        img: "Images/DiningRoomNoWater.jpeg",
+                        img: "Includes/Images/DiningRoomNoWater.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
@@ -739,7 +739,7 @@ WorldData = {
 
                     },
                     else: {
-                        img: "Images/DiningRoom.jpeg",
+                        img: "Includes/Images/DiningRoom.jpeg",
                         msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on Lulu when she's eating, but she isn't here right now.<br>\
                 N: The entryway<br>\
                 S: The kitchen<br>\
@@ -899,7 +899,7 @@ WorldData = {
                             contains: "chose kill Baba"
                         },
 
-                        img: "Images/OfficeBabaDead.jpeg",
+                        img: "Includes/Images/OfficeBabaDead.jpeg",
                         msg: "You're in the office, baba is dead.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
@@ -921,7 +921,7 @@ WorldData = {
                                 contains: "revived Baba"
                             },
 
-                            img: "Images/Office.jpeg",
+                            img: "Includes/Images/Office.jpeg",
                             msg: "You're in the office. Baba is alive now, just working on his laptop.<br>\
                             N: Living room<br>\
                             E: Dining room<br>\
@@ -938,7 +938,7 @@ WorldData = {
                             }
                         },
                         else: {
-                            img: "Images/Office.jpeg",
+                            img: "Includes/Images/Office.jpeg",
                             msg: "You're in the office, Baba is here working on his laptop. You like Baba, Baba gives nice pets.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
@@ -1150,7 +1150,7 @@ WorldData = {
                             contains: "chose kill Mumu"
                         },
 
-                        img: "Images/LivingRoomMumuDead.jpeg",
+                        img: "Includes/Images/LivingRoomMumuDead.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is lying dead in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -1174,7 +1174,7 @@ WorldData = {
                         },
                     },
                     else: {
-                        img: "Images/LivingRoom.jpeg",
+                        img: "Includes/Images/LivingRoom.jpeg",
                         msg: "You are in the living room, one of your favorites! Mumu is sleeping in her cat bed. There's an empty glass on the table. There's also a chess board!<br>\
                 N: The window<br>\
                 E: Entryway<br>\
@@ -1204,12 +1204,12 @@ WorldData = {
                             contains: "won chess game!"
                         },
 
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Includes/Images/ChessProLucky.JPEG",
                         msg: "You play chess against yourself and win again!",
                         inc: "won chess game!"
                     },
                     else: {
-                        img: "Images/ChessProLucky.JPEG",
+                        img: "Includes/Images/ChessProLucky.JPEG",
                         msg: "You use your telekinetic powers to play chess against yourself. Shockingly, you won!",
                         inc: "won chess game!"
                     },
@@ -1355,7 +1355,7 @@ WorldData = {
                             contains: "lulu"
                         },
 
-                        img: "Images/Entryway.jpeg",
+                        img: "Includes/Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -1364,7 +1364,7 @@ WorldData = {
                         clear: 1
                     },
                     else: {
-                        img: "Images/Entryway.jpeg",
+                        img: "Includes/Images/Entryway.jpeg",
                         msg: "You're in the entryway. It's pretty dirty. The door leads outside. You see the dreaded Lulu at the end of the hall, she trots into emily's room<br>\
                     N: Outside<br>\
                     E: Hallway<br>\
@@ -1440,7 +1440,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Hallway1.jpeg",
+                    img: "Includes/Images/Hallway1.jpeg",
                     msg: "You are in the middle of the hallway, James' door is closed.<br>\
                     E: Hallway<br>\
                     S: Bathroom<br>\
@@ -1479,7 +1479,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Hallway2.jpeg",
+                    img: "Includes/Images/Hallway2.jpeg",
                     msg: "You are at the end of the hallway, Emily's door is next to you, and you see Lulu's ugly face peering at you from on top of the bed<br>\
                     N: Emily's room<br>\
                     S: Meow's room<br>\
@@ -1648,7 +1648,7 @@ WorldData = {
                     hint"
                 },
                 l: {
-                    img: "Images/Basement.jpeg",
+                    img: "Includes/Images/Basement.jpeg",
                     msg: "You are in the basement! There's a blanket that you like to sit on, there's the laundry, and there's Nathan's room.",
                     clear: 1,
 
@@ -1701,7 +1701,7 @@ WorldData = {
                     }
                 },
                 "upstairs": {
-                    img: "Images/DiningRoom.jpeg",
+                    img: "Includes/Images/DiningRoom.jpeg",
                     msg: "You go upstairs.",
                     dest: Locations.dining_room
                 }
@@ -1729,20 +1729,20 @@ WorldData = {
                             contains: "Grebel"
                         },
 
-                        img: "Images/NathanRoomPortal.jpeg",
+                        img: "Includes/Images/NathanRoomPortal.jpeg",
                         msg: "You're back in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of! You can also go back to Nathan's new room by typing \"portal.\" <br><br>\
                         Leave the room by typing \"basement\"",
                         clear: 1,
                     },
                     else: {
-                        img: "Images/NathanRoom1.jpeg",
+                        img: "Includes/Images/NathanRoom1.jpeg",
                         msg: "You are in Nathan's room! Your cat bed is here, there's a chair you like to sit on, and Nathan's bed looks pretty comfortable, too. There's also a window that you can look out of!<br><br>\
                         Leave the room by typing \"basement\"",
                         clear: 1,
                     },
                 },
                 "(basement|b)": {
-                    img: "Images/Basement.jpeg",
+                    img: "Includes/Images/Basement.jpeg",
                     msg: "You leave Nathan's room and return to the basement.",
                     dest: Locations.basement
                 },
@@ -1932,7 +1932,7 @@ WorldData = {
                             contains: "chose kill Nathan"
                         },
 
-                        img: "Images/DeadNathan.jpeg",
+                        img: "Includes/Images/DeadNathan.jpeg",
                         msg: "You're in Nathan's room as he lies dead on the floor. To go back to your house, type \"home\", or go to the hallway by typing \"leave\".",
                         clear: 1
                     },
@@ -1947,7 +1947,7 @@ WorldData = {
                                     contains: "went into portal 2"
                                 },
 
-                                img: "Images/Nathan2.jpeg",
+                                img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself in the middle of a room where Nathan is at a desk working on his computer. <br><br>\
                                 You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
                                 Type \"portal\" to go through the closet portal, returning to your house, or \"hallway\" to leave the room.",
@@ -1963,7 +1963,7 @@ WorldData = {
                                 clear: 1
                             },
                             else: {
-                                img: "Images/Nathan2.jpeg",
+                                img: "Includes/Images/Nathan2.jpeg",
                                 msg: "You come out of the blue shimmery circle and find yourself inside a wooden box, which you conclude is a closet. The shimmery circle is at the back of the closet, but you decide to explore first. You can always come back here to go back to the house.<br><br>You can smell Nathan's scent in the room, perhaps this is where he's been the past few months. You come out of the closet and you find yourself in a room you've never seen before! Nathan is at a desk working on his computer. <br><br>\
                                     You read his screen (you learned to read two lives ago, in Italy) and find that he is not doing work, he is coding a game. \"Lucky's Cat Adventures\" You read. You laugh to yourself. It couldn't possibly be as exciting as your actual life. He hasn't noticed you yet. <br><br>\
                                     Type \"portal\" to return home, or \"hallway\" to leave the room.",
@@ -1985,7 +1985,7 @@ WorldData = {
                                     },
 
                                     msg: "You look around to see that you're in Nathan's room! You can hop through the closet portal to get home by typing \"home,\" or go to the hallway by typing \"leave.\"",
-                                    img: "Images/Nathan2.jpeg",
+                                    img: "Includes/Images/Nathan2.jpeg",
                                     get: {
                                         item: "recently arrived",
                                         data: 0
@@ -1997,14 +1997,14 @@ WorldData = {
                                     clear: 1
                                 },
                                 else: {
-                                    img: "Images/Nathan2.jpeg",
+                                    img: "Includes/Images/Nathan2.jpeg",
                                     msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
                                     clear: 1
                                 }
                             },
                         },
                         else: {
-                            img: "Images/Nathan2.jpeg",
+                            img: "Includes/Images/Nathan2.jpeg",
                             msg: "You're in Nathan's room. To go back to your house, you can type \"home\", or you can go to the hallway by typing \"leave\".",
                             clear: 1
                         }
@@ -2029,11 +2029,11 @@ WorldData = {
                             contains: "chose kill Nathan"
                         },
 
-                        img: "Images/DeadNathan.jpeg",
+                        img: "Includes/Images/DeadNathan.jpeg",
                         msg: "You admire Nathan as he lies dead on the floor. You do love a successful kill. (\"revive Nathan\" if you've grown a conscience)"
                     },
                     else: {
-                        img: "Images/NathanPhoto.JPG",
+                        img: "Includes/Images/NathanPhoto.JPG",
                         msg: "\"Hello!\" You mew at Nathan. He jumps. <br><br>\"Lucky?\" he exclaims. He picks you up and hugs you. \"I don't know how you're here...perhaps you're just a figment of my imagination, a sign that I'm up too late...\" You glance at the clock and realize that time has passed since you last looked outside, it's now about 5 AM. You decide that you want to have time to yourself to wander around the building, so you rewind time so that he hasn't noticed you yet. It's now about 11:30 PM. You think about leaving the room.",
                     },
                 },
@@ -2057,7 +2057,7 @@ WorldData = {
                                     msg: "Killing things doesn't feel so fun anymore..."
                                 },
                                 else: {
-                                    img: "Images/DeadNathan.jpeg",
+                                    img: "Includes/Images/DeadNathan.jpeg",
                                     msg: "Creeping up behind Nathan, you lunge at him, plunging your claws into him. As he bleeds out onto the carpet, you start to perhaps regret your actions. Should you revive him? (\"Yes\" or \"no\")",
                                     get: {
                                         item: "Nathan life/death question",
@@ -2251,43 +2251,43 @@ WorldData = {
                                                 contains: "has been to Emily's house before"
                                             },
 
-                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            img: "Includes/Images/Hallway3EveryoneDead.jpeg",
                                             msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name, for example: \"revive Andrew\").",
                                             clear: 1,
                                         },
                                         else: {
-                                            img: "Images/Hallway3EveryoneDead.jpeg",
+                                            img: "Includes/Images/Hallway3EveryoneDead.jpeg",
                                             msg: "You've killed everyone here who can be killed...There are still possible interactions, but for the most part this is where you'd decide to move on (unless you want to revive people, which you'd do by typing \"revive\" followed by a name). <br><br>\
                                             Maybe check out the garden! (\"garden\")",
                                             clear: 1
                                         },
                                     },
                                     else: {
-                                        img: "Images/Hallway3.jpeg",
+                                        img: "Includes/Images/Hallway3.jpeg",
                                         msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                                         clear: 1,
                                     },
                                 },
                                 else: {
-                                    img: "Images/Hallway3.jpeg",
+                                    img: "Includes/Images/Hallway3.jpeg",
                                     msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                                     clear: 1,
                                 },
                             },
                             else: {
-                                img: "Images/Hallway3.jpeg",
+                                img: "Includes/Images/Hallway3.jpeg",
                                 msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                                 clear: 1,
                             },
                         },
                         else: {
-                            img: "Images/Hallway3.jpeg",
+                            img: "Includes/Images/Hallway3.jpeg",
                             msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                             clear: 1,
                         },
                     },
                     else: {
-                        img: "Images/Hallway3.jpeg",
+                        img: "Includes/Images/Hallway3.jpeg",
                         msg: "Hall-wandering time! Who do you want to talk to? (You return to the hallway after every interaction, just type someone's name and you'll go to them and then return to the hallway)",
                         clear: 1,
                     },
@@ -2492,13 +2492,13 @@ WorldData = {
                                 contains: "Name Phyllis"
                             },
 
-                            img: "Images/Phyllis.JPG",
+                            img: "Includes/Images/Phyllis.JPG",
                             msg: "You pad into the room of the tall human that you have seen before. It smiles at you. <br><br>\"Well hello again!\" The human says. <br><br>You meow at Phyllis. It does not respond.<br><br>You take another nap on the human's couch, and return to the hallway a few hours later.",
                             inc: "rest",
                         },
                         else: {
                             msg: "You scratch at one of the doors, which is slightly open. A tall human crosses the room and looks at you in confusion. \"Well hello\" It says to you. You pad into the room and see a stuffed blueish blob seated on the couch. \"That's Phyllis\" The human explains to you. You curl up on the couch next to Phyllis and fall asleep. A few hours later, you awaken and leave the room. The tall human watches you leave, confused and unsure of what to do about this random cat wandering the building. You laugh to yourself.",
-                            img: "Images/Phyllis.JPG",
+                            img: "Includes/Images/Phyllis.JPG",
                             inc: "rest",
                             get: {
                                 item: "Name Phyllis",
@@ -2521,7 +2521,7 @@ WorldData = {
 
                 },
                 "Cloak": {
-                    img: "Images/CloakClaire.JPG",
+                    img: "Includes/Images/CloakClaire.JPG",
                     msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                     get: {
                         item: "Name Claire",
@@ -2529,7 +2529,7 @@ WorldData = {
                     },
                     cmd: {
                         "Claire": {
-                            img: "Images/CloakClaire.JPG",
+                            img: "Includes/Images/CloakClaire.JPG",
                             msg: "You wander along to the only room with two people in it. Trotting in, you pad around the room. The short-haired one notices you and watches as you paw open the partially open closet door. The human walks up as you admire the blue cloak hanging in the closet. Taking it out of the closet, the human puts it on. You watch the cloak billow behind the human as it runs around the halls. A human comes out from one of the rooms and exclaims: <br><br>\"Look! It's Cloak Claire!\" <br><br>\"Cloak Clarence\", another human corrects them. The cloaked human, who you now know to be Claire, glares at the two humans. \"Don't call me Clarence!\" Claire shoots back. The humans return to their rooms and Claire puts the cloak back in its place. You are now in the hallway.",
                             get: {
                                 item: "Name Claire",
@@ -2634,7 +2634,7 @@ WorldData = {
                                     contains: "banana"
                                 },
 
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
                             You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
                             \
@@ -2643,7 +2643,7 @@ WorldData = {
                                 inc: "rest",
                             },
                             else: {
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
                             You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
                                 inc: "rest",
@@ -2655,7 +2655,7 @@ WorldData = {
                                     contains: "banana"
                                 },
 
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
                                 You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
                                 You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
@@ -2663,7 +2663,7 @@ WorldData = {
                                 inc: "rest",
                             },
                             else: {
-                                img: "Images/AndrewIgnore.JPG",
+                                img: "Includes/Images/AndrewIgnore.JPG",
                                 msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
                             In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
                                 inc: "rest",
@@ -2685,11 +2685,11 @@ WorldData = {
                                 contains: "Name Andrew"
                             },
 
-                            img: "Images/CagedAndrew.JPG",
+                            img: "Includes/Images/CagedAndrew.JPG",
                             msg: "You see Andrew trapped in a cage!"
                         },
                         else: {
-                            img: "Images/CagedAndrew.JPG",
+                            img: "Includes/Images/CagedAndrew.JPG",
                             msg: "You see a human trapped in a cage!"
                         }
                     },
@@ -3254,8 +3254,8 @@ WorldData = {
                                         contains: "Name Andrew"
                                     },
 
-                                    img: "Images/AndrewDiningHall.JPG",
-                                    img2: "Images/LuckyDrinking.png",
+                                    img: "Includes/Images/AndrewDiningHall.JPG",
+                                    img2: "Includes/Images/LuckyDrinking.png",
                                     msg: "You go to see the human (whose name you now know to be Andrew). As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" Andrew says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 Andrew watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -3263,8 +3263,8 @@ WorldData = {
                                     inc: "water",
                                 },
                                 else: {
-                                    img: "Images/AndrewDiningHall.JPG",
-                                    img2: "Images/LuckyDrinking.png",
+                                    img: "Includes/Images/AndrewDiningHall.JPG",
+                                    img2: "Includes/Images/LuckyDrinking.png",
                                     msg: "You go to see the tall, intimidating human. As you walk up, it's leaving the room. It seems surprised to see you. <br><br>\"Oh hi...\" It says to you. \"I'm just kind of craving some sugar and possibly a banana, so I'm headed to the dining hall to get some chocolate milk. Want to come?\" <br><br>\
                                 You nod and follow the human. You pad down the hallway after it. <br><br>\
                                 The human watches you as you walk together. <br><br>\"Are you Nathan's cat?\" It asks you. \"Why am I talking to a cat...\" It mutters to itself. You nod in response to its question. It ignores your nod. You roll your eyes. <br><br>\
@@ -3333,11 +3333,11 @@ WorldData = {
                                 contains: "Name Andrew"
                             },
 
-                            img: "Images/AndrewBanana.PNG",
+                            img: "Includes/Images/AndrewBanana.PNG",
                             msg: "Andrew eats a banana"
                         },
                         else: {
-                            img: "Images/AndrewBanana.PNG",
+                            img: "Includes/Images/AndrewBanana.PNG",
                             msg: "The human eats a banana.",
                         },
                     },
@@ -3714,29 +3714,29 @@ WorldData = {
                                         contains: "Name Emily"
                                     },
 
-                                    img1: "Images/DeadEmily.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/DeadEmily.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is lying dead on the floor. <br><br>\
                                     Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img1: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img1: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img: "Images/Emily.jpeg",
+                                    img: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. <br><br>\
                                     Eevee is lying dead on the floor. <br><br>\
                                     Also, a human dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
@@ -3748,29 +3748,29 @@ WorldData = {
                                         contains: "Name Emily"
                                     },
 
-                                    img1: "Images/DeadEmily.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/DeadEmily.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
                                     Also, Emily lies dead on the floor as its ghost wanders around gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean2.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean2.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
                                 },
                                 else: {
-                                    img1: "Images/HeartBean2.jpeg",
-                                    img2: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/HeartBean2.jpeg",
+                                    img2: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside. <br><br>\
                                     Also, a dead body lies on the floor as its ghost wanders around gleefully.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         }
                                     }
@@ -3783,13 +3783,13 @@ WorldData = {
                                     contains: "Name Emily"
                                 },
 
-                                img: "Images/Emily.jpeg",
+                                img: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend? Also, Emily lies dead on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                 clear: 1,
                                 cmd: {
                                     "bean": {
-                                        img: "Images/BabyHeartBeans.jpeg",
-                                        img2: "Images/HeartBean.jpeg",
+                                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                                        img2: "Includes/Images/HeartBean.jpeg",
                                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                     }
                                 }
@@ -3800,25 +3800,25 @@ WorldData = {
                                         contains: "chose kill Eevee"
                                     },
 
-                                    img1: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. A cat lies dead on the floor. Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         },
                                     }
                                 },
                                 else: {
-                                    img1: "Images/Emily.jpeg",
+                                    img1: "Includes/Images/Emily.jpeg",
                                     msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend? Also, a dead body lies on the floor, its ghost wandering the room gleefully. It seems to enjoy being a ghost.",
                                     clear: 1,
                                     cmd: {
                                         "bean": {
-                                            img: "Images/BabyHeartBeans.jpeg",
-                                            img2: "Images/HeartBean.jpeg",
+                                            img: "Includes/Images/BabyHeartBeans.jpeg",
+                                            img2: "Includes/Images/HeartBean.jpeg",
                                             msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                                         },
                                     }
@@ -3827,8 +3827,8 @@ WorldData = {
                         },
                     },
                     "bean": {
-                        img: "Images/BabyHeartBeans.jpeg",
-                        img2: "Images/HeartBean.jpeg",
+                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                        img2: "Includes/Images/HeartBean.jpeg",
                         msg: "You admire the bean plants. You rewind time and fast-forward again, watching them grow up over time.",
                     },
                     "Emily": {
@@ -3852,7 +3852,7 @@ WorldData = {
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee\""
                         },
                         else: {
-                            img: "Images/Eevee.jpeg",
+                            img: "Includes/Images/Eevee.jpeg",
                             msg: "A large light-coloured fluffy cat enters the room. <br><br>\"Hello!\" You say to her. <br><br>\"This is my house!\" She hisses at you. You take a step back and try to appear as non-threatening as possible. \"I've arrived here using a portal, I'm just planning on wandering around for a bit and then returning to where I came from\" You explain. <br><br>\
                             Eevee notices the body of the human on the floor and looks at you in shock. \"Did you...kill her?\" She asks you. \"Yep!\" You reply. The cat doesn't seem to know what to say to that.<br><br>\
                             \"So anyway,as I was saying\" you continue, \"I came here using a portal!\"\
@@ -4117,13 +4117,13 @@ WorldData = {
                                     contains: "chose kill Eevee"
                                 },
 
-                                img: "Images/Emily.jpeg",
+                                img: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee lies dead.",
                                 clear: 1
                             },
                             else: {
-                                img1: "Images/HeartBean2.jpeg",
-                                img2: "Images/Emily.jpeg",
+                                img1: "Includes/Images/HeartBean2.jpeg",
+                                img2: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants in front of a window. They're in some odd pots that look like they could be teapots. Eevee is in the room with you, looking outside.",
                                 clear: 1
                             },
@@ -4134,20 +4134,20 @@ WorldData = {
                                     contains: "chose kill Eevee"
                                 },
 
-                                img1: "Images/Emily.jpeg",
+                                img1: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                             else: {
-                                img1: "Images/Emily.jpeg",
+                                img1: "Includes/Images/Emily.jpeg",
                                 msg: "You see a bunch of bean plants and a few flowers in front of a window. They're in some odd pots, they look like they might be teapots. Interesting. You wonder who lives here. You can smell a cat! Perhaps a new friend?",
                                 clear: 1,
                             },
                         }
                     },
                     "bean": {
-                        img: "Images/BabyHeartBeans.jpeg",
-                        img2: "Images/HeartBean.jpeg",
+                        img: "Includes/Images/BabyHeartBeans.jpeg",
+                        img2: "Includes/Images/HeartBean.jpeg",
                         msg: "You admire the bean plants. You rewind time and fast-forward again, seeing them grow up.",
                     },
                     "Emily": {
@@ -4201,7 +4201,7 @@ WorldData = {
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee.\""
                         },
                         else: {
-                            img: "Images/Eevee.jpeg",
+                            img: "Includes/Images/Eevee.jpeg",
                             msg: "A large light-coloured fluffy cat enters the room. <br><br>\"Hello!\" You say to her. <br><br>\"This is my house!\" She hisses at you. You take a step back and try to appear as non-threatening as possible. \"I've arrived here using a portal, I'm just planning on wandering around for a bit and then returning to where I came from\" You explain. <br><br>\"A portal?\" She asks. <br><br>\"Yes, it's a blue shimmery circle that allows me to travel through space.\" You add. <br><br>She seems skeptical, so you lead her to the circle. <br><br> \"I see nothing\" She scoffs. You blink in confusion. It's right there, in plain sight! You think to yourself...You decide to take a quick trip to the other building and back, to prove it. When you come back, the cat seems shocked. <br><br>\"You just vanished into thin air!\" She exclaims. You smile. <br><br>\"That's only one of the things I can do.\" You lift the bean plants off the table telekinetically to demonstrate. You realize that you don't even know this cat's name. \"What's your name?\" You ask her. \"Eevee\" She responds.",
                             get: {
                                 item: "Name Eevee",
@@ -6258,18 +6258,18 @@ WorldData = {
                                 contains: "Assassination mission"
                             },
 
-                            img: "Images/AliyahRoom2.jpeg",
+                            img: "Includes/Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
                         },
                         else: {
-                            img: "Images/AliyahRoom2.jpeg",
+                            img: "Includes/Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
                         },
                     },
                     else: {
-                        img: "Images/AliyahRoom2.jpeg",
+                        img: "Includes/Images/AliyahRoom2.jpeg",
                         msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now.)",
                         clear: 1
                     },
@@ -6399,7 +6399,7 @@ WorldData = {
                     clear: 1
                 },
                 l: {
-                    img: "Images/AliyahHallway.jpeg",
+                    img: "Includes/Images/AliyahHallway.jpeg",
                     msg: "You are in a hallway with four open doors. One leads to a bathroom, and the others lead to bedrooms. There is also a slippery-looking staircase at the end of the hall.",
                     clear: 1
                 },
@@ -7329,7 +7329,7 @@ WorldData = {
                             dest: Locations.UnluckyEncounter,
                         },
                         else: {
-                            img: "Images/WonderPets.jpeg",
+                            img: "Includes/Images/WonderPets.jpeg",
                             msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
                             As you fly toward your destination, the animals start to sing: <br><br>\
@@ -7702,7 +7702,7 @@ WorldData = {
                                 contains: "Unlucky wants to try again"
                             },
 
-                            img: "Images/UnluckyMurder.jpeg",
+                            img: "Includes/Images/UnluckyMurder.jpeg",
                             msg: "You look around to find yourself in a plain, featureless grey-black room this time. Unlucky sits in front of you, glaring holes into your skull. <br><br>\
                             \"What just happened?\" You ask the cat. She smirks at you.<br><br>\
                             \"My name is Unlucky. I'm a representation of your sins. If you've behaved yourself, you should be fine, but if you haven't (and I know you haven't), I'm your worst enemy.\" Unlucky says. You suppose that she really was serious about the whole 'redoing it' thing.<br><br>\
