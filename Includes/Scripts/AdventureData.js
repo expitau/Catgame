@@ -733,7 +733,28 @@ WorldData = {
                             },
                         },
                     },
-                }
+                },
+                "hell": {
+                    if: {
+                        cond: {
+                            contains: "lucky hath deleted water",
+                        },
+                        if: {
+                            cond: {
+                                unseen: "hell bowl lol"
+                            },
+                            msg: "You carefully pad up to where your water bowl used to be. There's a dark red circle instead of the bowl. AS you approach, the circle grows and swallows you! Where are you?",
+                        dest: Locations.hell
+                        },
+                        else: {
+                        msg: "You enter hell using the dark red water bowl portal.",
+                        dest: Locations.hell
+                        },
+                    },
+                    else: {
+                        msg: "Huh?"
+                    }
+                },
             }
         },
         office: {
@@ -2623,155 +2644,125 @@ WorldData = {
                         "(duet|time|Andrew|Emily)": {
                             if: {
                                 cond: {
-                                    contains: "chose kill Emily"
+                                    type: "or",
+                                    contains1: "chose kill Nathan",
+                                    contains2: "chose kill Andrew",
+                                    contains3: "chose kill Emily",
                                 },
-
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Andrew"
-                                    },
-
-                                    msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
-                                        \"revive Emily\" and \"revive Andy\" to fix it."
-                                },
-                                else: {
-                                    msg: "Sadly, trumpet duet time can't happen. You've killed a trumpeter :(<br><br>\
-                                    \"revive Emily\" to fix it."
-                                },
+                                msg: "Unfortunately, the show has been cancelled, as you've killed one or more of the performers >:("
                             },
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "chose kill Andrew"
+                                        contains: "Name Andrew"
                                     },
-
-                                    msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
-                                    \"revive Werdna\" to fix it..."
+                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                            \"My... sweet... Werdna...<br>\
+                                            My... sweetheart<br>\
+                                            If you believe in the power of friendship<br>\
+                                            Nothing can keep us apart...<br><br>\
+                                            But that's just not good enough for me!<br>\
+                                            Without Werdna I cannot be<br>\
+                                            for if you would not have me then I'll... be<br><br>\
+                                            a robot for my Werdna!<br>\
+                                            Just for Werdna I will be a robot<br>\
+                                            But one small issue is that I may overheat<br>\
+                                            Just because, my Werdna is so hot.<br><br>\
+                                            My Werdna is too hot for me<br>\
+                                            But if not a robot, what else can I be?<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, you're beautiful.<br><br>\
+                                            I could be, some chocolate milk<br>\
+                                            Nothing quite as sweet.<br>\
+                                            An added bonus would be,<br>\
+                                            that Werdna's lips, I would meet...<br><br>\
+                                            But while chocolate milk is finite<br>\
+                                            My love for Werdna is unending<br>\
+                                            Because Werdna is my one true love,<br>\
+                                            no one else is even contending<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, Werdna I love you<br><br>\
+                                            I could be, a chin-up bar<br>\
+                                            To make my Wernda stronk<br>\
+                                            The problem is, is Werdna's weight<br>\
+                                            My Werdna is too chomnk. <br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, Werdna won't you love me.<br><br>\
+                                            I could be, a mirror.<br>\
+                                            diverting Werdna's gaze.<br>\
+                                            For then I'd spend, my final days<br>\
+                                            Looking at his wonderful face<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, won't you call me yours\"\
+                                            <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
+                                    get: {
+                                        item: "Name Emily",
+                                        data: -1
+                                    },
                                 },
                                 else: {
-                                    if: {
-                                        cond: {
-                                            contains: "chose kill Nathan"
-                                        },
-
-                                        msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
-                                \"revive Nathan\" before trying to do the trumpet duet again."
-                                    },
-                                    else: {
-                                        if: {
-                                            cond: {
-                                                contains: "Name Andrew"
-                                            },
-
-                                            msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
-                                \"My... sweet... Werdna...<br>\
-                                My... sweetheart<br>\
-                                If you believe in the power of friendship<br>\
-                                Nothing can keep us apart...<br><br>\
-                                But that's just not good enough for me!<br>\
-                                Without Werdna I cannot be<br>\
-                                for if you would not have me then I'll... be<br><br>\
-                                a robot for my Werdna!<br>\
-                                Just for Werdna I will be a robot<br>\
-                                But one small issue is that I may overheat<br>\
-                                Just because, my Werdna is so hot.<br><br>\
-                                My Werdna is too hot for me<br>\
-                                But if not a robot, what else can I be?<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, you're beautiful.<br><br>\
-                                I could be, some chocolate milk<br>\
-                                Nothing quite as sweet.<br>\
-                                An added bonus would be,<br>\
-                                that Werdna's lips, I would meet...<br><br>\
-                                But while chocolate milk is finite<br>\
-                                My love for Werdna is unending<br>\
-                                Because Werdna is my one true love,<br>\
-                                no one else is even contending<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna I love you<br><br>\
-                                I could be, a chin-up bar<br>\
-                                To make my Wernda stronk<br>\
-                                The problem is, is Werdna's weight<br>\
-                                My Werdna is too chomnk. <br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna won't you love me.<br><br>\
-                                I could be, a mirror.<br>\
-                                diverting Werdna's gaze.<br>\
-                                For then I'd spend, my final days<br>\
-                                Looking at his wonderful face<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, won't you call me yours\"\
-                                <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                            get: {
-                                                item: "Name Emily",
-                                                data: -1
-                                            },
-                                        },
-                                        else: {
-                                            msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
-                                \"My... sweet... Werdna...<br>\
-                                My... sweetheart<br>\
-                                If you believe in the power of friendship<br>\
-                                Nothing can keep us apart...<br><br>\
-                                But that's just not good enough for me!<br>\
-                                Without Werdna I cannot be<br>\
-                                for if you would not have me then I'll... be<br><br>\
-                                a robot for my Werdna!<br>\
-                                Just for Werdna I will be a robot<br>\
-                                But one small issue is that I may overheat<br>\
-                                Just because, my Werdna is so hot.<br><br>\
-                                My Werdna is too hot for me<br>\
-                                But if not a robot, what else can I be?<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, you're beautiful.<br><br>\
-                                I could be, some chocolate milk<br>\
-                                Nothing quite as sweet.<br>\
-                                An added bonus would be,<br>\
-                                that Werdna's lips, I would meet...<br><br>\
-                                But while chocolate milk is finite<br>\
-                                My love for Werdna is unending<br>\
-                                Because Werdna is my one true love,<br>\
-                                no one else is even contending<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna I love you<br><br>\
-                                I could be, a chin-up bar<br>\
-                                To make my Wernda stronk<br>\
-                                The problem is, is Werdna's weight<br>\
-                                My Werdna is too chomnk. <br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna won't you love me.<br><br>\
-                                I could be, a mirror.<br>\
-                                diverting Werdna's gaze.<br>\
-                                For then I'd spend, my final days<br>\
-                                Looking at his wonderful face<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, won't you call me yours.\"\
-                                <br><br>As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                            get: {
-                                                item: "Name Emily",
-                                                data: -1
-                                            },
-                                        },
+                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    \"My... sweet... Werdna...<br>\
+                                    My... sweetheart<br>\
+                                    If you believe in the power of friendship<br>\
+                                    Nothing can keep us apart...<br><br>\
+                                    But that's just not good enough for me!<br>\
+                                    Without Werdna I cannot be<br>\
+                                    for if you would not have me then I'll... be<br><br>\
+                                    a robot for my Werdna!<br>\
+                                    Just for Werdna I will be a robot<br>\
+                                    But one small issue is that I may overheat<br>\
+                                    Just because, my Werdna is so hot.<br><br>\
+                                    My Werdna is too hot for me<br>\
+                                    But if not a robot, what else can I be?<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, you're beautiful.<br><br>\
+                                    I could be, some chocolate milk<br>\
+                                    Nothing quite as sweet.<br>\
+                                    An added bonus would be,<br>\
+                                    that Werdna's lips, I would meet...<br><br>\
+                                    But while chocolate milk is finite<br>\
+                                    My love for Werdna is unending<br>\
+                                    Because Werdna is my one true love,<br>\
+                                    no one else is even contending<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, Werdna I love you<br><br>\
+                                    I could be, a chin-up bar<br>\
+                                    To make my Wernda stronk<br>\
+                                    The problem is, is Werdna's weight<br>\
+                                    My Werdna is too chomnk. <br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, Werdna won't you love me.<br><br>\
+                                    I could be, a mirror.<br>\
+                                    diverting Werdna's gaze.<br>\
+                                    For then I'd spend, my final days<br>\
+                                    Looking at his wonderful face<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, won't you call me yours.\"<br><br>\
+                                    As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
+                                    get: {
+                                        item: "Name Emily",
+                                        data: -1
                                     },
                                 },
-                            }
-                        }
+                            },
+                        },
                     }
                 },
                 "kill": {
@@ -3245,22 +3236,36 @@ WorldData = {
                 "mirror": {
                     if: {
                         cond: {
-                            contains: "chose kill Andrew"
+                            contains: "revived Andrew",
                         },
-
-                        msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
-                        You eventually go back to the hallway."
-                    },
-                    else: {
                         if: {
                             cond: {
                                 contains: "Name Andrew"
                             },
-
-                            msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                            msg: "You pad over to Andrew's room and walk in. It is staring confusedly in the mirror. You look in the mirror at yourself, and admire the cat in the mirror. You return to the hallway.",
                         },
                         else: {
-                            msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                            msg: "You pad over to the tall and not-so-intimidating human's room and walk in. It is staring confusedly in the mirror. You look in the mirror at yourself, and admire the cat in the mirror. You return to the hallway.",
+                        },
+                    },
+                    else: {
+                        if: {
+                            cond: {
+                                contains: "chose kill Andrew"
+                            },
+                            msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
+                        You eventually go back to the hallway."
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "Name Andrew"
+                                },
+                                msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                            },
+                            else: {
+                                msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                            },
                         },
                     },
                 },
@@ -3269,7 +3274,6 @@ WorldData = {
                         cond: {
                             contains: "chose kill Andrew"
                         },
-
                         msg: "You go to one of your victims' rooms and get a banana from a shelf.",
                         inc: "banana",
                         inc2: "food"
@@ -3279,13 +3283,49 @@ WorldData = {
                             cond: {
                                 contains: "Name Andrew"
                             },
-
                             img: "Includes/Images/AndrewBanana.PNG",
-                            msg: "Andrew eats a banana"
+                            msg: "Andrew eats a banana. You notice another one on the human's shelf and contemplate stealing the banana."
                         },
                         else: {
                             img: "Includes/Images/AndrewBanana.PNG",
-                            msg: "The human eats a banana.",
+                            msg: "The human eats a banana. You notice another one on the human's shelf and contemplate stealing the banana.",
+                        },
+                    },
+                },
+                "steal": {
+                    cmd: {
+                        "banana": {
+                            if: {
+                                cond: {
+                                    contains: "chose kill Andrew",
+                                },
+                                msg: "You sneak into one of your victims' rooms and take a banana.",
+                                inc: "banana"
+                            },
+                            else: {
+                                msg: "You sneak into the human's room and take a banana. The human doesn't notice.",
+                                inc: "banana",
+                            },
+                        },
+                        "hard": {
+                            cmd: {
+                                "hat": {
+                                    if: {
+                                        cond: {
+                                            contains: "chose kill Andrew"
+                                        },
+
+                                        msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
+                                    },
+                                    else: {
+                                        msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as the human follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than it is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
+                                        get: {
+                                            item: "Name Andrew",
+                                            data: -1,
+                                        },
+                                    },
+                                },
+                            },
                         },
                     },
                 },
@@ -7530,10 +7570,14 @@ WorldData = {
         PacifistHeadquarters: {
             cmd: {
                 l: {
-                    msg: "You're in Headquarters! When this is more developed, you'll have missions to go on."
+                    msg: "You're in Headquarters! When this is more developed, you'll have missions to go on.<br><br>\
+                    \"portal\" to return back through the portal."
                 },
                 ".*": {
                     msg: "Lol haven't written a thing for that (yet). Contact me and tell me to add what you want me to add."
+                },
+                "(portal|back)": {
+                    msg: "You go through the portal and return to the house. You are now at the bottom of the stairs."
                 }
             }
         },
@@ -7581,7 +7625,7 @@ WorldData = {
                             else: {
                                 msg: "Nope, you won't make that mistake again. You glare at the deflated balloon."
                             }
-                            
+
                         },
                     }
                 },
@@ -7620,7 +7664,7 @@ WorldData = {
                     else: {
                         msg: "Nope, you won't make that mistake again. You glare at the deflated balloon."
                     }
-                    
+
                 },
                 ".*": {
                     msg: "Hasn't been written yet, whoops. Contact me and tell me to add what you want me to add."
