@@ -28,6 +28,9 @@ Locations = Object.freeze({
     DecisionRoom: "DecisionRoom",
     WonderPetSchoolhouse: "WonderPetSchoolhouse",
     UnluckyEncounter: "UnluckyEncounter",
+    AliyahDownstairs: "AliyahDownstairs",
+    PacifistHeadquarters: "PacifistHeadquarters",
+    AmyHouse: "AmyHouse"
 
 });
 
@@ -104,7 +107,7 @@ WorldData = {
             if: {
                 cond: {
                     contains: "licence to kill"
-                }, 
+                },
                 msg: "You go to headquarters.",
                 dest: Locations.Headquarters
             },
@@ -312,13 +315,14 @@ WorldData = {
         outside: {
             cmd: {
                 "hint": {
-                    msg: "Important: available options change based on what youve done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
+                    msg: "Important: available options change based on what you've done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
                     look<br>\
                     move (north|south|west|up|down)<br>\
                     catnip<br>\
                     squirrel<br>\
                     climb<br>\
                     kill squirrel<br>\
+                    portal<br>\
                     inv<br>\
                     clear<br>\
                     help<br>\
@@ -343,7 +347,8 @@ WorldData = {
                         },
                         else: {
                             msg: "You sprint after the squirrel. It's pretty speedy, but you're speedier! You kill the squirrel and you're now excited to put it on Nathan's pillow!",
-                            inc: "squirrel"
+                            inc: "squirrel",
+                            inc: "kill point S"
                         }
                     }
                 },
@@ -393,13 +398,63 @@ WorldData = {
                         },
                         w: {
                             msg: "You look to the west and see the patio. Trotting off in that direction, you realize that there is a goose sitting on the tile! Geese are big birds... what should you do? <br><br>As you are thinking this, the goose seems to notice you. It honks at you. Is that a challenge? You think to yourself. <br><br>Do you want to fight the goose, venture into the forest, or turn tail and run back into the house? <br><br>respond \"fight\", \"south\" (for outdoor adventure time), or \"north\" (run back inside).",
+                            get: {
+                                item: "started talking to the goose",
+                                data: -1,
+                            }
                         },
                     },
                 },
                 "fight": {
-                    msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an emourmous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
-                    dest: Locations.MrGoose
+                    if: {
+                        cond: {
+                            contains: "started talking to the goose"
+                        },
+                        msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an enormous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
+                        dest: Locations.MrGoose
+                    },
+                    else: {
+                        msg: "Fight what?"
+                    }
                 },
+                "portal": {
+                    if: {
+                        cond: {
+                            type: "or",
+                            contains1: "kill point B",
+                            contains2: "kill point M",
+                            contains3: "kill point N",
+                            contains4: "kill point Aliyah",
+                            contains5: "kill point Em",
+                            contains6: "kill point R",
+                            contains7: "kill point Maia",
+                            contains8: "kill point A",
+                            contains9: "kill point Claire",
+                            contains10: "kill point Ev",
+                            contains11: "kill point W",
+                            contains12: "kill point S",
+                            contains13: "kill point WP",
+                            contains14: "kill point Beaver",
+                            contains15: "kill point L",
+                        },
+                        msg: "You wander through the forest to find a swirly blue circle. You trod toward it curiously to find that it's not solid! As you paw at it, your paw goes right through it and vanishes! You hop in, hoping that it won't kill you.<br><br>\
+                        You find yourself in a strange room...",
+                        get: {
+                            item: "Grebel",
+                            data: -1
+                        },
+                        get2: {
+                            item: "recently arrived",
+                            data: -1
+                        },
+                        dest: Locations.hallway3
+                    },
+                    else: {
+                        msg: "You wander through the forest to find a swirly blue circle. You trod toward it curiously to find that it's not solid! As you paw at it, your paw goes right through it and vanishes! You hop in, hoping that it won't kill you.<br><br>\
+                        You find yourself in a room...",
+                        dest: Locations.PacifistHeadquarters
+                    },
+                }
             },
         },
         MrGoose: {
@@ -475,11 +530,11 @@ WorldData = {
                     end: 6,
                 },
                 "violence": {
-                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to youself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
+                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to yourself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
                     dest: Locations.heaven,
                 },
                 "peace": {
-                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enourmous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
+                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enormous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
                     dest: Locations.kitchen,
                 },
             },
@@ -588,33 +643,44 @@ WorldData = {
                         "water": {
                             if: {
                                 cond: {
-                                    has: {
-                                        item: "they tried to make me drink gross water",
-                                        amt: 5
-                                    }
+                                    contains: "lucky hath deleted water",
                                 },
-
-                                msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
-                                get: {
-                                    item: "lucky hath deleted water",
-                                    data: -1
-                                }
+                                msg: "Water?"
                             },
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "they tried to make me drink gross water"
+                                        has: {
+                                            item: "they tried to make me drink gross water",
+                                            amt: 5
+                                        }
                                     },
-
-                                    msg: "Stop trying to make me drink it, it's gross!!!",
-                                    inc: "they tried to make me drink gross water"
+                                    msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
+                                    get: {
+                                        item: "lucky hath deleted water",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "they tried to make me drink gross water",
+                                        data: 0
+                                    }
                                 },
                                 else: {
-                                    msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
-                                    get: {
-                                        item: "they tried to make me drink gross water",
-                                        data: -1
-                                    }
+                                    if: {
+                                        cond: {
+                                            contains: "they tried to make me drink gross water"
+                                        },
+
+                                        msg: "Stop trying to make me drink it, it's gross!!!",
+                                        inc: "they tried to make me drink gross water"
+                                    },
+                                    else: {
+                                        msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                                        get: {
+                                            item: "they tried to make me drink gross water",
+                                            data: -1
+                                        }
+                                    },
                                 },
                             },
                         }
@@ -627,33 +693,44 @@ WorldData = {
                 "water": {
                     if: {
                         cond: {
-                            has: {
-                                item: "they tried to make me drink gross water",
-                                amt: 5
-                            }
+                            contains: "lucky hath deleted water",
                         },
-
-                        msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
-                        get: {
-                            item: "lucky hath deleted water",
-                            data: -1
-                        }
+                        msg: "Water?"
                     },
                     else: {
                         if: {
                             cond: {
-                                contains: "they tried to make me drink gross water"
+                                has: {
+                                    item: "they tried to make me drink gross water",
+                                    amt: 5
+                                }
                             },
-
-                            msg: "Stop trying to make me drink it, it's gross!!!",
-                            inc: "they tried to make me drink gross water"
+                            msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
+                            get: {
+                                item: "lucky hath deleted water",
+                                data: -1
+                            },
+                            get2: {
+                                item: "they tried to make me drink gross water",
+                                data: 0
+                            }
                         },
                         else: {
-                            msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
-                            get: {
-                                item: "they tried to make me drink gross water",
-                                data: -1
-                            }
+                            if: {
+                                cond: {
+                                    contains: "they tried to make me drink gross water"
+                                },
+
+                                msg: "Stop trying to make me drink it, it's gross!!!",
+                                inc: "they tried to make me drink gross water"
+                            },
+                            else: {
+                                msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                                get: {
+                                    item: "they tried to make me drink gross water",
+                                    data: -1
+                                }
+                            },
                         },
                     },
                 }
@@ -2019,9 +2096,9 @@ WorldData = {
                                 contains2: "chose kill Maia",
                                 contains3: "chose kill Reu",
                                 contains4: "chose kill Nathan",
-                                contains6: "kill point Aliyah",
+                                contains6: "chose kill Aliyah",
                                 contains8: "chose kill Andrew",
-                                contains9: "kill point B",
+                                contains9: "chose kill B",
                             },
                             if: {
                                 cond: {
@@ -2635,67 +2712,78 @@ WorldData = {
                         "(all|everyone)": {
                             if: {
                                 cond: {
-                                    contains: "kill point Em"
+                                    contains1: "chose kill Reu",
+                                    contains2: "chose kill Maia",
+                                    contains3: "chose kill Nathan",
+                                    contains4: "chose kill Andrew",
+                                    contains5: "chose kill Aliyah",
                                 },
-
-                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\" <br><br>\
-                                Now what?",
-                                get: {
-                                    item: "chose kill Reu",
-                                    data: -1
-                                },
-                                get2: {
-                                    item: "chose kill Maia",
-                                    data: -1
-                                },
-                                get3: {
-                                    item: "chose kill Nathan",
-                                    data: -1
-                                },
-                                get4: {
-                                    item: "chose kill Andrew",
-                                    data: -1
-                                },
-                                get5: {
-                                    item: "chose kill Aliyah",
-                                    data: -1
-                                },
-                                inc6: "kill point R",
-                                inc7: "kill point Maia",
-                                inc8: "kill point N",
-                                inc9: "kill point A",
-                                inc10: "kill point Aliyah",
-
+                                msg: "You've killed everyone you can here. Try the garden if you haven't already, or explore around to see if you're missing anything."
                             },
                             else: {
-                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\"<br><br>\
+                                if: {
+                                    cond: {
+                                        contains: "kill point Em"
+                                    },
+                                    msg: "You go around and kill who's alive here. You can revive them individually or by typing \"revive everyone\" <br><br>\
+                                Now what?",
+                                    get: {
+                                        item: "chose kill Reu",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "chose kill Maia",
+                                        data: -1
+                                    },
+                                    get3: {
+                                        item: "chose kill Nathan",
+                                        data: -1
+                                    },
+                                    get4: {
+                                        item: "chose kill Andrew",
+                                        data: -1
+                                    },
+                                    get5: {
+                                        item: "chose kill Aliyah",
+                                        data: -1
+                                    },
+                                    inc6: "kill point R",
+                                    inc7: "kill point Maia",
+                                    inc8: "kill point N",
+                                    inc9: "kill point A",
+                                    inc10: "kill point Aliyah",
+
+                                },
+                                else: {
+                                    msg: "You go around and kill everyone who's alive here. You can revive them individually or by typing \"revive everyone\"<br><br>\
                                 You can head to the garden now, maybe you'll find a surprise there.<br><br>\
                                 (try \"garden\")",
-                                get: {
-                                    item: "chose kill Reu",
-                                    data: -1
+                                    get: {
+                                        item: "chose kill Reu",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "chose kill Maia",
+                                        data: -1
+                                    },
+                                    get3: {
+                                        item: "chose kill Nathan",
+                                        data: -1
+                                    },
+                                    get4: {
+                                        item: "chose kill Andrew",
+                                        data: -1
+                                    },
+                                    get5: {
+                                        item: "chose kill Aliyah",
+                                        data: -1
+                                    },
+                                    inc6: "kill point R",
+                                    inc7: "kill point Maia",
+                                    inc8: "kill point N",
+                                    inc9: "kill point A",
+                                    inc10: "kill point Aliyah",
                                 },
-                                get2: {
-                                    item: "chose kill Maia",
-                                    data: -1
-                                },
-                                get3: {
-                                    item: "chose kill Nathan",
-                                    data: -1
-                                },
-                                get4: {
-                                    item: "chose kill Andrew",
-                                    data: -1
-                                },
-                                get5: {
-                                    item: "chose kill Aliyah",
-                                    data: -1
-                                },
-                                inc6: "kill point R",
-                                inc7: "kill point Maia",
-                                inc8: "kill point N",
-                                inc9: "kill point A",
-                                inc10: "kill point Aliyah",
                             },
                         },
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
@@ -2881,7 +2969,6 @@ WorldData = {
                                     cond: {
                                         contains: "Treacy killer"
                                     },
-
                                     msg: "Lucky reluctantly goes to kill the Treacys. After slaughtering both of them, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
                                     You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Claire",
@@ -3175,7 +3262,6 @@ WorldData = {
                         cond: {
                             contains: "licence to kill revoked"
                         },
-
                         msg: "Your licence to kill was revoked, remember?"
                     },
                     else: {
@@ -6029,7 +6115,7 @@ WorldData = {
                     }
 
                 },
-                "stairs": {
+                "(stairs|staircase|down|downstairs)": {
                     msg: "You look down the stairs and wonder how careful you should be. \"Be careful\" or \"just go\"?",
                     get: {
                         item: "stairs question",
@@ -6041,12 +6127,12 @@ WorldData = {
                         cond: {
                             contains: "stairs question"
                         },
-
                         msg: "You step carefully down the stairs, coming to the bottom. You see a living room and a door that leads outside.",
                         get: {
                             item: "stairs question",
                             data: 0
-                        }
+                        },
+                        dest: Locations.AliyahDownstairs
                     },
                     else: {
                         msg: "What are you trying to do?",
@@ -6136,7 +6222,6 @@ WorldData = {
                 l: {
                     msg: "You look around the room.<br><br>",
                     clear: 1
-
                 },
                 "(return|leave)": {
                     if: {
@@ -6153,9 +6238,8 @@ WorldData = {
                 },
                 "kill": {
                     msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
-                            \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
+                    \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
                     inc: "rest",
-
                     cmd: {
                         "Zara": {
                             msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
@@ -6260,7 +6344,7 @@ WorldData = {
                                                 contains: "idk why but they're trying to go even further up than Home Hardware 1"
                                             },
 
-                                            msg: "I see you're still trying. Huh. There's something to be said for perseverence, I suppose.",
+                                            msg: "I see you're still trying. Huh. There's something to be said for perseverance, I suppose.",
                                             get: {
                                                 item: "idk why but they're trying to go even further up than Home Hardware 2",
                                                 data: -1
@@ -6522,8 +6606,7 @@ WorldData = {
                                     cond: {
                                         contains: "Eevee life/death question"
                                     },
-
-                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you chage your mind.",
+                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you change your mind.",
                                     get: {
                                         item: "Eevee life/death question",
                                         data: 0
@@ -6689,7 +6772,6 @@ WorldData = {
                             cond: {
                                 contains: "started to rescue the cat"
                             },
-
                             msg: "Just type rescue, check back in after if you get stuck. \"Kill Wonder Pets\" is also an option if you wanted to, though."
                         },
                         else: {
@@ -6707,22 +6789,21 @@ WorldData = {
                             cond: {
                                 contains: "WonderPetsMissionQuestion"
                             },
-
                             msg: "Commands:<br><br>\
-                                look<br>\
-                                kill Wonder Pets<br>\
-                                inv<br>\
-                                help<br>\
-                                clear<br>\
-                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                            look<br>\
+                            kill Wonder Pets<br>\
+                            inv<br>\
+                            help<br>\
+                            clear<br>\
+                            hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
                         },
                         else: {
                             msg: "Commands:<br><br>\
-                                look<br>\
-                                inv<br>\
-                                help<br>\
-                                clear<br>\
-                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                            look<br>\
+                            inv<br>\
+                            help<br>\
+                            clear<br>\
+                            hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
                         }
                     },
                     l: {
@@ -6734,7 +6815,7 @@ WorldData = {
                             clear: 1
                         },
                         else: {
-                            img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
+                            img: "https://lh3.googleusercontent.com/proxy/XDdXbxL2X9k6ReyfX5w9IEVjjKXySDMZIprj-h5SdRrWOhdo94RPC74DI8Xo7PgCWMwQ0T4eHuARXqbvs1FarldyZRBvbQ459w",
                             msg: "The building seems to only contain one room, and it has a colourful rug on the floor with the alphabet written around the edge, and children's toys are scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
                             \"We're so glad you're here!\" The hamster says to you. <br><br>\
                             \"We really need your help!\" The duckling adds. \"See, our friend Tuck is not feeling well today, and we need someone to help us on our missions!\" The duckling motions to a turtle lying in its tank. <br><br>\
@@ -6763,7 +6844,6 @@ WorldData = {
                             cond: {
                                 unseen: "started to rescue the cat",
                             },
-
                             img: "Includes/Images/WonderPets.jpeg",
                             msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
@@ -6776,22 +6856,20 @@ WorldData = {
                             \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
                             \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
                             (respond with \"rescue\", this is the only possible command)",
-
                         },
                         else: {
                             msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him.<br><br>\
                             You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
-                                Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
-                                \"What's gonna work?\" Linny asks. <br><br>\
-                                \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
-                                \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
-                                They blink at you in surprise.<br><br>\
-                                Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
-                                Your surroundings solidify again. Look around!",
+                            Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
+                            \"What's gonna work?\" Linny asks. <br><br>\
+                            \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
+                            \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
+                            They blink at you in surprise.<br><br>\
+                            Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
+                            Your surroundings solidify again. Look around!",
                             clear: 1,
                             dest: Locations.UnluckyEncounter,
                         }
-
                     },
                     "No": {
                         msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
@@ -6874,7 +6952,6 @@ WorldData = {
                                         contains7: "revived Andrew",
                                         contains8: "revived Emily"
                                     },
-
                                     if: {
                                         cond: {
                                             contains: "revived Eevee"
@@ -6942,14 +7019,12 @@ WorldData = {
                                 }
                             },
                             else: {
-
                                 img: "Includes/Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                             \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                             \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
                             You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                             You open your eyes to find yourself in a place that you presume to be hell.",
-
                                 get: {
                                     item: "unremorseful serial killer banished",
                                     data: -1
@@ -6971,6 +7046,395 @@ WorldData = {
                 },
             }
         },
+        AliyahDownstairs: {
+            cmd: {
+                l: {
+                    img: "Includes/Images/AliyahDownstairs.jpeg",
+                    msg: "You see a door that leads outside, and a living room with a TV and couches.",
+                    clear: 1
+                },
+                "living": {
+                    cmd: {
+                        "room": {
+                            msg: "You trot into the living room. There is a comfy looking recliner and two couches, as well as a TV. No one is here.",
+                        },
+                    }
+                },
+                "(hallway|hall)": {
+                    msg: "You are now in the hallway. You see the living room and a door that leads outside."
+                },
+                "(couch|couches)": {
+                    if: {
+                        cond: {
+                            unseen: "mm comfy couch",
+                        },
+                        msg: "You curl up on one of the couches in the living room. Mm. Comfy.",
+                        inc: "rest",
+                    },
+                    else: {
+                        msg: "You curl up on the other couch in the living room. Mm. Comfy.",
+                        inc: "rest",
+                    }
+                },
+                "(television|TV)": {
+                    msg: "You watch TV."
+                },
+                "(stairs|up|upstairs)": {
+                    msg: "You trot up the stairs.",
+                    dest: Locations.AliyahHallway
+                },
+                "(door|outside)": {
+                    if: {
+                        cond: {
+                            unseen: "exciting outside portal"
+                        },
+                        if: {
+                            cond: {
+                                unseen: "window breaking portal times"
+                            },
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. You are surprised to face some resistance as you try to push through the blue swirling cloud. You pop your head through to the other side to see Headquarters. The agents on the other side narrow their eyes at you and shove you back through. You tumble backward and the door closes on its own. You try to reopen it, but it won't open. <br><br>\
+                            You are sitting at the bottom of the stairs, somewhat dazed from the somersault.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. Coming out the other side, you realize that it's Assassin's Headquarters. Huh. You look behind you to see that the portal has closed. There's no way back to the house. Well, maybe there's a mission you can go on...",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not just a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there's a lawn, a street, and a grey car.<br><br>\
+                                        You run outside excitedly, frolicking about. After wandering the area for a while, you find that you are completely lost. You scratch the door of a nearby house, hoping that the people inside will be nice.<br><br>\
+                                        The door opens and a human looks down at you in surprise.<br><br>\
+                                        \"Well, hello!\" The human says to you.<br><br>\
+                                        \"My name's Amy, my pronouns are she/her.\" She informs you. She shakes her head to herself. \"Why am I introducing myself to a cat...\" Amy mutters to herself<br><br>\
+                                        You walk past her and enter the house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. Where are you? (\"look\")",
+                                        dest: Locations.PacifistHeadquarters
+                                    },
+                                },
+                            },
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You open the door to find the same portal that was at the window. You try to go through, but it's pretty unyielding.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You open the door to find the same portal that was at the window. You go through the portal to Headquarters.",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You open the door with your telekinesis and run outside, making your way to Amy's house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You open the door to find the same portal that was at the window. You go to Headquarters.",
+                                        dest: Locations.PacifistHeadquarters
+                                    }
+                                },
+                            }
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You decide to try to open the door again. Unsurprisingly, it refuses to budge.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You go through the portal to Headquarters.",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You open the door with your telekinesis and run outside, making your way to Amy's house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You go to Headquarters.",
+                                        dest: Locations.PacifistHeadquarters
+                                    }
+                                },
+                            },
+                        }
+                    }
+                },
+                "window": {
+                    msg: "You look out the window to see a grey car, a lawn, and a street. There's a lot less green than at your house, although to be fair you do live in the middle of a forest. You contemplate breaking the window."
+                },
+                "break": {
+                    cmd: {
+                        "window": {
+                            if: {
+                                cond: {
+                                    unseen: "window breaking portal times",
+                                },
+                                if: {
+                                    cond: {
+                                        unseen: "exciting outside portal",
+                                    },
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill revoked",
+                                        },
+                                        msg: "You smash the window in an attempt to get outside, but instead, the second the glass breaks, you realize that the view through the window was an illusion, and there is simply a portal surrounding the house. You decide to go through the portal. <br><br>\
+                                        You are surprised to face some resistance as you try to push through the blue swirling cloud. You pop your head through to the other side to see Headquarters!<br><br>\
+                                        The agents on the other side narrow their eyes at you and shove you back through. You tumble backward and the window repairs itself on its own. You try to break it again it, but it won't break. <br><br>",
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                type: "or",
+                                                contains1: "kill point B",
+                                                contains2: "kill point M",
+                                                contains3: "kill point N",
+                                                contains4: "kill point Aliyah",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point R",
+                                                contains7: "kill point Maia",
+                                                contains8: "kill point A",
+                                                contains9: "kill point Claire",
+                                                contains10: "kill point Ev",
+                                                contains11: "kill point W",
+                                                contains12: "kill point S",
+                                                contains13: "kill point WP",
+                                                contains14: "kill point Beaver",
+                                                contains15: "kill point L",
+                                            },
+                                            msg: "You smash the window and find yourself outside. Looking out, you see that there's a lawn, a street, and a grey car.<br><br>\
+                                            You start frolicking about. After wandering the area for a while, you find that you are completely lost. You scratch the door of a nearby house, hoping that the people inside will be nice.<br><br>\
+                                            The door opens and a human looks down at you in surprise.<br><br>\
+                                            \"Well, hello!\" The human says to you.<br><br>\
+                                            \"My name's Amy, my pronouns are she/her.\" She informs you. She shakes her head to herself. \"Why am I introducing myself to a cat...\" Amy mutters to herself<br><br>\
+                                            You walk past her and enter the house.",
+                                            dest: Locations.AmyHouse
+                                        },
+                                        else: {
+                                            msg: "You smash the window in an attempt to get outside, but instead, the second the glass breaks, you realize that the view through the window was an illusion, and there is simply a portal surrounding the house. You are immediately transported somewhere.",
+                                            dest: Locations.PacifistHeadquarters
+                                        }
+                                    },
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill revoked",
+                                        },
+                                        msg: "You break the window to find the same portal that was at the door. You try to go through, but it's pretty unyielding.",
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                contains: "licence to kill",
+                                            },
+                                            msg: "You break the window to find the same portal that was at the door. You go through to find yourself in Headquarters.",
+                                            dest: Locations.Headquarters
+                                        },
+                                        else: {
+                                            if: {
+                                                cond: {
+                                                    type: "or",
+                                                    contains1: "kill point B",
+                                                    contains2: "kill point M",
+                                                    contains3: "kill point N",
+                                                    contains4: "kill point Aliyah",
+                                                    contains5: "kill point Em",
+                                                    contains6: "kill point R",
+                                                    contains7: "kill point Maia",
+                                                    contains8: "kill point A",
+                                                    contains9: "kill point Claire",
+                                                    contains10: "kill point Ev",
+                                                    contains11: "kill point W",
+                                                    contains12: "kill point S",
+                                                    contains13: "kill point WP",
+                                                    contains14: "kill point Beaver",
+                                                    contains15: "kill point L",
+                                                },
+                                                msg: "You break the window and run, making your way to Amy's house.",
+                                                dest: Locations.AmyHouse
+                                            },
+                                            else: {
+                                                msg: "You break the window to find the same portal that was at the door. You go through to find yourself in Headquarters.",
+                                                dest: Locations.PacifistHeadquarters
+                                            }
+                                        },
+                                    }
+                                },
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill revoked",
+                                    },
+                                    msg: "You try to break the window again, but it's impenetrable. You glare at it in frustration.",
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill",
+                                        },
+                                        msg: "You hop through the broken window and find yourself in Headquarters!",
+                                        dest: Locations.Headquarters
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                type: "or",
+                                                contains1: "kill point B",
+                                                contains2: "kill point M",
+                                                contains3: "kill point N",
+                                                contains4: "kill point Aliyah",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point R",
+                                                contains7: "kill point Maia",
+                                                contains8: "kill point A",
+                                                contains9: "kill point Claire",
+                                                contains10: "kill point Ev",
+                                                contains11: "kill point W",
+                                                contains12: "kill point S",
+                                                contains13: "kill point WP",
+                                                contains14: "kill point Beaver",
+                                                contains15: "kill point L",
+                                            },
+                                            msg: "You hop through the broken window and run outside, making your way to Amy's house.",
+                                            dest: Locations.AmyHouse
+                                        },
+                                        else: {
+                                            msg: "You hop through the broken window and find yourself in Headquarters!",
+                                            dest: Locations.PacifistHeadquarters
+                                        }
+
+                                    },
+                                },
+                            }
+                        },
+                    }
+                },
+                "(down|downstairs)": {
+                    if: {
+                        cond: {
+                            unseen: "went into scary Aliyah basement"
+                        },
+                        msg: "You head downstairs. It's cold down here and you don't like it much. You head back upstairs. You're now on the ground level, you see a door leading outside, a living room, a kitchen, and a dining room."
+                    },
+                    else: {
+                        msg: "You've been down there already, you didn't like it all that much..."
+                    }
+                },
+                "kitchen": {
+                    msg: "There's not much going on here, it's just a kitchen and it seems like this family doesn't have a cat, there's no food and water bowls."
+                },
+                "dining": {
+                    cmd: {
+                        "room": {
+                            msg: "There's not much going on there, it's just a table with some chairs."
+                        }
+                    }
+                },
+                "bathroom": {
+                    msg: "You go to a small room and find a toilet. Finally, some good water. As you turn to leave, you see a scary-looking set of stairs leading downstairs. You run to the hallway.",
+                    inc: "water"
+                },
+                "leave": {
+                    msg: "You are in the hallway."
+                }
+            }
+        },
+        PacifistHeadquarters: {
+            cmd: {
+                l: {
+                    msg: "You're in Headquarters! When this is more developed, you'll have missions to go on."
+                },
+                ".*": {
+                    msg: "Lol haven't written a thing for that (yet). Contact me and tell me to add what you want me to add."
+                }
+            }
+        },
+        AmyHouse: {
+            cmd: {
+                l: {
+                    msg: "You're in Amy's house. In the house there's  a kitchen, a living room, a dining room, a staircase leading downstairs, and a staircase leading upstairs."
+                },
+                ".*": {
+                    msg: "Hasn't been written yet, whoops. Contact me and tell me to add what you want me to add."
+                }
+            }
+        }
     },
 },
     Aliases = {
@@ -6999,6 +7463,7 @@ WorldData = {
         "(sleep laundry|nap laundry|sleep laundry pile|nap laundry pile)": "laundry",
         "(sleep blanket|nap blanket|get rest)": "blanket",
         "(get chocolate milk)": "chocolate milk",
+        "(watch tv|watch television|box|watch box)": "TV",
         "(look outside|look out window|sit chair)": "chair",
         "(nap bed|sleep bed|nap)": "bed",
         "(steal hard hat|take hard hat)": "hard hat",
@@ -7009,6 +7474,7 @@ WorldData = {
         "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
         "(chichiens brain is too smol to understand|mocks|mocks you)": "mock",
         "adventure time": "s",
+        "(backdoor|back door|frontdoor|front door)": "door",
         "(Mr. Goose|mr goose)": "goose",
         "get weed": "weed",
         "(inventory|inv)": "i",
