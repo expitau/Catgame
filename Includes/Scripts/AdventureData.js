@@ -28,6 +28,9 @@ Locations = Object.freeze({
     DecisionRoom: "DecisionRoom",
     WonderPetSchoolhouse: "WonderPetSchoolhouse",
     UnluckyEncounter: "UnluckyEncounter",
+    AliyahDownstairs: "AliyahDownstairs",
+    PacifistHeadquarters: "PacifistHeadquarters",
+    AmyHouse: "AmyHouse"
 
 });
 
@@ -104,7 +107,7 @@ WorldData = {
             if: {
                 cond: {
                     contains: "licence to kill"
-                }, 
+                },
                 msg: "You go to headquarters.",
                 dest: Locations.Headquarters
             },
@@ -276,7 +279,7 @@ WorldData = {
                                     contains2: "water",
                                     contains3: "rest"
                                 },
-                                msg: "You are ready. You wander over and meow at baba until he lets you outside",
+                                msg: "You are ready. You wander over and meow at Baba until he lets you outside",
                                 dest: Locations.outside
                             },
                             else: {
@@ -312,13 +315,14 @@ WorldData = {
         outside: {
             cmd: {
                 "hint": {
-                    msg: "Important: available options change based on what youve done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
+                    msg: "Important: available options change based on what you've done here, AKA doing things unlocks other things. If you type hint again after doing something, you may see different commands available. Alright, here they are: <br><br>\
                     look<br>\
                     move (north|south|west|up|down)<br>\
                     catnip<br>\
                     squirrel<br>\
                     climb<br>\
                     kill squirrel<br>\
+                    portal<br>\
                     inv<br>\
                     clear<br>\
                     help<br>\
@@ -343,7 +347,8 @@ WorldData = {
                         },
                         else: {
                             msg: "You sprint after the squirrel. It's pretty speedy, but you're speedier! You kill the squirrel and you're now excited to put it on Nathan's pillow!",
-                            inc: "squirrel"
+                            inc: "squirrel",
+                            inc: "kill point S"
                         }
                     }
                 },
@@ -383,7 +388,7 @@ WorldData = {
                 m: {
                     cmd: {
                         n: {
-                            msg: "After some waiting around, you convince baba to let you back in.",
+                            msg: "After some waiting around, you convince Baba to let you back in.",
                             dest: Locations.kitchen
                         },
                         s: {
@@ -393,13 +398,63 @@ WorldData = {
                         },
                         w: {
                             msg: "You look to the west and see the patio. Trotting off in that direction, you realize that there is a goose sitting on the tile! Geese are big birds... what should you do? <br><br>As you are thinking this, the goose seems to notice you. It honks at you. Is that a challenge? You think to yourself. <br><br>Do you want to fight the goose, venture into the forest, or turn tail and run back into the house? <br><br>respond \"fight\", \"south\" (for outdoor adventure time), or \"north\" (run back inside).",
+                            get: {
+                                item: "started talking to the goose",
+                                data: -1,
+                            }
                         },
                     },
                 },
                 "fight": {
-                    msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an emourmous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
-                    dest: Locations.MrGoose
+                    if: {
+                        cond: {
+                            contains: "started talking to the goose"
+                        },
+                        msg: "As you approach, you realize that geese are somewhat more intimidating than you remember. Good thing you're not a normal cat! You use your telekinetic powers to lift the goose off the ground. Honking in surprise, the goose seems to be calling for help.<br><br>A few seconds later, you start to notice the ground shaking slightly. This concerns you, since several of your littermates died in an earthquake. Your telekinetic powers were the only reason you and the rest of your littermates didn't die that day...<br><br>To your utter bewilderment, an enormous goose appears, thundering through the forest toward you. You drop the now-miniscule-seeming goose onto the patio (it is offended and honks at you) and gasp at the gigantic bird. It stands about tall enough to reach the top of the roof on the house. You wonder to yourself how it keeps itself hidden, and seemingly in response to your question, it shape-shifts into a catlike figure. <br><br>\"Hello\". The creature says to you.<br><br>\"Um...hello...\" You reply cautiously, very aware that it is not a wise idea to get on the bad side of this creature. You may have nine lives, but you've used up a fair number of those (you have a complicated past set of lives)...<br><br>\"I'm going to have to ask you to not bother my geese.\" The creature states. You nod furiously in response, eager to get out of this without injury. \"You see, the geese are special to me, and the fact that you would try to kill or at least injure one of them...it just breaks my heart\" It continues. <br><br>You are now thoroughly terrified. You should never have tried to leave the house!<br><br>\"I agree, you should have stayed inside. Stay away from my children.\" It replies. What \is\ this creature? You wonder to yourself. \"They call me Mr. Goose\" The creature answers. \"stop calling me an \'it,\' I use he/him pronouns.\" The goose snaps.<br><br>\"Alright\" It concedes. \"I will allow you to leave, since I can read your mind and I am reasonably sure that you will never harm one of my little geese again.\"<br><br>\"Oh, and I almost forgot.\" Mr. Goose adds. \"I can't let you tell everyone that I exist!\" The goose-cat waves a paw and transforms back into his goose form. You wonder what exactly what he means. \"I can't let you tell everyone that I exist\" Perhaps if you try to tell Lulu or Mumu anything you saw, you won't be able to! Or maybe it'll give you amnesia! No, that can't be it, you can still remember what just happened. I suppose next time you interact with one of the other cats, you'll have to make sure that you can talk about Mr. Goose. <br><br> Shaken by the whole experience, you have two choices ahead of you. Choose peace, choose violence, or bow down and worship Mr. Goose? (You could also run off and chase squirrels or find some catnip as well.)",
+                        dest: Locations.MrGoose
+                    },
+                    else: {
+                        msg: "Fight what?"
+                    }
                 },
+                "portal": {
+                    if: {
+                        cond: {
+                            type: "or",
+                            contains1: "kill point B",
+                            contains2: "kill point M",
+                            contains3: "kill point N",
+                            contains4: "kill point Aliyah",
+                            contains5: "kill point Em",
+                            contains6: "kill point R",
+                            contains7: "kill point Maia",
+                            contains8: "kill point A",
+                            contains9: "kill point Claire",
+                            contains10: "kill point Ev",
+                            contains11: "kill point W",
+                            contains12: "kill point S",
+                            contains13: "kill point WP",
+                            contains14: "kill point Beaver",
+                            contains15: "kill point L",
+                        },
+                        msg: "You wander through the forest to find a swirly blue circle. You trod toward it curiously to find that it's not solid! As you paw at it, your paw goes right through it and vanishes! You hop in, hoping that it won't kill you.<br><br>\
+                        You find yourself in a strange room...",
+                        get: {
+                            item: "Grebel",
+                            data: -1
+                        },
+                        get2: {
+                            item: "recently arrived",
+                            data: -1
+                        },
+                        dest: Locations.hallway3
+                    },
+                    else: {
+                        msg: "You wander through the forest to find a swirly blue circle. You trod toward it curiously to find that it's not solid! As you paw at it, your paw goes right through it and vanishes! You hop in, hoping that it won't kill you.<br><br>\
+                        You find yourself in a room...",
+                        dest: Locations.PacifistHeadquarters
+                    },
+                }
             },
         },
         MrGoose: {
@@ -475,11 +530,11 @@ WorldData = {
                     end: 6,
                 },
                 "violence": {
-                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to youself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
+                    msg: "Shaking off everything Mr. Goose has said, you lunge at him. If you're fast enough, maybe you'll get him, you think to yourself.<br><br>It seems you were wrong. Where are you? You see leprechauns frolicking...(respond \"Where am I?\")",
                     dest: Locations.heaven,
                 },
                 "peace": {
-                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enourmous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
+                    msg: "You meekly tread back inside...<br><br>You're shaking slightly as you walk inside. Mumu sees you as she passes by and asks what's wrong. You start to say you just met an enormous goose named Mr. Goose, but the words won't make their way out of your mouth. <br><br>\"Nothing...\" You reply. <br>She shrugs and moves on.",
                     dest: Locations.kitchen,
                 },
             },
@@ -588,33 +643,44 @@ WorldData = {
                         "water": {
                             if: {
                                 cond: {
-                                    has: {
-                                        item: "they tried to make me drink gross water",
-                                        amt: 5
-                                    }
+                                    contains: "lucky hath deleted water",
                                 },
-
-                                msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
-                                get: {
-                                    item: "lucky hath deleted water",
-                                    data: -1
-                                }
+                                msg: "Water?"
                             },
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "they tried to make me drink gross water"
+                                        has: {
+                                            item: "they tried to make me drink gross water",
+                                            amt: 5
+                                        }
                                     },
-
-                                    msg: "Stop trying to make me drink it, it's gross!!!",
-                                    inc: "they tried to make me drink gross water"
+                                    msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
+                                    get: {
+                                        item: "lucky hath deleted water",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "they tried to make me drink gross water",
+                                        data: 0
+                                    }
                                 },
                                 else: {
-                                    msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
-                                    get: {
-                                        item: "they tried to make me drink gross water",
-                                        data: -1
-                                    }
+                                    if: {
+                                        cond: {
+                                            contains: "they tried to make me drink gross water"
+                                        },
+
+                                        msg: "Stop trying to make me drink it, it's gross!!!",
+                                        inc: "they tried to make me drink gross water"
+                                    },
+                                    else: {
+                                        msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                                        get: {
+                                            item: "they tried to make me drink gross water",
+                                            data: -1
+                                        }
+                                    },
                                 },
                             },
                         }
@@ -627,36 +693,68 @@ WorldData = {
                 "water": {
                     if: {
                         cond: {
-                            has: {
-                                item: "they tried to make me drink gross water",
-                                amt: 5
-                            }
+                            contains: "lucky hath deleted water",
                         },
-
-                        msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
-                        get: {
-                            item: "lucky hath deleted water",
-                            data: -1
-                        }
+                        msg: "Water?"
                     },
                     else: {
                         if: {
                             cond: {
-                                contains: "they tried to make me drink gross water"
+                                has: {
+                                    item: "they tried to make me drink gross water",
+                                    amt: 5
+                                }
                             },
-
-                            msg: "Stop trying to make me drink it, it's gross!!!",
-                            inc: "they tried to make me drink gross water"
-                        },
-                        else: {
-                            msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                            msg: "If you're going to be like that, I'll just make it so the water isn't there anymore! (look around)",
                             get: {
-                                item: "they tried to make me drink gross water",
+                                item: "lucky hath deleted water",
                                 data: -1
+                            },
+                            get2: {
+                                item: "they tried to make me drink gross water",
+                                data: 0
                             }
                         },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "they tried to make me drink gross water"
+                                },
+
+                                msg: "Stop trying to make me drink it, it's gross!!!",
+                                inc: "they tried to make me drink gross water"
+                            },
+                            else: {
+                                msg: "The water here is gross, you don't want to drink it. Your water has to be *sophisticated*",
+                                get: {
+                                    item: "they tried to make me drink gross water",
+                                    data: -1
+                                }
+                            },
+                        },
                     },
-                }
+                },
+                "hell": {
+                    if: {
+                        cond: {
+                            contains: "lucky hath deleted water",
+                        },
+                        if: {
+                            cond: {
+                                unseen: "hell bowl lol"
+                            },
+                            msg: "You carefully pad up to where your water bowl used to be. There's a dark red circle instead of the bowl. AS you approach, the circle grows and swallows you! Where are you?",
+                        dest: Locations.hell
+                        },
+                        else: {
+                        msg: "You enter hell using the dark red water bowl portal.",
+                        dest: Locations.hell
+                        },
+                    },
+                    else: {
+                        msg: "Huh?"
+                    }
+                },
             }
         },
         office: {
@@ -701,7 +799,7 @@ WorldData = {
                         },
 
                         img: "Includes/Images/OfficeBabaDead.jpeg",
-                        msg: "You're in the office, baba is dead.<br>\
+                        msg: "You're in the office, Baba is dead.<br>\
                 N: Living room<br>\
                 E: Dining room<br>\
                 - Baba is dead",
@@ -791,7 +889,7 @@ WorldData = {
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "chose kill baba"
+                                        contains: "chose kill Baba"
                                     },
 
                                     msg: "You can't re-kill him, he's still dead! You can revive him if you want, though. (command is \"revive\")"
@@ -824,7 +922,7 @@ WorldData = {
                                 },
                             },
                             else: {
-                                msg: "You jump up and sit on babas lap. You can see his computer, type 'watch' to look at it.",
+                                msg: "You jump up and sit on Baba's lap. You can see his computer, type 'watch' to look at it.",
                                 get: {
                                     item: "want to watch computer??",
                                     data: -1
@@ -864,7 +962,6 @@ WorldData = {
                         cond: {
                             contains: "chose kill Baba"
                         },
-
                         msg: "You casually rewind time. You watch the blood un-pool itself back into Baba as he comes alive again.",
                         get: {
                             item: "chose kill Baba",
@@ -1169,7 +1266,7 @@ WorldData = {
                                     contains2: "water",
                                     contains3: "rest",
                                 },
-                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
+                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at Baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
                                     You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
                                     You can't get down.",
                                 end: 3
@@ -1451,7 +1548,7 @@ WorldData = {
                                     contains: "rest"
                                 },
 
-                                msg: "You are ready. You wander over and meow at baba until he lets you outside",
+                                msg: "You are ready. You wander over and meow at Baba until he lets you outside",
                                 dest: Locations.outside
                             },
                             else: {
@@ -2019,9 +2116,9 @@ WorldData = {
                                 contains2: "chose kill Maia",
                                 contains3: "chose kill Reu",
                                 contains4: "chose kill Nathan",
-                                contains6: "kill point Aliyah",
+                                contains6: "chose kill Aliyah",
                                 contains8: "chose kill Andrew",
-                                contains9: "kill point B",
+                                contains9: "chose kill B",
                             },
                             if: {
                                 cond: {
@@ -2060,7 +2157,6 @@ WorldData = {
                                                 cond: {
                                                     contains: "chose kill Nathan"
                                                 },
-
                                                 msg: "A ghost starts running down the hall, and you realize that it's Nathan! He is singing, and you listen to the words:<br><br><br>\
                                                 \"My... sweet... Werdna...<br>\
                                                 My... sweetheart<br>\
@@ -2117,53 +2213,53 @@ WorldData = {
                                             },
                                             else: {
                                                 msg: "Suddenly, you see Nathan running down the dark hall, singing. You listen to the words:<br><br>\
-                     \"My... sweet... Werdna...<br>\
-                     My... sweetheart<br>\
-                     If you believe in the power of friendship<br>\
-                     Nothing can keep us apart...<br><br>\
-                     But that's just not good enough for me!<br>\
-                     Without Werdna I cannot be<br>\
-                     for if you would not have me then I'll... be<br><br>\
-                     a robot for my Werdna!<br>\
-                     Just for Werdna I will be a robot<br>\
-                     But one small issue is that I may overheat<br>\
-                     Just because, my Werdna is so hot.<br><br>\
-                     My Werdna is too hot for me<br>\
-                     But if not a robot, what else can I be?<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, you're beautiful.<br><br>\
-                     I could be, some chocolate milk<br>\
-                     Nothing quite as sweet.<br>\
-                     An added bonus would be,<br>\
-                     that Werdna's lips, I would meet...<br><br>\
-                     But while chocolate milk is finite<br>\
-                     My love for Werdna is unending<br>\
-                     Because Werdna is my one true love,<br>\
-                     no one else is even contending<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, Werdna I love you<br><br>\
-                     I could be, a chin-up bar<br>\
-                     To make my Wernda stronk<br>\
-                     The problem is, is Werdna's weight<br>\
-                     My Werdna is too chomnk. <br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, Werdna won't you love me.<br><br>\
-                     I could be, a mirror.<br>\
-                     diverting Werdna's gaze.<br>\
-                     For then I'd spend, my final days<br>\
-                     Looking at his wonderful face<br><br>\
-                     Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                     Whatever name you go by doesn't matter.<br>\
-                     I will call you mine.<br><br>\
-                     Werdna, won't you call me yours\"<br><br><br>\
-                     Baffled, you watch as he returns to his room as though nothing happened.<br><br>\
-                     Nathan pops back out and informs you that there are a few extended verses, if you want to hear them.",
+                                                \"My... sweet... Werdna...<br>\
+                                                My... sweetheart<br>\
+                                                If you believe in the power of friendship<br>\
+                                                Nothing can keep us apart...<br><br>\
+                                                But that's just not good enough for me!<br>\
+                                                Without Werdna I cannot be<br>\
+                                                for if you would not have me then I'll... be<br><br>\
+                                                a robot for my Werdna!<br>\
+                                                Just for Werdna I will be a robot<br>\
+                                                But one small issue is that I may overheat<br>\
+                                                Just because, my Werdna is so hot.<br><br>\
+                                                My Werdna is too hot for me<br>\
+                                                But if not a robot, what else can I be?<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, you're beautiful.<br><br>\
+                                                I could be, some chocolate milk<br>\
+                                                Nothing quite as sweet.<br>\
+                                                An added bonus would be,<br>\
+                                                that Werdna's lips, I would meet...<br><br>\
+                                                But while chocolate milk is finite<br>\
+                                                My love for Werdna is unending<br>\
+                                                Because Werdna is my one true love,<br>\
+                                                no one else is even contending<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, Werdna I love you<br><br>\
+                                                I could be, a chin-up bar<br>\
+                                                To make my Wernda stronk<br>\
+                                                The problem is, is Werdna's weight<br>\
+                                                My Werdna is too chomnk. <br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, Werdna won't you love me.<br><br>\
+                                                I could be, a mirror.<br>\
+                                                diverting Werdna's gaze.<br>\
+                                                For then I'd spend, my final days<br>\
+                                                Looking at his wonderful face<br><br>\
+                                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                                Whatever name you go by doesn't matter.<br>\
+                                                I will call you mine.<br><br>\
+                                                Werdna, won't you call me yours\"<br><br><br>\
+                                                Baffled, you watch as he returns to his room as though nothing happened.<br><br>\
+                                                Nathan pops back out and informs you that there are a few extended verses, if you want to hear them.",
                                                 get: {
                                                     item: "heard the main part of the song already bc I don't want spoilers >:(",
                                                     data: -1
@@ -2244,19 +2340,37 @@ WorldData = {
                     else: {
                         if: {
                             cond: {
-                                contains: "Name Phyllis"
+                                contains: "revived Reu"
                             },
-                            img: "Includes/Images/Phyllis.JPG",
-                            msg: "You pad into the room of the tall human that you have seen before. It smiles at you. <br><br>\"Well hello again!\" The human says. <br><br>You meow at Phyllis. It does not respond.<br><br>You take another nap on the human's couch, and return to the hallway a few hours later.",
-                            inc: "rest",
+                            if: {
+                                cond: {
+                                    contains: "Name Phyllis",
+                                },
+                                msg: "You pad into Phyllis' room and greet it. It does not respond. You see the tall human behind its desk. It looks a little confused. Humans are confused sometimes when they're killed and revived, they lose time and it confuses them."
+                            },
+                            else: {
+                                msg: "You pad into the room of the tall human that you'd revived. The human smiles at you, somewhat confused. It doesn't remember you, but it's confused in general because of the loss of time that comes with being killed and revived. Oh well. You curl up on the couch and fall asleep. A while later, you return to the hallway.<br>,br>\
+                                You are now in the hallway.",
+                                inc: "rest"
+                            }
                         },
                         else: {
-                            msg: "You scratch at one of the doors, which is slightly open. A tall human crosses the room and looks at you in confusion. \"Well hello\" It says to you. You pad into the room and see a stuffed blueish blob seated on the couch. \"That's Phyllis\" The human explains to you. You curl up on the couch next to Phyllis and fall asleep. A few hours later, you awaken and leave the room. The tall human watches you leave, confused and unsure of what to do about this random cat wandering the building. You laugh to yourself.",
-                            img: "Includes/Images/Phyllis.JPG",
-                            inc: "rest",
-                            get: {
-                                item: "Name Phyllis",
-                                data: -1,
+                            if: {
+                                cond: {
+                                    contains: "Name Phyllis"
+                                },
+                                img: "Includes/Images/Phyllis.JPG",
+                                msg: "You pad into the room of the tall human that you have seen before. It smiles at you. <br><br>\"Well hello again!\" The human says. <br><br>You meow at Phyllis. It does not respond.<br><br>You take another nap on the human's couch, and return to the hallway a few hours later.",
+                                inc: "rest",
+                            },
+                            else: {
+                                msg: "You scratch at one of the doors, which is slightly open. A tall human crosses the room and looks at you in confusion. \"Well hello\" It says to you. You pad into the room and see a stuffed blueish blob seated on the couch. \"That's Phyllis\" The human explains to you. You curl up on the couch next to Phyllis and fall asleep. A few hours later, you awaken and leave the room. The tall human watches you leave, confused and unsure of what to do about this random cat wandering the building. You laugh to yourself.",
+                                img: "Includes/Images/Phyllis.JPG",
+                                inc: "rest",
+                                get: {
+                                    item: "Name Phyllis",
+                                    data: -1,
+                                },
                             },
                         },
                     },
@@ -2317,12 +2431,10 @@ WorldData = {
                             cond: {
                                 contains: "revived Maia"
                             },
-
                             if: {
                                 cond: {
                                     contains: "weed"
                                 },
-
                                 msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the right side. You enter to see a female human looking around in confusion. You remember killing and reviving the human. <br><br>\
                                 Wandering in, you hop up on its lap. It seems surprised. \"A cat?\" It exclaims at you. \"Why not a dog?\" It sighs. It pets you a few times. You notice that there's still weed in the room. <br><br>\
                                 Later, you leave the room and return to the hallway. You can type \"weed\" to get more weed."
@@ -2342,7 +2454,6 @@ WorldData = {
                         cond: {
                             contains: "chose kill Aliyah"
                         },
-
                         msg: "You enter the room of a human that you'd killed before. You feel a little guilty, since the human had been so happy to see you. You take note of an open closet door with a portal shimmering from inside. You wonder if you should go in...(\"go\" or just \"leave\")",
                         get: {
                             item: "the gift of knowledge",
@@ -2350,11 +2461,27 @@ WorldData = {
                         }
                     },
                     else: {
-                        msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the left side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems excited, and starts to pet you. You fall asleep. A while later, you wake up and see that the human is going into a closet. She comes out a bit later. You go back to the hallway. (\"follow\" or just keep hall-wandering)",
-                        inc: "rest",
-                        get: {
-                            item: "the gift of knowledge",
-                            data: -1
+                        if: {
+                            cond: {
+                                contains: "revived Aliyah",
+                            },
+                            msg: "You go back to the room of one of the humans you'd killed and revived. The human is seated at it's desk and it looks confused. You trot in and meow at it. It looks up at you and smiles. You feel a pang of guilt. All the human had wanted was to pet you. You pad in and the human stands. <br><br>\
+                            \"Look at what I have!\" The human says to you, opening the door to the closet. You peer in to find that there's a swirling blue portal!<br><br>\
+                            \"Want to come?\" The human asks.<br><br>\
+                            (respond with \"follow\" to accept or \"hallway\" to return to the hallway. You can choose to \"follow\" later if you want.)",
+                            get: {
+                                item: "the gift of knowledge",
+                                data: -1
+                            }
+                        },
+                        else: {
+                            msg: "You wander down the hall, past a lounge-type room, and further down the hall. Near the far end of the hall, you see an open door on the left side. You enter to see a female human working at its desk. You wander in and hop up on its lap. It seems excited, and starts to pet you. <br><br>\
+                            You fall asleep. A while later, you wake up and see that the human is going into a closet. She comes out a bit later. You go back to the hallway. (\"follow\" into the closet or \"hallway\" to just keep hall-wandering)",
+                            inc: "rest",
+                            get: {
+                                item: "the gift of knowledge",
+                                data: -1
+                            },
                         },
                     },
                 },
@@ -2363,7 +2490,6 @@ WorldData = {
                         cond: {
                             contains: "chose kill Andrew"
                         },
-
                         if: {
                             cond: {
                                 contains: "Name Andrew"
@@ -2380,47 +2506,86 @@ WorldData = {
                     else: {
                         if: {
                             cond: {
-                                contains: "Name Andrew"
+                                contains: "revived Andrew"
                             },
-
                             if: {
                                 cond: {
-                                    contains: "banana"
+                                    contains: "Name Andrew"
                                 },
-
-                                img: "Includes/Images/AndrewIgnore.JPG",
-                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
-                            You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
-                            \
-                            In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
-                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
-                                inc: "rest",
+                                if: {
+                                    cond: {
+                                        contains: "Andrew's not like other girls",
+                                    },
+                                    msg: "You return to Andrew's room to see how the human is doing. It is still staring at itself in the mirror, dazed. You return to the hallway."
+                                },
+                                else: {
+                                    msg: "You pad down the hall to Andrew's room. You walk in to see the human seating in its chair, staring at itself in the mirror, confused. It touches the places where its wounds used to be. You suppose that it's experiencing some trace memories. You meow at Andrew and it jumps, turning in your direction. You walk up to the human and sit at its feet, meowing. It reaches down to pet you but flinches briefly. It shakes its head and pets you.<br><br>\
+                                    You note to yourself that most humans don't have such strong trace memories. What makes Andrew different? You're not sure, but all you know is that Andrew 'isn't like other girls,' a phrase you'd heard Nathan say once. You leave the room without taking a nap on Andrew's couch, which is a first for you.",
+                                    get: {
+                                        item: "Andrew's not like other girls",
+                                        data: -1
+                                    }
+                                },
                             },
                             else: {
-                                img: "Includes/Images/AndrewIgnore.JPG",
-                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
-                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
-                                inc: "rest",
-                            },
+                                if: {
+                                    cond: {
+                                        contains: "Andrew's not like other girls",
+                                    },
+                                    msg: "You return to the tall but no-longer-intimidating human's room to see how the human is doing. It is still staring at itself in the mirror, dazed. You return to the hallway."
+                                },
+                                else: {
+                                    msg: "You pad down the hall to the tall and not-so-intimidating human's room. You walk in to see the human seating in its chair, staring at itself in the mirror, confused. It touches the places where its wounds used to be. You suppose that it's experiencing some trace memories. You meow at the human and it jumps, turning in your direction. You walk up to the human and sit at its feet, meowing. It reaches down to pet you but flinches briefly. It shakes its head, trying to put it aside, and pets you.<br><br>\
+                                    You note to yourself that most humans don't have such strong trace memories. What makes this one different? You're not sure, but all you know is that it 'isn't like other girls,' a phrase you'd heard Nathan say once. You leave the room without taking a nap on the couch, which is a first for you.",
+                                    get: {
+                                        item: "Andrew's not like other girls",
+                                        data: -1
+                                    }
+                                }
+                            }
                         },
                         else: {
                             if: {
                                 cond: {
-                                    contains: "banana"
+                                    contains: "Name Andrew"
                                 },
-
-                                img: "Includes/Images/AndrewIgnore.JPG",
-                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
-                                You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
-                                You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
-                                In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
-                                inc: "rest",
+                                if: {
+                                    cond: {
+                                        contains: "banana"
+                                    },
+                                    img: "Includes/Images/AndrewIgnore.JPG",
+                                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. <br><br>\
+                            You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                            \
+                            In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                    inc: "rest",
+                                },
+                                else: {
+                                    img: "Includes/Images/AndrewIgnore.JPG",
+                                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. Andrew is seated at a desk. In between the desk and the bed is a contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You can see a mirror on the closet behind Andrew. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance.<br><br>\
+                            You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although Andrew pays no attention to you, you do somewhat enjoy its presence for some reason. A while later, you leave to go back to hall-wandering.",
+                                    inc: "rest",
+                                },
                             },
                             else: {
-                                img: "Includes/Images/AndrewIgnore.JPG",
-                                msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
-                            In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although he pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
-                                inc: "rest",
+                                if: {
+                                    cond: {
+                                        contains: "banana"
+                                    },
+                                    img: "Includes/Images/AndrewIgnore.JPG",
+                                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. <br><br>\
+                                You hear the human grumble something about being out of bananas. You smile to yourself as you remember stepping over Andrew's dead body to take it earlier. <br><br>\
+                                You can see a mirror on the closet behind it. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                                In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although the human pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                    inc: "rest",
+                                },
+                                else: {
+                                    img: "Includes/Images/AndrewIgnore.JPG",
+                                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. There is a fairly tall-looking and somewhat intimidating-looking male human sitting at a desk. You can see a mirror on the closet behind it. There is also a banana sitting on a shelf next to the desk. You note that the desk has a bed suspended above it and that the bottom of the bed has a cage-like appearance. <br><br>\
+                            In between the desk and the bed next to it is a messy contraption of metal poles and wood, which you can only assume is a defense-type of machine to prevent intruders from approaching. You meow at the human, but it is wearing a contraption over its ears that seems to be obstructing its hearing. You walk in anyway and curl up on its couch for a while. Although the human pays no attention to you, you do somewhat enjoy his presence for some reason. You notice a yellow hard hat hanging on his bedpost and you think about stealing it. A while later, you leave to go back to hall-wandering.",
+                                    inc: "rest",
+                                },
                             },
                         },
                     },
@@ -2479,155 +2644,125 @@ WorldData = {
                         "(duet|time|Andrew|Emily)": {
                             if: {
                                 cond: {
-                                    contains: "chose kill Emily"
+                                    type: "or",
+                                    contains1: "chose kill Nathan",
+                                    contains2: "chose kill Andrew",
+                                    contains3: "chose kill Emily",
                                 },
-
-                                if: {
-                                    cond: {
-                                        contains: "chose kill Andrew"
-                                    },
-
-                                    msg: "Sadly, trumpet duet time can't happen. You've killed both trumpeters :(<br><br>\
-                                        \"revive Emily\" and \"revive Andy\" to fix it."
-                                },
-                                else: {
-                                    msg: "Sadly, trumpet duet time can't happen. You've killed a trumpeter :(<br><br>\
-                                    \"revive Emily\" to fix it."
-                                },
+                                msg: "Unfortunately, the show has been cancelled, as you've killed one or more of the performers >:("
                             },
                             else: {
                                 if: {
                                     cond: {
-                                        contains: "chose kill Andrew"
+                                        contains: "Name Andrew"
                                     },
-
-                                    msg: "Sadly, trumpet duet time cannot happen. You've killed a trumpeter :(<br><br>\
-                                    \"revive Werdna\" to fix it..."
+                                    msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                            \"My... sweet... Werdna...<br>\
+                                            My... sweetheart<br>\
+                                            If you believe in the power of friendship<br>\
+                                            Nothing can keep us apart...<br><br>\
+                                            But that's just not good enough for me!<br>\
+                                            Without Werdna I cannot be<br>\
+                                            for if you would not have me then I'll... be<br><br>\
+                                            a robot for my Werdna!<br>\
+                                            Just for Werdna I will be a robot<br>\
+                                            But one small issue is that I may overheat<br>\
+                                            Just because, my Werdna is so hot.<br><br>\
+                                            My Werdna is too hot for me<br>\
+                                            But if not a robot, what else can I be?<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, you're beautiful.<br><br>\
+                                            I could be, some chocolate milk<br>\
+                                            Nothing quite as sweet.<br>\
+                                            An added bonus would be,<br>\
+                                            that Werdna's lips, I would meet...<br><br>\
+                                            But while chocolate milk is finite<br>\
+                                            My love for Werdna is unending<br>\
+                                            Because Werdna is my one true love,<br>\
+                                            no one else is even contending<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, Werdna I love you<br><br>\
+                                            I could be, a chin-up bar<br>\
+                                            To make my Wernda stronk<br>\
+                                            The problem is, is Werdna's weight<br>\
+                                            My Werdna is too chomnk. <br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, Werdna won't you love me.<br><br>\
+                                            I could be, a mirror.<br>\
+                                            diverting Werdna's gaze.<br>\
+                                            For then I'd spend, my final days<br>\
+                                            Looking at his wonderful face<br><br>\
+                                            Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                            Whatever name you go by doesn't matter.<br>\
+                                            I will call you mine.<br><br>\
+                                            Werdna, won't you call me yours\"\
+                                            <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
+                                    get: {
+                                        item: "Name Emily",
+                                        data: -1
+                                    },
                                 },
                                 else: {
-                                    if: {
-                                        cond: {
-                                            contains: "chose kill Nathan"
-                                        },
-
-                                        msg: "Sadly, trumpet duet time can't happen. You've killed their lead singer :(<br><br>\
-                                \"revive Nathan\" before trying to do the trumpet duet again."
-                                    },
-                                    else: {
-                                        if: {
-                                            cond: {
-                                                contains: "Name Andrew"
-                                            },
-
-                                            msg: "As you pad down the hall towards Andrew's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see Andrew coming out of its room. It is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" Andrew explains to you. <br><br>Andrew carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As Andrew approaches the piano, you notice a female human approaching from the opposite direction. The human is also carrying a trumpet<br><br>\"Hello, Emily\" Andrew says to the human. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
-                                \"My... sweet... Werdna...<br>\
-                                My... sweetheart<br>\
-                                If you believe in the power of friendship<br>\
-                                Nothing can keep us apart...<br><br>\
-                                But that's just not good enough for me!<br>\
-                                Without Werdna I cannot be<br>\
-                                for if you would not have me then I'll... be<br><br>\
-                                a robot for my Werdna!<br>\
-                                Just for Werdna I will be a robot<br>\
-                                But one small issue is that I may overheat<br>\
-                                Just because, my Werdna is so hot.<br><br>\
-                                My Werdna is too hot for me<br>\
-                                But if not a robot, what else can I be?<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, you're beautiful.<br><br>\
-                                I could be, some chocolate milk<br>\
-                                Nothing quite as sweet.<br>\
-                                An added bonus would be,<br>\
-                                that Werdna's lips, I would meet...<br><br>\
-                                But while chocolate milk is finite<br>\
-                                My love for Werdna is unending<br>\
-                                Because Werdna is my one true love,<br>\
-                                no one else is even contending<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna I love you<br><br>\
-                                I could be, a chin-up bar<br>\
-                                To make my Wernda stronk<br>\
-                                The problem is, is Werdna's weight<br>\
-                                My Werdna is too chomnk. <br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna won't you love me.<br><br>\
-                                I could be, a mirror.<br>\
-                                diverting Werdna's gaze.<br>\
-                                For then I'd spend, my final days<br>\
-                                Looking at his wonderful face<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, won't you call me yours\"\
-                                <br><br>As Nathan finishes the last note, a single tear falls from his eye. Andrew and Nathan return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where the human lives. You enter the building by following Andrew and Nathan, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                            get: {
-                                                item: "Name Emily",
-                                                data: -1
-                                            },
-                                        },
-                                        else: {
-                                            msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
-                                \"My... sweet... Werdna...<br>\
-                                My... sweetheart<br>\
-                                If you believe in the power of friendship<br>\
-                                Nothing can keep us apart...<br><br>\
-                                But that's just not good enough for me!<br>\
-                                Without Werdna I cannot be<br>\
-                                for if you would not have me then I'll... be<br><br>\
-                                a robot for my Werdna!<br>\
-                                Just for Werdna I will be a robot<br>\
-                                But one small issue is that I may overheat<br>\
-                                Just because, my Werdna is so hot.<br><br>\
-                                My Werdna is too hot for me<br>\
-                                But if not a robot, what else can I be?<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, you're beautiful.<br><br>\
-                                I could be, some chocolate milk<br>\
-                                Nothing quite as sweet.<br>\
-                                An added bonus would be,<br>\
-                                that Werdna's lips, I would meet...<br><br>\
-                                But while chocolate milk is finite<br>\
-                                My love for Werdna is unending<br>\
-                                Because Werdna is my one true love,<br>\
-                                no one else is even contending<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna I love you<br><br>\
-                                I could be, a chin-up bar<br>\
-                                To make my Wernda stronk<br>\
-                                The problem is, is Werdna's weight<br>\
-                                My Werdna is too chomnk. <br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, Werdna won't you love me.<br><br>\
-                                I could be, a mirror.<br>\
-                                diverting Werdna's gaze.<br>\
-                                For then I'd spend, my final days<br>\
-                                Looking at his wonderful face<br><br>\
-                                Werdna! Dandrewlion. Andy. For you I'm trying<br>\
-                                Whatever name you go by doesn't matter.<br>\
-                                I will call you mine.<br><br>\
-                                Werdna, won't you call me yours.\"\
-                                <br><br>As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
-                                            get: {
-                                                item: "Name Emily",
-                                                data: -1
-                                            },
-                                        },
+                                    msg: "As you pad down the hall towards the tall human's room, you decide to fast-forward the time for fun. You stop fast-forwarding when you see it coming out of its room. The human is holding a strange brass-coloured object. The human notices your inquiring look. <br><br>\"A trumpet.\" The human explains to you. <br><br>It carries the trumpet down the hall and out the door as you follow curiously. It is now mid-afternoon, so it is fairly bright outside. Waiting just outside is an enormous grand piano (which you recognize because your family has a piano at home). The situation seems to be getting stranger by the second. <br><br>As the male human approaches the piano, you notice a female human approaching as well, from another direction. This human is also carrying a trumpet.<br><br>\"Hello, Emily\" The male human says to the female. <br><br>\"Hello.\" Emily replies.<br><br>Without another word, the two humans raise the trumpets to their mouths and begin to play, each of them playing their trumpets one-handed. With the other hand, they begin to play piano. You look on, mystified, as the two begin a duet.<br><br>As though the whole arrangement couldn't get any stranger, Nathan suddenly steps out of the building and starts to sing:\
+                                    \"My... sweet... Werdna...<br>\
+                                    My... sweetheart<br>\
+                                    If you believe in the power of friendship<br>\
+                                    Nothing can keep us apart...<br><br>\
+                                    But that's just not good enough for me!<br>\
+                                    Without Werdna I cannot be<br>\
+                                    for if you would not have me then I'll... be<br><br>\
+                                    a robot for my Werdna!<br>\
+                                    Just for Werdna I will be a robot<br>\
+                                    But one small issue is that I may overheat<br>\
+                                    Just because, my Werdna is so hot.<br><br>\
+                                    My Werdna is too hot for me<br>\
+                                    But if not a robot, what else can I be?<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, you're beautiful.<br><br>\
+                                    I could be, some chocolate milk<br>\
+                                    Nothing quite as sweet.<br>\
+                                    An added bonus would be,<br>\
+                                    that Werdna's lips, I would meet...<br><br>\
+                                    But while chocolate milk is finite<br>\
+                                    My love for Werdna is unending<br>\
+                                    Because Werdna is my one true love,<br>\
+                                    no one else is even contending<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, Werdna I love you<br><br>\
+                                    I could be, a chin-up bar<br>\
+                                    To make my Wernda stronk<br>\
+                                    The problem is, is Werdna's weight<br>\
+                                    My Werdna is too chomnk. <br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, Werdna won't you love me.<br><br>\
+                                    I could be, a mirror.<br>\
+                                    diverting Werdna's gaze.<br>\
+                                    For then I'd spend, my final days<br>\
+                                    Looking at his wonderful face<br><br>\
+                                    Werdna! Dandrewlion. Andy. For you I'm trying<br>\
+                                    Whatever name you go by doesn't matter.<br>\
+                                    I will call you mine.<br><br>\
+                                    Werdna, won't you call me yours.\"<br><br>\
+                                    As Nathan finishes the last note, a single tear falls from his eye. Nathan and the other human return inside, and Emily heads off, presumably toward its house. You wonder if you can find out where Emily lives. You enter the building by following Nathan and the other human inside, leaving the piano outside by itself.<br><br>After you re-enter the building, you look back to find that the piano has vanished, and it is now 11:30 PM. You are thoroughly confused.",
+                                    get: {
+                                        item: "Name Emily",
+                                        data: -1
                                     },
                                 },
-                            }
-                        }
+                            },
+                        },
                     }
                 },
                 "kill": {
@@ -2635,67 +2770,118 @@ WorldData = {
                         "(all|everyone)": {
                             if: {
                                 cond: {
-                                    contains: "kill point Em"
+                                    contains1: "chose kill Reu",
+                                    contains2: "chose kill Maia",
+                                    contains3: "chose kill Nathan",
+                                    contains4: "chose kill Andrew",
+                                    contains5: "chose kill Aliyah",
                                 },
-
-                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\" <br><br>\
-                                Now what?",
-                                get: {
-                                    item: "chose kill Reu",
-                                    data: -1
-                                },
-                                get2: {
-                                    item: "chose kill Maia",
-                                    data: -1
-                                },
-                                get3: {
-                                    item: "chose kill Nathan",
-                                    data: -1
-                                },
-                                get4: {
-                                    item: "chose kill Andrew",
-                                    data: -1
-                                },
-                                get5: {
-                                    item: "chose kill Aliyah",
-                                    data: -1
-                                },
-                                inc6: "kill point R",
-                                inc7: "kill point Maia",
-                                inc8: "kill point N",
-                                inc9: "kill point A",
-                                inc10: "kill point Aliyah",
-
+                                msg: "You've killed everyone you can here. Try the garden if you haven't already, or explore around to see if you're missing anything."
                             },
                             else: {
-                                msg: "You go around and kill everyone here. You can revive them individually or by typing \"revive everyone\"<br><br>\
+                                if: {
+                                    cond: {
+                                        contains: "kill point Em"
+                                    },
+                                    msg: "You go around and kill who's alive here. You can revive them individually or by typing \"revive everyone\" <br><br>\
+                                Now what?",
+                                    get: {
+                                        item: "chose kill Reu",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "chose kill Maia",
+                                        data: -1
+                                    },
+                                    get3: {
+                                        item: "chose kill Nathan",
+                                        data: -1
+                                    },
+                                    get4: {
+                                        item: "chose kill Andrew",
+                                        data: -1
+                                    },
+                                    get5: {
+                                        item: "chose kill Aliyah",
+                                        data: -1
+                                    },
+                                    inc6: "kill point R",
+                                    inc7: "kill point Maia",
+                                    inc8: "kill point N",
+                                    inc9: "kill point A",
+                                    inc10: "kill point Aliyah",
+                                    get11: {
+                                        item: "revived Reu",
+                                        data: 0
+                                    },
+                                    get12: {
+                                        item: "revived Maia",
+                                        data: 0
+                                    },
+                                    get13: {
+                                        item: "revived Nathan",
+                                        data: 0
+                                    },
+                                    get14: {
+                                        item: "revived Andrew",
+                                        data: 0
+                                    },
+                                    get15: {
+                                        item: "revived Aliyah",
+                                        data: 0
+                                    },
+
+                                },
+                                else: {
+                                    msg: "You go around and kill everyone who's alive in the building. You can revive them individually or by typing \"revive everyone\"<br><br>\
                                 You can head to the garden now, maybe you'll find a surprise there.<br><br>\
                                 (try \"garden\")",
-                                get: {
-                                    item: "chose kill Reu",
-                                    data: -1
+                                    get: {
+                                        item: "chose kill Reu",
+                                        data: -1
+                                    },
+                                    get2: {
+                                        item: "chose kill Maia",
+                                        data: -1
+                                    },
+                                    get3: {
+                                        item: "chose kill Nathan",
+                                        data: -1
+                                    },
+                                    get4: {
+                                        item: "chose kill Andrew",
+                                        data: -1
+                                    },
+                                    get5: {
+                                        item: "chose kill Aliyah",
+                                        data: -1
+                                    },
+                                    inc6: "kill point R",
+                                    inc7: "kill point Maia",
+                                    inc8: "kill point N",
+                                    inc9: "kill point A",
+                                    inc10: "kill point Aliyah",
+                                    get11: {
+                                        item: "revived Reu",
+                                        data: 0
+                                    },
+                                    get12: {
+                                        item: "revived Maia",
+                                        data: 0
+                                    },
+                                    get13: {
+                                        item: "revived Nathan",
+                                        data: 0
+                                    },
+                                    get14: {
+                                        item: "revived Andrew",
+                                        data: 0
+                                    },
+                                    get15: {
+                                        item: "revived Aliyah",
+                                        data: 0
+                                    },
                                 },
-                                get2: {
-                                    item: "chose kill Maia",
-                                    data: -1
-                                },
-                                get3: {
-                                    item: "chose kill Nathan",
-                                    data: -1
-                                },
-                                get4: {
-                                    item: "chose kill Andrew",
-                                    data: -1
-                                },
-                                get5: {
-                                    item: "chose kill Aliyah",
-                                    data: -1
-                                },
-                                inc6: "kill point R",
-                                inc7: "kill point Maia",
-                                inc8: "kill point N",
-                                inc9: "kill point A",
-                                inc10: "kill point Aliyah",
                             },
                         },
                         "(Andy|Dandrewlion|Werdna|Andrew)": {
@@ -2703,7 +2889,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Andrew"
                                 },
-
                                 msg: "Uh...you've already killed this one..."
                             },
                             else: {
@@ -2881,7 +3066,6 @@ WorldData = {
                                     cond: {
                                         contains: "Treacy killer"
                                     },
-
                                     msg: "Lucky reluctantly goes to kill the Treacys. After slaughtering both of them, she dies shortly after due to sheer grief and sadness. Why did you make her do this? What kind of cruel overlord are you?<br><br>\
                                     You should take some time to think about what you've done. Maybe go back to a more wholesome time in your youth.",
                                     inc: "kill point Claire",
@@ -3040,7 +3224,7 @@ WorldData = {
                                 msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
                             },
                             else: {
-                                msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as he follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than he is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
+                                msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as the human follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than it is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
                                 get: {
                                     item: "Name Andrew",
                                     data: -1,
@@ -3052,22 +3236,36 @@ WorldData = {
                 "mirror": {
                     if: {
                         cond: {
-                            contains: "chose kill Andrew"
+                            contains: "revived Andrew",
                         },
-
-                        msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
-                        You eventually go back to the hallway."
-                    },
-                    else: {
                         if: {
                             cond: {
                                 contains: "Name Andrew"
                             },
-
-                            msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                            msg: "You pad over to Andrew's room and walk in. It is staring confusedly in the mirror. You look in the mirror at yourself, and admire the cat in the mirror. You return to the hallway.",
                         },
                         else: {
-                            msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                            msg: "You pad over to the tall and not-so-intimidating human's room and walk in. It is staring confusedly in the mirror. You look in the mirror at yourself, and admire the cat in the mirror. You return to the hallway.",
+                        },
+                    },
+                    else: {
+                        if: {
+                            cond: {
+                                contains: "chose kill Andrew"
+                            },
+                            msg: "You go to one of your victims' rooms and step over its body to get to the mirror. You stare at it for a while, entranced by the ability of the cat in the mirror to copy your every move. You try to make sudden movements to trick it, but it follows perfectly. <br><br>\
+                        You eventually go back to the hallway."
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "Name Andrew"
+                                },
+                                msg: "Andrew turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work."
+                            },
+                            else: {
+                                msg: "The human turns around in its seat to look at itself in the mirror. After admiring its appearance for several minutes, it goes back to work.",
+                            },
                         },
                     },
                 },
@@ -3076,7 +3274,6 @@ WorldData = {
                         cond: {
                             contains: "chose kill Andrew"
                         },
-
                         msg: "You go to one of your victims' rooms and get a banana from a shelf.",
                         inc: "banana",
                         inc2: "food"
@@ -3086,13 +3283,49 @@ WorldData = {
                             cond: {
                                 contains: "Name Andrew"
                             },
-
                             img: "Includes/Images/AndrewBanana.PNG",
-                            msg: "Andrew eats a banana"
+                            msg: "Andrew eats a banana. You notice another one on the human's shelf and contemplate stealing the banana."
                         },
                         else: {
                             img: "Includes/Images/AndrewBanana.PNG",
-                            msg: "The human eats a banana.",
+                            msg: "The human eats a banana. You notice another one on the human's shelf and contemplate stealing the banana.",
+                        },
+                    },
+                },
+                "steal": {
+                    cmd: {
+                        "banana": {
+                            if: {
+                                cond: {
+                                    contains: "chose kill Andrew",
+                                },
+                                msg: "You sneak into one of your victims' rooms and take a banana.",
+                                inc: "banana"
+                            },
+                            else: {
+                                msg: "You sneak into the human's room and take a banana. The human doesn't notice.",
+                                inc: "banana",
+                            },
+                        },
+                        "hard": {
+                            cmd: {
+                                "hat": {
+                                    if: {
+                                        cond: {
+                                            contains: "chose kill Andrew"
+                                        },
+
+                                        msg: "You don't really want to take the hard hat...what fun is there in taking things from the dead? The best part of taking the hard hat would be to mess with the human...",
+                                    },
+                                    else: {
+                                        msg: "You go to see the tall intimidating human. You dart in, jump onto its bed, and take the yellow hard hat hanging on its bedpost. The human notices you leaving with the hat and doesn't know what to do. You run around the building as the human follows you. As you run through the fourth floor, a human comes out a room. It laughs and says <br><br>\"A cat's taken your hard hat? How did that happen, Andrew?\" <br><br>\"Shut up\" The tall human replies. You run back downstairs, and you're faster than it is, so you make it to Andrew's room first. You leave the hat on the bedpost and leave the room.",
+                                        get: {
+                                            item: "Name Andrew",
+                                            data: -1,
+                                        },
+                                    },
+                                },
+                            },
                         },
                     },
                 },
@@ -3155,7 +3388,7 @@ WorldData = {
                     },
                 },
                 "Jake": {
-                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. You see what appears to be a fairly tall male human who has dark curly hair. You walk into the room and curl up on its lap. It seems surprised but accepts it. It asks you if you like watching sports. You do like watching the players run around on the screen, but you have no idea what's happening in the game. You nod at the human. it seems surprised, but seems to then write it off as its imagination. \"Humans\" You scoff to yourself. <br><br>You fall asleep as the two of you watch sports together. Later, he gets up to go to bed, and you return to the hallway.",
+                    msg: "You wander down a flight of stairs and eventually come across an open door that you decide to enter. You see what appears to be a fairly tall male human who has dark curly hair. You walk into the room and curl up on its lap. It seems surprised but accepts it. It asks you if you like watching sports. You do like watching the players run around on the screen, but you have no idea what's happening in the game. You nod at the human. it seems surprised, but seems to then write it off as its imagination. \"Humans\" You scoff to yourself. <br><br>You fall asleep as the two of you watch sports together. Later, the human gets up to go to bed, and you return to the hallway.",
                     inc: "rest",
                 },
                 "play": {
@@ -3175,7 +3408,6 @@ WorldData = {
                         cond: {
                             contains: "licence to kill revoked"
                         },
-
                         msg: "Your licence to kill was revoked, remember?"
                     },
                     else: {
@@ -3217,12 +3449,11 @@ WorldData = {
                         cond: {
                             contains: "the gift of knowledge"
                         },
-
-                        msg: "You go into the closet where you'd seen the human disappear, as it sits working at its desk.. Where are you?",
+                        msg: "You go into the mysterious closet. Where are you?",
                         dest: Locations.AliyahRoom2,
                     },
                     else: {
-                        msg: "Follow who? Huh?"
+                        msg: "Huh?"
                     }
                 },
                 "revive": {
@@ -3230,7 +3461,7 @@ WorldData = {
                     cmd: {
                         "(all|everyone)": {
                             msg: "You go around and revive everyone you'd killed in this building.",
-                            get: {
+                            get1: {
                                 item: "chose kill Reu",
                                 data: 0
                             },
@@ -3243,16 +3474,40 @@ WorldData = {
                                 data: 0
                             },
                             get4: {
-                                item: "chose kill Emily",
-                                data: 0
-                            },
-                            get5: {
                                 item: "chose kill Andrew",
                                 data: 0
                             },
-                            get6: {
+                            get5: {
                                 item: "chose kill Aliyah",
                                 data: 0
+                            },
+                            get6: {
+                                item: "revived Reu",
+                                data: -1
+                            },
+                            get7: {
+                                item: "revived Maia",
+                                data: -1
+                            },
+                            get8: {
+                                item: "revived Nathan",
+                                data: -1
+                            },
+                            get9: {
+                                item: "revived Emily",
+                                data: -1
+                            },
+                            get10: {
+                                item: "revived Andrew",
+                                data: -1
+                            },
+                            get11: {
+                                item: "revived Aliyah",
+                                data: -1
+                            },
+                            get12: {
+                                item: "chose to revive someone",
+                                data: -1
                             },
                         },
                         "Reu": {
@@ -3260,7 +3515,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Reu"
                                 },
-
                                 msg: "Alright, fine. You decide to revive the tall human, using the power of your healing tears so as to not delete any events you might have done in between killing and reviving the human. You return to the hallway.",
                                 get: {
                                     item: "chose kill Reu",
@@ -3284,7 +3538,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Maia"
                                 },
-
                                 msg: "You decide to revive Maia because you're boring and you don't like living on the edge.",
                                 get: {
                                     item: "chose kill Maia",
@@ -3308,7 +3561,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Nathan"
                                 },
-
                                 msg: "You decide to revive Nathan because you're boring and you don't like living on the edge.",
                                 get: {
                                     item: "chose kill Nathan",
@@ -3332,7 +3584,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Emily"
                                 },
-
                                 msg: "*sigh* fine.",
                                 get: {
                                     item: "chose kill Emily",
@@ -3356,7 +3607,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Andrew"
                                 },
-
                                 msg: "Fine, fine.",
                                 get: {
                                     item: "chose kill Andrew",
@@ -3383,7 +3633,6 @@ WorldData = {
                                 cond: {
                                     contains: "chose kill Aliyah"
                                 },
-
                                 msg: "You decide to revive the human (good choice) using your amnesic healing tears. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                 Later, you return to the hall.",
                                 inc: "rest",
@@ -3879,7 +4128,6 @@ WorldData = {
                             cond: {
                                 contains: "chose kill Eevee"
                             },
-
                             msg: "You look at the dead body of the fluffy cat. You are proud that you managed to take her down, it was quite a fight! It was lucky that you were experienced enough to kill her, or you might not have been able to do it! (If you're feeling guilty, you can \"revive Eevee.\""
                         },
                         else: {
@@ -4317,7 +4565,7 @@ WorldData = {
                             item: "weed mission - completed",
                             data: 1,
                         },
-                        inc: "kill point W",
+                        inc3: "kill point W",
                         dest: Locations.Headquarters,
                     },
                     else: {
@@ -4590,7 +4838,6 @@ WorldData = {
                                                 cond: {
                                                     contains: "Name Aliyah"
                                                 },
-
                                                 if: {
                                                     cond: {
                                                         contains: "north Aliyah"
@@ -4730,12 +4977,10 @@ WorldData = {
                                 cond: {
                                     contains: "who to kill first?"
                                 },
-
                                 if: {
                                     cond: {
                                         contains: "kill point Sandy"
                                     },
-
                                     msg: "You make your way to Spongebob's pineapple. You see through his window that he is sitting on a chair in his living room. You paw at his door.<br><br>\
                                     Answering the door, he smiles asks you your name. <br><br>\
                                     \"My name is Lucky.\" You answer. He welcomes you inside, offering to cook you a Krabby Patty. You have no idea what that is, but you nod anyway. The two of you start to chat as he starts to cook on the stove, and you start thinking of ways to kill him. You are about to pounce on him when you suddenly remember that sponges regenerate when they are cut apart. If you cut him in half, there will just be two living sponges!<br><br>\
@@ -4764,7 +5009,7 @@ WorldData = {
                                         item: "question uninterrupted",
                                         date: -1
                                     },
-                                    inc: "kill point Spongebob",
+                                    inc3: "kill point Spongebob",
                                 },
                             },
                             else: {
@@ -5127,14 +5372,14 @@ WorldData = {
                                     dest: Locations.Headquarters
                                 },
                                 else: {
-                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! The god bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
                                     inc: "kill point L",
                                     inc: "thou art banished!",
                                     dest: Locations.hell,
                                 },
 
                                 else: {
-                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! He bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
+                                    msg: "You hear a voice coming from a higher being. It's the God of Leprechauns! The god bellows \"How dare you so much as touch a hair on one of my lovely leprechauns' heads! You've killed them!? You don't deserve to be here in lovely Leprechaun Heaven! I hereby banish you to hell!\"",
                                     inc: "kill point L",
                                     inc: "thou art banished!",
                                     dest: Locations.hell
@@ -5777,7 +6022,6 @@ WorldData = {
                             cond: {
                                 contains: "Assassination mission"
                             },
-
                             img: "Includes/Images/AliyahRoom2.jpeg",
                             msg: "You look around the room. The bed looks comfortable, the carpet looks soft and fluffy, and the sunlight streams in through the window. The door is open and you see a hallway. (\"leave\" to go to the hallway, \"portal\" to go to the building where Nathan lives now, \"Assassination\" to go back to your mission, or \"Headquarters\" to return to headquarters).",
                             clear: 1,
@@ -6029,7 +6273,7 @@ WorldData = {
                     }
 
                 },
-                "stairs": {
+                "(stairs|staircase|down|downstairs)": {
                     msg: "You look down the stairs and wonder how careful you should be. \"Be careful\" or \"just go\"?",
                     get: {
                         item: "stairs question",
@@ -6041,12 +6285,12 @@ WorldData = {
                         cond: {
                             contains: "stairs question"
                         },
-
                         msg: "You step carefully down the stairs, coming to the bottom. You see a living room and a door that leads outside.",
                         get: {
                             item: "stairs question",
                             data: 0
-                        }
+                        },
+                        dest: Locations.AliyahDownstairs
                     },
                     else: {
                         msg: "What are you trying to do?",
@@ -6136,7 +6380,6 @@ WorldData = {
                 l: {
                     msg: "You look around the room.<br><br>",
                     clear: 1
-
                 },
                 "(return|leave)": {
                     if: {
@@ -6153,9 +6396,8 @@ WorldData = {
                 },
                 "kill": {
                     msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
-                            \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
+                    \"Try poison next time.\" They advise you, placing your on their bed. You decide to take a nap there instead of trying to kill them again because sleep is the best. You wake up a bit later and jump down from the bed.",
                     inc: "rest",
-
                     cmd: {
                         "Zara": {
                             msg: "You jump at Zara's head, aiming to kill. You'd aimed for their eyes, but your claws dig into their hair instead and you hang awkwardly from their hair. They lift you gently to sit on their hair and you sit on top of their head in confusion. They take your off their head and pet you with one hand, balancing you with the other. They giggle.<br><br>\
@@ -6227,7 +6469,6 @@ WorldData = {
                                     item: "idk why but they're trying to go even further up than Home Hardware 1",
                                     data: 0
                                 },
-
                                 dest: Locations.hell
                             },
                             else: {
@@ -6235,7 +6476,6 @@ WorldData = {
                                     cond: {
                                         contains: "idk why but they're trying to go even further up than Home Hardware 3"
                                     },
-
                                     msg: "You're not going to get anywhere this time..",
                                     get: {
                                         item: "idk why but they're trying to go even further up than Home Hardware 4",
@@ -6247,7 +6487,6 @@ WorldData = {
                                         cond: {
                                             contains: "idk why but they're trying to go even further up than Home Hardware 2"
                                         },
-
                                         msg: "You're not going to get anywhere this time..",
                                         get: {
                                             item: "idk why but they're trying to go even further up than Home Hardware 3",
@@ -6259,8 +6498,7 @@ WorldData = {
                                             cond: {
                                                 contains: "idk why but they're trying to go even further up than Home Hardware 1"
                                             },
-
-                                            msg: "I see you're still trying. Huh. There's something to be said for perseverence, I suppose.",
+                                            msg: "I see you're still trying. Huh. There's something to be said for perseverance, I suppose.",
                                             get: {
                                                 item: "idk why but they're trying to go even further up than Home Hardware 2",
                                                 data: -1
@@ -6431,7 +6669,7 @@ WorldData = {
 
                                                         msg: "You decide to revive the human (good choice). You use your amnesic healing tears to heal the human. When you're finished, the human sees you and reaches out to pet you. You comply, hopping up onto the human's lap, feeling somewhat guilty for killing the human in the first place. You fall asleep.<br><br>\
                                                         Later, you return to the hall.",
-                                                        inc: "rest",
+                                                        inc3: "rest",
                                                         get: {
                                                             item: "Aliyah life/death question",
                                                             data: 0
@@ -6522,8 +6760,7 @@ WorldData = {
                                     cond: {
                                         contains: "Eevee life/death question"
                                     },
-
-                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you chage your mind.",
+                                    msg: "Yay, living life on the edge. Type \"revive Eevee\" if you change your mind.",
                                     get: {
                                         item: "Eevee life/death question",
                                         data: 0
@@ -6587,9 +6824,7 @@ WorldData = {
                                                 cond: {
                                                     contains: "Nathan life/death question"
                                                 },
-
                                                 msg: "Yes! You decide to keep the human dead, living life on the edge! \"Revive Nathan\" brings the human back to life, if you want that. You are now in the hallway outside his room",
-
                                                 get: {
                                                     item: "Nathan life/death question",
                                                     data: 0
@@ -6689,7 +6924,6 @@ WorldData = {
                             cond: {
                                 contains: "started to rescue the cat"
                             },
-
                             msg: "Just type rescue, check back in after if you get stuck. \"Kill Wonder Pets\" is also an option if you wanted to, though."
                         },
                         else: {
@@ -6707,22 +6941,21 @@ WorldData = {
                             cond: {
                                 contains: "WonderPetsMissionQuestion"
                             },
-
                             msg: "Commands:<br><br>\
-                                look<br>\
-                                kill Wonder Pets<br>\
-                                inv<br>\
-                                help<br>\
-                                clear<br>\
-                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                            look<br>\
+                            kill Wonder Pets<br>\
+                            inv<br>\
+                            help<br>\
+                            clear<br>\
+                            hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
                         },
                         else: {
                             msg: "Commands:<br><br>\
-                                look<br>\
-                                inv<br>\
-                                help<br>\
-                                clear<br>\
-                                hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
+                            look<br>\
+                            inv<br>\
+                            help<br>\
+                            clear<br>\
+                            hint-> hopefully very helpful for if you don't know what to do, the hint is a specific list of possible commands that changes depending on where you are in the game"
                         }
                     },
                     l: {
@@ -6734,7 +6967,7 @@ WorldData = {
                             clear: 1
                         },
                         else: {
-                            img: "https://lh3.googleusercontent.com/proxy/CHvzjCL9JDs_g7adD1_WVgjk8q0v282tX9Voat97E56r0G2zzGyxiQ_qUQRVT-zliQ_SxvVKEyTirM44UGJlTH3-btmBLdR2TD2K7UYhn3s9WOy-YzszCzG5GKoEwqAIZ2cBcy8RZFCzc9AClo6UI_OOOldggMY-XeiNGO4",
+                            img: "https://lh3.googleusercontent.com/proxy/XDdXbxL2X9k6ReyfX5w9IEVjjKXySDMZIprj-h5SdRrWOhdo94RPC74DI8Xo7PgCWMwQ0T4eHuARXqbvs1FarldyZRBvbQ459w",
                             msg: "The building seems to only contain one room, and it has a colourful rug on the floor with the alphabet written around the edge, and children's toys are scattered around the room. As you look around, a hamster and a duckling jump out of their enclosures and come running up to you. <br><br>\
                             \"We're so glad you're here!\" The hamster says to you. <br><br>\
                             \"We really need your help!\" The duckling adds. \"See, our friend Tuck is not feeling well today, and we need someone to help us on our missions!\" The duckling motions to a turtle lying in its tank. <br><br>\
@@ -6763,7 +6996,6 @@ WorldData = {
                             cond: {
                                 unseen: "started to rescue the cat",
                             },
-
                             img: "Includes/Images/WonderPets.jpeg",
                             msg: "Stepping back, you nod. \"Let's save that cat!\" You say. The duckling and hamster look relieved that they're no longer in imminent danger. <br><br>\
                             The three of you board the boat-plane contraption and fly straight toward a series of wooden squares on the wall, which are each filled with children's belongings. You brace yourself for impact, wondering why they are choosing to crash. At the last second, a flap opens and you see that there is a path leading straight outside.<br><br>\
@@ -6776,22 +7008,20 @@ WorldData = {
                             \"I'm Lucky, pronouns she/her, and I'm a cat.\" You reluctantly introduce yourself. You concede that you should be cordial, at least for now. Put your murderous tendencies on hold.<br><br>\
                             \"Shall we rescue the cat?\" You say, sighing inwardly. This was not what you had in mind when you'd heard that you were now an assassin.<br><br>\
                             (respond with \"rescue\", this is the only possible command)",
-
                         },
                         else: {
                             msg: "\"Yes! Now, let's think of a solution together to fix this problem.\" Linny says, looking like he's about to start singing again. You resist the temptation to strangle him.<br><br>\
                             You use your telekinetic powers to part some branches to help free the cat, and you carefully let the cat float down.<br><br>\
-                                Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
-                                \"What's gonna work?\" Linny asks. <br><br>\
-                                \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
-                                \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
-                                They blink at you in surprise.<br><br>\
-                                Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
-                                Your surroundings solidify again. Look around!",
+                            Meanwhile, Linny and Ming-ming seem to be singing about teamwork. <br><br>\
+                            \"What's gonna work?\" Linny asks. <br><br>\
+                            \"Teamwork!\" Ming-ming responds brightly. You roll your eyes.<br><br>\
+                            \"I got the cat down!\" You inform them as the cat reaches the ground. <br><br>\
+                            They blink at you in surprise.<br><br>\
+                            Your surroundings start to dissolve and you struggle to understand your surroundings as it changes. You spin around, trying to find an explanation, anything. You see that while the Wonder Pets are disappearing, the recently rescued cat is not. In fact, the cat glares at you threateningly. <br><br>\
+                            Your surroundings solidify again. Look around!",
                             clear: 1,
                             dest: Locations.UnluckyEncounter,
                         }
-
                     },
                     "No": {
                         msg: "You decide not to go on the mission (you can still choose to go on the mission if you want). You can look around the room a bit as the three animals look at you uncomfortably."
@@ -6874,7 +7104,6 @@ WorldData = {
                                         contains7: "revived Andrew",
                                         contains8: "revived Emily"
                                     },
-
                                     if: {
                                         cond: {
                                             contains: "revived Eevee"
@@ -6942,14 +7171,12 @@ WorldData = {
                                 }
                             },
                             else: {
-
                                 img: "Includes/Images/DarkTitans.jpeg",
                                 msg: "Unlucky smiles, knowing that she now has the upper hand.<br><br>\
                             \"Not that I needed any more help, but just for fun, I've brought with me everyone who you've killed.\" As she says this, many figures materialize out of black clouds. You know some of their names: Nathan, Baba, Mumu. Some names you don't even know, you just killed them for no reason other than to feel something. Most of the ones that you don't know are Nathan's friends from his new living place. Some are people and cats you killed from past lives. They all look...different. They have the same darkness around their eyes that Unlucky has, and they are enveloped in the same dark and wispy magic. There's no sympathy in their hollow eyes.<br><br>\
                             \"You made the decision to never revive anyone, to never even try to avoid the consequences for your actions. In some sense, I like that. Reviving is somewhat cowardly, in my opinion, but it can also show remorse for your actions. You felt no remorse for anyone you had killed, and for that we will kill you.\"<br><br>\
                             You can do nothing but lie there as you are surrounded by those who had once been your victims. You are enveloped in the blackness, which feels like a cloud of knives. The pain escalates and you can feel blood pouring out of you. <br><br>\
                             You open your eyes to find yourself in a place that you presume to be hell.",
-
                                 get: {
                                     item: "unremorseful serial killer banished",
                                     data: -1
@@ -6971,6 +7198,483 @@ WorldData = {
                 },
             }
         },
+        AliyahDownstairs: {
+            cmd: {
+                l: {
+                    img: "Includes/Images/AliyahDownstairs.jpeg",
+                    msg: "You see a door that leads outside, and a living room with a TV and couches.",
+                    clear: 1
+                },
+                "living": {
+                    cmd: {
+                        "room": {
+                            msg: "You trot into the living room. There is a comfy looking recliner and two couches, as well as a TV. No one is here.",
+                        },
+                    }
+                },
+                "(hallway|hall)": {
+                    msg: "You are now in the hallway. You see the living room and a door that leads outside."
+                },
+                "(couch|couches)": {
+                    if: {
+                        cond: {
+                            unseen: "mm comfy couch",
+                        },
+                        msg: "You curl up on one of the couches in the living room. Mm. Comfy.",
+                        inc: "rest",
+                    },
+                    else: {
+                        msg: "You curl up on the other couch in the living room. Mm. Comfy.",
+                        inc: "rest",
+                    }
+                },
+                "(television|TV)": {
+                    msg: "You watch TV."
+                },
+                "(stairs|up|upstairs)": {
+                    msg: "You trot up the stairs.",
+                    dest: Locations.AliyahHallway
+                },
+                "(door|outside)": {
+                    if: {
+                        cond: {
+                            unseen: "exciting outside portal"
+                        },
+                        if: {
+                            cond: {
+                                unseen: "window breaking portal times"
+                            },
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. You are surprised to face some resistance as you try to push through the blue swirling cloud. You pop your head through to the other side to see Headquarters. The agents on the other side narrow their eyes at you and shove you back through. You tumble backward and the door closes on its own. You try to reopen it, but it won't open. <br><br>\
+                            You are sitting at the bottom of the stairs, somewhat dazed from the somersault.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. Coming out the other side, you realize that it's Assassin's Headquarters. Huh. You look behind you to see that the portal has closed. There's no way back to the house. Well, maybe there's a mission you can go on...",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not just a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there's a lawn, a street, and a grey car.<br><br>\
+                                        You run outside excitedly, frolicking about. After wandering the area for a while, you find that you are completely lost. You scratch the door of a nearby house, hoping that the people inside will be nice.<br><br>\
+                                        The door opens and a human looks down at you in surprise.<br><br>\
+                                        \"Well, hello!\" The human says to you.<br><br>\
+                                        \"My name's Amy, my pronouns are she/her.\" She informs you. She shakes her head to herself. \"Why am I introducing myself to a cat...\" Amy mutters to herself<br><br>\
+                                        You walk past her and enter the house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You head over to the door and try to push it open. It's pretty hard for a cat to open. Good thing you're not a normal cat! You use your telekinesis to turn the doorknob, opening the door. Looking out, you see that there is just a portal on the other side. There's no way to get to the outside that you see through the window. You decide to go through the portal. Where are you? (\"look\")",
+                                        dest: Locations.PacifistHeadquarters
+                                    },
+                                },
+                            },
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You open the door to find the same portal that was at the window. You try to go through, but it's pretty unyielding.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You open the door to find the same portal that was at the window. You go through the portal to Headquarters.",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You open the door with your telekinesis and run outside, making your way to Amy's house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You open the door to find the same portal that was at the window. You go to Headquarters.",
+                                        dest: Locations.PacifistHeadquarters
+                                    }
+                                },
+                            }
+                        },
+                        else: {
+                            if: {
+                                cond: {
+                                    contains: "licence to kill revoked",
+                                },
+                                msg: "You decide to try to open the door again. Unsurprisingly, it refuses to budge.",
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill",
+                                    },
+                                    msg: "You go through the portal to Headquarters.",
+                                    dest: Locations.Headquarters
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            type: "or",
+                                            contains1: "kill point B",
+                                            contains2: "kill point M",
+                                            contains3: "kill point N",
+                                            contains4: "kill point Aliyah",
+                                            contains5: "kill point Em",
+                                            contains6: "kill point R",
+                                            contains7: "kill point Maia",
+                                            contains8: "kill point A",
+                                            contains9: "kill point Claire",
+                                            contains10: "kill point Ev",
+                                            contains11: "kill point W",
+                                            contains12: "kill point S",
+                                            contains13: "kill point WP",
+                                            contains14: "kill point Beaver",
+                                            contains15: "kill point L",
+                                        },
+                                        msg: "You open the door with your telekinesis and run outside, making your way to Amy's house.",
+                                        dest: Locations.AmyHouse
+                                    },
+                                    else: {
+                                        msg: "You go to Headquarters.",
+                                        dest: Locations.PacifistHeadquarters
+                                    }
+                                },
+                            },
+                        }
+                    }
+                },
+                "window": {
+                    msg: "You look out the window to see a grey car, a lawn, and a street. There's a lot less green than at your house, although to be fair you do live in the middle of a forest. You contemplate breaking the window."
+                },
+                "break": {
+                    cmd: {
+                        "window": {
+                            if: {
+                                cond: {
+                                    unseen: "window breaking portal times",
+                                },
+                                if: {
+                                    cond: {
+                                        unseen: "exciting outside portal",
+                                    },
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill revoked",
+                                        },
+                                        msg: "You smash the window in an attempt to get outside, but instead, the second the glass breaks, you realize that the view through the window was an illusion, and there is simply a portal surrounding the house. You decide to go through the portal. <br><br>\
+                                        You are surprised to face some resistance as you try to push through the blue swirling cloud. You pop your head through to the other side to see Headquarters!<br><br>\
+                                        The agents on the other side narrow their eyes at you and shove you back through. You tumble backward and the window repairs itself on its own. You try to break it again it, but it won't break. <br><br>",
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                type: "or",
+                                                contains1: "kill point B",
+                                                contains2: "kill point M",
+                                                contains3: "kill point N",
+                                                contains4: "kill point Aliyah",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point R",
+                                                contains7: "kill point Maia",
+                                                contains8: "kill point A",
+                                                contains9: "kill point Claire",
+                                                contains10: "kill point Ev",
+                                                contains11: "kill point W",
+                                                contains12: "kill point S",
+                                                contains13: "kill point WP",
+                                                contains14: "kill point Beaver",
+                                                contains15: "kill point L",
+                                            },
+                                            msg: "You smash the window and find yourself outside. Looking out, you see that there's a lawn, a street, and a grey car.<br><br>\
+                                            You start frolicking about. After wandering the area for a while, you find that you are completely lost. You scratch the door of a nearby house, hoping that the people inside will be nice.<br><br>\
+                                            The door opens and a human looks down at you in surprise.<br><br>\
+                                            \"Well, hello!\" The human says to you.<br><br>\
+                                            \"My name's Amy, my pronouns are she/her.\" She informs you. She shakes her head to herself. \"Why am I introducing myself to a cat...\" Amy mutters to herself<br><br>\
+                                            You walk past her and enter the house.",
+                                            dest: Locations.AmyHouse
+                                        },
+                                        else: {
+                                            msg: "You smash the window in an attempt to get outside, but instead, the second the glass breaks, you realize that the view through the window was an illusion, and there is simply a portal surrounding the house. You are immediately transported somewhere.",
+                                            dest: Locations.PacifistHeadquarters
+                                        }
+                                    },
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill revoked",
+                                        },
+                                        msg: "You break the window to find the same portal that was at the door. You try to go through, but it's pretty unyielding.",
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                contains: "licence to kill",
+                                            },
+                                            msg: "You break the window to find the same portal that was at the door. You go through to find yourself in Headquarters.",
+                                            dest: Locations.Headquarters
+                                        },
+                                        else: {
+                                            if: {
+                                                cond: {
+                                                    type: "or",
+                                                    contains1: "kill point B",
+                                                    contains2: "kill point M",
+                                                    contains3: "kill point N",
+                                                    contains4: "kill point Aliyah",
+                                                    contains5: "kill point Em",
+                                                    contains6: "kill point R",
+                                                    contains7: "kill point Maia",
+                                                    contains8: "kill point A",
+                                                    contains9: "kill point Claire",
+                                                    contains10: "kill point Ev",
+                                                    contains11: "kill point W",
+                                                    contains12: "kill point S",
+                                                    contains13: "kill point WP",
+                                                    contains14: "kill point Beaver",
+                                                    contains15: "kill point L",
+                                                },
+                                                msg: "You break the window and run, making your way to Amy's house.",
+                                                dest: Locations.AmyHouse
+                                            },
+                                            else: {
+                                                msg: "You break the window to find the same portal that was at the door. You go through to find yourself in Headquarters.",
+                                                dest: Locations.PacifistHeadquarters
+                                            }
+                                        },
+                                    }
+                                },
+                            },
+                            else: {
+                                if: {
+                                    cond: {
+                                        contains: "licence to kill revoked",
+                                    },
+                                    msg: "You try to break the window again, but it's impenetrable. You glare at it in frustration.",
+                                },
+                                else: {
+                                    if: {
+                                        cond: {
+                                            contains: "licence to kill",
+                                        },
+                                        msg: "You hop through the broken window and find yourself in Headquarters!",
+                                        dest: Locations.Headquarters
+                                    },
+                                    else: {
+                                        if: {
+                                            cond: {
+                                                type: "or",
+                                                contains1: "kill point B",
+                                                contains2: "kill point M",
+                                                contains3: "kill point N",
+                                                contains4: "kill point Aliyah",
+                                                contains5: "kill point Em",
+                                                contains6: "kill point R",
+                                                contains7: "kill point Maia",
+                                                contains8: "kill point A",
+                                                contains9: "kill point Claire",
+                                                contains10: "kill point Ev",
+                                                contains11: "kill point W",
+                                                contains12: "kill point S",
+                                                contains13: "kill point WP",
+                                                contains14: "kill point Beaver",
+                                                contains15: "kill point L",
+                                            },
+                                            msg: "You hop through the broken window and run outside, making your way to Amy's house.",
+                                            dest: Locations.AmyHouse
+                                        },
+                                        else: {
+                                            msg: "You hop through the broken window and find yourself in Headquarters!",
+                                            dest: Locations.PacifistHeadquarters
+                                        }
+
+                                    },
+                                },
+                            }
+                        },
+                    }
+                },
+                "(down|downstairs)": {
+                    if: {
+                        cond: {
+                            unseen: "went into scary Aliyah basement"
+                        },
+                        msg: "You head downstairs. It's cold down here and you don't like it much. You head back upstairs. You're now on the ground level, you see a door leading outside, a living room, a kitchen, and a dining room."
+                    },
+                    else: {
+                        msg: "You've been down there already, you didn't like it all that much..."
+                    }
+                },
+                "kitchen": {
+                    msg: "There's not much going on here, it's just a kitchen and it seems like this family doesn't have a cat, there's no food and water bowls."
+                },
+                "dining": {
+                    cmd: {
+                        "room": {
+                            msg: "There's not much going on there, it's just a table with some chairs."
+                        }
+                    }
+                },
+                "bathroom": {
+                    msg: "You go to a small room and find a toilet. Finally, some good water. As you turn to leave, you see a scary-looking set of stairs leading downstairs. You run to the hallway.",
+                    inc: "water"
+                },
+                "leave": {
+                    msg: "You are in the hallway."
+                }
+            }
+        },
+        PacifistHeadquarters: {
+            cmd: {
+                l: {
+                    msg: "You're in Headquarters! When this is more developed, you'll have missions to go on.<br><br>\
+                    \"portal\" to return back through the portal."
+                },
+                ".*": {
+                    msg: "Lol haven't written a thing for that (yet). Contact me and tell me to add what you want me to add."
+                },
+                "(portal|back)": {
+                    msg: "You go through the portal and return to the house. You are now at the bottom of the stairs."
+                }
+            }
+        },
+        AmyHouse: {
+            cmd: {
+                l: {
+                    msg: "You're in Amy's house. There are balloons everywhere. You suppose that they've had a celebration recently.",
+                    cmd: {
+                        "(computer|laptop)": {
+                            if: {
+                                cond: {
+                                    contains: "computer curiosity",
+                                },
+                                msg: "You wander the house in search of a computer so you can find the game. You find one in the basement, a thin laptop with what looks like an apple icon on top of it. You use your telekinesis to open the laptop. Darn, there's a password needed. <br><br>\
+                                You meow at Amy until she follows you downstairs. She looks confused, but she looks around to try to figure out what you want her to see. You use your telekinesis to take hold of her finger and you bring it to the computer. She looks alarmed at the mysterious force, but she places it on a black square in the corner of the keyboard, and the laptop is now open. <br><br>\
+                                \"Do you want to see the game Aliyah and Nathan made about you?\" Amy says. She opens a program and sends a text to Aliyah, who quickly responds with a link. She opens the link, and you see a black screen with white letters. <br><br>\
+                                \"Lucky's Text Adventure!<br>Welcome to Lucky's Text Adventure!! Everybody's gone out, so you're left alone at home with Baba. He just works at his computer though, so you're basically alone. What to do now...<br><br>\
+                                You read the text and decide that it looks interesting. You start to play the game.",
+                                end: 3374
+                            },
+                            else: {
+                                msg: "You decide to look for a computer. You find one downstairs. Alright, who cares?"
+                            }
+                        },
+                    }
+                },
+                "meow": {
+                    cmd: {
+                        "Amy": {
+                            msg: "You meow at Amy. She smiles at you and pets you. <br><br>\
+                            \"This is just like in Aliyah's cat game!\" She comments. She shakes her head to herself, dismissing the idea that she's living in the game. You wonder if she's talking about the cat game that Nathan's developing, 'Lucky's Cat Adventures,' which is about you. You wonder to yourself what's in the game. <br><br>\
+                            You consider looking for a computer to try to play the game yourself (you have telekinesis, so you can use that to press the keys).",
+                            get: {
+                                item: "computer curiosity",
+                                data: -1
+                            },
+                        },
+                        "(balloons|balloon)": {
+                            if: {
+                                cond: {
+                                    unseen: "balloons do be scary"
+                                },
+                                msg: "You paw at one of the balloons. It pops, startling you."
+                            },
+                            else: {
+                                msg: "Nope, you won't make that mistake again. You glare at the deflated balloon."
+                            }
+
+                        },
+                    }
+                },
+                "Amy": {
+                    msg: "You meow at Amy. She smiles at you and pets you. <br><br>\
+                    \"This is just like in Aliyah's cat game!\" She comments. She shakes her head to herself, dismissing the idea that she's living in the game. You wonder if she's talking about the cat game that Nathan's developing, 'Lucky's Cat Adventures,' which is about you. You wonder to yourself what's in the game. <br><br>\
+                    You consider looking for a computer to try to play the game yourself (you have telekinesis, so you can use that to press the keys).",
+                    get: {
+                        item: "computer curiosity",
+                        data: -1
+                    },
+                },
+                "(computer|laptop)": {
+                    if: {
+                        cond: {
+                            contains: "computer curiosity",
+                        },
+                        msg: "You wander the house in search of a computer so you can find the game. You find one in the basement, a thin laptop with what looks like an apple icon on top of it. You use your telekinesis to open the laptop. Darn, there's a password needed. <br><br>\
+                        You meow at Amy until she follows you downstairs. She looks confused, but she looks around to try to figure out what you want her to see. You use your telekinesis to take hold of her finger and you bring it to the computer. She looks alarmed at the mysterious force, but she places it on a black square in the corner of the keyboard, and the laptop is now open. <br><br>\
+                        \"Do you want to see the game Aliyah and Nathan made about you?\" Amy says. She opens a program and sends a text to Aliyah, who quickly responds with a link. She opens the link, and you see a black screen with white letters. <br><br>\
+                        \"Lucky's Text Adventure!<br>Welcome to Lucky's Text Adventure!! Everybody's gone out, so you're left alone at home with Baba. He just works at his computer though, so you're basically alone. What to do now...<br><br>\
+                        You read the text and decide that it looks interesting. You start to play the game.",
+                        end: 3374
+                    },
+                    else: {
+                        msg: "You decide to look for a computer. You find one downstairs. Alright, who cares?"
+                    }
+                },
+                "(balloons|balloon)": {
+                    if: {
+                        cond: {
+                            unseen: "balloons do be scary"
+                        },
+                        msg: "You paw at one of the balloons. It pops, startling you."
+                    },
+                    else: {
+                        msg: "Nope, you won't make that mistake again. You glare at the deflated balloon."
+                    }
+
+                },
+                ".*": {
+                    msg: "Hasn't been written yet, whoops. Contact me and tell me to add what you want me to add."
+                },
+                "(leave|back|outside|door)": {
+                    msg: "You open the front door of Amy's house and you wander around until you get back to the house that looks familiar. Phew, I guess you're not lost anymore! You hop back in through the broken window. You are now at the bottom of the stairs.",
+                    dest: Locations.AliyahDownstairs
+                }
+            }
+        }
     },
 },
     Aliases = {
@@ -6999,6 +7703,7 @@ WorldData = {
         "(sleep laundry|nap laundry|sleep laundry pile|nap laundry pile)": "laundry",
         "(sleep blanket|nap blanket|get rest)": "blanket",
         "(get chocolate milk)": "chocolate milk",
+        "(watch tv|watch television|box|watch box)": "TV",
         "(look outside|look out window|sit chair)": "chair",
         "(nap bed|sleep bed|nap)": "bed",
         "(steal hard hat|take hard hat)": "hard hat",
@@ -7009,6 +7714,7 @@ WorldData = {
         "(get catnip|find catnip|catnip time|look catnip|catnippp|hunt catnip|hunt for catnip)": "catnip",
         "(chichiens brain is too smol to understand|mocks|mocks you)": "mock",
         "adventure time": "s",
+        "(backdoor|back door|frontdoor|front door)": "door",
         "(Mr. Goose|mr goose)": "goose",
         "get weed": "weed",
         "(inventory|inv)": "i",
