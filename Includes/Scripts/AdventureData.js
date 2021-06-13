@@ -320,6 +320,9 @@ WorldData = {
                     move (north|south|west|up|down)<br>\
                     catnip<br>\
                     squirrel<br>\
+                    garden<br>\
+                    bear<br>\
+                    chickens<br>\
                     climb<br>\
                     kill squirrel<br>\
                     portal<br>\
@@ -329,7 +332,16 @@ WorldData = {
                     hint<br>"
                 },
                 "catnip": {
-                    msg: "You wander around the forest until you come across a familiar-looking plant. It smells amazing! You roll around in it and eat some of it, thoroughly enjoying yourself. After a while, you realize that in your...inebriated state... you'd accidentally lifted the house off the ground with your telekinetic powers! Oops. You blink, restoring it back to how it was.",
+                    if: {
+                        cond: {
+                            unseen: "catnip tiiime"
+                        },
+                        msg: "You go to the garden and come across some catnip. It smells amazing! You roll around in it and eat some of it, thoroughly enjoying yourself. After a while, you realize that in your...inebriated state... you'd accidentally lifted the house off the ground with your telekinetic powers! Oops. You blink, restoring it back to how it was.",
+                    },
+                    else: {
+                        msg: "You go back to the catnip in the garden and roll around in it and eat some. You are careful to not lose control of your powers."
+                    }
+                   
                 },
                 "squirrel": {
                     if: {
@@ -346,9 +358,18 @@ WorldData = {
                             msg: "The squirrel looks pretty fast, do you want to chase it?"
                         },
                         else: {
+                            if: {
+                                cond: {
+                                    unseen: "squirrel killy times"
+                                },
                             msg: "You sprint after the squirrel. It's pretty speedy, but you're speedier! You kill the squirrel and you're now excited to put it on Nathan's pillow!",
                             inc: "squirrel",
                             inc: "kill point S"
+                            },
+                            else: {
+                                msg: "You kill another squirrel!",
+                                inc: "squirrel"
+                            }
                         }
                     }
                 },
@@ -359,12 +380,20 @@ WorldData = {
                                 cond: {
                                     contains: "licence to kill revoked"
                                 },
-
                                 msg: "Killing things doesn't feel so fun anymore..."
                             },
                             else: {
+                                if: {
+                                    cond: {
+                                        unseen: "squirrel killing time :)"
+                                    },
                                 msg: "You find a squirrel and kill it! You can put this on Nathan's pillow!",
-                                inc: "squirrel"
+                                inc: "squirrel",
+                                },
+                                else: {
+                                    msg: "You kill another squirrel.",
+                                    inc: "squirrel"
+                                }
                             }
                         }
                     },
@@ -374,7 +403,7 @@ WorldData = {
                     dest: Locations.kitchen
                 },
                 l: {
-                    msg: "It's a pretty nice day! Not cold enough to form the terrible wet white fluff, but not too hot that shade is required. You survey the landscape of infinite litterbox, and decide that the garden is an excellent spot. Perhaps if you look around a little, you'll find a squirrel to chase, or even better, some catnip!<br>\
+                    msg: "It's a pretty nice day! Not cold enough to form the terrible wet white fluff, but not too hot that shade is required. You survey the landscape of infinite litterbox, and decide that the garden is an excellent spot. You notice the cages of chickens and think about going to see them. You can also feel the call of the bear from the front of the house. Perhaps if you look around a little, you'll find a squirrel to chase, or even better, some catnip!<br>\
                 N: You can go back inside<br>\
                 S: You can go on an adventure into the forest.<br>\
                 W: To the west, there's just the patio. Pretty boring.",
@@ -404,6 +433,9 @@ WorldData = {
                             }
                         },
                     },
+                },
+                "garden": {
+                    msg: "You head over to the garden and look at the plants."
                 },
                 "fight": {
                     if: {
@@ -454,6 +486,24 @@ WorldData = {
                         You find yourself in a room...",
                         dest: Locations.PacifistHeadquarters
                     },
+                },
+                "(bear|front)": {
+                    msg: "You decide to follow the call of the bear to the front of the house. As you pad over, you can feel its pull grow stronger. As you approach The Bear, you wonder how you knew that it was a bear that was calling you.<br><br>\
+                    You bow and succumb to The Bear's power.",
+                    end: 53472
+                },
+                "(chicken|chickens)": {
+                    if: {
+                        cond: {
+                            unseen: "fed the chickens kale"
+                        },
+                    msg: "You head over to the chicken coop and watch them wander around for a little. You remember that the chickens like to eat kale, which your humans grow in their garden. You go fetch it and feed it to the chickens (placing it into their coop with telekinesis).",
+                    inc: "kale"
+                    },
+                    else: {
+                        msg: "You feed the chickens some more kale.",
+                        inc: "kale"
+                    }
                 }
             },
         },
