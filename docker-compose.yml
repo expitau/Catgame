@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  luckyadventure:
+    container_name: lucky_adventure
+    image: nginx:alpine
+    volumes:
+        - .:/usr/share/nginx/html
+    ports:
+        - 80:80

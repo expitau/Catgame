@@ -1,0 +1,73 @@
+<head></head>
+<style>
+    body {
+        margin: 0px;
+    }
+    #console {
+        padding: 0px;
+        height: 100%;
+        overflow-y: auto;
+        background-color: black;
+    }
+
+    #consoletext {
+        color: rgb(255, 255, 255);
+        font-family: Monospace;
+        margin: 0px 0px 0px 0px;
+    }
+
+    #textinput {
+        resize: none;
+        margin: -10px 0px -3px -9px;
+        border: none;
+        outline: none;
+        background: none;
+        color: rgb(255, 255, 255);
+        font-family: Monospace;
+        width: 90%;
+        overflow: hidden;
+    }
+
+    #prompt {
+        margin: 0px 0px 0px 0px;
+        color: rgb(255, 255, 255);
+        font-family: Monospace;
+    }
+
+    /* width */
+
+    ::-webkit-scrollbar {
+        width: 15px;
+    }
+
+    /* Track */
+
+    ::-webkit-scrollbar-track {
+        background: rgb(0, 0, 0);
+    }
+
+    /* Handle */
+
+    ::-webkit-scrollbar-thumb {
+        background: rgb(50, 50, 50);
+    }
+
+    /* Handle on hover */
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgb(70, 70, 70);
+    }
+</style>
+<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
+<script type="text/javascript" src="Includes/Scripts/Console.js"></script>
+<div id="console" onClick="document.getElementById('textinput').focus()">
+    <p id="consoletext">
+        Welcome to Lucky's Text Adventure!! Meow meow's outside right now, so the house has fallen into chaos! What
+        to do now...
+        <br><br> Type "help" for a list of commands
+        <br>
+    </p>
+    <p id="prompt">>>>&nbsp
+        <textarea autofocus rows="1" id="textinput" onkeydown="checkInput();"></textarea>
+    </p>
+</div>
