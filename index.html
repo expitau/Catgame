@@ -6,6 +6,10 @@
     <link rel="icon" type="image/png" href="Includes/Icon.png">
 </head>
 
+<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
+<script type="text/javascript" src="https://expitau-dev.github.io/Maneki/Maneki.js"></script>
+<script type="text/javascript" src="Includes/Scripts/Adventure.js"></script>
+
 <body id="body">
     <div id="background">
         <button id="lightmode" onclick="ToggleMode()">Light mode</button>
@@ -204,7 +208,7 @@
                 </tr>
             </table>
         </div>
-        <object id="console" type="text/html" data="prompt.html"/>
+        <terminal id="console" style="color: white; background-color: black;"></terminal>
         <div id="ad-container">
             <img class="ad" src="Includes/Ad_NVT.png" id="ad1" onclick="clickAd()" hidden>
             <img class="ad" src="Includes/Ad_Goose.png" id="ad2" onclick="clickAd()" hidden>
@@ -268,7 +272,7 @@
 
     function flash(id) {
         document.getElementById(id).hidden = true;
-        setTimeout("document.getElementById(\"" + id + "\").hidden = false",500);
+        setTimeout("document.getElementById(\"" + id + "\").hidden = false", 500);
     }
 
     var secretunlock = (new URLSearchParams(window.location.search)).get("code") == 720;

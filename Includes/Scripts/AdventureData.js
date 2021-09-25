@@ -18,15 +18,15 @@ WorldData = {
             clear: 1
         },
         h: {
-            msg: "Commands:<br><br>\
-            move (north|east|south|west|up|down)<br>\
-            look<br>\
-            look [item]<br>\
-            get [item]<br>\
-            use [item]<br>\
-            meow at [item]<br>\
-            inv<br>\
-            help<br>\
+            msg: "Commands:\n\n\
+            move (north|east|south|west|up|down)\n\
+            look\n\
+            look [item]\n\
+            get [item]\n\
+            use [item]\n\
+            meow at [item]\n\
+            inv\n\
+            help\n\
             clear"
         },
         kill: {
@@ -102,9 +102,9 @@ WorldData = {
         kitchen: {
             cmd: {
                 l: {
-                    msg2: "You're in the kitchen, it gets pretty loud here sometimes, but the sun is shining through the window and is very warm.<br>\
-                    N: The dining room<br>\
-                    S: There's a door leading outside<br>\
+                    msg2: "You're in the kitchen, it gets pretty loud here sometimes, but the sun is shining through the window and is very warm.\n\
+                    N: The dining room\n\
+                    S: There's a door leading outside\n\
                     - The sun is shining onto the floor",
                     clear: 1,
                     cmd: {
@@ -149,10 +149,10 @@ WorldData = {
         outside: {
             cmd: {
                 l: {
-                    msg: "It's a pretty nice day! Not cold enough to form the terrible wet white fluff, but not too hot that shade is required. You survey the landscape of infinite litterbox, and decide that the garden is an excellent spot.<br>\
-                    N: You can go back inside<br>\
-                    S: You can go on an adventure into the forest.<br> \
-                    W: You can go around front<br>\
+                    msg: "It's a pretty nice day! Not cold enough to form the terrible wet white fluff, but not too hot that shade is required. You survey the landscape of infinite litterbox, and decide that the garden is an excellent spot.\n\
+                    N: You can go back inside\n\
+                    S: You can go on an adventure into the forest.\n \
+                    W: You can go around front\n\
                     - There is a catnip plant growing in the garden",
                     clear: 1,
                     cmd: {
@@ -176,8 +176,8 @@ WorldData = {
                             end: 1
                         },
                         "(w|front|path)": {
-                            msg: "You are immediately startled by a leaf in the wind, and you bolt the nearest tree.<br>\
-                            You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
+                            msg: "You are immediately startled by a leaf in the wind, and you bolt the nearest tree.\n\
+                            You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.\n\n\n\
                             You can't get down.",
                             end: 3
                         }
@@ -197,12 +197,12 @@ WorldData = {
         dining_room: {
             cmd: {
                 l: {
-                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on lulu when she's eating, but she isn't here right now.<br>\
-                    N: The entryway<br>\
-                    S: The kitchen<br>\
-                    W: The office<br>\
-                    D: The basement, but you don't need to go down there<br>\
-                     - There's food here<br>\
+                    msg: "You're in the dining room, where the food and water bowls are. You like to sneak up on lulu when she's eating, but she isn't here right now.\n\
+                    N: The entryway\n\
+                    S: The kitchen\n\
+                    W: The office\n\
+                    D: The basement, but you don't need to go down there\n\
+                     - There's food here\n\
                      - There's water here",
                     clear: 1,
                     cmd: {
@@ -264,9 +264,9 @@ WorldData = {
         office: {
             cmd: {
                 l: {
-                    msg: "You're in the office, baba is here working on his laptop. You like baba, baba gives nice pets.<br>\
-                    N: Living room<br>\
-                    E: Dining room<br>\
+                    msg: "You're in the office, baba is here working on his laptop. You like baba, baba gives nice pets.\n\
+                    N: Living room\n\
+                    E: Dining room\n\
                     - Baba is here",
                     clear: 1,
                     cmd: {
@@ -311,11 +311,11 @@ WorldData = {
         living_room: {
             cmd: {
                 l: {
-                    msg: "You are in the living room, one of your favorites! Mumu is sleeping in her cat bed. There's an empty glass on the table.<br>\
-                    N: The window<br>\
-                    E: Entryway<br>\
-                    S: The office<br>\
-                    - Mumu is here<br>\
+                    msg: "You are in the living room, one of your favorites! Mumu is sleeping in her cat bed. There's an empty glass on the table.\n\
+                    N: The window\n\
+                    E: Entryway\n\
+                    S: The office\n\
+                    - Mumu is here\n\
                     - There's an empty glass on the table.",
                     clear: 1,
                     cmd: {
@@ -333,10 +333,10 @@ WorldData = {
                 meow: {
                     cmd: {
                         "mumu": {
-                            msg: "You meow at mumu, she replies:<br><br>\
-                            \"My meow meow's gone awayyy<br>\
-                            I'll now be sad throughout the day!<br>\
-                            There's just nothing else to say!<br>\
+                            msg: "You meow at mumu, she replies:\n\n\
+                            \"My meow meow's gone awayyy\n\
+                            I'll now be sad throughout the day!\n\
+                            There's just nothing else to say!\n\
                             Meow meow's goneeee, meow meow's goneeeee!\""
                         }
                     }
@@ -358,8 +358,8 @@ WorldData = {
                                         cond: {
                                             contains: "A sock"
                                         },
-                                        msg: "You give mumu the sock, and she is instantly comforted. She thanks you by telling you how to finally defeat the wretched lulu<br><br>\
-                                    \"Mbpthh mfthh mphh mmm pfhht mbt mbewow...\"<br><br>\
+                                        msg: "You give mumu the sock, and she is instantly comforted. She thanks you by telling you how to finally defeat the wretched lulu\n\n\
+                                    \"Mbpthh mfthh mphh mmm pfhht mbt mbewow...\"\n\n\
                                     ...prehaps her mouth was too full",
                                         get: {
                                             item: "A sock",
@@ -422,17 +422,17 @@ WorldData = {
                         cond: {
                             contains: "lulu"
                         },
-                        msg: "You're in the entryway. It's pretty dirty. The door leads outside.<br>\
-                        N: Outside<br>\
-                        E: Hallway<br>\
-                        S: Dining room<br>\
+                        msg: "You're in the entryway. It's pretty dirty. The door leads outside.\n\
+                        N: Outside\n\
+                        E: Hallway\n\
+                        S: Dining room\n\
                         W: Living room",
                         clear: 1
                     },
                     else: {
-                        msg: "You're in the entryway. It's pretty dirty. The door leads outside. You see the dreaded lulu at the end of the hall, she trots into emily's room<br>\
-                        E: Hallway<br>\
-                        S: Dining room<br>\
+                        msg: "You're in the entryway. It's pretty dirty. The door leads outside. You see the dreaded lulu at the end of the hall, she trots into emily's room\n\
+                        E: Hallway\n\
+                        S: Dining room\n\
                         W: Living room",
                         clear: 1,
                         get: {
@@ -450,8 +450,8 @@ WorldData = {
                                     contains2: "You have had a drink",
                                     contains3: "You are well rested"
                                 },
-                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.<br>\
-                                        You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.<br><br><br>\
+                                msg: "You are ready. You are excited. You are so excited. You bound over and meow at baba until he lets you outside. As soon as you're out you bolt for the forest and climb up a tree.\n\
+                                        You climb and you climb until you can't climb anymore. You look down. You're so high! You feel accomplished.\n\n\n\
                                         You can't get down.",
                                 end: 3
                             },
@@ -479,9 +479,9 @@ WorldData = {
         hallway1: {
             cmd: {
                 l: {
-                    msg: "You are in the middle of the hallway, James' door is closed. You suspect he's in there, but doesn't want to be bothered right now.<br>\
-                        E: Hallway<br>\
-                        S: Bathroom<br>\
+                    msg: "You are in the middle of the hallway, James' door is closed. You suspect he's in there, but doesn't want to be bothered right now.\n\
+                        E: Hallway\n\
+                        S: Bathroom\n\
                         W: Entryway",
                     clear: 1
                 },
@@ -514,9 +514,9 @@ WorldData = {
         hallway2: {
             cmd: {
                 l: {
-                    msg: "You are at the end of the hallway, Emily's door is next to you, and you see Lulu's ugly face peering at you from on top of the bed<br>\
-                        N: Emily's room<br>\
-                        S: Meow's room<br>\
+                    msg: "You are at the end of the hallway, Emily's door is next to you, and you see Lulu's ugly face peering at you from on top of the bed\n\
+                        N: Emily's room\n\
+                        S: Meow's room\n\
                         W: Hallway",
                     clear: 1,
                     cmd: {
@@ -560,9 +560,9 @@ WorldData = {
         bathroom: {
             cmd: {
                 l: {
-                    msg: "You are in the bathroom. You can see the large, white bowl in the corner.<br>\
-                    N: The hallway<br>\
-                    E: Meow's bedroom<br>\
+                    msg: "You are in the bathroom. You can see the large, white bowl in the corner.\n\
+                    N: The hallway\n\
+                    E: Meow's bedroom\n\
                     - There's a toilet here",
                     clear: 1,
                     cmd: {
@@ -600,10 +600,10 @@ WorldData = {
         meow_room: {
             cmd: {
                 l: {
-                    msg: "You are in Meow's room, she has lots of blankets. You see your sleeping bag nest in the corner of the room.<br>\
-                    N: Hallway<br>\
-                    W: The bathroom<br>\
-                    - Your sleeping bag nest is here<br>\
+                    msg: "You are in Meow's room, she has lots of blankets. You see your sleeping bag nest in the corner of the room.\n\
+                    N: Hallway\n\
+                    W: The bathroom\n\
+                    - Your sleeping bag nest is here\n\
                     - There's a pile of socks on the ground here",
                     clear: 1,
                     cmd: {
