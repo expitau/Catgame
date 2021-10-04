@@ -30,7 +30,13 @@ Locations = Object.freeze({
     UnluckyEncounter: "UnluckyEncounter",
     AliyahDownstairs: "AliyahDownstairs",
     PacifistHeadquarters: "PacifistHeadquarters",
-    AmyHouse: "AmyHouse"
+    AmyHouse: "AmyHouse",
+    GrebelMerged: "GrebelMerged",
+    MergeTime: "MergeTime",
+    HomeMerged: "HomeMerged",
+    HeadquartersMerged: "HeadquartersMerged",
+    GrebelHallwayMerged: "GrebelHallwayMerged"
+
 
 });
 
@@ -4331,7 +4337,6 @@ WorldData = {
                         cond: {
                             contains: "Save the cats mission - completed"
                         },
-
                         msg: "You are in Assassin's Headquarters! You currently have no missions, but check back later! <br>Your completed/assigned missions appear in your inventory along with their status.",
                         clear: 1
                     },
@@ -7722,6 +7727,124 @@ WorldData = {
                 "(leave|back|outside|door)": {
                     msg: "You open the front door of Amy's house and you wander around until you get back to the house that looks familiar. Phew, I guess you're not lost anymore! You hop back in through the broken window. You are now at the bottom of the stairs.",
                     dest: Locations.AliyahDownstairs
+                }
+            }
+        },
+        MergeTime: {
+            msg: "You hath merged",
+            "Grebel": {
+                if: {
+                    cond: {
+                        unseen: "mergy merge"
+                    },
+                    msg: "..."
+                },
+                else: {
+                    msg: "You decide to go into the closet labelled 'Grebel.'<br>\
+                    You find lots of coats and you push past them to the back of the closet. You see that the back of the closet is a portal, and you enter it and come out of the closet into Grebel! As you leave the closet, Aliyah is laughing about 'coming out of the closet.' You roll your eyes. <br><br>\
+                    Look around!",
+                    dest: Locations.GrebelMerged
+                },
+            },
+            "Home": {
+                if: {
+                    cond: {
+                        unseen: "mergy merge"
+                    },
+                    msg: "..."
+                },
+                else: {
+                    msg: "You decide to go into the closet labelled 'Home.' ",
+                    dest: Locations.HomeMerged
+                },
+            },
+            "Assassin's Headquarters": {
+                if: {
+                    cond: {
+                        unseen: "mergy merge"
+                    },
+                    msg: "..."
+                },
+                else: {
+                    msg: "You decide to go into the closet labelled 'Assassin's Headquarters.' ",
+                    dest: Locations.HeadquartersMerged
+                },
+            },
+            ".*": {
+                if: {
+                    cond: {
+                        unseen: "just merged",
+                    },
+                    msg: "You look around and notice, to your horror, that you are much higher from the ground than you are used to being. (type anything to continue)",
+                },
+                else: {
+                    if: {
+                        cond: {
+                            unseen: "mergy merge"
+                        },
+                        msg: "You attempt to walk and realize that walking on two legs is incredibly difficult. Why do humans do this? You drop to the floor and attempt to walk on all fours, but you find that your pesky human legs are too long to allow you to comfortably stand on your legs and hands. You sigh. Rising up to a human standing position, you take a few steps. After a bit of practice (and the human's muscle memory), you have successfully learned to walk in a straight line. As you're thinking this to yourself, you can feel another presence in your mind. It's laughing. <br>\
+                        \"Ha, as if *I* could ever be straight,\" the strange presence says. You look around frantically for the source of the sound, but you see nothing.<br>\
+                        \"I'm not standing there, I'm in your head.\" It says, and you can somehow sense that it would be rolling its eyes if you looked at it.<br>\
+                        \"We've merged, you now control my body. I'm not sure exactly why or how, but that's the situation now.\" The presence explains. \"I'm probably just going to quietly sleep in the back of your mind, since I can't control things anyway, so have fun living my life!\"<br>\
+                        \"Wait! Who are you?? You say aloud, wondering how to communicate with the strange presence.\"<br>\
+                        \"Ah, I guess I forgot to introduce myself.\" The presence says. \"My name is Aliyah. My pronouns are she/her, and I like to 'code' text adventure-style cat games!\" She says. You get a mental image of a female human putting up peace signs. <br><br>\
+                        \"I wanted a bit of a front-row seat to the game, but I think I did it wrong...\" She says sheepishly. You have no idea what she's talking about.<br>\
+                        \"Anyway, looks like you're stuck in my body now! Have fun!\" She retreats into the back of your mind, and you get a mental image of her eating popcorn as she watches. <br><br>\
+                        You're not really sure what to do.",
+                        get: {
+                            item: "looked around",
+                            data: -1
+                        },
+                    },
+                    else: {
+                        msg: "You start to register your surroundings and determine that you are in a strange room. The walls are a sky-blue colour and there are a few couches and a few comfortable-looking chairs, and a few closets. You note that it's unusual for rooms to have several closets, but it's also unusual for cats to merge with humans.<br><br>\
+                        You take a closer look at the closets and notice that each one has a rectangular engraved plaque at the top, just above the doors of the closet. Which closet do you choose?<br><br>\
+                        Your options are:<br><br>\
+                        Grebel<br>\
+                        Home<br>\
+                        Assassin's Headquarters<br>\
+                        Narnia<br><br>\
+                        Note that you will not be able to come back here."
+                    }
+                },
+            }, 
+        },
+        GrebelMerged: {
+            l: {
+                msg: "As you walk out of the closet, you see that you're in Nathan's room at Grebel. <br><br>\
+                \"Hi Nathan!\" You say. He jumps out of his seat.<br>\
+                \"Aliyah? What are you doing here?\" You blink at him. He can understand you?<br>\
+                \"I just walked into a portal and showed up here.\" You explain. He laughs. YOu're confused. Why does he think that was a joke? <br><br>\
+                You go back to the closet and open it to show him the portal, then realize that there is no portal in there. Huh.<br>\
+                You leave the room.<br><br>\
+                \"Bye, love you!\" Nathan calls after you. you walk down the hall and peer into different rooms. You trip a few times, still getting used to these dumb legs, but it seems that you're okay for the most part."
+            },
+
+        },
+        HomeMerged: {
+            l: {
+                if: {
+                    cond: {
+                        unseen: "arrived at home?"
+                    },
+                    msg: "You look around. This isn't where you expected to go when you went into the 'home' door..."
+                },
+                else: {
+                    
+                }
+                
+            }
+        },
+        HeadquartersMerged: {
+            cmd: {
+                l: {
+                    if: {
+                        cond: {
+                            unseen: "just arrived"
+                        },
+                        msg: "You've arrived at Assassin's Headquarters! "
+                    }
+                    
                 }
             }
         }
