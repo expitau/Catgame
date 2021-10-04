@@ -5,5 +5,7 @@ services:
     image: nginx:alpine
     volumes:
         - .:/usr/share/nginx/html
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
     ports:
         - 80:80
