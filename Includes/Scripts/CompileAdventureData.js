@@ -1,4 +1,4 @@
-require("./AdventureData2.js")
+require("./AdventureData_Legacy.js")
 
 let indents = 0;
 let out = "";
@@ -100,9 +100,9 @@ function compileToJS(obj) {
 
     for (const [key, value] of Object.entries(obj)) {
         if (matchKey(key, "msg")) {
-            append(`t.write(\`${value.replace(/(\n|\<br\>) */gi, "\n")}\`);`)
+            append(`print(\`${value.replace(/(\n|\<br\>) */gi, "\n")}\`);`)
         } else if (matchKey(key, "img")) {
-            append(`// t.writeImg("${value}");`)
+            append(`print("[image]${value}");`)
         } else if (matchKey(key, "clear")) {
             continue;
             // append(`t.clear();`)
@@ -126,7 +126,7 @@ function compileToJS(obj) {
         } else if (key == 'dest') {
             append(`goTo("${value}");`)
         } else if (key == 'end') {
-            append(`return -1;`)
+            append(`endGame(${value})`)
         } else {
             append(`// UNDEFINED_KEY '${key}';`)
         }

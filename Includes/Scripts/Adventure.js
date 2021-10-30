@@ -69,6 +69,7 @@ function parseLine(line) {
 }
 
 function handleCommand(line) {
+    console.log("oncmd")
     parseLine(line);
     t.addEventListener("onCommand", (line) => { handleCommand(line) })
 }
@@ -165,28 +166,7 @@ t.addEventListener("onCommand", (line) => { handleCommand(line) })
 //     return follow_cmd(WorldData, cmd);
 // }
 
-// function end(flag) {
-//     if (flag == -2) {
-//         t.write("Press enter to continue watching the blinking lights");
-//         flag = 2;
-//     } else if (flag == 6) {
-//         t.write("You have the Goose Cult ending");
-//     } else if (flag == 8) {
-//         window.location.href = "https://www.youtube.com/embed/g_y15ozNchY?autoplay=1";
-//     } else if (flag == 2) {
-//         window.location.href = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-//     } else if (flag == 666) {
-//         window.location.href = "https://www.youtube.com/embed/lDnva_3fcTc?autoplay=1";
-//     } else if (flag == 540) {
-//         window.location.href = "https://www.youtube.com/embed/KPP4Cfupzhs?autoplay=1";
-//     } else if (flag == 541) {
-//         window.location.href = "https://www.youtube.com/embed/UyANUnGoGcE?autoplay=1";
-//     } else if (flag == 799) {
-//         window.location.href = "https://www.youtube.com/embed/qCMZYEIlztY?autoplay=1";
-//     } else {
-//         location.reload()
-//     }
-// }
+
 
 // function processcmds(context) {
 //     var executionOrder = ["clear\d*", "img\d*", "msg\d*", "dest\d*", "inv\d*", "get\d*", "inc\d*", "end\d*"]
