@@ -105,7 +105,6 @@ function compileToJS(obj) {
             append(`print("[image]${value}");`)
         } else if (matchKey(key, "clear")) {
             continue;
-            // append(`t.clear();`)
         } else if (matchKey(key, "get")) {
             append(`variables["${value.item}"] = ${value.data}`)
         } else if (matchKey(key, "inc")) {
@@ -114,7 +113,6 @@ function compileToJS(obj) {
             append(`displayInventory();`)
         } else if (matchKey(key, "cmd")) {
             continue;
-            // append(`// PLEASE DEFINE CMD;`)
         } else if (matchKey(key, "if")) {
             append(`if (${getCond(value.cond)}) {`)
             compileToJS(Object.fromEntries(Object.entries(value).filter(([filterkey, filterval]) => filterkey != 'cond')))
