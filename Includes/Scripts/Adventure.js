@@ -1,30 +1,88 @@
-var endflag = 0;
-var waitingcount = 0;
 
-maneki = new Maneki(1)
-var t = maneki.terminals[0];
-// t.attachCommand(".*", handle)
 
-function has(item, count = null) {
-    for (const [invitem, invdata] of Object.entries(Inventory)) {
-        if (item == invitem && ((count == null && invdata != 0) || (count != null && Math.abs(invdata) >= Math.abs(count)))) {
-            return true;
+var t = Maneki.getTerminal("luckyadventure")
+
+// let cmdList = {};
+// function updateTerminalCommands() {
+//     console.log("updated")
+//     for (const [trigger, f] of Object.entries(commands)) {
+//         cmdList[trigger] = f;
+//     }
+//     for (const [trigger, f] of Object.entries(currentLocation?.commands)) {
+//         cmdList[trigger] = f;
+//     }
+//     for (const [trigger, f] of Object.entries(cmdList)) {
+//         let rx = trigger;
+//         rx = rx.replace(/\*/g, "\\b(\\w*)\\b")
+//         for (const [alias, options] of Object.entries(aliases)) {
+//             rx = rx.replace(new RegExp(`\\b${alias}\\b`, "gi"), `(?:${alias}|${options.join("|")})`)
+//         }
+//         rx = new RegExp(rx);
+//         t.addEventListener("onCommand", (line) => {
+//             line.match(rx) && f(line.split(" ").slice(1))
+//         })
+//     }
+//     if (currentLocation.connections) {
+//         for (const [dir, destAtn] of Object.entries(currentLocation?.connections)) {
+//             t.addEventListener("onCommand", (line) => {
+//                 line.match(dir) && destAtn(line.split(" ").slice(1))
+//             })
+//         }
+//     }
+//     t.addEventListener("onCommand", updateTerminalCommands)
+// }
+
+// updateTerminalCommands();
+
+function parseLine(line) {
+    for (const [alias, options] of aliases) {
+        for (const option of options) {
+            line = line.replace(new RegExp(`\\b${option}\\b`, "gi"), alias)
         }
     }
-    return false;
+    
+    console.log(line)
+    for (const [trigger, f] of Object.entries(currentLocation?.commands)) {
+        if (line.match(new RegExp("^" + trigger + ".*$"))) {
+            f(line.split(new RegExp("\\s+")).slice(1))
+            return;
+        }
+    }
+    
+    if (currentLocation.connections) {
+        for (const [trigger, f] of Object.entries(currentLocation?.connections)) {
+            if (line.match(new RegExp("^m " + trigger + ".*$"))) {
+                f(line.split(new RegExp("\\s+")).slice(1))
+                return;
+            }
+        }
+    }
+
+    for (const [trigger, f] of Object.entries(commands)) {
+        console.log(line)
+        console.log(trigger)
+        if (line.match(new RegExp("^" + trigger + ".*$"))) {
+            f(line.split(new RegExp("\\s+")).slice(1))
+            return;
+        }
+    }
 }
 
-for (const [trigger, f] of Object.entries(commands)){
-    rx = trigger;
-    rx = rx.replace(/\*/g, "\\b(\\w*)\\b")
-    for (const [alias, options] of Object.entries(aliases)){
-        rx = rx.replace(new RegExp(`\\b${alias}\\b`, "gi"), `(?:${alias}|${options.join("|")})`)
-    }
-    rx = new RegExp(rx);
-    t.attachCommand(rx, (line, args) => {
-        f(...args)
-    })
+function handleCommand(line) {
+    parseLine(line);
+    t.addEventListener("onCommand", (line) => { handleCommand(line) })
 }
+
+t.addEventListener("onCommand", (line) => { handleCommand(line) })
+
+// function has(item, count = null) {
+//     for (const [invitem, invdata] of Object.entries(Inventory)) {
+//         if (item == invitem && ((count == null && invdata != 0) || (count != null && Math.abs(invdata) >= Math.abs(count)))) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
 
 
 // function evaluateelmt(type, value) {
