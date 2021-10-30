@@ -1,239 +1,42 @@
-var loc = "kitchen";
-var inv = {};
-var endflag = 0;
-var waitingcount = 0;
 
-maneki = new Maneki(1)
-var t = maneki.terminals[0];
-t.attachCommand(".*", handle)
 
-function has(item, count = null) {
-    for (const [invitem, invdata] of Object.entries(inv)) {
-        if (item == invitem && ((count == null && invdata != 0) || (count != null && Math.abs(invdata) >= Math.abs(count)))) {
-            return true;
+var t = Maneki.getTerminal("luckyadventure")
+
+function parseLine(line) {
+    for (const [alias, options] of aliases) {
+        for (const option of options) {
+            line = line.replace(new RegExp(`\\b${option}\\b`, "gi"), alias)
         }
     }
-    return false;
-}
-
-function evaluateelmt(type, value) {
-    if (type.match(new RegExp("contains\d*", "gi"))) {
-        return has(value);
-    }
-    if (type.match(new RegExp("has\d*", "gi")) && value.hasOwnProperty("amt") && value.hasOwnProperty("item")) {
-        return has(value.item, value.amt);
-    }
-    if (type.match(new RegExp("cond\d*", "gi"))) {
-        return evaluatecond(value);
-    }
-    if (type.match(new RegExp("unseen", "gi"))) {
-        if (has(value)) {
-            return false;
-        } else {
-            return true;
+    
+    console.log(line)
+    for (const [trigger, f] of Object.entries(currentLocation?.commands)) {
+        if (line.match(new RegExp("^" + trigger + ".*$"))) {
+            f(line.split(new RegExp("\\s+")).slice(1))
+            return;
         }
     }
-    return false;
-}
-
-function evaluatecond(condition) {
-    if (!condition.hasOwnProperty("type") || condition.type == "and") {
-        for (const [type, value] of Object.entries(condition)) {
-            if (!type.match(new RegExp("type\d*", "gi")) && !evaluateelmt(type, value)) {
-                return false;
+    
+    if (currentLocation.connections) {
+        for (const [trigger, f] of Object.entries(currentLocation?.connections)) {
+            if (line.match(new RegExp("^m " + trigger + ".*$"))) {
+                f(line.split(new RegExp("\\s+")).slice(1))
+                return;
             }
         }
-        return true;
-    } else if (condition.type == "or") {
-        for (const [type, value] of Object.entries(condition)) {
-            if (!type.match(new RegExp("type\d*", "gi")) && evaluateelmt(type, value)) {
-                return true;
-            }
-        }
-        return false;
-    }
-}
-
-
-function follow_cmd(ctxt, cmd) {
-    var i = 0;
-    out = ctxt;
-
-    while (true) {
-        if (out.hasOwnProperty("if") && out.hasOwnProperty("else") && out.if.hasOwnProperty("cond")) {
-            if (evaluatecond(out.if.cond)) {
-                if (out.if.cond.hasOwnProperty("unseen")) {
-                    inv[out.if.cond.unseen] = -1;
-                }
-                out = out.if;
-            } else {
-                out = out.else;
-            }
-        } else if (out.hasOwnProperty("cmd") && cmd[i]) {
-            found = false;
-            for (const [cur_cmd, result] of Object.entries(out.cmd)) {
-                if (cmd[i].match(new RegExp("^" + cur_cmd + "$", "i"))) {
-                    found = true;
-                    out = result;
-                    i++;
-                    break;
-                }
-            }
-            if (!found) {
-                break;
-            }
-        } else {
-            break;
-        }
     }
 
-    for (const key of Object.keys(out)) {
-        if (key != "cmd") {
-            return out;
-        }
-    }
-
-    return follow_cmd(WorldData, cmd);
-}
-
-function end(flag) {
-    if (flag == -2) {
-        t.write("Press enter to continue watching the blinking lights");
-        flag = 2;
-    } else if (flag == 6) {
-        t.write("You have the Goose Cult ending");
-    } else if (flag == 8) {
-        window.location.href = "https://www.youtube.com/embed/g_y15ozNchY?autoplay=1";
-    } else if (flag == 2) {
-        window.location.href = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-    } else if (flag == 666) {
-        window.location.href = "https://www.youtube.com/embed/lDnva_3fcTc?autoplay=1";
-    } else if (flag == 540) {
-        window.location.href = "https://www.youtube.com/embed/KPP4Cfupzhs?autoplay=1";
-    } else if (flag == 541) {
-        window.location.href = "https://www.youtube.com/embed/UyANUnGoGcE?autoplay=1";
-    } else if (flag == 799) {
-        window.location.href = "https://www.youtube.com/embed/qCMZYEIlztY?autoplay=1";
-    } else {
-        location.reload()
-    }
-}
-
-function processcmds(context) {
-    var executionOrder = ["clear\d*", "img\d*", "msg\d*", "dest\d*", "inv\d*", "get\d*", "inc\d*", "end\d*"]
-
-    function regexIndexOf(arr, str) {
-        for (var i = 0; i < arr.length; i++) {
-            if (str.match(new RegExp(arr[i], "gi"))) {
-                return i;
-            }
-        }
-        return -1
-    }
-
-    for (const [trigger, action] of Object.entries(context).sort(function (a, b) {
-        return regexIndexOf(executionOrder, a[0]) - regexIndexOf(executionOrder, b[0]);
-    })) {
-        if (trigger.match(new RegExp("img\d*", "gi"))) {
-            t.write("image/" + action);
-        }
-
-        if (trigger.match(new RegExp("clear\d*", "gi"))) {
-            t.clear()
-        }
-
-        if (trigger.match(new RegExp("msg\d*", "gi"))) {
-            t.write(action);
-            t.write();
-        }
-
-        if (trigger.match(new RegExp("dest\d*", "gi"))) {
-            loc = action;
-        }
-
-        if (trigger.match(new RegExp("inv\d*", "gi"))) {
-            if (action == 1) {
-                t.write("You have:");
-                found = false;
-                for (const [invitem, invdata] of Object.entries(inv)) {
-                    if (invitem && invdata == 1) {
-                        t.write("  - " + invitem);
-                        found = true;
-                    } else if (invitem && invdata > 1) {
-                        t.write("  - " + invitem + " (" + invdata + ")");
-                        found = true;
-                    }
-                }
-                if (!found) {
-                    t.write("  - Nothing");
-                }
-                t.write();
-            }
-        }
-
-        if (trigger.match(new RegExp("get\d*", "gi"))) {
-            inv[action.item] = action.data;
-        }
-        if (trigger.match(new RegExp("inc\d*", "gi"))) {
-            if (!has(action)) {
-                inv[action] = 1;
-            } else {
-                if (inv[context.inc] < 0) {
-                    inv[context.inc]--;
-                } else {
-                    inv[context.inc]++;
-                }
-            }
-        }
-
-        if (trigger.match(new RegExp("end\d*", "gi"))) {
-            endflag = action;
-            t.write("THE END (ending " + action + "/4)\n\nPress enter to continue\n")
+    for (const [trigger, f] of Object.entries(commands)) {
+        if (line.match(new RegExp("^" + trigger + ".*$"))) {
+            f(line.split(new RegExp("\\s+")).slice(1))
+            return;
         }
     }
 }
 
-function handle(line) {
-    if (endflag != 0) {
-        end(flag);
-    }
-
-    var cmd = line.toLowerCase();
-    for (const [word, repl] of Object.entries(Aliases)) {
-        cmd = cmd.replace(new RegExp(word, "gi"), repl.toLowerCase());
-    }
-    cmd = cmd.trim().replace(/  +/gi, " ").split(" ");
-
-    if (cmd == "") {
-        waitingcount++;
-        if (waitingcount == 10) {
-            t.write("hello?");
-        }
-        if (waitingcount == 23) {
-            t.write("are you okay?");
-        }
-        if (waitingcount == 29) {
-            t.write("you can say something you know...");
-        }
-        if (waitingcount == 42) {
-            t.write("it's been a while");
-        }
-        if (waitingcount == 50) {
-            t.write("chichien needs you");
-        }
-        if (waitingcount == 60) {
-            t.write("ah whatever");
-        }
-        if (waitingcount == 64) {
-            t.write("Chichien was bored to death\n\nTHE END (ending 0/4)\n\nPress any key to continue\n");
-            endflag = 5;
-        }
-        return;
-    } else {
-        waitingcount = 0;
-        context = follow_cmd((WorldData.locations.hasOwnProperty(loc) ? WorldData.locations[loc] : WorldData), cmd);
-
-        processcmds(context);
-
-    }
+function handleCommand(line) {
+    parseLine(line);
+    t.addEventListener("onCommand", (line) => { handleCommand(line) })
 }
+
+t.addEventListener("onCommand", (line) => { handleCommand(line) })
