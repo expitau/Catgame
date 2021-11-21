@@ -4,9 +4,7 @@ A text adventure game made using the [Maneki](https://github.com/expitau-dev/Man
 
 See also https://github.com/aliyahknetsch/LuckyAdventure for a fork of the project by [@aliyahknetsch](https://github.com/aliyahknetsch) that includes a greatly expanded storyline.
 
-## Tech Used
- - Docker (webserver)
- - Javascript
- - CSS
- - HTML
- - Maneki Library
+
+
+| Docker | Javascript | CSS | HTML | Maneki |
+|:-:|:-:|:-:|:-:|:-:|
