@@ -6,6 +6,12 @@
     <link rel="icon" type="image/png" href="Includes/Icon.png">
 </head>
 
+<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
+<!-- <script type="text/javascript" src="Includes/Scripts/Maneki.js"></script> -->
+<script type="text/javascript" src="https://expitau-dev.github.io/Maneki/Maneki.js"></script>
+<script type="text/javascript" src="Includes/Scripts/AdventureUtil.js"></script>
+<script type="text/javascript" src="Includes/Scripts/Adventure.js"></script>
+
 <body id="body">
     <div id="background">
         <button id="lightmode" onclick="ToggleMode()">Light mode</button>
@@ -201,18 +207,7 @@
                 </tr>
             </table>
         </div>
-        <div id="console" onClick="document.getElementById('textinput').focus()">
-            <p id="consoletext">
-                Welcome to Lucky's Text Adventure!! Everybody's gone out, so you're left alone at home with Baba. He
-                just works at his computer though, so you're basically alone. What to do now...
-                <br><br> Type "help" for a list of commands
-                <br>
-            </p>
-
-            <p id="prompt">>>>&nbsp
-                <textarea autofocus rows="1" id="textinput" onkeydown="checkInput();"></textarea>
-            </p>
-        </div>
+        <terminal id="luckyadventure" style="color: white; background-color: black; margin: 0 5% 0 5%; height: 75%"></terminal>
         <p id="hiddenmsg">Secret message! --------> Add "?code=" and then the value of 6!2π/𝜏 + sin(0)·∫arctan(t)dt to
             the url</p>
         <div id="cookiePopup" hidden>
@@ -229,9 +224,6 @@
     </div>
 </body>
 
-<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
-<script type="text/javascript" src="Includes/Scripts/Console.js"></script>
-<script type="text/javascript" src="Includes/Scripts/Clicker.js"></script>
 <script>
     var epilepsy = 0;
 
@@ -255,14 +247,9 @@
             fg = "";
             fg2 = "";
         }
-        document.getElementById("consoletext").style.color = fg;
-        document.getElementById("prompt").style.color = fg;
-        document.getElementById("textinput").style.color = fg;
         document.getElementById("clicker-start").style.color = bg;
         document.getElementById("clicker-start").style.backgroundColor = fg;
         document.getElementById("hiddenmsg").style.color = bg;
-        document.getElementById("consoletext").style.backgroundColor = bg;
-        document.getElementById("textinput").style.backgroundColor = bg;
         document.getElementById("background").style.backgroundColor = bg;
         document.getElementById("title").style.color = fg2;
     }
