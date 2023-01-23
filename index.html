@@ -6,12 +6,6 @@
     <link rel="icon" type="image/png" href="Includes/Icon.png">
 </head>
 
-<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
-<!-- <script type="text/javascript" src="Includes/Scripts/Maneki.js"></script> -->
-<script type="text/javascript" src="https://expitau-dev.github.io/Maneki/Maneki.js"></script>
-<script type="text/javascript" src="Includes/Scripts/AdventureUtil.js"></script>
-<script type="text/javascript" src="Includes/Scripts/Adventure.js"></script>
-
 <body id="body">
     <div id="background">
         <button id="lightmode" onclick="ToggleMode()">Light mode</button>
@@ -210,7 +204,16 @@
                 </tr>
             </table>
         </div>
-        <terminal id="luckyadventure" style="color: white; background-color: black; margin: 5%; height: 50%"></terminal>
+        <div id="console" onClick="document.getElementById('textinput').focus()">
+            <p id="consoletext">
+                Welcome to Lucky's Text Adventure!! Meow meow's outside right now, so the house has fallen into chaos! What to do now...
+                <br><br> Type "help" for a list of commands
+                <br>
+            </p>
+            <p id="prompt">>>>&nbsp
+                <textarea autofocus rows="1" id="textinput" onkeydown="checkInput();"></textarea>
+            </p>
+        </div>
         <div id="ad-container">
             <img class="ad" src="Includes/Ad_NVT.png" id="ad1" onclick="clickAd()" hidden>
             <img class="ad" src="Includes/Ad_Goose.png" id="ad2" onclick="clickAd()" hidden>
@@ -234,6 +237,8 @@
     </div>
 </body>
 
+<script type="text/javascript" src="Includes/Scripts/AdventureData.js"></script>
+<script type="text/javascript" src="Includes/Scripts/Console.js"></script>
 <script type="text/javascript" src="Includes/Scripts/Clicker.js"></script>
 <script>
     var epilepsy = 0;
@@ -259,14 +264,14 @@
             fg = "";
             fg2 = "";
         }
-        // document.getElementById("consoletext").style.color = fg;
-        // document.getElementById("prompt").style.color = fg;
-        // document.getElementById("textinput").style.color = fg;
+        document.getElementById("consoletext").style.color = fg;
+        document.getElementById("prompt").style.color = fg;
+        document.getElementById("textinput").style.color = fg;
         document.getElementById("clicker-start").style.color = bg;
         document.getElementById("clicker-start").style.backgroundColor = fg;
         document.getElementById("hiddenmsg").style.color = bg;
-        // document.getElementById("consoletext").style.backgroundColor = bg;
-        // document.getElementById("textinput").style.backgroundColor = bg;
+        document.getElementById("consoletext").style.backgroundColor = bg;
+        document.getElementById("textinput").style.backgroundColor = bg;
         document.getElementById("background").style.backgroundColor = bg;
         document.getElementById("title").style.color = fg2;
     }
@@ -274,7 +279,7 @@
 
     function flash(id) {
         document.getElementById(id).hidden = true;
-        setTimeout("document.getElementById(\"" + id + "\").hidden = false", 500);
+        setTimeout("document.getElementById(\"" + id + "\").hidden = false",500);
     }
 
     var secretunlock = (new URLSearchParams(window.location.search)).get("code") == 720;
